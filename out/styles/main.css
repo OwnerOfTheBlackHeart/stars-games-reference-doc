@@ -3,7 +3,7 @@ body {
   width: 100vw;
   margin: 0;
   padding: 0;
-  background-image: url("/images/main-background.jpg");
+  background-image: url("../../images/main-background.jpg");
   background-position: center;
   /* Center the image */
   background-repeat: no-repeat;
