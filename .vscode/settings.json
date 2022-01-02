@@ -1,0 +1,17 @@
+// place your settings in this file to overwrite default and user settings.
+{
+	"files.exclude": {
+		// include the defaults from VS Code
+		"**/.git": true,
+		"**/.DS_Store": true,
+
+		// exclude .js and .js.map files, when in a TypeScript project
+		"**/*.js": { "when": "$(basename).ts" },
+		"**/*.js.map": true
+	},
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnSave": true,
+	"cSpell.checkLimit": 500,
+	"cSpell.maxNumberOfProblems": 1000,
+	"cSpell.maxDuplicateProblems": 3
+}

@@ -1,0 +1,4 @@
+**/*.js.map
+**/*.css.map
+node_modules
+aspnet_client

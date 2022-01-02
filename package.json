@@ -1,0 +1,27 @@
+{
+	"name": "stars-games-reference-doc",
+	"version": "1.0.0",
+	"scripts": {
+		"compile": "tsc & sass styles:out/styles",
+		"compileSass": "sass styles:out/styles"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/OwnerOfTheBlackHeart/world-of-jurmir.git"
+	},
+	"homepage": "https://github.com/OwnerOfTheBlackHeart/world-of-jurmir",
+	"devDependencies": {
+		"eslint": "^5.16.0",
+		"tslint": "^5.20.1",
+		"typescript": "^3.9.9"
+	},
+	"prettier": {
+		"semi": true,
+		"useTabs": true,
+		"singleQuote": false,
+		"printWidth": 140
+	},
+	"dependencies": {
+		"sass": "^1.45.2"
+	}
+}

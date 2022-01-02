@@ -1,0 +1,50 @@
+{
+	"baseUrl": "pages",
+	"mainPage": "home",
+	"pages": [
+		{ "url": "home.html", "name": "home", "title": "Home" },
+		{ "url": "header.html", "name": "header" },
+		{ "url": "footer.html", "name": "footer" }
+	],
+	"directories": [
+		{
+			"baseUrl": "old-stars-micro",
+			"mainPage": "old-stars-main",
+			"pages": [
+				{ "url": "old-stars-main.html", "name": "old-stars-main", "title": "Old Stars Micro Campaign" },
+				{ "url": "ine-contacts.html", "name": "ine-contacts", "title": "Ine's Contacts" },
+				{ "url": "oleg-contacts.html", "name": "oleg-contacts", "title": "Oleg's Contacts" },
+				{ "url": "sum-contacts.html", "name": "sum-contacts", "title": "Sum's Contacts" },
+				{
+					"url": "https://sectorswithoutnumber.com/sector/9Gv1Q31K5DEgt8ihskos",
+					"name": "old-stars-micro-map",
+					"title": "",
+					"external": true
+				}
+			],
+			"directories": [
+				{
+					"baseUrl": "systems/trapoulak",
+					"mainPage": "trapoulak",
+					"pages": [
+						{ "url": "trapoulak.html", "name": "trapoulak", "title": "Trapoulak System" },
+						{ "url": "thorunn.html", "name": "thorunn", "title": "Thorunn" }
+					]
+				},
+				{
+					"baseUrl": "systems/tustika-tashnal",
+					"mainPage": "tustika-tashnal",
+					"pages": [
+						{ "url": "tustika-tashnal.html", "name": "tustika-tashnal", "title": "Tustika Tashnal System" },
+						{ "url": "sovietallia.html", "name": "sovietallia", "title": "Sovietallia" }
+					]
+				},
+				{
+					"baseUrl": "organizations/fellowship-of-steel",
+					"mainPage": "fellowship-of-steel",
+					"pages": [{ "url": "fellowship-of-steel.html", "name": "fellowship-of-steel", "title": "The Fellowship of Steel" }]
+				}
+			]
+		}
+	]
+}
