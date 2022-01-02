@@ -43,6 +43,11 @@
 					"baseUrl": "organizations/fellowship-of-steel",
 					"mainPage": "fellowship-of-steel",
 					"pages": [{ "url": "fellowship-of-steel.html", "name": "fellowship-of-steel", "title": "The Fellowship of Steel" }]
+				},
+				{
+					"baseUrl": "organizations/religions",
+					"mainPage": "tenrikyo",
+					"pages": [{ "url": "tenrikyo.html", "name": "tenrikyo", "title": "The Flocks of Tenrikyo" }]
 				}
 			]
 		}
