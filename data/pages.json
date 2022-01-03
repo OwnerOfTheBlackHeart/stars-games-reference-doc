@@ -48,6 +48,11 @@
 					"baseUrl": "organizations/religions",
 					"mainPage": "tenrikyo",
 					"pages": [{ "url": "tenrikyo.html", "name": "tenrikyo", "title": "The Flocks of Tenrikyo" }]
+				},
+				{
+					"baseUrl": "organizations/religions",
+					"mainPage": "sovetskiy-marksizm",
+					"pages": [{ "url": "sovetskiy-marksizm.html", "name": "sovetskiy-marksizm", "title": "Sovietallian Marxism" }]
 				}
 			]
 		}
