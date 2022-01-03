@@ -1,15 +1,17 @@
+import { CallbackManager } from "./callback-event";
+import { AuthUser } from "./types/auth-user";
 import { PageDirectory } from "./types/page";
 
+export const globalsReady = new CallbackManager<void>();
+
+const [directory, users] = await Promise.all([
+	fetch("data/pages.json", { cache: "no-store" }).then((response) => response.json() as Promise<PageDirectory>),
+	fetch("data/auth.json", { cache: "no-store" }).then((response) => response.json() as Promise<AuthUser[]>),
+]);
+
 export const globals = {
-	pageDirectory: undefined as PageDirectory,
+	pageDirectory: directory,
+	users: users,
 };
 
-await LoadGlobals();
-
-async function LoadGlobals() {
-	const [directory] = await Promise.all([
-		fetch("data/pages.json", { cache: "no-store" }).then((response) => response.json() as Promise<PageDirectory>),
-	]);
-
-	globals.pageDirectory = directory;
-}
+globalsReady.RunCallbacks();

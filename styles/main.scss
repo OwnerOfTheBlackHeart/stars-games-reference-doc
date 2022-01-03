@@ -1,5 +1,9 @@
 $content-color: rgb(170, 170, 170);
 $link-color: #6e6ee0;
+$content-background-color: rgba(0, 0, 0, 0.95);
+$input-button-background: rgb(30, 30, 30);
+$input-button-border-color: rgb(45, 45, 45);
+$button-hovered-background: rgb(45, 45, 45);
 
 body {
 	height: 100vh;
@@ -23,6 +27,9 @@ span,
 th,
 td,
 li,
+label,
+input,
+button,
 h1,
 h2,
 h3,
@@ -60,6 +67,18 @@ a:visited {
 	}
 }
 
+input,
+button {
+	background-color: $input-button-background;
+	border-color: $input-button-border-color;
+}
+
+button {
+	&:hover {
+		background-color: $button-hovered-background;
+	}
+}
+
 #content-spacer {
 	height: 100%;
 	width: 100%;
@@ -74,7 +93,7 @@ a:visited {
 	width: 100%;
 
 	padding: 20px;
-	background-color: rgba(0, 0, 0, 0.95);
+	background-color: $content-background-color;
 	border-radius: 20px;
 
 	#header,
@@ -142,5 +161,32 @@ a:visited {
 
 	:not(:last-child) {
 		margin-right: 0.5rem;
+	}
+}
+
+.header-container {
+	display: flex;
+	width: 100%;
+
+	.header-content {
+		flex-grow: 1;
+		flex-shrink: 0;
+	}
+
+	.header-auth-content {
+		flex-grow: 0;
+		flex-shrink: 0;
+	}
+}
+
+.auth-display-container {
+	text-align: right;
+
+	.auth-display-label {
+		margin-right: 0.5rem;
+	}
+
+	&.auth-display-upper-container {
+		margin-bottom: 0.25rem;
 	}
 }

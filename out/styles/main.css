@@ -21,6 +21,9 @@ span,
 th,
 td,
 li,
+label,
+input,
+button,
 h1,
 h2,
 h3,
@@ -56,6 +59,16 @@ a:hover,
 a:visited:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+
+input,
+button {
+  background-color: #1e1e1e;
+  border-color: #2d2d2d;
+}
+
+button:hover {
+  background-color: #2d2d2d;
 }
 
 #content-spacer {
@@ -129,6 +142,29 @@ a:visited:hover {
 }
 .ap-dir-display-container :not(:last-child) {
   margin-right: 0.5rem;
+}
+
+.header-container {
+  display: flex;
+  width: 100%;
+}
+.header-container .header-content {
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+.header-container .header-auth-content {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.auth-display-container {
+  text-align: right;
+}
+.auth-display-container .auth-display-label {
+  margin-right: 0.5rem;
+}
+.auth-display-container.auth-display-upper-container {
+  margin-bottom: 0.25rem;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -3,13 +3,18 @@ let highestId = 0;
 export class CallbackManager<T> {
 	private callbacks: Callback<T>[] = [];
 	private lastValue: T;
+	private isUndefinedValid = false;
+
+	constructor(isUndefinedValid = false) {
+		this.isUndefinedValid = isUndefinedValid;
+	}
 
 	AddCallback(callback: (context: T) => void, runImmediately = false): number {
 		const id = highestId++;
 
 		this.callbacks.push({ func: callback, id });
 
-		if (runImmediately && this.lastValue !== undefined) {
+		if (runImmediately && (this.isUndefinedValid || this.lastValue !== undefined)) {
 			callback(this.lastValue);
 		}
 

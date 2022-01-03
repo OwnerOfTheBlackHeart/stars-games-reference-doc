@@ -23,8 +23,6 @@ class DirectoryDisplay extends HTMLElement {
 				this.render();
 			}
 		}, true);
-
-		this.render();
 	}
 
 	disconnectedCallback() {

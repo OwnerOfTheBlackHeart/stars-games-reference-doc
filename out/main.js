@@ -7,13 +7,15 @@ System.register("callback-event", [], function (exports_1, context_1) {
         execute: function () {
             highestId = 0;
             CallbackManager = class CallbackManager {
-                constructor() {
+                constructor(isUndefinedValid = false) {
                     this.callbacks = [];
+                    this.isUndefinedValid = false;
+                    this.isUndefinedValid = isUndefinedValid;
                 }
                 AddCallback(callback, runImmediately = false) {
                     const id = highestId++;
                     this.callbacks.push({ func: callback, id });
-                    if (runImmediately && this.lastValue !== undefined) {
+                    if (runImmediately && (this.isUndefinedValid || this.lastValue !== undefined)) {
                         callback(this.lastValue);
                     }
                     return id;
@@ -31,13 +33,26 @@ System.register("callback-event", [], function (exports_1, context_1) {
         }
     };
 });
-System.register("types/page", [], function (exports_2, context_2) {
+System.register("types/auth-user", [], function (exports_2, context_2) {
     "use strict";
+    var AuthUser;
     var __moduleName = context_2 && context_2.id;
+    return {
+        setters: [],
+        execute: function () {
+            AuthUser = class AuthUser {
+            };
+            exports_2("AuthUser", AuthUser);
+        }
+    };
+});
+System.register("types/page", [], function (exports_3, context_3) {
+    "use strict";
+    var __moduleName = context_3 && context_3.id;
     function FindPage(directory, pageName) {
         return FindPageInner(directory, pageName, directory.baseUrl);
     }
-    exports_2("FindPage", FindPage);
+    exports_3("FindPage", FindPage);
     function FindPageInner(directory, pageName, currentPath) {
         const page = directory.pages.find((page) => page.name === pageName);
         const mainPage = directory.pages.find((page) => page.name === directory.mainPage);
@@ -63,7 +78,7 @@ System.register("types/page", [], function (exports_2, context_2) {
         const page = isExternalPageInternal(directory, pageName);
         return page.external ? true : false;
     }
-    exports_2("isExternalPage", isExternalPage);
+    exports_3("isExternalPage", isExternalPage);
     function isExternalPageInternal(directory, pageName) {
         let page = directory.pages.find((page) => page.name === pageName);
         if (page) {
@@ -86,52 +101,101 @@ System.register("types/page", [], function (exports_2, context_2) {
         }
     };
 });
-System.register("loader", [], function (exports_3, context_3) {
+System.register("loader", ["callback-event"], function (exports_4, context_4) {
     "use strict";
-    var globals;
-    var __moduleName = context_3 && context_3.id;
-    async function LoadGlobals() {
-        const [directory] = await Promise.all([
-            fetch("data/pages.json", { cache: "no-store" }).then((response) => response.json()),
-        ]);
-        globals.pageDirectory = directory;
-    }
+    var callback_event_1, globalsReady, _a, directory, users, globals;
+    var __moduleName = context_4 && context_4.id;
     return {
-        setters: [],
+        setters: [
+            function (callback_event_1_1) {
+                callback_event_1 = callback_event_1_1;
+            }
+        ],
         execute: async function () {
-            exports_3("globals", globals = {
-                pageDirectory: undefined,
+            exports_4("globalsReady", globalsReady = new callback_event_1.CallbackManager());
+            _a = await Promise.all([
+                fetch("data/pages.json", { cache: "no-store" }).then((response) => response.json()),
+                fetch("data/auth.json", { cache: "no-store" }).then((response) => response.json()),
+            ]), directory = _a[0], users = _a[1];
+            exports_4("globals", globals = {
+                pageDirectory: directory,
+                users: users,
             });
-            await LoadGlobals();
+            globalsReady.RunCallbacks();
         }
     };
 });
-System.register("utilities", [], function (exports_4, context_4) {
+System.register("auth-manager", ["callback-event", "loader"], function (exports_5, context_5) {
     "use strict";
-    var __moduleName = context_4 && context_4.id;
+    var callback_event_2, loader_1, currentNameToken, AuthManager;
+    var __moduleName = context_5 && context_5.id;
+    return {
+        setters: [
+            function (callback_event_2_1) {
+                callback_event_2 = callback_event_2_1;
+            },
+            function (loader_1_1) {
+                loader_1 = loader_1_1;
+            }
+        ],
+        execute: function () {
+            currentNameToken = "currentUserName";
+            AuthManager = class AuthManager {
+                static checkStoredUser() {
+                    const userName = localStorage.getItem(currentNameToken);
+                    const currentUser = loader_1.globals.users.find((user) => user.name === userName);
+                    this.userChanged.RunCallbacks(currentUser);
+                }
+                static authorize(passphrase) {
+                    const foundUser = loader_1.globals.users.find((user) => user.passphrase === passphrase);
+                    if (foundUser) {
+                        this.saveUser(foundUser);
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                }
+                static deauthorize() {
+                    this.saveUser(undefined);
+                }
+                static saveUser(user) {
+                    this.userChanged.RunCallbacks(user);
+                    localStorage.setItem(currentNameToken, user ? user.name : "");
+                }
+            };
+            exports_5("AuthManager", AuthManager);
+            AuthManager.userChanged = new callback_event_2.CallbackManager(true);
+            loader_1.globalsReady.AddCallback(() => AuthManager.checkStoredUser(), true);
+        }
+    };
+});
+System.register("utilities", [], function (exports_6, context_6) {
+    "use strict";
+    var __moduleName = context_6 && context_6.id;
     function showElement(element, scrolledTo) {
         if (element && scrolledTo) {
             element.scrollTop = scrolledTo.offsetTop;
             element.scrollLeft = scrolledTo.offsetLeft;
         }
     }
-    exports_4("showElement", showElement);
+    exports_6("showElement", showElement);
     function showId(parentId, childId) {
         const parent = document.getElementById(parentId);
         const child = document.getElementById(childId);
         showElement(parent, child);
     }
-    exports_4("showId", showId);
+    exports_6("showId", showId);
     return {
         setters: [],
         execute: function () {
         }
     };
 });
-System.register("io", ["callback-event", "loader", "types/page", "utilities"], function (exports_5, context_5) {
+System.register("io", ["callback-event", "loader", "types/page", "utilities"], function (exports_7, context_7) {
     "use strict";
-    var callback_event_1, loader_1, page_1, utilities_1, headerQuery, footerQuery, contentQuery, headerPage, footerPage, defaultPage, titlePostface, Parameters, baseNavigateUrl, pageChangeManager;
-    var __moduleName = context_5 && context_5.id;
+    var callback_event_3, loader_2, page_1, utilities_1, headerQuery, footerQuery, contentQuery, headerPage, footerPage, defaultPage, titlePostface, Parameters, baseNavigateUrl, pageChangeManager;
+    var __moduleName = context_7 && context_7.id;
     async function InitialLoad() {
         let pageName = GetActivePageName();
         const [header, footer, content] = await Promise.all([
@@ -141,19 +205,19 @@ System.register("io", ["callback-event", "loader", "types/page", "utilities"], f
         ]);
         return { header, footer, content };
     }
-    exports_5("InitialLoad", InitialLoad);
+    exports_7("InitialLoad", InitialLoad);
     function GetActivePageName() {
         const params = new URLSearchParams(location.search);
         let pageName = params.get(Parameters.pageName);
         pageName = pageName ? pageName : defaultPage;
         return pageName;
     }
-    exports_5("GetActivePageName", GetActivePageName);
+    exports_7("GetActivePageName", GetActivePageName);
     function OnPopState(ev) {
         let pageName = GetActivePageName();
         LoadIntoContent(pageName).then(() => UpdateContentScroll());
     }
-    exports_5("OnPopState", OnPopState);
+    exports_7("OnPopState", OnPopState);
     function InternalNavigate(foundPage, hash) {
         let url = baseNavigateUrl + foundPage.page.name;
         if (hash) {
@@ -162,9 +226,9 @@ System.register("io", ["callback-event", "loader", "types/page", "utilities"], f
         history.pushState(undefined, foundPage.page.title + titlePostface, url);
         OnPopState({});
     }
-    exports_5("InternalNavigate", InternalNavigate);
+    exports_7("InternalNavigate", InternalNavigate);
     async function LoadIntoElement(pageName, queryString) {
-        const foundPage = page_1.FindPage(loader_1.globals.pageDirectory, pageName);
+        const foundPage = page_1.FindPage(loader_2.globals.pageDirectory, pageName);
         const element = document.querySelector(queryString);
         if (!foundPage) {
             throw new Error(`Could not find page "${pageName}"`);
@@ -182,7 +246,7 @@ System.register("io", ["callback-event", "loader", "types/page", "utilities"], f
         return element;
     }
     async function LoadIntoContent(pageName) {
-        const foundPage = page_1.FindPage(loader_1.globals.pageDirectory, pageName);
+        const foundPage = page_1.FindPage(loader_2.globals.pageDirectory, pageName);
         const element = document.querySelector(contentQuery);
         if (!foundPage) {
             throw new Error(`Could not find page "${pageName}"`);
@@ -214,11 +278,11 @@ System.register("io", ["callback-event", "loader", "types/page", "utilities"], f
     }
     return {
         setters: [
-            function (callback_event_1_1) {
-                callback_event_1 = callback_event_1_1;
+            function (callback_event_3_1) {
+                callback_event_3 = callback_event_3_1;
             },
-            function (loader_1_1) {
-                loader_1 = loader_1_1;
+            function (loader_2_1) {
+                loader_2 = loader_2_1;
             },
             function (page_1_1) {
                 page_1 = page_1_1;
@@ -238,30 +302,30 @@ System.register("io", ["callback-event", "loader", "types/page", "utilities"], f
             (function (Parameters) {
                 Parameters["pageName"] = "pageName";
             })(Parameters || (Parameters = {}));
-            exports_5("Parameters", Parameters);
-            exports_5("baseNavigateUrl", baseNavigateUrl = `index.html?${Parameters.pageName}=`);
-            exports_5("pageChangeManager", pageChangeManager = new callback_event_1.CallbackManager());
+            exports_7("Parameters", Parameters);
+            exports_7("baseNavigateUrl", baseNavigateUrl = `index.html?${Parameters.pageName}=`);
+            exports_7("pageChangeManager", pageChangeManager = new callback_event_3.CallbackManager());
         }
     };
 });
-System.register("custom-elements/ap-nav-link", ["io", "loader", "types/page"], function (exports_6, context_6) {
+System.register("custom-elements/ap-nav-link", ["io", "loader", "types/page"], function (exports_8, context_8) {
     "use strict";
-    var io_1, loader_2, page_2, navLinkName, NavLink;
-    var __moduleName = context_6 && context_6.id;
+    var io_1, loader_3, page_2, navLinkName, NavLink;
+    var __moduleName = context_8 && context_8.id;
     return {
         setters: [
             function (io_1_1) {
                 io_1 = io_1_1;
             },
-            function (loader_2_1) {
-                loader_2 = loader_2_1;
+            function (loader_3_1) {
+                loader_3 = loader_3_1;
             },
             function (page_2_1) {
                 page_2 = page_2_1;
             }
         ],
         execute: function () {
-            exports_6("navLinkName", navLinkName = "ap-nav-link");
+            exports_8("navLinkName", navLinkName = "ap-nav-link");
             NavLink = class NavLink extends HTMLAnchorElement {
                 constructor() {
                     super();
@@ -281,7 +345,7 @@ System.register("custom-elements/ap-nav-link", ["io", "loader", "types/page"], f
                         else {
                             pageName = givenUrl;
                         }
-                        this.foundPage = page_2.FindPage(loader_2.globals.pageDirectory, pageName);
+                        this.foundPage = page_2.FindPage(loader_3.globals.pageDirectory, pageName);
                     }
                     let url = io_1.baseNavigateUrl + this.foundPage.page.name;
                     if (this.hash) {
@@ -306,10 +370,10 @@ System.register("custom-elements/ap-nav-link", ["io", "loader", "types/page"], f
         }
     };
 });
-System.register("custom-elements/ap-dir-display", ["io", "custom-elements/ap-nav-link"], function (exports_7, context_7) {
+System.register("custom-elements/ap-dir-display", ["io", "custom-elements/ap-nav-link"], function (exports_9, context_9) {
     "use strict";
     var io_2, ap_nav_link_1, dirDisplayName, DirectoryDisplay;
-    var __moduleName = context_7 && context_7.id;
+    var __moduleName = context_9 && context_9.id;
     return {
         setters: [
             function (io_2_1) {
@@ -320,7 +384,7 @@ System.register("custom-elements/ap-dir-display", ["io", "custom-elements/ap-nav
             }
         ],
         execute: function () {
-            exports_7("dirDisplayName", dirDisplayName = "ap-dir-display");
+            exports_9("dirDisplayName", dirDisplayName = "ap-dir-display");
             DirectoryDisplay = class DirectoryDisplay extends HTMLElement {
                 constructor() {
                     super();
@@ -334,7 +398,6 @@ System.register("custom-elements/ap-dir-display", ["io", "custom-elements/ap-nav
                             this.render();
                         }
                     }, true);
-                    this.render();
                 }
                 disconnectedCallback() {
                     this.rendered = false;
@@ -367,33 +430,225 @@ System.register("custom-elements/ap-dir-display", ["io", "custom-elements/ap-nav
         }
     };
 });
-System.register("custom-elements/custom-elements", ["custom-elements/ap-nav-link", "custom-elements/ap-dir-display"], function (exports_8, context_8) {
+System.register("custom-elements/ap-auth-container", ["auth-manager"], function (exports_10, context_10) {
     "use strict";
-    var __moduleName = context_8 && context_8.id;
+    var auth_manager_1, authContainerName, AuthDisplayType, universalAuthorization, AuthContainer;
+    var __moduleName = context_10 && context_10.id;
+    return {
+        setters: [
+            function (auth_manager_1_1) {
+                auth_manager_1 = auth_manager_1_1;
+            }
+        ],
+        execute: function () {
+            exports_10("authContainerName", authContainerName = "ap-auth-container");
+            (function (AuthDisplayType) {
+                AuthDisplayType["block"] = "block";
+                AuthDisplayType["inline"] = "inline";
+                AuthDisplayType["inlineBlock"] = "inline-block";
+                AuthDisplayType["none"] = "none";
+            })(AuthDisplayType || (AuthDisplayType = {}));
+            exports_10("AuthDisplayType", AuthDisplayType);
+            universalAuthorization = "gm";
+            AuthContainer = class AuthContainer extends HTMLElement {
+                constructor() {
+                    super();
+                    this.accessTokens = [];
+                    this.rendered = false;
+                }
+                get displayType() {
+                    if (this.hasAttribute(AuthDisplayType.block)) {
+                        return AuthDisplayType.block;
+                    }
+                    else if (this.hasAttribute(AuthDisplayType.inline)) {
+                        return AuthDisplayType.inline;
+                    }
+                    else if (this.hasAttribute(AuthDisplayType.inlineBlock)) {
+                        return AuthDisplayType.inlineBlock;
+                    }
+                    else if (this.hasAttribute(AuthDisplayType.none)) {
+                        return AuthDisplayType.none;
+                    }
+                    else {
+                        return AuthDisplayType.block;
+                    }
+                }
+                set displayType(val) {
+                    switch (val) {
+                        case AuthDisplayType.block:
+                            this.setAttribute(AuthDisplayType.block, "");
+                            this.removeAttribute(AuthDisplayType.inline);
+                            this.removeAttribute(AuthDisplayType.inlineBlock);
+                            this.removeAttribute(AuthDisplayType.none);
+                            break;
+                        case AuthDisplayType.inline:
+                            this.removeAttribute(AuthDisplayType.block);
+                            this.setAttribute(AuthDisplayType.inline, "");
+                            this.removeAttribute(AuthDisplayType.inlineBlock);
+                            this.removeAttribute(AuthDisplayType.none);
+                            break;
+                        case AuthDisplayType.inlineBlock:
+                            this.removeAttribute(AuthDisplayType.block);
+                            this.removeAttribute(AuthDisplayType.inline);
+                            this.setAttribute(AuthDisplayType.inlineBlock, "");
+                            this.removeAttribute(AuthDisplayType.none);
+                            break;
+                        case AuthDisplayType.none:
+                            this.removeAttribute(AuthDisplayType.block);
+                            this.removeAttribute(AuthDisplayType.inline);
+                            this.removeAttribute(AuthDisplayType.inlineBlock);
+                            this.setAttribute(AuthDisplayType.none, "");
+                            break;
+                    }
+                }
+                connectedCallback() {
+                    this.rendered = true;
+                    const accessTokenString = this.getAttribute("permissions");
+                    if (accessTokenString) {
+                        this.accessTokens = accessTokenString.split(" ");
+                    }
+                    else {
+                        this.accessTokens = [];
+                    }
+                    this.callbackId = auth_manager_1.AuthManager.userChanged.AddCallback((user) => {
+                        this.currentUser = user;
+                        if (this.rendered) {
+                            this.render();
+                        }
+                    }, true);
+                }
+                disconnectedCallback() {
+                    this.rendered = false;
+                    auth_manager_1.AuthManager.userChanged.RemoveCallback(this.callbackId);
+                }
+                render() {
+                    let hasPermissions = false;
+                    if (this.currentUser) {
+                        hasPermissions = this.currentUser.accessTokens.some((token) => token === universalAuthorization || this.accessTokens.includes(token));
+                    }
+                    if (hasPermissions) {
+                        this.style.display = this.displayType;
+                    }
+                    else {
+                        this.style.display = AuthDisplayType.none;
+                    }
+                }
+            };
+            customElements.define(authContainerName, AuthContainer);
+        }
+    };
+});
+System.register("custom-elements/ap-auth-display", ["auth-manager"], function (exports_11, context_11) {
+    "use strict";
+    var auth_manager_2, authDisplayName, AuthDisplay;
+    var __moduleName = context_11 && context_11.id;
+    return {
+        setters: [
+            function (auth_manager_2_1) {
+                auth_manager_2 = auth_manager_2_1;
+            }
+        ],
+        execute: function () {
+            exports_11("authDisplayName", authDisplayName = "ap-auth-display");
+            AuthDisplay = class AuthDisplay extends HTMLElement {
+                constructor() {
+                    super();
+                    this.rendered = false;
+                }
+                connectedCallback() {
+                    this.rendered = true;
+                    this.callbackId = auth_manager_2.AuthManager.userChanged.AddCallback((user) => {
+                        this.currentUser = user;
+                        if (this.rendered) {
+                            this.render();
+                        }
+                    }, true);
+                }
+                disconnectedCallback() {
+                    this.rendered = false;
+                    auth_manager_2.AuthManager.userChanged.RemoveCallback(this.callbackId);
+                }
+                render() {
+                    this.innerHTML = "";
+                    const upperContainer = document.createElement("div");
+                    upperContainer.classList.add("auth-display-container", "auth-display-upper-container");
+                    const lowerContainer = document.createElement("div");
+                    lowerContainer.classList.add("auth-display-container", "auth-display-lower-container");
+                    if (this.currentUser) {
+                        this.renderAuthorized(upperContainer, lowerContainer);
+                    }
+                    else {
+                        this.renderUnauthorized(upperContainer, lowerContainer);
+                    }
+                    this.appendChild(upperContainer);
+                    this.appendChild(lowerContainer);
+                }
+                renderAuthorized(upperContainer, lowerContainer) {
+                    const span = document.createElement("span");
+                    span.classList.add("auth-display-authorized-text");
+                    span.innerText = `Hello, ${this.currentUser.name}!`;
+                    upperContainer.appendChild(span);
+                    const deauthButton = document.createElement("button");
+                    deauthButton.innerText = "Deauthorize";
+                    deauthButton.classList.add("auth-display-deauth-button");
+                    deauthButton.onclick = () => {
+                        auth_manager_2.AuthManager.deauthorize();
+                    };
+                    lowerContainer.appendChild(deauthButton);
+                }
+                renderUnauthorized(upperContainer, lowerContainer) {
+                    const label = document.createElement("label");
+                    label.innerText = "Authorization Passcode:";
+                    label.htmlFor = "auth-display-input";
+                    label.classList.add("auth-display-label");
+                    upperContainer.appendChild(label);
+                    const input = document.createElement("input");
+                    input.id = "auth-display-input";
+                    upperContainer.appendChild(input);
+                    const authButton = document.createElement("button");
+                    authButton.innerText = "Authorize";
+                    authButton.classList.add("auth-display-auth-button");
+                    authButton.onclick = () => {
+                        auth_manager_2.AuthManager.authorize(input.value);
+                    };
+                    lowerContainer.appendChild(authButton);
+                }
+            };
+            customElements.define(authDisplayName, AuthDisplay);
+        }
+    };
+});
+System.register("custom-elements/custom-elements", ["custom-elements/ap-nav-link", "custom-elements/ap-dir-display", "custom-elements/ap-auth-container", "custom-elements/ap-auth-display"], function (exports_12, context_12) {
+    "use strict";
+    var __moduleName = context_12 && context_12.id;
     return {
         setters: [
             function (_1) {
             },
             function (_2) {
+            },
+            function (_3) {
+            },
+            function (_4) {
             }
         ],
         execute: function () {
         }
     };
 });
-System.register("main", ["custom-elements/custom-elements", "io", "loader", "types/page"], function (exports_9, context_9) {
+System.register("main", ["custom-elements/custom-elements", "io", "loader", "types/page"], function (exports_13, context_13) {
     "use strict";
-    var io_3, loader_3, page_3;
-    var __moduleName = context_9 && context_9.id;
+    var io_3, loader_4, page_3;
+    var __moduleName = context_13 && context_13.id;
     return {
         setters: [
-            function (_3) {
+            function (_5) {
             },
             function (io_3_1) {
                 io_3 = io_3_1;
             },
-            function (loader_3_1) {
-                loader_3 = loader_3_1;
+            function (loader_4_1) {
+                loader_4 = loader_4_1;
             },
             function (page_3_1) {
                 page_3 = page_3_1;
@@ -401,7 +656,7 @@ System.register("main", ["custom-elements/custom-elements", "io", "loader", "typ
         ],
         execute: function () {
             window.test = (name) => {
-                console.log(page_3.FindPage(loader_3.globals.pageDirectory, name));
+                console.log(page_3.FindPage(loader_4.globals.pageDirectory, name));
             };
             io_3.InitialLoad().then(() => {
                 onpopstate = io_3.OnPopState;
