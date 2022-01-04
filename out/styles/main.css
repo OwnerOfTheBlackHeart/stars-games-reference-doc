@@ -167,6 +167,7 @@ b {
   margin-bottom: 0.25rem;
 }
 
+ap-auth-container,
 ap-auth-container * {
   font-style: italic;
 }
