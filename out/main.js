@@ -186,6 +186,15 @@ System.register("utilities", [], function (exports_6, context_6) {
         showElement(parent, child);
     }
     exports_6("showId", showId);
+    function buildCssStylesheetElement(path, addDotCss = true, addOutPath = false) {
+        const href = `${addOutPath ? "out/styles/" : ""}${path}${addDotCss ? ".css" : ""}`;
+        const link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.type = "text/css";
+        link.setAttribute("href", href);
+        return link;
+    }
+    exports_6("buildCssStylesheetElement", buildCssStylesheetElement);
     return {
         setters: [],
         execute: function () {
@@ -470,6 +479,7 @@ System.register("custom-elements/ap-auth-container", ["auth-manager"], function 
                         return AuthDisplayType.none;
                     }
                     else {
+                        this.setAttribute(AuthDisplayType.block, "");
                         return AuthDisplayType.block;
                     }
                 }
@@ -618,9 +628,95 @@ System.register("custom-elements/ap-auth-display", ["auth-manager"], function (e
         }
     };
 });
-System.register("custom-elements/custom-elements", ["custom-elements/ap-nav-link", "custom-elements/ap-dir-display", "custom-elements/ap-auth-container", "custom-elements/ap-auth-display"], function (exports_12, context_12) {
+System.register("custom-elements/ap-stat-block", ["utilities"], function (exports_12, context_12) {
     "use strict";
+    var utilities_2, statBlockName, SubElementNames, StatBlock;
     var __moduleName = context_12 && context_12.id;
+    return {
+        setters: [
+            function (utilities_2_1) {
+                utilities_2 = utilities_2_1;
+            }
+        ],
+        execute: function () {
+            exports_12("statBlockName", statBlockName = "ap-stat-block");
+            (function (SubElementNames) {
+                SubElementNames["hitDice"] = "hit-dice";
+                SubElementNames["armorClass"] = "armor-class";
+                SubElementNames["attacks"] = "attacks";
+                SubElementNames["skillBonus"] = "skill-bonus";
+                SubElementNames["savingThrow"] = "saving-throw";
+                SubElementNames["movement"] = "movement";
+                SubElementNames["morale"] = "morale";
+                SubElementNames["numberAppearing"] = "number-appearing";
+            })(SubElementNames || (SubElementNames = {}));
+            StatBlock = class StatBlock extends HTMLElement {
+                constructor() {
+                    super();
+                }
+                connectedCallback() {
+                    if (!this.shadowRoot) {
+                        this.attachShadow({ mode: "open" });
+                        this.shadowRoot.appendChild(utilities_2.buildCssStylesheetElement("elements", true, true));
+                        this.container = document.createElement("div");
+                        this.container.classList.add("stat-block-container");
+                        this.shadowRoot.appendChild(this.container);
+                    }
+                    this.container.innerHTML = "";
+                    const values = this.getValues();
+                    const table = document.createElement("table");
+                    table.appendChild(this.buildRow("Armor Class", values.armorClass, "No. Appearing", values.numberAppearing));
+                    table.appendChild(this.buildRow("Hit Dice", values.hitDice, "Saving Throw", values.savingThrow));
+                    table.appendChild(this.buildRow("Attack", values.attacks, "Movement", values.movement));
+                    table.appendChild(this.buildRow("Skill Bonus", values.skillBonus, "Morale", values.morale));
+                    this.container.appendChild(table);
+                }
+                getValues() {
+                    const hitDiceElement = this.querySelector(SubElementNames.hitDice);
+                    const armorClassElement = this.querySelector(SubElementNames.armorClass);
+                    const attacksElement = this.querySelector(SubElementNames.attacks);
+                    const skillBonusElement = this.querySelector(SubElementNames.skillBonus);
+                    const savingThrowElement = this.querySelector(SubElementNames.savingThrow);
+                    const movementElement = this.querySelector(SubElementNames.movement);
+                    const moraleElement = this.querySelector(SubElementNames.morale);
+                    const numberAppearingElement = this.querySelector(SubElementNames.numberAppearing);
+                    return {
+                        hitDice: hitDiceElement ? hitDiceElement.innerHTML : "",
+                        armorClass: armorClassElement ? armorClassElement.innerHTML : "",
+                        attacks: attacksElement ? attacksElement.innerHTML : "",
+                        skillBonus: skillBonusElement ? skillBonusElement.innerHTML : "",
+                        savingThrow: savingThrowElement ? savingThrowElement.innerHTML : "",
+                        movement: movementElement ? movementElement.innerHTML : "",
+                        morale: moraleElement ? moraleElement.innerHTML : "",
+                        numberAppearing: numberAppearingElement ? numberAppearingElement.innerHTML : "",
+                    };
+                }
+                buildRow(column1Name, column1Value, column2Name, column2Value) {
+                    const row = document.createElement("tr");
+                    let header;
+                    let value;
+                    header = document.createElement("th");
+                    header.innerText = column1Name;
+                    row.appendChild(header);
+                    value = document.createElement("td");
+                    value.innerHTML = column1Value;
+                    row.appendChild(value);
+                    header = document.createElement("th");
+                    header.innerText = column2Name;
+                    row.appendChild(header);
+                    value = document.createElement("td");
+                    value.innerHTML = column2Value;
+                    row.appendChild(value);
+                    return row;
+                }
+            };
+            customElements.define(statBlockName, StatBlock);
+        }
+    };
+});
+System.register("custom-elements/custom-elements", ["custom-elements/ap-nav-link", "custom-elements/ap-dir-display", "custom-elements/ap-auth-container", "custom-elements/ap-auth-display", "custom-elements/ap-stat-block"], function (exports_13, context_13) {
+    "use strict";
+    var __moduleName = context_13 && context_13.id;
     return {
         setters: [
             function (_1) {
@@ -630,19 +726,21 @@ System.register("custom-elements/custom-elements", ["custom-elements/ap-nav-link
             function (_3) {
             },
             function (_4) {
+            },
+            function (_5) {
             }
         ],
         execute: function () {
         }
     };
 });
-System.register("main", ["custom-elements/custom-elements", "io", "loader", "types/page"], function (exports_13, context_13) {
+System.register("main", ["custom-elements/custom-elements", "io", "loader", "types/page"], function (exports_14, context_14) {
     "use strict";
     var io_3, loader_4, page_3;
-    var __moduleName = context_13 && context_13.id;
+    var __moduleName = context_14 && context_14.id;
     return {
         setters: [
-            function (_5) {
+            function (_6) {
             },
             function (io_3_1) {
                 io_3 = io_3_1;

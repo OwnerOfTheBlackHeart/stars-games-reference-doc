@@ -22,6 +22,7 @@ class AuthContainer extends HTMLElement {
 		} else if (this.hasAttribute(AuthDisplayType.none)) {
 			return AuthDisplayType.none;
 		} else {
+			this.setAttribute(AuthDisplayType.block, "");
 			return AuthDisplayType.block;
 		}
 	}

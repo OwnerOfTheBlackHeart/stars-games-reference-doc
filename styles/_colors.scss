@@ -1,0 +1,46 @@
+$content-color: rgb(170, 170, 170);
+$link-color: #6e6ee0;
+$content-background-color: rgba(0, 0, 0, 0.95);
+$input-button-background: rgb(30, 30, 30);
+$input-button-border-color: rgb(45, 45, 45);
+$button-hovered-background: rgb(45, 45, 45);
+
+p,
+span,
+th,
+td,
+li,
+label,
+input,
+button,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: $content-color;
+}
+
+a,
+a:visited {
+	color: $link-color;
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+		cursor: pointer;
+	}
+}
+
+input,
+button {
+	background-color: $input-button-background;
+	border-color: $input-button-border-color;
+}
+
+button {
+	&:hover {
+		background-color: $button-hovered-background;
+	}
+}

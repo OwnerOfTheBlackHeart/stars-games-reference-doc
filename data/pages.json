@@ -53,6 +53,11 @@
 					"baseUrl": "organizations/religions",
 					"mainPage": "sovetskiy-marksizm",
 					"pages": [{ "url": "sovetskiy-marksizm.html", "name": "sovetskiy-marksizm", "title": "Sovietallian Marxism" }]
+				},
+				{
+					"baseUrl": "organizations/darkwire-gang",
+					"mainPage": "darkwire-gang",
+					"pages": [{ "url": "darkwire-gang.html", "name": "darkwire-gang", "title": "The Darkwire Gang" }]
 				}
 			]
 		}

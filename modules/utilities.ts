@@ -11,3 +11,13 @@ export function showId(parentId: string, childId: string) {
 
 	showElement(parent, child);
 }
+
+export function buildCssStylesheetElement(path: string, addDotCss = true, addOutPath = false) {
+	const href = `${addOutPath ? "out/styles/" : ""}${path}${addDotCss ? ".css" : ""}`;
+	const link = document.createElement("link");
+	link.rel = "stylesheet";
+	link.type = "text/css";
+	link.setAttribute("href", href);
+
+	return link;
+}

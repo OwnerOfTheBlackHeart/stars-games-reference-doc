@@ -1,0 +1,23 @@
+@use "colors";
+
+* {
+	box-sizing: border-box;
+}
+
+.stat-block-container {
+	table {
+		border-top: 1px solid colors.$content-color;
+
+		th {
+			vertical-align: top;
+			border-right: 1px solid colors.$content-color;
+			text-align: right;
+			padding-right: 0.25rem;
+		}
+
+		td {
+			vertical-align: top;
+			padding: 0 2rem 0 0.25rem;
+		}
+	}
+}
