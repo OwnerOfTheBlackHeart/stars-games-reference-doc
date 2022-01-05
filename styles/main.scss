@@ -34,6 +34,16 @@ b {
 	font-size: 1.1em;
 }
 
+th,
+td {
+	border: 1px solid colors.$content-color;
+	padding: 0 0.5rem;
+
+	// &:not(:last-child) {
+	// 	padding-right: 0.5rem;
+	// }
+}
+
 #content-spacer {
 	height: 100%;
 	width: 100%;

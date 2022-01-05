@@ -22,6 +22,17 @@ h6 {
 	color: $content-color;
 }
 
+table,
+th,
+td,
+tr {
+	border-color: $content-color;
+}
+
+table {
+	border-collapse: collapse;
+}
+
 a,
 a:visited {
 	color: $link-color;

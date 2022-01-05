@@ -24,6 +24,19 @@
 			],
 			"directories": [
 				{
+					"baseUrl": "adventures",
+					"mainPage": "adventures",
+					"pages": [
+						{ "url": "adventures.html", "name": "adventures", "title": "Adventure List" },
+						{ "url": "ervan/scout-the-trackless.html", "name": "scout-the-trackless", "title": "Scout the Trackless" },
+						{ "url": "freya/a-small-favor.html", "name": "a-small-favor", "title": "A Small Favor" },
+						{ "url": "nikkya/paint-me-like.html", "name": "paint-me-like", "title": "Paint Me Like" },
+						{ "url": "tremelle/duany-eggs.html", "name": "duany-eggs", "title": "Duany Eggs for the Arena" },
+						{ "url": "tyreck/clear-the-cave.html", "name": "clear-the-cave", "title": "Clear the Cave" },
+						{ "url": "yuri/parts-for-darkwire.html", "name": "parts-for-darkwire", "title": "Parts for Darkwire" }
+					]
+				},
+				{
 					"baseUrl": "systems/trapoulak",
 					"mainPage": "trapoulak",
 					"pages": [

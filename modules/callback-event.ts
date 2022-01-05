@@ -2,11 +2,16 @@ let highestId = 0;
 
 export class CallbackManager<T> {
 	private callbacks: Callback<T>[] = [];
+	private singleRunCallbacks: Callback<T>[] = [];
 	private lastValue: T;
+	private hasRan = false;
 	private isUndefinedValid = false;
+	private isFirstRunRequired = false;
 
-	constructor(isUndefinedValid = false) {
+	constructor(isUndefinedValid = false, isFirstRunRequired = false, initialValue?: T) {
 		this.isUndefinedValid = isUndefinedValid;
+		this.isFirstRunRequired = isFirstRunRequired;
+		this.lastValue = initialValue;
 	}
 
 	AddCallback(callback: (context: T) => void, runImmediately = false): number {
@@ -14,11 +19,19 @@ export class CallbackManager<T> {
 
 		this.callbacks.push({ func: callback, id });
 
-		if (runImmediately && (this.isUndefinedValid || this.lastValue !== undefined)) {
+		if (runImmediately && (this.isUndefinedValid || this.lastValue !== undefined) && (!this.isFirstRunRequired || this.hasRan)) {
 			callback(this.lastValue);
 		}
 
 		return id;
+	}
+
+	AddSingleRunCallback(callback: (context: T) => void, runImmediately = false) {
+		if (runImmediately && (this.isUndefinedValid || this.lastValue !== undefined) && (!this.isFirstRunRequired || this.hasRan)) {
+			callback(this.lastValue);
+		} else {
+			this.singleRunCallbacks.push({ func: callback, id: 0 });
+		}
 	}
 
 	RemoveCallback(callbackId: number): number {
@@ -27,8 +40,12 @@ export class CallbackManager<T> {
 	}
 
 	RunCallbacks(context: T) {
+		this.hasRan = true;
 		this.lastValue = context;
 		this.callbacks.forEach((callback) => callback.func(context));
+
+		this.singleRunCallbacks.forEach((callback) => callback.func(context));
+		this.singleRunCallbacks = [];
 	}
 }
 

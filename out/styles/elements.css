@@ -15,6 +15,17 @@ h6 {
   color: #aaaaaa;
 }
 
+table,
+th,
+td,
+tr {
+  border-color: #aaaaaa;
+}
+
+table {
+  border-collapse: collapse;
+}
+
 a,
 a:visited {
   color: #6e6ee0;

@@ -7,26 +7,42 @@ System.register("callback-event", [], function (exports_1, context_1) {
         execute: function () {
             highestId = 0;
             CallbackManager = class CallbackManager {
-                constructor(isUndefinedValid = false) {
+                constructor(isUndefinedValid = false, isFirstRunRequired = false, initialValue) {
                     this.callbacks = [];
+                    this.singleRunCallbacks = [];
+                    this.hasRan = false;
                     this.isUndefinedValid = false;
+                    this.isFirstRunRequired = false;
                     this.isUndefinedValid = isUndefinedValid;
+                    this.isFirstRunRequired = isFirstRunRequired;
+                    this.lastValue = initialValue;
                 }
                 AddCallback(callback, runImmediately = false) {
                     const id = highestId++;
                     this.callbacks.push({ func: callback, id });
-                    if (runImmediately && (this.isUndefinedValid || this.lastValue !== undefined)) {
+                    if (runImmediately && (this.isUndefinedValid || this.lastValue !== undefined) && (!this.isFirstRunRequired || this.hasRan)) {
                         callback(this.lastValue);
                     }
                     return id;
+                }
+                AddSingleRunCallback(callback, runImmediately = false) {
+                    if (runImmediately && (this.isUndefinedValid || this.lastValue !== undefined) && (!this.isFirstRunRequired || this.hasRan)) {
+                        callback(this.lastValue);
+                    }
+                    else {
+                        this.singleRunCallbacks.push({ func: callback, id: 0 });
+                    }
                 }
                 RemoveCallback(callbackId) {
                     this.callbacks = this.callbacks.filter((callback) => callback.id !== callbackId);
                     return callbackId;
                 }
                 RunCallbacks(context) {
+                    this.hasRan = true;
                     this.lastValue = context;
                     this.callbacks.forEach((callback) => callback.func(context));
+                    this.singleRunCallbacks.forEach((callback) => callback.func(context));
+                    this.singleRunCallbacks = [];
                 }
             };
             exports_1("CallbackManager", CallbackManager);
@@ -112,7 +128,7 @@ System.register("loader", ["callback-event"], function (exports_4, context_4) {
             }
         ],
         execute: async function () {
-            exports_4("globalsReady", globalsReady = new callback_event_1.CallbackManager());
+            exports_4("globalsReady", globalsReady = new callback_event_1.CallbackManager(true, true));
             _a = await Promise.all([
                 fetch("data/pages.json", { cache: "no-store" }).then((response) => response.json()),
                 fetch("data/auth.json", { cache: "no-store" }).then((response) => response.json()),
@@ -165,7 +181,7 @@ System.register("auth-manager", ["callback-event", "loader"], function (exports_
                 }
             };
             exports_5("AuthManager", AuthManager);
-            AuthManager.userChanged = new callback_event_2.CallbackManager(true);
+            AuthManager.userChanged = new callback_event_2.CallbackManager(true, true);
             loader_1.globalsReady.AddCallback(() => AuthManager.checkStoredUser(), true);
         }
     };
@@ -175,8 +191,8 @@ System.register("utilities", [], function (exports_6, context_6) {
     var __moduleName = context_6 && context_6.id;
     function showElement(element, scrolledTo) {
         if (element && scrolledTo) {
-            element.scrollTop = scrolledTo.offsetTop;
-            element.scrollLeft = scrolledTo.offsetLeft;
+            element.scrollTop = scrolledTo.offsetTop - element.offsetTop;
+            element.scrollLeft = scrolledTo.offsetLeft - element.offsetLeft;
         }
     }
     exports_6("showElement", showElement);
@@ -201,12 +217,13 @@ System.register("utilities", [], function (exports_6, context_6) {
         }
     };
 });
-System.register("io", ["callback-event", "loader", "types/page", "utilities"], function (exports_7, context_7) {
+System.register("io", ["auth-manager", "callback-event", "loader", "types/page", "utilities"], function (exports_7, context_7) {
     "use strict";
-    var callback_event_3, loader_2, page_1, utilities_1, headerQuery, footerQuery, contentQuery, headerPage, footerPage, defaultPage, titlePostface, Parameters, baseNavigateUrl, pageChangeManager;
+    var auth_manager_1, callback_event_3, loader_2, page_1, utilities_1, headerQuery, footerQuery, contentQuery, headerPage, footerPage, defaultPage, titlePostface, loadedPage, Parameters, baseNavigateUrl, pageChangeManager;
     var __moduleName = context_7 && context_7.id;
     async function InitialLoad() {
         let pageName = GetActivePageName();
+        loadedPage = pageName;
         const [header, footer, content] = await Promise.all([
             LoadIntoElement(headerPage, headerQuery),
             LoadIntoElement(footerPage, footerQuery),
@@ -223,8 +240,11 @@ System.register("io", ["callback-event", "loader", "types/page", "utilities"], f
     }
     exports_7("GetActivePageName", GetActivePageName);
     function OnPopState(ev) {
-        let pageName = GetActivePageName();
-        LoadIntoContent(pageName).then(() => UpdateContentScroll());
+        const pageName = GetActivePageName();
+        if (pageName !== loadedPage) {
+            loadedPage = pageName;
+            LoadIntoContent(pageName);
+        }
     }
     exports_7("OnPopState", OnPopState);
     function InternalNavigate(foundPage, hash) {
@@ -271,8 +291,8 @@ System.register("io", ["callback-event", "loader", "types/page", "utilities"], f
         document.title = foundPage.page.title + titlePostface;
         element.scrollTop = 0;
         element.innerHTML = pageContents;
-        UpdateContentScroll();
         pageChangeManager.RunCallbacks(foundPage);
+        auth_manager_1.AuthManager.userChanged.AddSingleRunCallback(() => UpdateContentScroll(), true);
         return element;
     }
     function UpdateContentScroll() {
@@ -287,6 +307,9 @@ System.register("io", ["callback-event", "loader", "types/page", "utilities"], f
     }
     return {
         setters: [
+            function (auth_manager_1_1) {
+                auth_manager_1 = auth_manager_1_1;
+            },
             function (callback_event_3_1) {
                 callback_event_3 = callback_event_3_1;
             },
@@ -441,12 +464,12 @@ System.register("custom-elements/ap-dir-display", ["io", "custom-elements/ap-nav
 });
 System.register("custom-elements/ap-auth-container", ["auth-manager"], function (exports_10, context_10) {
     "use strict";
-    var auth_manager_1, authContainerName, AuthDisplayType, universalAuthorization, AuthContainer;
+    var auth_manager_2, authContainerName, AuthDisplayType, universalAuthorization, AuthContainer;
     var __moduleName = context_10 && context_10.id;
     return {
         setters: [
-            function (auth_manager_1_1) {
-                auth_manager_1 = auth_manager_1_1;
+            function (auth_manager_2_1) {
+                auth_manager_2 = auth_manager_2_1;
             }
         ],
         execute: function () {
@@ -520,7 +543,7 @@ System.register("custom-elements/ap-auth-container", ["auth-manager"], function 
                     else {
                         this.accessTokens = [];
                     }
-                    this.callbackId = auth_manager_1.AuthManager.userChanged.AddCallback((user) => {
+                    this.callbackId = auth_manager_2.AuthManager.userChanged.AddCallback((user) => {
                         this.currentUser = user;
                         if (this.rendered) {
                             this.render();
@@ -529,7 +552,7 @@ System.register("custom-elements/ap-auth-container", ["auth-manager"], function 
                 }
                 disconnectedCallback() {
                     this.rendered = false;
-                    auth_manager_1.AuthManager.userChanged.RemoveCallback(this.callbackId);
+                    auth_manager_2.AuthManager.userChanged.RemoveCallback(this.callbackId);
                 }
                 render() {
                     let hasPermissions = false;
@@ -550,12 +573,12 @@ System.register("custom-elements/ap-auth-container", ["auth-manager"], function 
 });
 System.register("custom-elements/ap-auth-display", ["auth-manager"], function (exports_11, context_11) {
     "use strict";
-    var auth_manager_2, authDisplayName, AuthDisplay;
+    var auth_manager_3, authDisplayName, AuthDisplay;
     var __moduleName = context_11 && context_11.id;
     return {
         setters: [
-            function (auth_manager_2_1) {
-                auth_manager_2 = auth_manager_2_1;
+            function (auth_manager_3_1) {
+                auth_manager_3 = auth_manager_3_1;
             }
         ],
         execute: function () {
@@ -567,7 +590,7 @@ System.register("custom-elements/ap-auth-display", ["auth-manager"], function (e
                 }
                 connectedCallback() {
                     this.rendered = true;
-                    this.callbackId = auth_manager_2.AuthManager.userChanged.AddCallback((user) => {
+                    this.callbackId = auth_manager_3.AuthManager.userChanged.AddCallback((user) => {
                         this.currentUser = user;
                         if (this.rendered) {
                             this.render();
@@ -576,7 +599,7 @@ System.register("custom-elements/ap-auth-display", ["auth-manager"], function (e
                 }
                 disconnectedCallback() {
                     this.rendered = false;
-                    auth_manager_2.AuthManager.userChanged.RemoveCallback(this.callbackId);
+                    auth_manager_3.AuthManager.userChanged.RemoveCallback(this.callbackId);
                 }
                 render() {
                     this.innerHTML = "";
@@ -602,7 +625,7 @@ System.register("custom-elements/ap-auth-display", ["auth-manager"], function (e
                     deauthButton.innerText = "Deauthorize";
                     deauthButton.classList.add("auth-display-deauth-button");
                     deauthButton.onclick = () => {
-                        auth_manager_2.AuthManager.deauthorize();
+                        auth_manager_3.AuthManager.deauthorize();
                     };
                     lowerContainer.appendChild(deauthButton);
                 }
@@ -619,7 +642,7 @@ System.register("custom-elements/ap-auth-display", ["auth-manager"], function (e
                     authButton.innerText = "Authorize";
                     authButton.classList.add("auth-display-auth-button");
                     authButton.onclick = () => {
-                        auth_manager_2.AuthManager.authorize(input.value);
+                        auth_manager_3.AuthManager.authorize(input.value);
                     };
                     lowerContainer.appendChild(authButton);
                 }

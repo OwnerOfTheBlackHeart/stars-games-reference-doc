@@ -10,7 +10,7 @@ const currentNameToken = "currentUserName";
  * aren't going to try and access information they shouldn't.
  */
 export class AuthManager {
-	static userChanged = new CallbackManager<AuthUser>(true);
+	static userChanged = new CallbackManager<AuthUser>(true, true);
 
 	static checkStoredUser() {
 		const userName = localStorage.getItem(currentNameToken);

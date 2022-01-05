@@ -1,7 +1,7 @@
 export function showElement(element: HTMLElement, scrolledTo: HTMLElement) {
 	if (element && scrolledTo) {
-		element.scrollTop = scrolledTo.offsetTop;
-		element.scrollLeft = scrolledTo.offsetLeft;
+		element.scrollTop = scrolledTo.offsetTop - element.offsetTop;
+		element.scrollLeft = scrolledTo.offsetLeft - element.offsetLeft;
 	}
 }
 

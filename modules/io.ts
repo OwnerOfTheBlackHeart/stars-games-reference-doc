@@ -1,5 +1,6 @@
+import { AuthManager } from "./auth-manager";
 import { CallbackManager } from "./callback-event";
-import { globals } from "./loader";
+import { globals, globalsReady } from "./loader";
 import { FindPage, FoundPage } from "./types/page";
 import { showElement } from "./utilities";
 
@@ -12,6 +13,7 @@ const footerPage = "footer";
 const defaultPage = "home";
 
 const titlePostface = " - Stars Games Reference Doc";
+let loadedPage: string;
 
 export enum Parameters {
 	pageName = "pageName",
@@ -21,6 +23,7 @@ export const pageChangeManager = new CallbackManager<FoundPage>();
 
 export async function InitialLoad() {
 	let pageName = GetActivePageName();
+	loadedPage = pageName;
 
 	const [header, footer, content] = await Promise.all([
 		LoadIntoElement(headerPage, headerQuery),
@@ -49,9 +52,12 @@ export function GetActivePageName(): string {
  * @param ev The pop state event information
  */
 export function OnPopState(ev: PopStateEvent) {
-	let pageName = GetActivePageName();
+	const pageName = GetActivePageName();
 
-	LoadIntoContent(pageName).then(() => UpdateContentScroll());
+	if (pageName !== loadedPage) {
+		loadedPage = pageName;
+		LoadIntoContent(pageName);
+	}
 }
 
 export function InternalNavigate(foundPage: FoundPage, hash?: string) {
@@ -107,8 +113,8 @@ async function LoadIntoContent(pageName: string) {
 	element.scrollTop = 0;
 	element.innerHTML = pageContents;
 
-	UpdateContentScroll();
 	pageChangeManager.RunCallbacks(foundPage);
+	AuthManager.userChanged.AddSingleRunCallback(() => UpdateContentScroll(), true);
 
 	return element;
 }
