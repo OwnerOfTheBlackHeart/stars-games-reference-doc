@@ -7,6 +7,7 @@ $button-hovered-background: rgb(46, 46, 46);
 $table-header-background-color: rgb(80, 80, 80);
 $table-odd-row-background-color: rgb(40, 40, 40);
 $table-even-row-background-color: rgb(20, 20, 20);
+$table-inner-border-color: rgb(120, 120, 120);
 
 p,
 span,
@@ -53,6 +54,10 @@ table.alternating-colors {
 	th,
 	td {
 		border: none;
+
+		&:not(:last-child) {
+			border-right: 1px solid $table-inner-border-color;
+		}
 	}
 
 	tr:first-child:nth-child(odd) {

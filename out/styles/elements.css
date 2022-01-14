@@ -41,6 +41,10 @@ table.alternating-colors th,
 table.alternating-colors td {
   border: none;
 }
+table.alternating-colors th:not(:last-child),
+table.alternating-colors td:not(:last-child) {
+  border-right: 1px solid #787878;
+}
 table.alternating-colors tr:first-child:nth-child(odd) {
   background-color: #505050;
 }
