@@ -22,19 +22,9 @@ tr {
   border-color: #aaaaaa;
 }
 
-table {
-  border-collapse: collapse;
-}
-
 a,
 a:visited {
   color: #6e6ee0;
-  text-decoration: none;
-}
-a:hover,
-a:visited:hover {
-  text-decoration: underline;
-  cursor: pointer;
 }
 
 input,
@@ -44,7 +34,60 @@ button {
 }
 
 button:hover {
-  background-color: #2d2d2d;
+  background-color: #2e2e2e;
+}
+
+table.alternating-colors th,
+table.alternating-colors td {
+  border: none;
+}
+table.alternating-colors tr:first-child:nth-child(odd) {
+  background-color: #505050;
+}
+table.alternating-colors tr:nth-child(odd) {
+  background-color: #282828;
+}
+table.alternating-colors tr:nth-child(even) {
+  background-color: #141414;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+a:hover,
+a:visited:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.centered {
+  text-align: center;
+}
+
+.left-aligned {
+  text-align: left;
+}
+
+.column-container .column {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 1rem;
+}
+
+.link-list {
+  list-style-type: none;
+  padding-inline-start: 0.5em;
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
 }
 
 body {
@@ -59,10 +102,6 @@ body {
   /* Do not repeat the image */
   background-size: cover;
   /* Resize the background image to cover the entire container */
-}
-
-* {
-  box-sizing: border-box;
 }
 
 h1,
@@ -139,19 +178,6 @@ td {
   background-color: #141414;
   text-decoration: underline;
   cursor: pointer;
-}
-
-.column-container .column {
-  display: inline-block;
-  vertical-align: top;
-  margin-right: 1rem;
-}
-
-.link-list {
-  list-style-type: none;
-  padding-inline-start: 0.5em;
-  margin-block-start: 0.5em;
-  margin-block-end: 0.5em;
 }
 
 .ap-dir-display-container {

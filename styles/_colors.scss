@@ -3,7 +3,10 @@ $link-color: #6e6ee0;
 $content-background-color: rgba(0, 0, 0, 0.95);
 $input-button-background: rgb(30, 30, 30);
 $input-button-border-color: rgb(45, 45, 45);
-$button-hovered-background: rgb(45, 45, 45);
+$button-hovered-background: rgb(46, 46, 46);
+$table-header-background-color: rgb(80, 80, 80);
+$table-odd-row-background-color: rgb(40, 40, 40);
+$table-even-row-background-color: rgb(20, 20, 20);
 
 p,
 span,
@@ -29,19 +32,9 @@ tr {
 	border-color: $content-color;
 }
 
-table {
-	border-collapse: collapse;
-}
-
 a,
 a:visited {
 	color: $link-color;
-	text-decoration: none;
-
-	&:hover {
-		text-decoration: underline;
-		cursor: pointer;
-	}
 }
 
 input,
@@ -53,5 +46,24 @@ button {
 button {
 	&:hover {
 		background-color: $button-hovered-background;
+	}
+}
+
+table.alternating-colors {
+	th,
+	td {
+		border: none;
+	}
+
+	tr:first-child:nth-child(odd) {
+		background-color: $table-header-background-color;
+	}
+
+	tr:nth-child(odd) {
+		background-color: $table-odd-row-background-color;
+	}
+
+	tr:nth-child(even) {
+		background-color: $table-even-row-background-color;
 	}
 }

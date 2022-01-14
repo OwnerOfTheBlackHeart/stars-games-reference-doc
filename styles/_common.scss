@@ -1,0 +1,40 @@
+* {
+	box-sizing: border-box;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+a,
+a:visited {
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+		cursor: pointer;
+	}
+}
+
+.centered {
+	text-align: center;
+}
+
+.left-aligned {
+	text-align: left;
+}
+
+.column-container {
+	.column {
+		display: inline-block;
+		vertical-align: top;
+		margin-right: 1rem;
+	}
+}
+
+.link-list {
+	list-style-type: none;
+	padding-inline-start: 0.5em;
+	margin-block-start: 0.5em;
+	margin-block-end: 0.5em;
+}

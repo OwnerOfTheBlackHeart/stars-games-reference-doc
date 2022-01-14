@@ -379,7 +379,13 @@ System.register("custom-elements/ap-nav-link", ["io", "loader", "types/page"], f
                         }
                         this.foundPage = page_2.FindPage(loader_3.globals.pageDirectory, pageName);
                     }
-                    let url = io_1.baseNavigateUrl + this.foundPage.page.name;
+                    let url = "";
+                    if (this.foundPage.page.external) {
+                        url = this.foundPage.page.url;
+                    }
+                    else {
+                        url = io_1.baseNavigateUrl + this.foundPage.page.name;
+                    }
                     if (this.hash) {
                         url += this.hash;
                     }

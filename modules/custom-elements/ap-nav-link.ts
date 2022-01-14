@@ -32,7 +32,13 @@ class NavLink extends HTMLAnchorElement {
 			this.foundPage = FindPage(globals.pageDirectory, pageName);
 		}
 
-		let url = baseNavigateUrl + this.foundPage.page.name;
+		let url = "";
+
+		if (this.foundPage.page.external) {
+			url = this.foundPage.page.url;
+		} else {
+			url = baseNavigateUrl + this.foundPage.page.name;
+		}
 
 		if (this.hash) {
 			url += this.hash;
