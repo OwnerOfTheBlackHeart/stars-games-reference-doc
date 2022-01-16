@@ -1,13 +1,13 @@
 <h1>Gathering Scrap Parts</h1>
 <ul class="link-list">
 	<li><b>Location:</b> <a is="ap-nav-link" href="thorunn#beachtopia">Beachtopia</a></li>
-	<li><b>Expected Levels:</b> 1-2</li>
+	<li><b>Expected Levels:</b> 2-3</li>
 </ul>
 <p>
 	<a is="ap-nav-link" href="oleg-contacts#yuri">Engineer Yuri</a> has discovered an abandoned factory full of damaged and waterlogged
 	machines a ways away from <a is="ap-nav-link" href="thorunn#beachtopia">Beachtopia</a>.
 	<a is="ap-nav-link" href="oleg-contacts#yuri">Yuri</a> wants the machines within the factory so that he can repair/refurbish them.
-	<a is="ap-nav-link" href="oleg-contacts#yuri">Yuri</a> will offer a suit of woven body armor, a laser rifle and a bundle of 3 A cells for
+	<a is="ap-nav-link" href="oleg-contacts#yuri">Yuri</a> will offer a suit of woven body armor, a laser rifle and a bundle of 6 A cells for
 	this job.
 </p>
 <p>
@@ -22,27 +22,136 @@
 		<a is="ap-nav-link" href="oleg-contacts#yuri">Yuri</a> will say that he's interested in either selling the machines/parts once
 		refurbished, or keeping them as spare parts for his own shop.
 	</li>
-	<li></li>
+	<li>
+		The party travels to the abandoned factory (navigation skill check):
+		<ul>
+			<li>If the check is 10, or higher, then the party arrives at the factory after 2 hours of travel.</li>
+			<li>If the check is 8, or higher, then the party arrives at the factory after 3 hours of travel.</li>
+			<li>If the check is 6, or higher, then the party arrives at the factory after 5 hours of travel.</li>
+			<li>If the check is 5, or lower, then the party wastes an hour and must roll again.</li>
+		</ul>
+	</li>
+	<li>
+		The party arrives at the abandoned factory:
+		<ul>
+			<li>
+				From the outside, the factory looks like a large, metal dome built at the center of 6 trees. The dome looks sound, though the roof
+				has multiple holes in it. The main entrance to the factory has "Facility 11" written above it in fading letters as well as a
+				half-opened blast door. An appropriate skill check will reveal that the location of the factory was chosen so as to use the trees
+				surrounding it as protection from the hurricane wall.
+			</li>
+			<li>
+				<b>Room 1:</b> The entryway to Facility 11 has only dim lighting and several dead animals with burn marks and large nails sticking
+				out of them. 2 <a href="#decaying-maintenance-bot">decaying maintenance bots</a> sit at the end of the hallway.
+			</li>
+			<li>
+				<b>Room 2:</b> A small maintenance closet containing various scrapped cleaning machines and empty containers that should hold
+				cleaning chemicals.
+			</li>
+			<li>
+				<b>Room 3:</b> A small maintenance closet containing a waterlogged post-tech toolkit and a small robot/powered armor maintenance
+				stand.
+			</li>
+			<li>
+				<b>Room 4:</b> A small factory floor filled with machines large and small, though only a few are in workable condition. The rest are
+				either waterlogged or have been scavenged for parts. 4 <a href="#decaying-maintenance-bot">decaying maintenance bots</a> and a
+				<a href="#refurbished-maintenance-bot">refurbished maintenance bot</a> wait in this room.
+			</li>
+			<li>
+				<b>Room 5:</b> A large storage/warehouse area containing water-damaged pallets and empty metal crates. Some of the crates have been
+				disassembled.
+			</li>
+			<li><b>Room 6:</b> A small hallway guarded by 1 <a href="#refurbished-maintenance-bot">refurbished maintenance bot</a>.</li>
+			<li>
+				<b>Room 7:</b> A stairway leading to a living area. In the living area is a half-ton of rotting foodstuffs, incomplete sets of
+				furniture and some nearly empty bedrooms. Scavenging the area will grant 500 credits.
+			</li>
+			<li>
+				<b>Room 8:</b> Another factory floor area, with many precision manufacturing machines and a clean room containing electronics
+				manufacturing machines, all of which are water-damaged, but operational. 2
+				<a href="#refurbished-maintenance-bot">refurbished maintenance bots</a> and 2
+				<a href="#decaying-maintenance-bot">decaying maintenance bots</a> guard this room.
+			</li>
+			<li>
+				<b>Room 9:</b> A room that holds several server towers as well as transformers and circuit breakers. It is guarded by 2
+				<a href="#refurbished-maintenance-bot">refurbished maintenance bots</a>.
+			</li>
+			<li>
+				<b>Room 10:</b> A room built around a central fusion reactor, with control units and an AI harness at the back. This room is guarded
+				by 2 <a href="#refurbished-maintenance-bot">refurbished maintenance bots</a> and <a href="#gears">Gears</a>.
+			</li>
+		</ul>
+	</li>
 	<li>The party returns to <a is="ap-nav-link" href="oleg-contacts#yuri">Yuri</a> and gets paid.</li>
 </ol>
 
 <h2 id="enemies">Enemies</h2>
 <h3 id="reusable">Reusable</h3>
-<ul>
-	<li><a is="ap-nav-link" href="thorunn#duanys-dragon">Duany's Dragon</a></li>
-</ul>
+<p>None.</p>
 
 <h3 id="adventure-specific">Adventure Specific</h3>
-<p>None.</p>
+<h4 id="decaying-maintenance-bot">Decaying Maintenance Bot</h4>
+<ap-stat-block>
+	<hit-dice>1 (3 hp)</hit-dice>
+	<armor-class>9</armor-class>
+	<attacks>+0 rivet gun (1d6-1) or +1 welding torch (1d8+1)</attacks>
+	<skill-bonus>+1</skill-bonus>
+	<saving-throw>15+</saving-throw>
+	<movement>15'</movement>
+	<morale>12</morale>
+	<number-appearing>2-6</number-appearing>
+</ap-stat-block>
+<p>
+	A barely functioning industrial maintenance robot, these (physically) strong looking robots have most of their inner parts exposed, though
+	the mounted rivet gun and welding torch give these robots more than enough to maim anyone foolish enough to consider it as harmless.
+</p>
+
+<h4 id="refurbished-maintenance-bot">Refurbished Maintenance Bot</h4>
+<ap-stat-block>
+	<hit-dice>1 (4 hp)</hit-dice>
+	<armor-class>7</armor-class>
+	<attacks>+1 rivet gun (1d6) or +2 welding torch (1d8+1)</attacks>
+	<skill-bonus>+1</skill-bonus>
+	<saving-throw>15+</saving-throw>
+	<movement>20'</movement>
+	<morale>12</morale>
+	<number-appearing>1-4</number-appearing>
+</ap-stat-block>
+<p>
+	A fully functioning industrial maintenance bot, these physically strong robots have new, if mismatched, plating and move with a swiftness
+	their uncared for brethren could not hope for. While not made to deflect weapons fire, the plating of this robot offers it minimal
+	protection from intentional harm while its built in rivet gun and welding torch offer it the ability to return the favor.
+</p>
+
+<h4 id="gears">G-34-R5 (Gears)</h4>
+<ap-stat-block>
+	<hit-dice>2 (10 hp)</hit-dice>
+	<armor-class>4</armor-class>
+	<attacks>+4 laser rifle (1d10+1*) or +3 monoblade (1d8+2)</attacks>
+	<skill-bonus>+2</skill-bonus>
+	<saving-throw>14+</saving-throw>
+	<movement>20'</movement>
+	<morale>8</morale>
+	<number-appearing>Unique</number-appearing>
+</ap-stat-block>
+<p>
+	Housed in a blue painted, jury rigged nemesis armature, Gears is the entity in control of "Facility 11," the abandoned factory. 3 years of
+	having to defend and maintain the facility without the return of his masters has caused Gears to become violent.
+</p>
+<p>Gears is a true AI.</p>
 
 <h2 id="rewards">Rewards</h2>
 <h3 id="guaranteed">Guaranteed</h3>
 <ul>
-	<li>Armored undersuit</li>
+	<li>1 woven body armor</li>
+	<li>1 laser rifle</li>
+	<li>6 A-cells</li>
 </ul>
 
 <h3 id="possible">Possible</h3>
 <ul>
-	<li>One day's worth of workshop time.</li>
-	<li>Enough left-over pipes and scrap metal to repair his still.</li>
+	<li>
+		2 tons of scrap materials that can be sold for 800 credits, or traded to <a is="ap-nav-link" href="oleg-contacts#yuri">Yuri</a> in
+		exchange for a combat field uniform.
+	</li>
 </ul>
