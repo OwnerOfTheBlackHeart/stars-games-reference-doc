@@ -35,7 +35,12 @@
 						{ "url": "tremelle/duany-eggs.html", "name": "duany-eggs", "title": "Duany Eggs for the Arena" },
 						{ "url": "tyreck/clear-the-cave.html", "name": "clear-the-cave", "title": "Clear the Cave" },
 						{ "url": "yuri/parts-for-darkwire.html", "name": "parts-for-darkwire", "title": "Parts for Darkwire" },
-						{ "url": "yuri/gathering-scrap-parts.html", "name": "gathering-scrap-parts", "title": "Gathering Scrap Parts" }
+						{ "url": "yuri/gathering-scrap-parts.html", "name": "gathering-scrap-parts", "title": "Gathering Scrap Parts" },
+						{
+							"url": "yuri/gathering-materials-for-something.html.html",
+							"name": "gathering-materials-for-something",
+							"title": "Gathering Materials for Something?"
+						}
 					]
 				},
 				{
