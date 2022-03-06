@@ -22,3 +22,60 @@
 		}
 	}
 }
+
+.time-table-container {
+	th,
+	td {
+		vertical-align: middle;
+		padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+		white-space: nowrap;
+	}
+
+	.previous-date {
+		color: colors.$previous-date-color;
+	}
+
+	.current-date {
+		color: colors.$current-date-color;
+	}
+
+	.future-date {
+		color: colors.$future-date-color;
+	}
+}
+
+.birthday-generator-container {
+	.birthday-header {
+		margin-top: 0;
+	}
+
+	.birthday-age-input,
+	.birthday-generate-button,
+	.birthday-reset-button {
+		width: 125px;
+		padding-left: 0;
+		padding-right: 0;
+		box-sizing: border-box;
+	}
+
+	.birthday-age-input {
+		text-align: right;
+	}
+
+	.birthday-display {
+		color: #275ae6;
+	}
+
+	.input-container {
+		display: inline-block;
+
+		> * {
+			margin-right: 1rem;
+		}
+	}
+
+	p {
+		min-width: 300px;
+		max-width: 750px;
+	}
+}

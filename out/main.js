@@ -117,34 +117,294 @@ System.register("types/page", [], function (exports_3, context_3) {
         }
     };
 });
-System.register("loader", ["callback-event"], function (exports_4, context_4) {
+System.register("types/time", [], function (exports_4, context_4) {
     "use strict";
-    var callback_event_1, globalsReady, _a, directory, users, globals;
+    var Time, Season, Month, TimeRef;
     var __moduleName = context_4 && context_4.id;
+    return {
+        setters: [],
+        execute: function () {
+            Time = class Time {
+                constructor(day, month, year) {
+                    if (day != undefined) {
+                        this.day = day;
+                    }
+                    else {
+                        this.day = 0;
+                    }
+                    if (month != undefined) {
+                        this.month = month;
+                    }
+                    else {
+                        this.month = 0;
+                    }
+                    if (year != undefined) {
+                        this.year = year;
+                    }
+                    else {
+                        this.year = 0;
+                    }
+                }
+                toString(doesIncludeSeason = false) {
+                    let toReturn = "";
+                    let tempTime = this.DistributeDays();
+                    let month = TimeRef.months[tempTime.month];
+                    let numeralAbbreviation = " ";
+                    if ([10, 11, 12].some((day) => day === tempTime.day)) {
+                        numeralAbbreviation = "th";
+                    }
+                    else {
+                        switch (tempTime.day % 10) {
+                            case 0:
+                                numeralAbbreviation = "st";
+                                break;
+                            case 1:
+                                numeralAbbreviation = "nd";
+                                break;
+                            case 2:
+                                numeralAbbreviation = "rd";
+                                break;
+                            default:
+                                numeralAbbreviation = "th";
+                        }
+                    }
+                    toReturn += month.name + " ";
+                    toReturn += tempTime.day + 1 + numeralAbbreviation + ", ";
+                    toReturn += tempTime.year;
+                    if (doesIncludeSeason) {
+                        toReturn += ": " + month.season;
+                    }
+                    return toReturn;
+                }
+                Add(time2) {
+                    return Time.Add(this, time2);
+                }
+                Subtract(time2) {
+                    return Time.Subtract(this, time2);
+                }
+                ToDays() {
+                    return Time.ToDays(this);
+                }
+                DistributeDays() {
+                    let tempTime = new Time();
+                    let days = this.ToDays();
+                    let multiplier = 0;
+                    multiplier = Time.YearsToDays(1);
+                    tempTime.year = Math.floor(days / multiplier);
+                    days -= multiplier * tempTime.year;
+                    multiplier = Time.MonthsToDays(1);
+                    tempTime.month = Math.floor(days / multiplier);
+                    days -= multiplier * tempTime.month;
+                    tempTime.day = days;
+                    return tempTime;
+                }
+                Compare(b) {
+                    if (!b) {
+                        return 1;
+                    }
+                    if (this.year === b.year) {
+                        if (this.month === b.month) {
+                            if (this.day === b.day) {
+                                return 0;
+                            }
+                            else {
+                                return this.day - b.day;
+                            }
+                        }
+                        else {
+                            return this.month - b.month;
+                        }
+                    }
+                    else {
+                        return this.year - b.year;
+                    }
+                }
+                static FromInitializer(initializer) {
+                    return new Time(initializer.day, initializer.month, initializer.year);
+                }
+                static Add(time1, time2) {
+                    let toReturn = new Time();
+                    toReturn.day = time1.ToDays() + time2.ToDays();
+                    toReturn = toReturn.DistributeDays();
+                    return toReturn;
+                }
+                static Subtract(time1, time2) {
+                    let toReturn = new Time();
+                    toReturn.day = time1.ToDays() - time2.ToDays();
+                    toReturn = toReturn.DistributeDays();
+                    return toReturn;
+                }
+                static ToDays(time) {
+                    let tempTime = Time.CleanTime(time);
+                    let toReturn = tempTime.day;
+                    toReturn += Time.YearsToDays(tempTime.year);
+                    toReturn += Time.MonthsToDays(tempTime.month);
+                    return toReturn;
+                }
+                static BuildDiffString(currentTime, toDiffTime) {
+                    if (!currentTime || !toDiffTime) {
+                        return undefined;
+                    }
+                    let offset;
+                    let daysDifference = currentTime.ToDays() - toDiffTime.ToDays();
+                    let toReturn = "";
+                    if (daysDifference > 0) {
+                        offset = currentTime.Subtract(toDiffTime).DistributeDays();
+                    }
+                    else if (daysDifference < 0) {
+                        offset = toDiffTime.Subtract(currentTime).DistributeDays();
+                    }
+                    else {
+                        return "Current date";
+                    }
+                    if (offset.year > 0) {
+                        toReturn += offset.year.toString() + (offset.year > 1 ? " years" : " year");
+                    }
+                    if (offset.month > 0) {
+                        if (toReturn.length > 0) {
+                            toReturn += ", ";
+                        }
+                        toReturn += offset.month.toString() + (offset.month > 1 ? " months" : " month");
+                    }
+                    if (offset.day > 0) {
+                        if (toReturn.length > 0) {
+                            toReturn += " and ";
+                        }
+                        toReturn += offset.day.toString() + (offset.day > 1 ? " days" : " day");
+                    }
+                    if (daysDifference > 0) {
+                        toReturn += " ago";
+                    }
+                    else if (daysDifference < 0) {
+                        toReturn += " from now";
+                    }
+                    return toReturn;
+                }
+                static WeeksToDays(weeks) {
+                    return weeks * TimeRef.daysPerWeek;
+                }
+                static MonthsToDays(months) {
+                    return Time.WeeksToDays(months * TimeRef.weeksPerMonth);
+                }
+                static YearsToMonths(years) {
+                    return years * TimeRef.monthsPerYear;
+                }
+                static YearsToDays(years) {
+                    return Time.MonthsToDays(Time.YearsToMonths(years));
+                }
+                static CleanTime(time) {
+                    let toReturn = new Time();
+                    toReturn.day = Math.max(time.day, 0);
+                    toReturn.month = Math.max(time.month, 0);
+                    toReturn.year = Math.max(time.year, 0);
+                    return toReturn;
+                }
+                static Compare(a, b) {
+                    if (a === b) {
+                        return 0;
+                    }
+                    else if (a && !b) {
+                        return 1;
+                    }
+                    else if (!a && b) {
+                        return -1;
+                    }
+                    else {
+                        return a.Compare(b);
+                    }
+                }
+            };
+            exports_4("Time", Time);
+            (function (Season) {
+                Season["Summer"] = "summer";
+                Season["Spring"] = "spring";
+                Season["Fall"] = "fall";
+                Season["Winter"] = "winter";
+            })(Season || (Season = {}));
+            exports_4("Season", Season);
+            Month = class Month {
+                constructor(name, position, season) {
+                    this.name = name;
+                    this.position = position;
+                    this.season = season;
+                }
+            };
+            exports_4("Month", Month);
+            Month.January = new Month("January", 0, Season.Winter);
+            Month.February = new Month("February", 1, Season.Winter);
+            Month.March = new Month("March", 2, Season.Spring);
+            Month.April = new Month("April", 3, Season.Spring);
+            Month.May = new Month("May", 4, Season.Spring);
+            Month.June = new Month("June", 5, Season.Summer);
+            Month.July = new Month("July", 6, Season.Summer);
+            Month.August = new Month("August", 7, Season.Summer);
+            Month.September = new Month("September", 8, Season.Fall);
+            Month.October = new Month("October", 9, Season.Fall);
+            Month.November = new Month("November", 10, Season.Fall);
+            Month.December = new Month("December", 11, Season.Winter);
+            TimeRef = class TimeRef {
+            };
+            exports_4("TimeRef", TimeRef);
+            TimeRef.daysPerWeek = 7;
+            TimeRef.weeksPerMonth = 4;
+            TimeRef.monthsPerYear = 12;
+            TimeRef.months = [
+                Month.January,
+                Month.February,
+                Month.March,
+                Month.April,
+                Month.May,
+                Month.June,
+                Month.July,
+                Month.August,
+                Month.September,
+                Month.October,
+                Month.November,
+                Month.December,
+            ];
+        }
+    };
+});
+System.register("loader", ["callback-event", "types/time"], function (exports_5, context_5) {
+    "use strict";
+    var callback_event_1, time_1, globalsReady, _a, directory, users, dates, globals;
+    var __moduleName = context_5 && context_5.id;
+    function activateDates(dates) {
+        const activatedDates = {};
+        for (const key in dates) {
+            activatedDates[key] = time_1.Time.FromInitializer(dates[key]);
+        }
+        return activatedDates;
+    }
     return {
         setters: [
             function (callback_event_1_1) {
                 callback_event_1 = callback_event_1_1;
+            },
+            function (time_1_1) {
+                time_1 = time_1_1;
             }
         ],
         execute: async function () {
-            exports_4("globalsReady", globalsReady = new callback_event_1.CallbackManager(true, true));
+            exports_5("globalsReady", globalsReady = new callback_event_1.CallbackManager(true, true));
             _a = await Promise.all([
                 fetch("data/pages.json", { cache: "no-store" }).then((response) => response.json()),
                 fetch("data/auth.json", { cache: "no-store" }).then((response) => response.json()),
-            ]), directory = _a[0], users = _a[1];
-            exports_4("globals", globals = {
+                fetch("data/dates.json", { cache: "no-store" }).then((response) => response.json()),
+            ]), directory = _a[0], users = _a[1], dates = _a[2];
+            exports_5("globals", globals = {
                 pageDirectory: directory,
                 users: users,
+                dates: activateDates(dates),
             });
             globalsReady.RunCallbacks();
         }
     };
 });
-System.register("auth-manager", ["callback-event", "loader"], function (exports_5, context_5) {
+System.register("auth-manager", ["callback-event", "loader"], function (exports_6, context_6) {
     "use strict";
     var callback_event_2, loader_1, currentNameToken, AuthManager;
-    var __moduleName = context_5 && context_5.id;
+    var __moduleName = context_6 && context_6.id;
     return {
         setters: [
             function (callback_event_2_1) {
@@ -180,28 +440,50 @@ System.register("auth-manager", ["callback-event", "loader"], function (exports_
                     localStorage.setItem(currentNameToken, user ? user.name : "");
                 }
             };
-            exports_5("AuthManager", AuthManager);
+            exports_6("AuthManager", AuthManager);
             AuthManager.userChanged = new callback_event_2.CallbackManager(true, true);
             loader_1.globalsReady.AddCallback(() => AuthManager.checkStoredUser(), true);
         }
     };
 });
-System.register("utilities", [], function (exports_6, context_6) {
+System.register("utilities", [], function (exports_7, context_7) {
     "use strict";
-    var __moduleName = context_6 && context_6.id;
+    var __moduleName = context_7 && context_7.id;
+    function IsGoodString(str) {
+        return str !== undefined && str !== "";
+    }
+    exports_7("IsGoodString", IsGoodString);
+    function CreateTableHeader(data, className) {
+        let header = document.createElement("th");
+        header.innerHTML = data;
+        if (IsGoodString(className)) {
+            header.className = className;
+        }
+        return header;
+    }
+    exports_7("CreateTableHeader", CreateTableHeader);
+    function CreateTableData(data, className) {
+        let dataElement = document.createElement("td");
+        dataElement.innerHTML = data;
+        if (IsGoodString(className)) {
+            dataElement.className = className;
+        }
+        return dataElement;
+    }
+    exports_7("CreateTableData", CreateTableData);
     function showElement(element, scrolledTo) {
         if (element && scrolledTo) {
             element.scrollTop = scrolledTo.offsetTop - element.offsetTop;
             element.scrollLeft = scrolledTo.offsetLeft - element.offsetLeft;
         }
     }
-    exports_6("showElement", showElement);
+    exports_7("showElement", showElement);
     function showId(parentId, childId) {
         const parent = document.getElementById(parentId);
         const child = document.getElementById(childId);
         showElement(parent, child);
     }
-    exports_6("showId", showId);
+    exports_7("showId", showId);
     function buildCssStylesheetElement(path, addDotCss = true, addOutPath = false) {
         const href = `${addOutPath ? "out/styles/" : ""}${path}${addDotCss ? ".css" : ""}`;
         const link = document.createElement("link");
@@ -210,17 +492,87 @@ System.register("utilities", [], function (exports_6, context_6) {
         link.setAttribute("href", href);
         return link;
     }
-    exports_6("buildCssStylesheetElement", buildCssStylesheetElement);
+    exports_7("buildCssStylesheetElement", buildCssStylesheetElement);
+    function numberWithCommas(x, places) {
+        if (places === undefined) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+        else {
+            return x.toFixed(places).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+    }
+    exports_7("numberWithCommas", numberWithCommas);
+    function getDescendantProperty(parent, childPath, defaultValue = undefined) {
+        if (parent === undefined || parent === null || childPath === undefined || childPath === null) {
+            return defaultValue;
+        }
+        else if (childPath === "") {
+            return parent;
+        }
+        else {
+            const pathSteps = childPath.split(".");
+            if (!pathSteps || pathSteps.length === 0) {
+                return parent;
+            }
+            const found = pathSteps.reduce((previousDescendant, childName) => {
+                if (previousDescendant !== undefined) {
+                    return previousDescendant[childName];
+                }
+                else {
+                    return undefined;
+                }
+            }, parent);
+            if (found === undefined) {
+                return defaultValue;
+            }
+            else {
+                return found;
+            }
+        }
+    }
+    exports_7("getDescendantProperty", getDescendantProperty);
+    function setDescendantProperty(parent, childPath, newValue) {
+        if (!childPath) {
+            return parent;
+        }
+        const pathSteps = childPath.split(".");
+        if (!pathSteps || pathSteps.length === 0) {
+            return parent;
+        }
+        parent = (parent === undefined ? {} : parent);
+        const maxIndex = pathSteps.length - 1;
+        pathSteps.reduce((previousDescendant, childName, index) => {
+            if (index === maxIndex) {
+                previousDescendant[childName] = newValue;
+                return previousDescendant[childName];
+            }
+            else {
+                let next = previousDescendant[childName];
+                if (next === undefined || next === null) {
+                    next = previousDescendant[childName] = {};
+                }
+                return next;
+            }
+        }, parent);
+        return parent;
+    }
+    exports_7("setDescendantProperty", setDescendantProperty);
     return {
         setters: [],
         execute: function () {
+            Array.prototype.firstElement = function () {
+                return this[0];
+            };
+            Array.prototype.lastElement = function () {
+                return this[this.length - 1];
+            };
         }
     };
 });
-System.register("io", ["auth-manager", "callback-event", "loader", "types/page", "utilities"], function (exports_7, context_7) {
+System.register("io", ["auth-manager", "callback-event", "loader", "types/page", "utilities"], function (exports_8, context_8) {
     "use strict";
     var auth_manager_1, callback_event_3, loader_2, page_1, utilities_1, headerQuery, footerQuery, contentQuery, headerPage, footerPage, defaultPage, titlePostface, loadedPage, Parameters, baseNavigateUrl, pageChangeManager;
-    var __moduleName = context_7 && context_7.id;
+    var __moduleName = context_8 && context_8.id;
     async function InitialLoad() {
         let pageName = GetActivePageName();
         loadedPage = pageName;
@@ -231,14 +583,14 @@ System.register("io", ["auth-manager", "callback-event", "loader", "types/page",
         ]);
         return { header, footer, content };
     }
-    exports_7("InitialLoad", InitialLoad);
+    exports_8("InitialLoad", InitialLoad);
     function GetActivePageName() {
         const params = new URLSearchParams(location.search);
         let pageName = params.get(Parameters.pageName);
         pageName = pageName ? pageName : defaultPage;
         return pageName;
     }
-    exports_7("GetActivePageName", GetActivePageName);
+    exports_8("GetActivePageName", GetActivePageName);
     function OnPopState(ev) {
         const pageName = GetActivePageName();
         if (pageName !== loadedPage) {
@@ -246,7 +598,7 @@ System.register("io", ["auth-manager", "callback-event", "loader", "types/page",
             LoadIntoContent(pageName);
         }
     }
-    exports_7("OnPopState", OnPopState);
+    exports_8("OnPopState", OnPopState);
     function InternalNavigate(foundPage, hash) {
         let url = baseNavigateUrl + foundPage.page.name;
         if (hash) {
@@ -255,7 +607,7 @@ System.register("io", ["auth-manager", "callback-event", "loader", "types/page",
         history.pushState(undefined, foundPage.page.title + titlePostface, url);
         OnPopState({});
     }
-    exports_7("InternalNavigate", InternalNavigate);
+    exports_8("InternalNavigate", InternalNavigate);
     async function LoadIntoElement(pageName, queryString) {
         const foundPage = page_1.FindPage(loader_2.globals.pageDirectory, pageName);
         const element = document.querySelector(queryString);
@@ -334,16 +686,16 @@ System.register("io", ["auth-manager", "callback-event", "loader", "types/page",
             (function (Parameters) {
                 Parameters["pageName"] = "pageName";
             })(Parameters || (Parameters = {}));
-            exports_7("Parameters", Parameters);
-            exports_7("baseNavigateUrl", baseNavigateUrl = `index.html?${Parameters.pageName}=`);
-            exports_7("pageChangeManager", pageChangeManager = new callback_event_3.CallbackManager());
+            exports_8("Parameters", Parameters);
+            exports_8("baseNavigateUrl", baseNavigateUrl = `index.html?${Parameters.pageName}=`);
+            exports_8("pageChangeManager", pageChangeManager = new callback_event_3.CallbackManager());
         }
     };
 });
-System.register("custom-elements/ap-nav-link", ["io", "loader", "types/page"], function (exports_8, context_8) {
+System.register("custom-elements/ap-nav-link", ["io", "loader", "types/page"], function (exports_9, context_9) {
     "use strict";
     var io_1, loader_3, page_2, navLinkName, NavLink;
-    var __moduleName = context_8 && context_8.id;
+    var __moduleName = context_9 && context_9.id;
     return {
         setters: [
             function (io_1_1) {
@@ -357,7 +709,7 @@ System.register("custom-elements/ap-nav-link", ["io", "loader", "types/page"], f
             }
         ],
         execute: function () {
-            exports_8("navLinkName", navLinkName = "ap-nav-link");
+            exports_9("navLinkName", navLinkName = "ap-nav-link");
             NavLink = class NavLink extends HTMLAnchorElement {
                 constructor() {
                     super();
@@ -408,10 +760,10 @@ System.register("custom-elements/ap-nav-link", ["io", "loader", "types/page"], f
         }
     };
 });
-System.register("custom-elements/ap-dir-display", ["io", "custom-elements/ap-nav-link"], function (exports_9, context_9) {
+System.register("custom-elements/ap-dir-display", ["io", "custom-elements/ap-nav-link"], function (exports_10, context_10) {
     "use strict";
     var io_2, ap_nav_link_1, dirDisplayName, DirectoryDisplay;
-    var __moduleName = context_9 && context_9.id;
+    var __moduleName = context_10 && context_10.id;
     return {
         setters: [
             function (io_2_1) {
@@ -422,7 +774,7 @@ System.register("custom-elements/ap-dir-display", ["io", "custom-elements/ap-nav
             }
         ],
         execute: function () {
-            exports_9("dirDisplayName", dirDisplayName = "ap-dir-display");
+            exports_10("dirDisplayName", dirDisplayName = "ap-dir-display");
             DirectoryDisplay = class DirectoryDisplay extends HTMLElement {
                 constructor() {
                     super();
@@ -468,10 +820,10 @@ System.register("custom-elements/ap-dir-display", ["io", "custom-elements/ap-nav
         }
     };
 });
-System.register("custom-elements/ap-auth-container", ["auth-manager"], function (exports_10, context_10) {
+System.register("custom-elements/ap-auth-container", ["auth-manager"], function (exports_11, context_11) {
     "use strict";
     var auth_manager_2, authContainerName, AuthDisplayType, universalAuthorization, AuthContainer;
-    var __moduleName = context_10 && context_10.id;
+    var __moduleName = context_11 && context_11.id;
     return {
         setters: [
             function (auth_manager_2_1) {
@@ -479,14 +831,14 @@ System.register("custom-elements/ap-auth-container", ["auth-manager"], function 
             }
         ],
         execute: function () {
-            exports_10("authContainerName", authContainerName = "ap-auth-container");
+            exports_11("authContainerName", authContainerName = "ap-auth-container");
             (function (AuthDisplayType) {
                 AuthDisplayType["block"] = "block";
                 AuthDisplayType["inline"] = "inline";
                 AuthDisplayType["inlineBlock"] = "inline-block";
                 AuthDisplayType["none"] = "none";
             })(AuthDisplayType || (AuthDisplayType = {}));
-            exports_10("AuthDisplayType", AuthDisplayType);
+            exports_11("AuthDisplayType", AuthDisplayType);
             universalAuthorization = "gm";
             AuthContainer = class AuthContainer extends HTMLElement {
                 constructor() {
@@ -577,10 +929,10 @@ System.register("custom-elements/ap-auth-container", ["auth-manager"], function 
         }
     };
 });
-System.register("custom-elements/ap-auth-display", ["auth-manager"], function (exports_11, context_11) {
+System.register("custom-elements/ap-auth-display", ["auth-manager"], function (exports_12, context_12) {
     "use strict";
     var auth_manager_3, authDisplayName, AuthDisplay;
-    var __moduleName = context_11 && context_11.id;
+    var __moduleName = context_12 && context_12.id;
     return {
         setters: [
             function (auth_manager_3_1) {
@@ -588,7 +940,7 @@ System.register("custom-elements/ap-auth-display", ["auth-manager"], function (e
             }
         ],
         execute: function () {
-            exports_11("authDisplayName", authDisplayName = "ap-auth-display");
+            exports_12("authDisplayName", authDisplayName = "ap-auth-display");
             AuthDisplay = class AuthDisplay extends HTMLElement {
                 constructor() {
                     super();
@@ -657,10 +1009,10 @@ System.register("custom-elements/ap-auth-display", ["auth-manager"], function (e
         }
     };
 });
-System.register("custom-elements/ap-stat-block", ["utilities"], function (exports_12, context_12) {
+System.register("custom-elements/ap-stat-block", ["utilities"], function (exports_13, context_13) {
     "use strict";
     var utilities_2, statBlockName, SubElementNames, StatBlock;
-    var __moduleName = context_12 && context_12.id;
+    var __moduleName = context_13 && context_13.id;
     return {
         setters: [
             function (utilities_2_1) {
@@ -668,7 +1020,7 @@ System.register("custom-elements/ap-stat-block", ["utilities"], function (export
             }
         ],
         execute: function () {
-            exports_12("statBlockName", statBlockName = "ap-stat-block");
+            exports_13("statBlockName", statBlockName = "ap-stat-block");
             (function (SubElementNames) {
                 SubElementNames["hitDice"] = "hit-dice";
                 SubElementNames["armorClass"] = "armor-class";
@@ -743,9 +1095,297 @@ System.register("custom-elements/ap-stat-block", ["utilities"], function (export
         }
     };
 });
-System.register("custom-elements/custom-elements", ["custom-elements/ap-nav-link", "custom-elements/ap-dir-display", "custom-elements/ap-auth-container", "custom-elements/ap-auth-display", "custom-elements/ap-stat-block"], function (exports_13, context_13) {
+System.register("custom-elements/ap-timeline", ["loader", "types/time", "utilities"], function (exports_14, context_14) {
     "use strict";
-    var __moduleName = context_13 && context_13.id;
+    var loader_4, time_2, utilities_3, TimeTable;
+    var __moduleName = context_14 && context_14.id;
+    return {
+        setters: [
+            function (loader_4_1) {
+                loader_4 = loader_4_1;
+            },
+            function (time_2_1) {
+                time_2 = time_2_1;
+            },
+            function (utilities_3_1) {
+                utilities_3 = utilities_3_1;
+            }
+        ],
+        execute: function () {
+            TimeTable = class TimeTable extends HTMLElement {
+                constructor() {
+                    super();
+                    this.rows = [];
+                    this.hasProcessedEntries = false;
+                }
+                get headerTitle() {
+                    return this.getAttribute("header");
+                }
+                set headerTitle(val) {
+                    this.setAttribute("header", val);
+                }
+                get currentDateValue() {
+                    return this.getAttribute("current-date-value");
+                }
+                set currentDateValue(val) {
+                    this.setAttribute("current-date-value", val);
+                }
+                get disableSort() {
+                    return this.hasAttribute("disable-sort");
+                }
+                set disableSort(val) {
+                    if (val) {
+                        this.setAttribute("disable-sort", "");
+                    }
+                    else {
+                        this.removeAttribute("disable-sort");
+                    }
+                }
+                connectedCallback() {
+                    if (!this.shadowRoot) {
+                        this.attachShadow({ mode: "open" });
+                        this.shadowRoot.appendChild(utilities_3.buildCssStylesheetElement("elements", true, true));
+                        this.outputDiv = document.createElement("div");
+                        this.outputDiv.classList.add("time-table-container");
+                        this.shadowRoot.appendChild(this.outputDiv);
+                    }
+                    this.render();
+                }
+                render() {
+                    this.outputDiv.innerHTML = "";
+                    this.getEntries();
+                    const table = document.createElement("table");
+                    table.classList.add("alternating-colors");
+                    if (this.headerTitle) {
+                        table.appendChild(this.BuildHeaderRow(this.headerTitle));
+                    }
+                    for (let row of this.rows) {
+                        table.appendChild(this.BuildNormalRow(row));
+                    }
+                    this.outputDiv.appendChild(table);
+                }
+                BuildHeaderRow(title) {
+                    let node = document.createElement("tr");
+                    let data = utilities_3.CreateTableHeader(title);
+                    node.appendChild(data);
+                    data.setAttribute("colspan", "3");
+                    return node;
+                }
+                BuildNormalRow(dateRow) {
+                    let node = document.createElement("tr");
+                    loader_4.globalsReady.AddSingleRunCallback(() => {
+                        if (this.currentDateValue) {
+                            const diffString = time_2.Time.BuildDiffString(loader_4.globals.dates[this.currentDateValue], dateRow.time);
+                            const dataNode = utilities_3.CreateTableData(diffString);
+                            if (diffString.search("ago") >= 0) {
+                                dataNode.classList.add("previous-date");
+                            }
+                            else if (diffString.search("from now") >= 0) {
+                                dataNode.classList.add("future-date");
+                            }
+                            else {
+                                dataNode.classList.add("current-date");
+                            }
+                            node.appendChild(dataNode);
+                        }
+                        node.appendChild(utilities_3.CreateTableData(dateRow.time.toString(false)));
+                        if (dateRow.note != undefined) {
+                            node.appendChild(utilities_3.CreateTableData(dateRow.note));
+                        }
+                    }, true);
+                    return node;
+                }
+                getEntries() {
+                    if (!this.hasProcessedEntries) {
+                        this.hasProcessedEntries = true;
+                        const entries = this.querySelectorAll("ap-time-entry");
+                        entries.forEach((entry) => this.rows.push({
+                            note: entry.innerHTML,
+                            time: time_2.Time.FromInitializer({
+                                day: Number(entry.getAttribute("day")),
+                                month: Number(entry.getAttribute("month")),
+                                year: Number(entry.getAttribute("year")),
+                            }),
+                        }));
+                        if (this.rows.length > 0) {
+                            if (!this.disableSort) {
+                                this.rows.sort((a, b) => time_2.Time.Compare(a.time, b.time));
+                            }
+                        }
+                    }
+                }
+            };
+            exports_14("TimeTable", TimeTable);
+            customElements.define("ap-time-table", TimeTable);
+        }
+    };
+});
+System.register("custom-elements/ap-display-global", ["loader", "utilities"], function (exports_15, context_15) {
+    "use strict";
+    var loader_js_1, utilities_js_1, DisplayGlobalElement;
+    var __moduleName = context_15 && context_15.id;
+    return {
+        setters: [
+            function (loader_js_1_1) {
+                loader_js_1 = loader_js_1_1;
+            },
+            function (utilities_js_1_1) {
+                utilities_js_1 = utilities_js_1_1;
+            }
+        ],
+        execute: function () {
+            DisplayGlobalElement = class DisplayGlobalElement extends HTMLElement {
+                get propertyPath() {
+                    return this.getAttribute("property-path");
+                }
+                set propertyPath(val) {
+                    this.setAttribute("property-path", val);
+                }
+                constructor() {
+                    super();
+                }
+                connectedCallback() {
+                    this.Render();
+                }
+                Render() {
+                    loader_js_1.globalsReady.AddSingleRunCallback(() => {
+                        const value = utilities_js_1.getDescendantProperty(loader_js_1.globals, this.propertyPath, undefined);
+                        if (value) {
+                            this.innerHTML = value.toString();
+                        }
+                        else {
+                            this.innerHTML = "";
+                        }
+                    }, true);
+                }
+            };
+            customElements.define("ap-display-global", DisplayGlobalElement);
+        }
+    };
+});
+System.register("custom-elements/ap-birthday-generator", ["loader", "types/time", "utilities"], function (exports_16, context_16) {
+    "use strict";
+    var loader_js_2, time_js_1, utilities_js_2, instructions, BirthdayGeneratorElement;
+    var __moduleName = context_16 && context_16.id;
+    return {
+        setters: [
+            function (loader_js_2_1) {
+                loader_js_2 = loader_js_2_1;
+            },
+            function (time_js_1_1) {
+                time_js_1 = time_js_1_1;
+            },
+            function (utilities_js_2_1) {
+                utilities_js_2 = utilities_js_2_1;
+            }
+        ],
+        execute: function () {
+            instructions = Object.freeze(`
+To generate a birthday, enter the character's age in the input below and click the 'Generate Birthday' button.
+The birthday, along with how long ago it was, will be displayed directly below this sentence.
+`);
+            BirthdayGeneratorElement = class BirthdayGeneratorElement extends HTMLElement {
+                constructor() {
+                    super();
+                }
+                get currentDateValue() {
+                    return this.getAttribute("current-date-value");
+                }
+                set currentDateValue(val) {
+                    this.setAttribute("current-date-value", val);
+                }
+                connectedCallback() {
+                    this.Render();
+                }
+                Render() {
+                    loader_js_2.globalsReady.AddSingleRunCallback(() => {
+                        if (!this.shadowRoot) {
+                            this.attachShadow({ mode: "open" });
+                            this.shadowRoot.appendChild(utilities_js_2.buildCssStylesheetElement("elements", true, true));
+                            this.container = document.createElement("div");
+                            this.container.classList.add("birthday-generator-container");
+                            this.shadowRoot.appendChild(this.container);
+                        }
+                        this.container.innerHTML = "";
+                        this.currentDate = utilities_js_2.getDescendantProperty(loader_js_2.globals, this.currentDateValue);
+                        const bdayHeader = document.createElement("h4");
+                        bdayHeader.textContent = "Generate Birthday";
+                        bdayHeader.classList.add("birthday-header");
+                        this.container.appendChild(bdayHeader);
+                        const instructionsDisplay = document.createElement("p");
+                        instructionsDisplay.textContent = instructions;
+                        instructionsDisplay.classList.add("birthday-instructions");
+                        this.container.appendChild(instructionsDisplay);
+                        if (this.birthday) {
+                            const bdayDisplay = document.createElement("p");
+                            bdayDisplay.classList.add("birthday-display");
+                            bdayDisplay.innerText = `You're birthday is ${this.birthday.toString()}. It was ${time_js_1.Time.BuildDiffString(this.currentDate, this.birthday)}.`;
+                            this.container.appendChild(bdayDisplay);
+                        }
+                        const inputContainer = document.createElement("div");
+                        inputContainer.classList.add("input-container");
+                        this.container.appendChild(inputContainer);
+                        this.ageInput = document.createElement("input");
+                        this.ageInput.type = "number";
+                        this.ageInput.classList.add("birthday-age-input");
+                        if (this.age) {
+                            this.ageInput.value = this.age.toString();
+                        }
+                        inputContainer.appendChild(this.ageInput);
+                        const generateButton = document.createElement("button");
+                        generateButton.textContent = "Generate Birthday";
+                        generateButton.onclick = (event) => this.OnGenerateBirthdayClicked(event);
+                        generateButton.classList.add("birthday-generate-button");
+                        inputContainer.appendChild(generateButton);
+                        const resetButton = document.createElement("button");
+                        resetButton.textContent = "Reset Generator";
+                        resetButton.onclick = (event) => {
+                            this.age = 0;
+                            this.birthday = undefined;
+                            this.Render();
+                        };
+                        resetButton.classList.add("birthday-reset-button");
+                        inputContainer.appendChild(resetButton);
+                    }, true);
+                }
+                OnGenerateBirthdayClicked(event) {
+                    const tempAge = this.ageInput.valueAsNumber;
+                    if (tempAge) {
+                        this.age = tempAge;
+                    }
+                    else {
+                        alert("The selected age must be a non-zero number");
+                        return;
+                    }
+                    this.birthday = this.GetRandomBirthday();
+                    this.Render();
+                }
+                GetRandomBirthday() {
+                    const month = Math.floor(Math.random() * 9);
+                    const day = Math.floor(Math.random() * 28);
+                    const year = this.currentDate.year - this.age;
+                    const birthday = new time_js_1.Time(day, month, year);
+                    if (!this.ValidateBirthday(birthday, this.currentDate, this.age)) {
+                        if (birthday.year - this.age > 0) {
+                            birthday.year = birthday.year - 1;
+                        }
+                        else {
+                            birthday.year = birthday.year + 1;
+                        }
+                    }
+                    return birthday;
+                }
+                ValidateBirthday(birthday, currentDate, age) {
+                    return currentDate.Subtract(birthday).year === age;
+                }
+            };
+            customElements.define("ap-birthday-generator", BirthdayGeneratorElement);
+        }
+    };
+});
+System.register("custom-elements/custom-elements", ["custom-elements/ap-nav-link", "custom-elements/ap-dir-display", "custom-elements/ap-auth-container", "custom-elements/ap-auth-display", "custom-elements/ap-stat-block", "custom-elements/ap-timeline", "custom-elements/ap-display-global", "custom-elements/ap-birthday-generator"], function (exports_17, context_17) {
+    "use strict";
+    var __moduleName = context_17 && context_17.id;
     return {
         setters: [
             function (_1) {
@@ -757,25 +1397,31 @@ System.register("custom-elements/custom-elements", ["custom-elements/ap-nav-link
             function (_4) {
             },
             function (_5) {
+            },
+            function (_6) {
+            },
+            function (_7) {
+            },
+            function (_8) {
             }
         ],
         execute: function () {
         }
     };
 });
-System.register("main", ["custom-elements/custom-elements", "io", "loader", "types/page"], function (exports_14, context_14) {
+System.register("main", ["custom-elements/custom-elements", "io", "loader", "types/page"], function (exports_18, context_18) {
     "use strict";
-    var io_3, loader_4, page_3;
-    var __moduleName = context_14 && context_14.id;
+    var io_3, loader_5, page_3;
+    var __moduleName = context_18 && context_18.id;
     return {
         setters: [
-            function (_6) {
+            function (_9) {
             },
             function (io_3_1) {
                 io_3 = io_3_1;
             },
-            function (loader_4_1) {
-                loader_4 = loader_4_1;
+            function (loader_5_1) {
+                loader_5 = loader_5_1;
             },
             function (page_3_1) {
                 page_3 = page_3_1;
@@ -783,7 +1429,7 @@ System.register("main", ["custom-elements/custom-elements", "io", "loader", "typ
         ],
         execute: function () {
             window.test = (name) => {
-                console.log(page_3.FindPage(loader_4.globals.pageDirectory, name));
+                console.log(page_3.FindPage(loader_5.globals.pageDirectory, name));
             };
             io_3.InitialLoad().then(() => {
                 onpopstate = io_3.OnPopState;

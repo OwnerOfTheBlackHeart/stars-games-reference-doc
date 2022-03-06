@@ -1,0 +1,25 @@
+<h1>Timeline Test</h1>
+<div class="table-container">
+	<div class="table-column">
+		<table class="global-display-table">
+			<tr>
+				<th>Current Date</th>
+			</tr>
+			<tr>
+				<td><ap-display-global property-path="dates.test"></ap-display-global></td>
+			</tr>
+		</table>
+	</div>
+	<div class="table-column"><ap-birthday-generator current-date-value="dates.test"></ap-birthday-generator></div>
+</div>
+<br />
+
+<ap-time-table header="Test Timeline" current-date-value="test">
+	<ap-time-entry day="24" month="7" year="3199"> Before current date </ap-time-entry>
+	<ap-time-entry day="23" month="8" year="3199"> Before current date (light) </ap-time-entry>
+	<ap-time-entry day="0" month="0" year="3200"> Current <a is="ap-nav-link" href="fellowship-of-steel">date</a> </ap-time-entry>
+	<ap-time-entry day="0" month="0" year="3200"> Current date (light) </ap-time-entry>
+	<ap-time-entry day="22" month="5" year="3201"> This should be in second place </ap-time-entry>
+	<ap-time-entry day="22" month="5" year="3200"> This should be in <a is="ap-nav-link" href="ine-contacts">first</a> place </ap-time-entry>
+	<ap-time-entry day="12" month="6" year="3201"> This should be in third place </ap-time-entry>
+</ap-time-table>
