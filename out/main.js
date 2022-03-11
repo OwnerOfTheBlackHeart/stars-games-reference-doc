@@ -82,7 +82,7 @@ System.register("types/page", [], function (exports_3, context_3) {
             }
             const foundDirectory = directory.directories.find((childDir) => {
                 foundPage = FindPageInner(childDir, pageName, currentPath + "/" + childDir.baseUrl);
-                return foundPage;
+                return foundPage && foundPage.page;
             });
         }
         if (foundPage) {
@@ -720,9 +720,9 @@ System.register("custom-elements/ap-nav-link", ["io", "loader", "types/page"], f
                     };
                 }
                 connectedCallback() {
+                    let pageName = "";
                     if (!this.foundPage) {
                         const givenUrl = this.getAttribute("href");
-                        let pageName = "";
                         if (givenUrl.includes("#")) {
                             [pageName, this.hash] = givenUrl.split("#");
                         }
@@ -732,11 +732,16 @@ System.register("custom-elements/ap-nav-link", ["io", "loader", "types/page"], f
                         this.foundPage = page_2.FindPage(loader_3.globals.pageDirectory, pageName);
                     }
                     let url = "";
-                    if (this.foundPage.page.external) {
-                        url = this.foundPage.page.url;
+                    try {
+                        if (this.foundPage.page.external) {
+                            url = this.foundPage.page.url;
+                        }
+                        else {
+                            url = io_1.baseNavigateUrl + this.foundPage.page.name;
+                        }
                     }
-                    else {
-                        url = io_1.baseNavigateUrl + this.foundPage.page.name;
+                    catch (e) {
+                        console.log(`Failed to find page '${pageName}'`);
                     }
                     if (this.hash) {
                         url += this.hash;

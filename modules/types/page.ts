@@ -37,7 +37,7 @@ function FindPageInner(directory: PageDirectory, pageName: string, currentPath: 
 		const foundDirectory = directory.directories.find((childDir) => {
 			foundPage = FindPageInner(childDir, pageName, currentPath + "/" + childDir.baseUrl);
 
-			return foundPage;
+			return foundPage && foundPage.page;
 		});
 	}
 

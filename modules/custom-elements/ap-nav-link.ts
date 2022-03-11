@@ -19,9 +19,9 @@ class NavLink extends HTMLAnchorElement {
 	}
 
 	connectedCallback() {
+		let pageName = "";
 		if (!this.foundPage) {
 			const givenUrl = this.getAttribute("href");
-			let pageName = "";
 
 			if (givenUrl.includes("#")) {
 				[pageName, this.hash] = givenUrl.split("#");
@@ -34,10 +34,14 @@ class NavLink extends HTMLAnchorElement {
 
 		let url = "";
 
-		if (this.foundPage.page.external) {
-			url = this.foundPage.page.url;
-		} else {
-			url = baseNavigateUrl + this.foundPage.page.name;
+		try {
+			if (this.foundPage.page.external) {
+				url = this.foundPage.page.url;
+			} else {
+				url = baseNavigateUrl + this.foundPage.page.name;
+			}
+		} catch (e) {
+			console.log(`Failed to find page '${pageName}'`);
 		}
 
 		if (this.hash) {

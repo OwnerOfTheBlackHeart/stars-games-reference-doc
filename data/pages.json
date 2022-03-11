@@ -89,6 +89,27 @@
 			"mainPage": "timeline-test",
 			"pages": [{ "url": "timeline-test.html", "name": "timeline-test", "title": "Timeline Test" }],
 			"directories": []
+		},
+		{
+			"baseUrl": "okrahs-adventure",
+			"mainPage": "okrahs-adventure-main",
+			"pages": [
+				{ "url": "okrahs-adventure-main.html", "name": "okrahs-adventure-main", "title": "Okrahs Adventure" },
+				{ "url": "locations/rutals-rest.html", "name": "rutals-rest", "title": "Rutal's Rest" }
+			],
+			"directories": [
+				{
+					"baseUrl": "religious-figures",
+					"mainPage": "the-three-above",
+					"pages": [
+						{ "url": "the-three-above.html", "name": "the-three-above", "title": "The Three Above" },
+						{ "url": "axros.html", "name": "axros", "title": "Axros, God of Pleasure" },
+						{ "url": "udona.html", "name": "udona", "title": "Udona, Goddess of Night and Day" },
+						{ "url": "kodia.html", "name": "kodia", "title": "Kodia, Goddess of Abundance" }
+					],
+					"directories": []
+				}
+			]
 		}
 	]
 }
