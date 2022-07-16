@@ -1,4 +1,3 @@
-import { CallbackManager } from "../callback-event";
 import { globals, globalsReady } from "../loader";
 import { Time } from "../types/time";
 import { buildCssStylesheetElement, CreateTableData, CreateTableHeader } from "../utilities";

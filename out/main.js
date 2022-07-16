@@ -1333,6 +1333,8 @@ The birthday, along with how long ago it was, will be displayed directly below t
                         this.ageInput = document.createElement("input");
                         this.ageInput.type = "number";
                         this.ageInput.classList.add("birthday-age-input");
+                        this.ageInput.autocomplete = "off";
+                        this.ageInput.setAttribute("data-form-type", "other");
                         if (this.age) {
                             this.ageInput.value = this.age.toString();
                         }

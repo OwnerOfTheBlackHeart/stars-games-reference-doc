@@ -112,6 +112,64 @@
 					"directories": []
 				}
 			]
+		},
+		{
+			"baseUrl": "sector-investious",
+			"mainPage": "sector-investious-main",
+			"pages": [
+				{ "url": "sector-investious-main.html", "name": "sector-investious-main", "title": "Sector Investious" },
+				{ "url": "contacts.html", "name": "sector-investious-contacts", "title": "Contacts" },
+				{ "url": "timeline.html", "name": "sector-investious-timeline", "title": "Sector Investious Timeline" },
+				{
+					"url": "https://sectorswithoutnumber.com/sector/9Gv1Q31K5DEgt8ihskos",
+					"name": "sector-investious-map",
+					"title": "",
+					"external": true
+				}
+			],
+			"directories": [
+				{
+					"baseUrl": "adventures",
+					"mainPage": "sector-investious-adventures",
+					"pages": [{ "url": "adventures.html", "name": "sector-investious-adventures", "title": "Adventure List" }]
+				},
+				{
+					"baseUrl": "../old-stars-micro/systems/trapoulak",
+					"mainPage": "si-trapoulak",
+					"pages": [
+						{ "url": "trapoulak.html", "name": "si-trapoulak", "title": "Trapoulak System" },
+						{ "url": "thorunn.html", "name": "si-thorunn", "title": "Thorunn" }
+					]
+				},
+				{
+					"baseUrl": "../old-stars-micro/systems/tustika-tashnal",
+					"mainPage": "si-tustika-tashnal",
+					"pages": [
+						{ "url": "tustika-tashnal.html", "name": "si-tustika-tashnal", "title": "Tustika Tashnal System" },
+						{ "url": "sovietallia.html", "name": "si-sovietallia", "title": "Sovietallia" }
+					]
+				},
+				{
+					"baseUrl": "../old-stars-micro/organizations/fellowship-of-steel",
+					"mainPage": "si-fellowship-of-steel",
+					"pages": [{ "url": "fellowship-of-steel.html", "name": "si-fellowship-of-steel", "title": "The Fellowship of Steel" }]
+				},
+				{
+					"baseUrl": "../old-stars-micro/organizations/religions",
+					"mainPage": "si-tenrikyo",
+					"pages": [{ "url": "tenrikyo.html", "name": "si-tenrikyo", "title": "The Flocks of Tenrikyo" }]
+				},
+				{
+					"baseUrl": "../old-stars-micro/organizations/religions",
+					"mainPage": "si-sovetskiy-marksizm",
+					"pages": [{ "url": "sovetskiy-marksizm.html", "name": "si-sovetskiy-marksizm", "title": "Sovietallian Marxism" }]
+				},
+				{
+					"baseUrl": "../old-stars-micro/organizations/darkwire-gang",
+					"mainPage": "si-darkwire-gang",
+					"pages": [{ "url": "darkwire-gang.html", "name": "si-darkwire-gang", "title": "The Darkwire Gang" }]
+				}
+			]
 		}
 	]
 }
