@@ -1,0 +1,32 @@
+<h1>Artax's Adventure Timeline</h1>
+<div class="table-container">
+	<div class="table-column">
+		<table class="global-display-table">
+			<tr>
+				<th>Current Date</th>
+			</tr>
+			<tr>
+				<td><ap-display-global property-path="dates.artaxs-adventure"></ap-display-global></td>
+			</tr>
+		</table>
+	</div>
+	<div class="table-column"><ap-birthday-generator current-date-value="dates.artaxs-adventure"></ap-birthday-generator></div>
+</div>
+<br />
+
+<ap-time-table header="Timeline" current-date-value="artaxs-adventure">
+	<ap-time-entry day="0" month="0" year="3200">
+		Game starts on <a is="ap-nav-link" href="art-mele">Mele, Sumaya Ruchi (0008)</a>, in the city of
+		<a is="ap-nav-link" href="art-mele#vedia">Vedia</a>
+	</ap-time-entry>
+	<ap-time-entry day="2" month="0" year="3200">
+		<ul>
+			<li>Artax arrives in <a is="ap-nav-link" href="art-mele#la-contillo">La Contillo</a>, via train</li>
+			<li>
+				Recruited <a is="ap-nav-link" href="art-united-counties-of-polla">Pollan</a> soldiers Gita Chauhan, Indrani Kapoor and Madhav Patil
+				via a surrender
+			</li>
+			<li>Stayed in a townhouse (surface)</li>
+		</ul>
+	</ap-time-entry>
+</ap-time-table>

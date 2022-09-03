@@ -170,6 +170,49 @@
 					"pages": [{ "url": "darkwire-gang.html", "name": "si-darkwire-gang", "title": "The Darkwire Gang" }]
 				}
 			]
+		},
+		{
+			"baseUrl": "artaxs-adventure",
+			"mainPage": "artax-main",
+			"pages": [
+				{ "url": "artax-main.html", "name": "artax-main", "title": "Artax's Adventure" },
+				{ "url": "timeline.html", "name": "artax-timeline", "title": "Artax's Adventure Timeline" },
+				{
+					"url": "https://sectorswithoutnumber.com/sector/KNrqTz77ATFrdcjHUCVg/system/EyQKrurokaHYie24MgCP",
+					"name": "artax-sector-map",
+					"title": "",
+					"external": true
+				},
+				{ "url": "systems/sumaya-ruchi/mele.html", "name": "art-mele", "title": "Mele" },
+				{
+					"url": "organizations/peoples-republic-of-cono.html",
+					"name": "art-peoples-republic-of-cono",
+					"title": "People's Republic of Cono"
+				},
+				{ "url": "organizations/unitarian-church.html", "name": "art-unitarian-church", "title": "The Unitarian Church" },
+				{
+					"url": "organizations/united-counties-of-polla.html",
+					"name": "art-united-counties-of-polla",
+					"title": "The United Counties of Polla"
+				}
+			],
+			"directories": [
+				{
+					"baseUrl": "adventures",
+					"mainPage": "art-adventures",
+					"pages": [{ "url": "adventures.html", "name": "art-adventures", "title": "Adventures" }],
+					"directories": []
+				},
+				{
+					"baseUrl": "contacts",
+					"mainPage": "art-contacts",
+					"pages": [
+						{ "url": "contacts.html", "name": "art-contacts", "title": "Contacts" },
+						{ "url": "mele-contacts.html", "name": "art-mele-contacts", "title": "Mele Contacts" }
+					],
+					"directories": []
+				}
+			]
 		}
 	]
 }
