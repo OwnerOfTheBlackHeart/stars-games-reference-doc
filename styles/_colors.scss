@@ -1,6 +1,7 @@
 $content-color: rgb(170, 170, 170);
 $link-color: #6e6ee0;
 $content-background-color: rgba(0, 0, 0, 0.95);
+$example-background-color: rgb(30, 30, 30);
 $input-button-background: rgb(30, 30, 30);
 $input-button-border-color: rgb(45, 45, 45);
 $button-hovered-background: rgb(46, 46, 46);
@@ -74,4 +75,8 @@ table.alternating-colors {
 	tr:nth-child(even) {
 		background-color: $table-even-row-background-color;
 	}
+}
+
+.homebrew-example {
+	background-color: $example-background-color;
 }

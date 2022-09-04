@@ -194,6 +194,16 @@
 					"url": "organizations/united-counties-of-polla.html",
 					"name": "art-united-counties-of-polla",
 					"title": "The United Counties of Polla"
+				},
+				{
+					"url": "homebrew/scars.html",
+					"name": "scars",
+					"title": "Scars Homebrew System"
+				},
+				{
+					"url": "captured-npcs.html",
+					"name": "art-captured-npcs",
+					"title": "Captured NPCs"
 				}
 			],
 			"directories": [
