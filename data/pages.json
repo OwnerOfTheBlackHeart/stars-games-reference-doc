@@ -210,7 +210,10 @@
 				{
 					"baseUrl": "adventures",
 					"mainPage": "art-adventures",
-					"pages": [{ "url": "adventures.html", "name": "art-adventures", "title": "Adventures" }],
+					"pages": [
+						{ "url": "adventures.html", "name": "art-adventures", "title": "Adventures" },
+						{ "url": "mele/silence-the-reformers.html", "name": "art-silence-the-reformers", "title": "Silence the Reformers" }
+					],
 					"directories": []
 				},
 				{
