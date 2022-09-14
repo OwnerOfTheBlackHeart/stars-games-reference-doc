@@ -140,7 +140,8 @@ td {
   padding: 0 0.5rem;
 }
 
-p {
+p,
+li {
   max-width: 60em;
   min-width: 25em;
 }
