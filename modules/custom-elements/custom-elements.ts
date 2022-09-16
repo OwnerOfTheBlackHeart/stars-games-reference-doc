@@ -6,3 +6,4 @@ import "./ap-stat-block";
 import "./ap-timeline";
 import "./ap-display-global";
 import "./ap-birthday-generator";
+import "./ap-vehicle-stat-block";

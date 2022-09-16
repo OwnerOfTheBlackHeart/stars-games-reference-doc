@@ -1390,9 +1390,114 @@ The birthday, along with how long ago it was, will be displayed directly below t
         }
     };
 });
-System.register("custom-elements/custom-elements", ["custom-elements/ap-nav-link", "custom-elements/ap-dir-display", "custom-elements/ap-auth-container", "custom-elements/ap-auth-display", "custom-elements/ap-stat-block", "custom-elements/ap-timeline", "custom-elements/ap-display-global", "custom-elements/ap-birthday-generator"], function (exports_17, context_17) {
+System.register("custom-elements/ap-vehicle-stat-block", ["utilities"], function (exports_17, context_17) {
     "use strict";
+    var utilities_4, statBlockName, SubElementNames, VehicleStatBlock;
     var __moduleName = context_17 && context_17.id;
+    return {
+        setters: [
+            function (utilities_4_1) {
+                utilities_4 = utilities_4_1;
+            }
+        ],
+        execute: function () {
+            exports_17("statBlockName", statBlockName = "ap-vehicle-stat-block");
+            (function (SubElementNames) {
+                SubElementNames["speed"] = "speed";
+                SubElementNames["travelSpeed"] = "travel-speed";
+                SubElementNames["armor"] = "armor";
+                SubElementNames["power"] = "power";
+                SubElementNames["hitPoints"] = "hit-points";
+                SubElementNames["mass"] = "mass";
+                SubElementNames["crew"] = "crew";
+                SubElementNames["hardpoints"] = "hardpoints";
+                SubElementNames["baseFrame"] = "base-frame";
+                SubElementNames["fittings"] = "fittings";
+            })(SubElementNames || (SubElementNames = {}));
+            VehicleStatBlock = class VehicleStatBlock extends HTMLElement {
+                constructor() {
+                    super();
+                }
+                connectedCallback() {
+                    if (!this.shadowRoot) {
+                        this.attachShadow({ mode: "open" });
+                        this.shadowRoot.appendChild(utilities_4.buildCssStylesheetElement("elements", true, true));
+                        this.container = document.createElement("div");
+                        this.container.classList.add("stat-block-container");
+                        this.shadowRoot.appendChild(this.container);
+                    }
+                    this.container.innerHTML = "";
+                    const values = this.getValues();
+                    const table = document.createElement("table");
+                    table.appendChild(this.buildRow("Speed", values.speed, "Km/H Travel", values.travelSpeed));
+                    table.appendChild(this.buildRow("Armor", values.armor, "Power", values.power));
+                    table.appendChild(this.buildRow("Hit Points", values.hitPoints, "Mass", values.mass));
+                    table.appendChild(this.buildRow("Crew", values.crew, "Hardpoints", values.hardpoints));
+                    table.appendChild(this.buildDoubleRow("Base Frame", values.baseFrame));
+                    table.appendChild(this.buildDoubleRow("Fittings", values.fittings));
+                    this.container.appendChild(table);
+                }
+                getValues() {
+                    const speedElement = this.querySelector(SubElementNames.speed);
+                    const travelSpeedElement = this.querySelector(SubElementNames.travelSpeed);
+                    const armorElement = this.querySelector(SubElementNames.armor);
+                    const powerElement = this.querySelector(SubElementNames.power);
+                    const hitPointsElement = this.querySelector(SubElementNames.hitPoints);
+                    const massElement = this.querySelector(SubElementNames.mass);
+                    const crewElement = this.querySelector(SubElementNames.crew);
+                    const hardpointsElement = this.querySelector(SubElementNames.hardpoints);
+                    const baseFrameElement = this.querySelector(SubElementNames.baseFrame);
+                    const fittingsElement = this.querySelector(SubElementNames.fittings);
+                    return {
+                        speed: speedElement ? speedElement.innerHTML : "",
+                        travelSpeed: travelSpeedElement ? travelSpeedElement.innerHTML : "",
+                        armor: armorElement ? armorElement.innerHTML : "",
+                        power: powerElement ? powerElement.innerHTML : "",
+                        hitPoints: hitPointsElement ? hitPointsElement.innerHTML : "",
+                        mass: massElement ? massElement.innerHTML : "",
+                        crew: crewElement ? crewElement.innerHTML : "",
+                        hardpoints: hardpointsElement ? hardpointsElement.innerHTML : "",
+                        baseFrame: baseFrameElement ? baseFrameElement.innerHTML : "",
+                        fittings: fittingsElement ? fittingsElement.innerHTML : "",
+                    };
+                }
+                buildRow(column1Name, column1Value, column2Name, column2Value) {
+                    const row = document.createElement("tr");
+                    let header;
+                    let value;
+                    header = document.createElement("th");
+                    header.innerText = column1Name;
+                    row.appendChild(header);
+                    value = document.createElement("td");
+                    value.innerHTML = column1Value;
+                    row.appendChild(value);
+                    header = document.createElement("th");
+                    header.innerText = column2Name;
+                    row.appendChild(header);
+                    value = document.createElement("td");
+                    value.innerHTML = column2Value;
+                    row.appendChild(value);
+                    return row;
+                }
+                buildDoubleRow(name, value) {
+                    const row = document.createElement("tr");
+                    const header = document.createElement("th");
+                    header.innerText = name;
+                    row.appendChild(header);
+                    const data = document.createElement("td");
+                    data.innerHTML = value;
+                    data.colSpan = 3;
+                    row.appendChild(data);
+                    return row;
+                }
+            };
+            customElements.define(statBlockName, VehicleStatBlock);
+        }
+    };
+});
+System.register("custom-elements/custom-elements", ["custom-elements/ap-nav-link", "custom-elements/ap-dir-display", "custom-elements/ap-auth-container", "custom-elements/ap-auth-display", "custom-elements/ap-stat-block", "custom-elements/ap-timeline", "custom-elements/ap-display-global", "custom-elements/ap-birthday-generator", "custom-elements/ap-vehicle-stat-block"], function (exports_18, context_18) {
+    "use strict";
+    var __moduleName = context_18 && context_18.id;
     return {
         setters: [
             function (_1) {
@@ -1410,19 +1515,21 @@ System.register("custom-elements/custom-elements", ["custom-elements/ap-nav-link
             function (_7) {
             },
             function (_8) {
+            },
+            function (_9) {
             }
         ],
         execute: function () {
         }
     };
 });
-System.register("main", ["custom-elements/custom-elements", "io", "loader", "types/page"], function (exports_18, context_18) {
+System.register("main", ["custom-elements/custom-elements", "io", "loader", "types/page"], function (exports_19, context_19) {
     "use strict";
     var io_3, loader_5, page_3;
-    var __moduleName = context_18 && context_18.id;
+    var __moduleName = context_19 && context_19.id;
     return {
         setters: [
-            function (_9) {
+            function (_10) {
             },
             function (io_3_1) {
                 io_3 = io_3_1;
