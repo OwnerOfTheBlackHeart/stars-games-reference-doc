@@ -223,7 +223,17 @@
 						{ "url": "contacts.html", "name": "art-contacts", "title": "Contacts" },
 						{ "url": "mele-contacts.html", "name": "art-mele-contacts", "title": "Mele Contacts" }
 					],
-					"directories": []
+					"directories": [
+						{
+							"baseUrl": "enemies",
+							"mainPage": "art-enemies",
+							"pages": [
+								{ "url": "enemies.html", "name": "art-enemies", "title": "Enemies" },
+								{ "url": "mele-enemies.html", "name": "art-mele-enemies", "title": "Mele Enemies" }
+							],
+							"directories": []
+						}
+					]
 				}
 			]
 		}
