@@ -1,4 +1,6 @@
 import { buildCssStylesheetElement } from "../utilities";
+import "./ap-theme-container";
+import { ThemeContainer } from "./ap-theme-container";
 
 export const statBlockName = "ap-vehicle-stat-block";
 enum SubElementNames {
@@ -15,7 +17,7 @@ enum SubElementNames {
 }
 
 class VehicleStatBlock extends HTMLElement {
-	container: HTMLDivElement;
+	container: ThemeContainer;
 
 	constructor() {
 		super();
@@ -26,7 +28,7 @@ class VehicleStatBlock extends HTMLElement {
 			this.attachShadow({ mode: "open" });
 			this.shadowRoot.appendChild(buildCssStylesheetElement("elements", true, true));
 
-			this.container = document.createElement("div");
+			this.container = document.createElement("ap-theme-container") as ThemeContainer;
 			this.container.classList.add("stat-block-container");
 			this.shadowRoot.appendChild(this.container);
 		}

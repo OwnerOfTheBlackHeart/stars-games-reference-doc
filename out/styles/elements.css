@@ -1,61 +1,165 @@
-p,
-span,
-th,
-td,
-li,
-label,
-input,
-button,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: #aaaaaa;
+.theme-stars p,
+.theme-stars span,
+.theme-stars th,
+.theme-stars td,
+.theme-stars li,
+.theme-stars label,
+.theme-stars input,
+.theme-stars button,
+.theme-stars h1,
+.theme-stars h2,
+.theme-stars h3,
+.theme-stars h4,
+.theme-stars h5,
+.theme-stars h6 {
+  color: #a8a88a;
+}
+.theme-stars table,
+.theme-stars th,
+.theme-stars td,
+.theme-stars tr {
+  border-color: #a8a88a;
+}
+.theme-stars a,
+.theme-stars a:visited {
+  color: #7979d2;
+}
+.theme-stars input,
+.theme-stars button {
+  background-color: #262626;
+  border-color: #333333;
+}
+.theme-stars button:hover {
+  background-color: #131313;
+}
+.theme-stars table.alternating-colors th,
+.theme-stars table.alternating-colors td {
+  border: none;
+}
+.theme-stars table.alternating-colors th:not(:last-child),
+.theme-stars table.alternating-colors td:not(:last-child) {
+  border-right: 1px solid #404040;
+}
+.theme-stars table.alternating-colors tr:first-child:nth-child(odd) {
+  background-color: #404040;
+}
+.theme-stars table.alternating-colors tr:nth-child(odd) {
+  background-color: #262626;
+}
+.theme-stars table.alternating-colors tr:nth-child(even) {
+  background-color: #131313;
+}
+.theme-stars .homebrew-example {
+  background-color: #1e1e1e;
 }
 
-table,
-th,
-td,
-tr {
-  border-color: #aaaaaa;
+.theme-worlds p,
+.theme-worlds span,
+.theme-worlds th,
+.theme-worlds td,
+.theme-worlds li,
+.theme-worlds label,
+.theme-worlds input,
+.theme-worlds button,
+.theme-worlds h1,
+.theme-worlds h2,
+.theme-worlds h3,
+.theme-worlds h4,
+.theme-worlds h5,
+.theme-worlds h6 {
+  color: #a8a88a;
+}
+.theme-worlds table,
+.theme-worlds th,
+.theme-worlds td,
+.theme-worlds tr {
+  border-color: #a8a88a;
+}
+.theme-worlds a,
+.theme-worlds a:visited {
+  color: #7979d2;
+}
+.theme-worlds input,
+.theme-worlds button {
+  background-color: #262626;
+  border-color: #333333;
+}
+.theme-worlds button:hover {
+  background-color: #131313;
+}
+.theme-worlds table.alternating-colors th,
+.theme-worlds table.alternating-colors td {
+  border: none;
+}
+.theme-worlds table.alternating-colors th:not(:last-child),
+.theme-worlds table.alternating-colors td:not(:last-child) {
+  border-right: 1px solid #404040;
+}
+.theme-worlds table.alternating-colors tr:first-child:nth-child(odd) {
+  background-color: #404040;
+}
+.theme-worlds table.alternating-colors tr:nth-child(odd) {
+  background-color: #262626;
+}
+.theme-worlds table.alternating-colors tr:nth-child(even) {
+  background-color: #131313;
+}
+.theme-worlds .homebrew-example {
+  background-color: #1e1e1e;
 }
 
-a,
-a:visited {
+.theme-test p,
+.theme-test span,
+.theme-test th,
+.theme-test td,
+.theme-test li,
+.theme-test label,
+.theme-test input,
+.theme-test button,
+.theme-test h1,
+.theme-test h2,
+.theme-test h3,
+.theme-test h4,
+.theme-test h5,
+.theme-test h6 {
+  color: #aaaaff;
+}
+.theme-test table,
+.theme-test th,
+.theme-test td,
+.theme-test tr {
+  border-color: #aaaaff;
+}
+.theme-test a,
+.theme-test a:visited {
   color: #6e6ee0;
 }
-
-input,
-button {
+.theme-test input,
+.theme-test button {
   background-color: #1e1e1e;
   border-color: #2d2d2d;
 }
-
-button:hover {
+.theme-test button:hover {
   background-color: #2e2e2e;
 }
-
-table.alternating-colors th,
-table.alternating-colors td {
+.theme-test table.alternating-colors th,
+.theme-test table.alternating-colors td {
   border: none;
 }
-table.alternating-colors th:not(:last-child),
-table.alternating-colors td:not(:last-child) {
+.theme-test table.alternating-colors th:not(:last-child),
+.theme-test table.alternating-colors td:not(:last-child) {
   border-right: 1px solid #787878;
 }
-table.alternating-colors tr:first-child:nth-child(odd) {
+.theme-test table.alternating-colors tr:first-child:nth-child(odd) {
   background-color: #505050;
 }
-table.alternating-colors tr:nth-child(odd) {
+.theme-test table.alternating-colors tr:nth-child(odd) {
   background-color: #282828;
 }
-table.alternating-colors tr:nth-child(even) {
+.theme-test table.alternating-colors tr:nth-child(even) {
   background-color: #141414;
 }
-
-.homebrew-example {
+.theme-test .homebrew-example {
   background-color: #1e1e1e;
 }
 
@@ -107,16 +211,44 @@ a:visited:hover {
   box-sizing: border-box;
 }
 
-.stat-block-container table {
-  border-top: 1px solid #aaaaaa;
+.stat-block-container.theme-stars table {
+  border-top: 1px solid #a8a88a;
 }
-.stat-block-container table th {
+.stat-block-container.theme-stars table th {
   vertical-align: top;
-  border-right: 1px solid #aaaaaa;
+  border-right: 1px solid #a8a88a;
   text-align: right;
   padding-right: 0.25rem;
 }
-.stat-block-container table td {
+.stat-block-container.theme-stars table td {
+  vertical-align: top;
+  padding: 0 2rem 0 0.25rem;
+}
+
+.stat-block-container.theme-worlds table {
+  border-top: 1px solid #a8a88a;
+}
+.stat-block-container.theme-worlds table th {
+  vertical-align: top;
+  border-right: 1px solid #a8a88a;
+  text-align: right;
+  padding-right: 0.25rem;
+}
+.stat-block-container.theme-worlds table td {
+  vertical-align: top;
+  padding: 0 2rem 0 0.25rem;
+}
+
+.stat-block-container.theme-test table {
+  border-top: 1px solid #aaaaff;
+}
+.stat-block-container.theme-test table th {
+  vertical-align: top;
+  border-right: 1px solid #aaaaff;
+  text-align: right;
+  padding-right: 0.25rem;
+}
+.stat-block-container.theme-test table td {
   vertical-align: top;
   padding: 0 2rem 0 0.25rem;
 }
@@ -127,14 +259,46 @@ a:visited:hover {
   padding: 0.25rem 0.5rem 0.25rem 0.5rem;
   white-space: nowrap;
 }
-.time-table-container .previous-date {
-  color: #b80000;
+.time-table-container.theme-stars .previous-date {
+  color: #9c1616;
 }
-.time-table-container .current-date {
+.time-table-container.theme-stars .current-date {
   color: #c2c200;
 }
-.time-table-container .future-date {
+.time-table-container.theme-stars .future-date {
   color: #00bd00;
+}
+
+.time-table-container.theme-worlds .previous-date {
+  color: #9c1616;
+}
+.time-table-container.theme-worlds .current-date {
+  color: #c2c200;
+}
+.time-table-container.theme-worlds .future-date {
+  color: #00bd00;
+}
+
+.time-table-container.theme-test .previous-date {
+  color: #b80000;
+}
+.time-table-container.theme-test .current-date {
+  color: #c2c200;
+}
+.time-table-container.theme-test .future-date {
+  color: #00bd00;
+}
+
+.birthday-generator-container.theme-stars .birthday-display {
+  color: #6363e9;
+}
+
+.birthday-generator-container.theme-worlds .birthday-display {
+  color: #6363e9;
+}
+
+.birthday-generator-container.theme-test .birthday-display {
+  color: darkred;
 }
 
 .birthday-generator-container .birthday-header {
@@ -150,9 +314,6 @@ a:visited:hover {
 }
 .birthday-generator-container .birthday-age-input {
   text-align: right;
-}
-.birthday-generator-container .birthday-display {
-  color: #275ae6;
 }
 .birthday-generator-container .input-container {
   display: inline-block;

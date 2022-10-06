@@ -3,6 +3,7 @@ export interface Page {
 	name: string;
 	title?: string;
 	external?: boolean;
+	theme?: string;
 }
 
 export interface PageDirectory {
@@ -10,11 +11,13 @@ export interface PageDirectory {
 	pages: Page[];
 	mainPage: string;
 	directories?: PageDirectory[];
+	theme?: string;
 }
 
 export interface FoundPage {
 	page: Page;
 	parents: Page[];
+	theme?: string;
 }
 
 export function FindPage(directory: PageDirectory, pageName: string): FoundPage {
@@ -28,6 +31,10 @@ function FindPageInner(directory: PageDirectory, pageName: string, currentPath: 
 
 	if (page) {
 		foundPage.page = { ...page, url: page.external ? page.url : currentPath + "/" + page.url };
+
+		if (page.theme) {
+			foundPage.theme = page.theme;
+		}
 	} else {
 		// Return a "Not Found" state
 		if (!directory.directories) {
@@ -43,6 +50,10 @@ function FindPageInner(directory: PageDirectory, pageName: string, currentPath: 
 
 	if (foundPage) {
 		foundPage.parents.unshift({ ...mainPage, url: mainPage.external ? mainPage.url : currentPath + "/" + mainPage.url });
+
+		if (!foundPage.theme) {
+			foundPage.theme = directory.theme;
+		}
 	}
 
 	return foundPage;

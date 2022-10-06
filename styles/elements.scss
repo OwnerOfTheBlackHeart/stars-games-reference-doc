@@ -6,19 +6,21 @@
 }
 
 .stat-block-container {
-	table {
-		border-top: 1px solid colors.$content-color;
+	@include colors.AtLevelTheme() using ($theme) {
+		table {
+			border-top: 1px solid map-get($theme, content-color);
 
-		th {
-			vertical-align: top;
-			border-right: 1px solid colors.$content-color;
-			text-align: right;
-			padding-right: 0.25rem;
-		}
+			th {
+				vertical-align: top;
+				border-right: 1px solid map-get($theme, content-color);
+				text-align: right;
+				padding-right: 0.25rem;
+			}
 
-		td {
-			vertical-align: top;
-			padding: 0 2rem 0 0.25rem;
+			td {
+				vertical-align: top;
+				padding: 0 2rem 0 0.25rem;
+			}
 		}
 	}
 }
@@ -31,20 +33,28 @@
 		white-space: nowrap;
 	}
 
-	.previous-date {
-		color: colors.$previous-date-color;
-	}
+	@include colors.AtLevelTheme() using ($theme) {
+		.previous-date {
+			color: map-get($theme, previous-date-color);
+		}
 
-	.current-date {
-		color: colors.$current-date-color;
-	}
+		.current-date {
+			color: map-get($theme, current-date-color);
+		}
 
-	.future-date {
-		color: colors.$future-date-color;
+		.future-date {
+			color: map-get($theme, future-date-color);
+		}
 	}
 }
 
 .birthday-generator-container {
+	@include colors.AtLevelTheme() using ($theme) {
+		.birthday-display {
+			color: map-get($theme, birthday-display-color);
+		}
+	}
+
 	.birthday-header {
 		margin-top: 0;
 	}
@@ -60,10 +70,6 @@
 
 	.birthday-age-input {
 		text-align: right;
-	}
-
-	.birthday-display {
-		color: #275ae6;
 	}
 
 	.input-container {

@@ -1,6 +1,8 @@
 import { globals, globalsReady } from "../loader.js";
 import { Time } from "../types/time.js";
 import { buildCssStylesheetElement, getDescendantProperty } from "../utilities.js";
+import "./ap-theme-container";
+import { ThemeContainer } from "./ap-theme-container";
 
 const instructions = Object.freeze(`
 To generate a birthday, enter the character's age in the input below and click the 'Generate Birthday' button.
@@ -21,7 +23,7 @@ class BirthdayGeneratorElement extends HTMLElement {
 	age: number;
 
 	ageInput: HTMLInputElement;
-	container: HTMLDivElement;
+	container: ThemeContainer;
 
 	constructor() {
 		// Always call super first in constructor
@@ -38,7 +40,7 @@ class BirthdayGeneratorElement extends HTMLElement {
 				this.attachShadow({ mode: "open" });
 				this.shadowRoot.appendChild(buildCssStylesheetElement("elements", true, true));
 
-				this.container = document.createElement("div");
+				this.container = document.createElement("ap-theme-container") as ThemeContainer;
 				this.container.classList.add("birthday-generator-container");
 				this.shadowRoot.appendChild(this.container);
 			}

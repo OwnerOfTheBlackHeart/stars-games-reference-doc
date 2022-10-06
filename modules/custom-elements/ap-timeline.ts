@@ -1,6 +1,8 @@
 import { globals, globalsReady } from "../loader";
 import { Time } from "../types/time";
 import { buildCssStylesheetElement, CreateTableData, CreateTableHeader } from "../utilities";
+import "./ap-theme-container";
+import { ThemeContainer } from "./ap-theme-container";
 
 interface TimeRow {
 	time: Time;
@@ -38,7 +40,7 @@ export class TimeTable extends HTMLElement {
 
 	rows: TimeRow[] = [];
 	hasProcessedEntries = false;
-	outputDiv: HTMLDivElement;
+	outputDiv: ThemeContainer;
 
 	constructor() {
 		// Always call super first in constructor
@@ -52,7 +54,7 @@ export class TimeTable extends HTMLElement {
 			this.attachShadow({ mode: "open" });
 			this.shadowRoot.appendChild(buildCssStylesheetElement("elements", true, true));
 
-			this.outputDiv = document.createElement("div");
+			this.outputDiv = document.createElement("ap-theme-container") as ThemeContainer;
 			this.outputDiv.classList.add("time-table-container");
 			this.shadowRoot.appendChild(this.outputDiv);
 		}

@@ -3,7 +3,7 @@ let highestId = 0;
 export class CallbackManager<T> {
 	private callbacks: Callback<T>[] = [];
 	private singleRunCallbacks: Callback<T>[] = [];
-	private lastValue: T;
+	private previousValue: T;
 	private hasRan = false;
 	private isUndefinedValid = false;
 	private isFirstRunRequired = false;
@@ -11,24 +11,24 @@ export class CallbackManager<T> {
 	constructor(isUndefinedValid = false, isFirstRunRequired = false, initialValue?: T) {
 		this.isUndefinedValid = isUndefinedValid;
 		this.isFirstRunRequired = isFirstRunRequired;
-		this.lastValue = initialValue;
+		this.previousValue = initialValue;
 	}
 
-	AddCallback(callback: (context: T) => void, runImmediately = false): number {
+	AddCallback(callback: (newValue: T, previousValue: T) => void, runImmediately = false): number {
 		const id = highestId++;
 
 		this.callbacks.push({ func: callback, id });
 
-		if (runImmediately && (this.isUndefinedValid || this.lastValue !== undefined) && (!this.isFirstRunRequired || this.hasRan)) {
-			callback(this.lastValue);
+		if (runImmediately && (this.isUndefinedValid || this.previousValue !== undefined) && (!this.isFirstRunRequired || this.hasRan)) {
+			callback(this.previousValue, this.previousValue);
 		}
 
 		return id;
 	}
 
-	AddSingleRunCallback(callback: (context: T) => void, runImmediately = false) {
-		if (runImmediately && (this.isUndefinedValid || this.lastValue !== undefined) && (!this.isFirstRunRequired || this.hasRan)) {
-			callback(this.lastValue);
+	AddSingleRunCallback(callback: (newValue: T, previousValue: T) => void, runImmediately = false) {
+		if (runImmediately && (this.isUndefinedValid || this.previousValue !== undefined) && (!this.isFirstRunRequired || this.hasRan)) {
+			callback(this.previousValue, this.previousValue);
 		} else {
 			this.singleRunCallbacks.push({ func: callback, id: 0 });
 		}
@@ -39,17 +39,18 @@ export class CallbackManager<T> {
 		return callbackId;
 	}
 
-	RunCallbacks(context: T) {
+	RunCallbacks(newValue: T) {
 		this.hasRan = true;
-		this.lastValue = context;
-		this.callbacks.forEach((callback) => callback.func(context));
+		this.callbacks.forEach((callback) => callback.func(newValue, this.previousValue));
 
-		this.singleRunCallbacks.forEach((callback) => callback.func(context));
+		this.singleRunCallbacks.forEach((callback) => callback.func(newValue, this.previousValue));
 		this.singleRunCallbacks = [];
+
+		this.previousValue = newValue;
 	}
 }
 
 export interface Callback<T> {
-	func: (context: T) => void;
+	func: (newValue: T, previousValue: T) => void;
 	id: number;
 }

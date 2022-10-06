@@ -87,12 +87,14 @@
 		{
 			"baseUrl": "testing",
 			"mainPage": "timeline-test",
-			"pages": [{ "url": "timeline-test.html", "name": "timeline-test", "title": "Timeline Test" }],
+			"theme": "theme-worlds",
+			"pages": [{ "url": "timeline-test.html", "name": "timeline-test", "title": "Timeline Test", "theme": "theme-test" }],
 			"directories": []
 		},
 		{
 			"baseUrl": "okrahs-adventure",
 			"mainPage": "okrahs-adventure-main",
+			"theme": "theme-worlds",
 			"pages": [
 				{ "url": "okrahs-adventure-main.html", "name": "okrahs-adventure-main", "title": "Okrah's Adventure" },
 				{ "url": "adventure.html", "name": "okrahs-adventure", "title": "Okrah's Adventure" },

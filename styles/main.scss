@@ -2,16 +2,20 @@
 @use "common";
 
 body {
+	@include colors.AtLevelTheme() using ($theme) {
+		background: {
+			image: map-get($theme, body-background, image);
+			position: map-get($theme, body-background, position);
+			repeat: map-get($theme, body-background, repeat);
+			size: map-get($theme, body-background, size);
+		}
+	}
+
 	height: 100vh;
 	width: 100vw;
 
 	margin: 0;
 	padding: 0;
-
-	background-image: url("../../images/main-background.jpg");
-	background-position: center; /* Center the image */
-	background-repeat: no-repeat; /* Do not repeat the image */
-	background-size: cover; /* Resize the background image to cover the entire container */
 }
 
 h1,
@@ -33,7 +37,9 @@ b {
 
 th,
 td {
-	border: 1px solid colors.$content-color;
+	@include colors.Theme() using ($theme) {
+		border: 1px solid map-get($theme, content-color);
+	}
 	padding: 0 0.5rem;
 
 	// &:not(:last-child) {
@@ -55,13 +61,16 @@ li {
 }
 
 #content {
+	@include colors.Theme() using ($theme) {
+		background-color: map-get($theme, content-background-color);
+	}
+
 	display: flex;
 	flex-direction: column;
 	height: 100%;
 	width: 100%;
 
 	padding: 20px;
-	background-color: colors.$content-background-color;
 	border-radius: 20px;
 
 	#header,
@@ -82,19 +91,24 @@ li {
 	}
 }
 
-#header {
-	border-bottom: 1px solid colors.$content-color;
-}
+@include colors.Theme() using ($theme) {
+	#header {
+		border-bottom: 1px solid map-get($theme, content-color);
+	}
 
-#footer {
-	border-top: 1px solid colors.$content-color;
+	#footer {
+		border-top: 1px solid map-get($theme, content-color);
+	}
 }
 
 #campaigns-bar {
 	a {
-		color: colors.$content-color;
+		@include colors.Theme() using ($theme) {
+			color: map-get($theme, content-color);
+			background-color: map-get($theme, campaign-bar-background-color);
+		}
+
 		display: inline-block;
-		background-color: rgb(50, 50, 50);
 		border-radius: 5px;
 		margin-right: 0.5rem;
 		margin-bottom: 0.5rem;
@@ -102,7 +116,10 @@ li {
 		padding: 0.5rem;
 
 		&:hover {
-			background-color: rgb(20, 20, 20);
+			@include colors.Theme() using ($theme) {
+				background-color: map-get($theme, campaign-bar-background-color-hover);
+			}
+
 			text-decoration: underline;
 			cursor: pointer;
 		}

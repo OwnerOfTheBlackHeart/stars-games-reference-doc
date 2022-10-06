@@ -1,82 +1,96 @@
-$content-color: rgb(170, 170, 170);
-$link-color: #6e6ee0;
-$content-background-color: rgba(0, 0, 0, 0.95);
-$example-background-color: rgb(30, 30, 30);
-$input-button-background: rgb(30, 30, 30);
-$input-button-border-color: rgb(45, 45, 45);
-$button-hovered-background: rgb(46, 46, 46);
-$table-header-background-color: rgb(80, 80, 80);
-$table-odd-row-background-color: rgb(40, 40, 40);
-$table-even-row-background-color: rgb(20, 20, 20);
-$table-inner-border-color: rgb(120, 120, 120);
-$previous-date-color: rgb(184, 0, 0);
-$current-date-color: rgb(194, 194, 0);
-$future-date-color: rgb(0, 189, 0);
+@use "themes";
 
-p,
-span,
-th,
-td,
-li,
-label,
-input,
-button,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	color: $content-color;
-}
-
-table,
-th,
-td,
-tr {
-	border-color: $content-color;
-}
-
-a,
-a:visited {
-	color: $link-color;
-}
-
-input,
-button {
-	background-color: $input-button-background;
-	border-color: $input-button-border-color;
-}
-
-button {
-	&:hover {
-		background-color: $button-hovered-background;
-	}
-}
-
-table.alternating-colors {
-	th,
-	td {
-		border: none;
-
-		&:not(:last-child) {
-			border-right: 1px solid $table-inner-border-color;
+@mixin Theme($themes: themes.$themes) {
+	// Key, Value
+	@each $theme-name, $theme in $themes {
+		@at-root .#{$theme-name} #{&} {
+			@content ($theme);
 		}
 	}
+}
 
-	tr:first-child:nth-child(odd) {
-		background-color: $table-header-background-color;
-	}
-
-	tr:nth-child(odd) {
-		background-color: $table-odd-row-background-color;
-	}
-
-	tr:nth-child(even) {
-		background-color: $table-even-row-background-color;
+@mixin AtLevelTheme($themes: themes.$themes) {
+	// Key, Value
+	@each $theme-name, $theme in $themes {
+		@at-root #{&}.#{$theme-name} {
+			@content ($theme);
+		}
 	}
 }
 
-.homebrew-example {
-	background-color: $example-background-color;
+@mixin MakeThemes($themes) {
+	// Key, Value
+	@each $theme-name, $theme in $themes {
+		.#{$theme-name} {
+			p,
+			span,
+			th,
+			td,
+			li,
+			label,
+			input,
+			button,
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				color: map-get($theme, content-color);
+			}
+
+			table,
+			th,
+			td,
+			tr {
+				border-color: map-get($theme, content-color);
+			}
+
+			a,
+			a:visited {
+				color: map-get($theme, link-color);
+			}
+
+			input,
+			button {
+				background-color: map-get($theme, input-button-background);
+				border-color: map-get($theme, input-button-border-color);
+			}
+
+			button {
+				&:hover {
+					background-color: map-get($theme, button-hovered-background);
+				}
+			}
+
+			table.alternating-colors {
+				th,
+				td {
+					border: none;
+
+					&:not(:last-child) {
+						border-right: 1px solid map-get($theme, table-inner-border-color);
+					}
+				}
+
+				tr:first-child:nth-child(odd) {
+					background-color: map-get($theme, table-header-background-color);
+				}
+
+				tr:nth-child(odd) {
+					background-color: map-get($theme, table-odd-row-background-color);
+				}
+
+				tr:nth-child(even) {
+					background-color: map-get($theme, table-even-row-background-color);
+				}
+			}
+
+			.homebrew-example {
+				background-color: map-get($theme, example-background-color);
+			}
+		}
+	}
 }
+
+@include MakeThemes(themes.$themes);
