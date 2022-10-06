@@ -5,14 +5,16 @@
 .theme-stars li,
 .theme-stars label,
 .theme-stars input,
-.theme-stars button,
+.theme-stars button {
+  color: #a8a88a;
+}
 .theme-stars h1,
 .theme-stars h2,
 .theme-stars h3,
 .theme-stars h4,
 .theme-stars h5,
 .theme-stars h6 {
-  color: #a8a88a;
+  color: #bebea7;
 }
 .theme-stars table,
 .theme-stars th,
@@ -60,14 +62,16 @@
 .theme-worlds li,
 .theme-worlds label,
 .theme-worlds input,
-.theme-worlds button,
+.theme-worlds button {
+  color: #a8a88a;
+}
 .theme-worlds h1,
 .theme-worlds h2,
 .theme-worlds h3,
 .theme-worlds h4,
 .theme-worlds h5,
 .theme-worlds h6 {
-  color: #a8a88a;
+  color: #bebea7;
 }
 .theme-worlds table,
 .theme-worlds th,
@@ -115,32 +119,34 @@
 .theme-test li,
 .theme-test label,
 .theme-test input,
-.theme-test button,
+.theme-test button {
+  color: #a8a88a;
+}
 .theme-test h1,
 .theme-test h2,
 .theme-test h3,
 .theme-test h4,
 .theme-test h5,
 .theme-test h6 {
-  color: #aaaaff;
+  color: #bebea7;
 }
 .theme-test table,
 .theme-test th,
 .theme-test td,
 .theme-test tr {
-  border-color: #aaaaff;
+  border-color: #a8a88a;
 }
 .theme-test a,
 .theme-test a:visited {
-  color: #6e6ee0;
+  color: #7979d2;
 }
 .theme-test input,
 .theme-test button {
-  background-color: #1e1e1e;
-  border-color: #2d2d2d;
+  background-color: #262626;
+  border-color: #333333;
 }
 .theme-test button:hover {
-  background-color: #2e2e2e;
+  background-color: #131313;
 }
 .theme-test table.alternating-colors th,
 .theme-test table.alternating-colors td {
@@ -148,16 +154,16 @@
 }
 .theme-test table.alternating-colors th:not(:last-child),
 .theme-test table.alternating-colors td:not(:last-child) {
-  border-right: 1px solid #787878;
+  border-right: 1px solid #404040;
 }
 .theme-test table.alternating-colors tr:first-child:nth-child(odd) {
-  background-color: #505050;
+  background-color: #404040;
 }
 .theme-test table.alternating-colors tr:nth-child(odd) {
-  background-color: #282828;
+  background-color: #262626;
 }
 .theme-test table.alternating-colors tr:nth-child(even) {
-  background-color: #141414;
+  background-color: #131313;
 }
 .theme-test .homebrew-example {
   background-color: #1e1e1e;
@@ -247,10 +253,6 @@ h4 {
   font-style: italic;
 }
 
-b {
-  font-size: 1.1em;
-}
-
 th,
 td {
   padding: 0 0.5rem;
@@ -264,7 +266,7 @@ td {
 }
 
 .theme-test th, td {
-  border: 1px solid #aaaaff;
+  border: 1px solid #a8a88a;
 }
 
 p,
@@ -296,7 +298,7 @@ li {
 }
 
 .theme-test #content {
-  background-color: #0a0a0a;
+  background-color: #1a1a1a;
 }
 
 #content #header,
@@ -329,10 +331,10 @@ li {
 }
 
 .theme-test #header {
-  border-bottom: 1px solid #aaaaff;
+  border-bottom: 1px solid #a8a88a;
 }
 .theme-test #footer {
-  border-top: 1px solid #aaaaff;
+  border-top: 1px solid #a8a88a;
 }
 
 #campaigns-bar a {
@@ -353,8 +355,8 @@ li {
 }
 
 .theme-test #campaigns-bar a {
-  color: #aaaaff;
-  background-color: olive;
+  color: #a8a88a;
+  background-color: #262626;
 }
 
 #campaigns-bar a:hover {
@@ -370,7 +372,7 @@ li {
 }
 
 .theme-test #campaigns-bar a:hover {
-  background-color: #4d4d00;
+  background-color: #131313;
 }
 
 .ap-dir-display-container {

@@ -31,10 +31,6 @@ h4 {
 	font-style: italic;
 }
 
-b {
-	font-size: 1.1em;
-}
-
 th,
 td {
 	@include colors.Theme() using ($theme) {

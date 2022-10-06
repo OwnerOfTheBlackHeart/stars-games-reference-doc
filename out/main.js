@@ -731,17 +731,11 @@ System.register("themes", ["callback-event", "io"], function (exports_9, context
                     }
                 }
             });
-            window.themeTest = (theme) => {
-                CurrentTheme.RunCallbacks(theme);
-            };
             io_1.pageChangeManager.AddCallback((foundPage) => {
-                console.log("Page", foundPage);
                 if (foundPage?.theme) {
-                    console.log("Changing Theme to ", foundPage.theme);
                     CurrentTheme.RunCallbacks(foundPage.theme);
                 }
                 else {
-                    console.log("Resetting Theme");
                     CurrentTheme.RunCallbacks(defaultTheme);
                 }
             }, true);

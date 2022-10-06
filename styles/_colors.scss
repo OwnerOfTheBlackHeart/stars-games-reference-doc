@@ -29,14 +29,17 @@
 			li,
 			label,
 			input,
-			button,
+			button {
+				color: map-get($theme, content-color);
+			}
+
 			h1,
 			h2,
 			h3,
 			h4,
 			h5,
 			h6 {
-				color: map-get($theme, content-color);
+				color: map-get($theme, header-color);
 			}
 
 			table,
