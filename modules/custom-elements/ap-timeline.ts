@@ -1,4 +1,6 @@
+import { AuthManager } from "../auth-manager";
 import { globals, globalsReady } from "../loader";
+import { AuthUser, universalAuthorization } from "../types/auth-user";
 import { Time } from "../types/time";
 import { buildCssStylesheetElement, CreateTableData, CreateTableHeader } from "../utilities";
 import "./ap-theme-container";
@@ -7,6 +9,7 @@ import { ThemeContainer } from "./ap-theme-container";
 interface TimeRow {
 	time: Time;
 	note: string;
+	permissions?: string[];
 }
 
 export class TimeTable extends HTMLElement {
@@ -41,6 +44,9 @@ export class TimeTable extends HTMLElement {
 	rows: TimeRow[] = [];
 	hasProcessedEntries = false;
 	outputDiv: ThemeContainer;
+	callbackId: number;
+	rendered = false;
+	currentUser: AuthUser;
 
 	constructor() {
 		// Always call super first in constructor
@@ -57,12 +63,21 @@ export class TimeTable extends HTMLElement {
 			this.outputDiv = document.createElement("ap-theme-container") as ThemeContainer;
 			this.outputDiv.classList.add("time-table-container");
 			this.shadowRoot.appendChild(this.outputDiv);
+
+			this.callbackId = AuthManager.userChanged.AddCallback((user) => {
+				this.currentUser = user;
+				if (this.rendered) {
+					this.render();
+				}
+			}, true);
 		}
 
 		this.render();
 	}
 
 	render() {
+		this.rendered = true;
+
 		this.outputDiv.innerHTML = "";
 		this.getEntries();
 
@@ -94,32 +109,40 @@ export class TimeTable extends HTMLElement {
 		// Setup
 		let node = document.createElement("tr");
 
-		globalsReady.AddSingleRunCallback(() => {
-			// Date Diff String
-			if (this.currentDateValue) {
-				const diffString = Time.BuildDiffString(globals.dates[this.currentDateValue], dateRow.time);
-				const dataNode = CreateTableData(diffString);
+		// Date Diff String
+		if (this.currentDateValue) {
+			const diffString = Time.BuildDiffString(globals.dates[this.currentDateValue], dateRow.time);
+			const dataNode = CreateTableData(diffString);
 
-				if (diffString.search("ago") >= 0) {
-					dataNode.classList.add("previous-date");
-				} else if (diffString.search("from now") >= 0) {
-					dataNode.classList.add("future-date");
-				} else {
-					dataNode.classList.add("current-date");
-				}
-
-				node.appendChild(dataNode);
+			if (diffString.search("ago") >= 0) {
+				dataNode.classList.add("previous-date");
+			} else if (diffString.search("from now") >= 0) {
+				dataNode.classList.add("future-date");
+			} else {
+				dataNode.classList.add("current-date");
 			}
 
-			// Date Display
-			node.appendChild(CreateTableData(dateRow.time.toString(false)));
-			// node.appendChild(CreateTableData(dateRow.time.toString(this.showSeason)));
+			node.appendChild(dataNode);
+		}
 
-			// Notes Column
-			if (dateRow.note != undefined) {
-				node.appendChild(CreateTableData(dateRow.note));
+		// Date Display
+		node.appendChild(CreateTableData(dateRow.time.toString(false)));
+		// node.appendChild(CreateTableData(dateRow.time.toString(this.showSeason)));
+
+		// Notes Column
+		if (dateRow.note != undefined) {
+			node.appendChild(CreateTableData(dateRow.note));
+		} else {
+			node.appendChild(document.createElement("td"));
+		}
+
+		if (dateRow.permissions) {
+			node.classList.add("auth-row");
+
+			if (!AuthManager.checkUserPermissions(this.currentUser, dateRow.permissions)) {
+				node.style.display = "none";
 			}
-		}, true);
+		}
 
 		return node;
 	}
@@ -137,6 +160,7 @@ export class TimeTable extends HTMLElement {
 						month: Number(entry.getAttribute("month")),
 						year: Number(entry.getAttribute("year")),
 					}),
+					permissions: entry.getAttribute("permissions")?.split(" "),
 				})
 			);
 
@@ -149,4 +173,6 @@ export class TimeTable extends HTMLElement {
 	}
 }
 
-customElements.define("ap-time-table", TimeTable);
+globalsReady.AddSingleRunCallback(() => {
+	customElements.define("ap-time-table", TimeTable);
+}, true);

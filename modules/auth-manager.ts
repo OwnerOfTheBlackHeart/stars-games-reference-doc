@@ -1,6 +1,6 @@
 import { CallbackManager } from "./callback-event";
 import { globals, globalsReady } from "./loader";
-import { AuthUser } from "./types/auth-user";
+import { AuthUser, universalAuthorization } from "./types/auth-user";
 
 const currentNameToken = "currentUserName";
 
@@ -32,6 +32,18 @@ export class AuthManager {
 
 	static deauthorize() {
 		this.saveUser(undefined);
+	}
+
+	static checkUserPermissions(user: AuthUser, permissions: string[]) {
+		if (user) {
+			return user.accessTokens.some((token) => token === universalAuthorization || permissions.includes(token));
+		} else {
+			return false;
+		}
+	}
+
+	static checkCurrentUserPermissions(permissions: string[]) {
+		return this.checkUserPermissions(this.userChanged.GetCurrentValue(), permissions);
 	}
 
 	private static saveUser(user: AuthUser) {

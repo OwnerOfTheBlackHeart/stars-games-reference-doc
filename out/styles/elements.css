@@ -52,7 +52,7 @@
   background-color: #131313;
 }
 .theme-stars .homebrew-example {
-  background-color: #1e1e1e;
+  background-color: #262626;
 }
 
 .theme-worlds p,
@@ -109,7 +109,7 @@
   background-color: #131313;
 }
 .theme-worlds .homebrew-example {
-  background-color: #1e1e1e;
+  background-color: #4d4d4d;
 }
 
 .theme-test p,
@@ -264,6 +264,9 @@ a:visited:hover {
   vertical-align: middle;
   padding: 0.25rem 0.5rem 0.25rem 0.5rem;
   white-space: nowrap;
+}
+.time-table-container .auth-row {
+  font-style: italic;
 }
 .time-table-container.theme-stars .previous-date {
   color: #9c1616;

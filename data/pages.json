@@ -238,6 +238,58 @@
 					]
 				}
 			]
+		},
+		{
+			"baseUrl": "lodburg",
+			"mainPage": "lodburg-main",
+			"pages": [
+				{ "url": "lodburg-main.html", "name": "lodburg-main", "title": "Lodburg" },
+				{ "url": "timeline.html", "name": "lod-timeline", "title": "Lodburg Timeline" },
+				{ "url": "roll-tables.html", "name": "lod-roll-tables", "title": "Roll Tables" }
+			],
+			"directories": [
+				{
+					"baseUrl": "adventures",
+					"mainPage": "",
+					"pages": [{ "url": "adventures.html", "name": "lod-adventures", "title": "Adventures" }],
+					"directories": []
+				},
+				{
+					"baseUrl": "contacts",
+					"mainPage": "",
+					"pages": [],
+					"directories": []
+				},
+				{
+					"baseUrl": "locations",
+					"mainPage": "lod-locations",
+					"pages": [
+						{ "url": "locations.html", "name": "lod-locations", "title": "Locations in Lodburg" },
+						{ "url": "minor-locations.html", "name": "lod-minor-locations", "title": "Minor Locations in Lodburg" },
+						{ "url": "nothing.html", "name": "lod-nothing", "title": "The City of Nothing" },
+						{ "url": "dewfrost.html", "name": "lod-dewfrost", "title": "The Town of Dewfrost" },
+						{ "url": "direwater.html", "name": "lod-direwater", "title": "The Town of Direwater" },
+						{ "url": "fangdor-castle.html", "name": "lod-fangdor-castle", "title": "Fangdor Castle" }
+					],
+					"directories": []
+				},
+				{
+					"baseUrl": "organizations",
+					"mainPage": "lod-organizations",
+					"pages": [
+						{ "url": "organizations.html", "name": "lod-organizations", "title": "Organizations" },
+						{ "url": "axon.html", "name": "lod-axon", "title": "The Axon" }
+					],
+					"directories": [
+						{
+							"baseUrl": "rauber-tribes",
+							"mainPage": "lod-rauber-tribes",
+							"pages": [{ "url": "rauber-tribes.html", "name": "lod-rauber-tribes", "title": "Rauber Tribes" }],
+							"directories": []
+						}
+					]
+				}
+			]
 		}
 	]
 }

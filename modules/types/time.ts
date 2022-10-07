@@ -205,13 +205,7 @@ export class Time {
 	}
 
 	static CleanTime(time: Time) {
-		let toReturn = new Time();
-
-		toReturn.day = Math.max(time.day, 0);
-		toReturn.month = Math.max(time.month, 0);
-		toReturn.year = Math.max(time.year, 0);
-
-		return toReturn;
+		return time;
 	}
 
 	static Compare(a: Time, b: Time) {

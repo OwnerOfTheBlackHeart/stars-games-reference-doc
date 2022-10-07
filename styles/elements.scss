@@ -33,6 +33,10 @@
 		white-space: nowrap;
 	}
 
+	.auth-row {
+		font-style: italic;
+	}
+
 	@include colors.AtLevelTheme() using ($theme) {
 		.previous-date {
 			color: map-get($theme, previous-date-color);

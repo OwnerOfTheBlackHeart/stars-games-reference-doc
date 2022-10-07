@@ -1,5 +1,5 @@
 import { AuthManager } from "../auth-manager";
-import { AuthUser } from "../types/auth-user";
+import { AuthUser, universalAuthorization } from "../types/auth-user";
 
 export const authContainerName = "ap-auth-container";
 export enum AuthDisplayType {
@@ -8,8 +8,6 @@ export enum AuthDisplayType {
 	inlineBlock = "inline-block",
 	none = "none",
 }
-
-const universalAuthorization = "gm";
 
 class AuthContainer extends HTMLElement {
 	get displayType() {
@@ -89,13 +87,7 @@ class AuthContainer extends HTMLElement {
 	}
 
 	render() {
-		let hasPermissions = false;
-
-		if (this.currentUser) {
-			hasPermissions = this.currentUser.accessTokens.some((token) => token === universalAuthorization || this.accessTokens.includes(token));
-		}
-
-		if (hasPermissions) {
+		if (AuthManager.checkUserPermissions(this.currentUser, this.accessTokens)) {
 			this.style.display = this.displayType;
 		} else {
 			this.style.display = AuthDisplayType.none;

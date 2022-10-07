@@ -8,3 +8,5 @@ export class AuthUser {
 	passphrase: string;
 	accessTokens: string[];
 }
+
+export const universalAuthorization = "gm";

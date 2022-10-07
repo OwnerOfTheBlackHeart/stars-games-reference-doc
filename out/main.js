@@ -44,6 +44,9 @@ System.register("callback-event", [], function (exports_1, context_1) {
                     this.singleRunCallbacks = [];
                     this.previousValue = newValue;
                 }
+                GetCurrentValue() {
+                    return Object.freeze(this.previousValue);
+                }
             };
             exports_1("CallbackManager", CallbackManager);
         }
@@ -51,7 +54,7 @@ System.register("callback-event", [], function (exports_1, context_1) {
 });
 System.register("types/auth-user", [], function (exports_2, context_2) {
     "use strict";
-    var AuthUser;
+    var AuthUser, universalAuthorization;
     var __moduleName = context_2 && context_2.id;
     return {
         setters: [],
@@ -59,6 +62,7 @@ System.register("types/auth-user", [], function (exports_2, context_2) {
             AuthUser = class AuthUser {
             };
             exports_2("AuthUser", AuthUser);
+            exports_2("universalAuthorization", universalAuthorization = "gm");
         }
     };
 });
@@ -299,11 +303,7 @@ System.register("types/time", [], function (exports_4, context_4) {
                     return Time.MonthsToDays(Time.YearsToMonths(years));
                 }
                 static CleanTime(time) {
-                    let toReturn = new Time();
-                    toReturn.day = Math.max(time.day, 0);
-                    toReturn.month = Math.max(time.month, 0);
-                    toReturn.year = Math.max(time.year, 0);
-                    return toReturn;
+                    return time;
                 }
                 static Compare(a, b) {
                     if (a === b) {
@@ -407,9 +407,9 @@ System.register("loader", ["callback-event", "types/time"], function (exports_5,
         }
     };
 });
-System.register("auth-manager", ["callback-event", "loader"], function (exports_6, context_6) {
+System.register("auth-manager", ["callback-event", "loader", "types/auth-user"], function (exports_6, context_6) {
     "use strict";
-    var callback_event_2, loader_1, currentNameToken, AuthManager;
+    var callback_event_2, loader_1, auth_user_1, currentNameToken, AuthManager;
     var __moduleName = context_6 && context_6.id;
     return {
         setters: [
@@ -418,6 +418,9 @@ System.register("auth-manager", ["callback-event", "loader"], function (exports_
             },
             function (loader_1_1) {
                 loader_1 = loader_1_1;
+            },
+            function (auth_user_1_1) {
+                auth_user_1 = auth_user_1_1;
             }
         ],
         execute: function () {
@@ -440,6 +443,17 @@ System.register("auth-manager", ["callback-event", "loader"], function (exports_
                 }
                 static deauthorize() {
                     this.saveUser(undefined);
+                }
+                static checkUserPermissions(user, permissions) {
+                    if (user) {
+                        return user.accessTokens.some((token) => token === auth_user_1.universalAuthorization || permissions.includes(token));
+                    }
+                    else {
+                        return false;
+                    }
+                }
+                static checkCurrentUserPermissions(permissions) {
+                    return this.checkUserPermissions(this.userChanged.GetCurrentValue(), permissions);
                 }
                 static saveUser(user) {
                     this.userChanged.RunCallbacks(user);
@@ -931,7 +945,7 @@ System.register("custom-elements/ap-dir-display", ["io", "custom-elements/ap-nav
 });
 System.register("custom-elements/ap-auth-container", ["auth-manager"], function (exports_13, context_13) {
     "use strict";
-    var auth_manager_2, authContainerName, AuthDisplayType, universalAuthorization, AuthContainer;
+    var auth_manager_2, authContainerName, AuthDisplayType, AuthContainer;
     var __moduleName = context_13 && context_13.id;
     return {
         setters: [
@@ -948,7 +962,6 @@ System.register("custom-elements/ap-auth-container", ["auth-manager"], function 
                 AuthDisplayType["none"] = "none";
             })(AuthDisplayType || (AuthDisplayType = {}));
             exports_13("AuthDisplayType", AuthDisplayType);
-            universalAuthorization = "gm";
             AuthContainer = class AuthContainer extends HTMLElement {
                 constructor() {
                     super();
@@ -1022,11 +1035,7 @@ System.register("custom-elements/ap-auth-container", ["auth-manager"], function 
                     auth_manager_2.AuthManager.userChanged.RemoveCallback(this.callbackId);
                 }
                 render() {
-                    let hasPermissions = false;
-                    if (this.currentUser) {
-                        hasPermissions = this.currentUser.accessTokens.some((token) => token === universalAuthorization || this.accessTokens.includes(token));
-                    }
-                    if (hasPermissions) {
+                    if (auth_manager_2.AuthManager.checkUserPermissions(this.currentUser, this.accessTokens)) {
                         this.style.display = this.displayType;
                     }
                     else {
@@ -1206,12 +1215,15 @@ System.register("custom-elements/ap-stat-block", ["utilities", "custom-elements/
         }
     };
 });
-System.register("custom-elements/ap-timeline", ["loader", "types/time", "utilities", "custom-elements/ap-theme-container"], function (exports_16, context_16) {
+System.register("custom-elements/ap-timeline", ["auth-manager", "loader", "types/time", "utilities", "custom-elements/ap-theme-container"], function (exports_16, context_16) {
     "use strict";
-    var loader_4, time_2, utilities_3, TimeTable;
+    var auth_manager_4, loader_4, time_2, utilities_3, TimeTable;
     var __moduleName = context_16 && context_16.id;
     return {
         setters: [
+            function (auth_manager_4_1) {
+                auth_manager_4 = auth_manager_4_1;
+            },
             function (loader_4_1) {
                 loader_4 = loader_4_1;
             },
@@ -1230,6 +1242,7 @@ System.register("custom-elements/ap-timeline", ["loader", "types/time", "utiliti
                     super();
                     this.rows = [];
                     this.hasProcessedEntries = false;
+                    this.rendered = false;
                 }
                 get headerTitle() {
                     return this.getAttribute("header");
@@ -1261,10 +1274,17 @@ System.register("custom-elements/ap-timeline", ["loader", "types/time", "utiliti
                         this.outputDiv = document.createElement("ap-theme-container");
                         this.outputDiv.classList.add("time-table-container");
                         this.shadowRoot.appendChild(this.outputDiv);
+                        this.callbackId = auth_manager_4.AuthManager.userChanged.AddCallback((user) => {
+                            this.currentUser = user;
+                            if (this.rendered) {
+                                this.render();
+                            }
+                        }, true);
                     }
                     this.render();
                 }
                 render() {
+                    this.rendered = true;
                     this.outputDiv.innerHTML = "";
                     this.getEntries();
                     const table = document.createElement("table");
@@ -1286,26 +1306,33 @@ System.register("custom-elements/ap-timeline", ["loader", "types/time", "utiliti
                 }
                 BuildNormalRow(dateRow) {
                     let node = document.createElement("tr");
-                    loader_4.globalsReady.AddSingleRunCallback(() => {
-                        if (this.currentDateValue) {
-                            const diffString = time_2.Time.BuildDiffString(loader_4.globals.dates[this.currentDateValue], dateRow.time);
-                            const dataNode = utilities_3.CreateTableData(diffString);
-                            if (diffString.search("ago") >= 0) {
-                                dataNode.classList.add("previous-date");
-                            }
-                            else if (diffString.search("from now") >= 0) {
-                                dataNode.classList.add("future-date");
-                            }
-                            else {
-                                dataNode.classList.add("current-date");
-                            }
-                            node.appendChild(dataNode);
+                    if (this.currentDateValue) {
+                        const diffString = time_2.Time.BuildDiffString(loader_4.globals.dates[this.currentDateValue], dateRow.time);
+                        const dataNode = utilities_3.CreateTableData(diffString);
+                        if (diffString.search("ago") >= 0) {
+                            dataNode.classList.add("previous-date");
                         }
-                        node.appendChild(utilities_3.CreateTableData(dateRow.time.toString(false)));
-                        if (dateRow.note != undefined) {
-                            node.appendChild(utilities_3.CreateTableData(dateRow.note));
+                        else if (diffString.search("from now") >= 0) {
+                            dataNode.classList.add("future-date");
                         }
-                    }, true);
+                        else {
+                            dataNode.classList.add("current-date");
+                        }
+                        node.appendChild(dataNode);
+                    }
+                    node.appendChild(utilities_3.CreateTableData(dateRow.time.toString(false)));
+                    if (dateRow.note != undefined) {
+                        node.appendChild(utilities_3.CreateTableData(dateRow.note));
+                    }
+                    else {
+                        node.appendChild(document.createElement("td"));
+                    }
+                    if (dateRow.permissions) {
+                        node.classList.add("auth-row");
+                        if (!auth_manager_4.AuthManager.checkUserPermissions(this.currentUser, dateRow.permissions)) {
+                            node.style.display = "none";
+                        }
+                    }
                     return node;
                 }
                 getEntries() {
@@ -1319,6 +1346,7 @@ System.register("custom-elements/ap-timeline", ["loader", "types/time", "utiliti
                                 month: Number(entry.getAttribute("month")),
                                 year: Number(entry.getAttribute("year")),
                             }),
+                            permissions: entry.getAttribute("permissions")?.split(" "),
                         }));
                         if (this.rows.length > 0) {
                             if (!this.disableSort) {
@@ -1329,7 +1357,9 @@ System.register("custom-elements/ap-timeline", ["loader", "types/time", "utiliti
                 }
             };
             exports_16("TimeTable", TimeTable);
-            customElements.define("ap-time-table", TimeTable);
+            loader_4.globalsReady.AddSingleRunCallback(() => {
+                customElements.define("ap-time-table", TimeTable);
+            }, true);
         }
     };
 });

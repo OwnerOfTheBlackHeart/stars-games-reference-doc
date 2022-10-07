@@ -48,6 +48,10 @@ export class CallbackManager<T> {
 
 		this.previousValue = newValue;
 	}
+
+	GetCurrentValue() {
+		return Object.freeze(this.previousValue);
+	}
 }
 
 export interface Callback<T> {
