@@ -421,4 +421,26 @@ ap-stat-block * {
   margin: 0.5rem;
 }
 
+.character-image-left,
+.character-image-right {
+  max-height: 500px;
+  max-width: 500px;
+}
+
+.character-image-left {
+  float: left;
+  margin-right: 0.5rem;
+}
+
+.character-image-right {
+  float: right;
+  margin-left: 0.5rem;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
 /*# sourceMappingURL=main.css.map */
