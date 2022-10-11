@@ -270,7 +270,8 @@
 						{ "url": "dewfrost.html", "name": "lod-dewfrost", "title": "The Town of Dewfrost" },
 						{ "url": "direwater.html", "name": "lod-direwater", "title": "The Town of Direwater" },
 						{ "url": "fangdor-castle.html", "name": "lod-fangdor-castle", "title": "Fangdor Castle" },
-						{ "url": "howlester-hold.html", "name": "lod-howlester-hold", "title": "Howlester Hold" }
+						{ "url": "howlester-hold.html", "name": "lod-howlester-hold", "title": "Howlester Hold" },
+						{ "url": "lister-homestead.html", "name": "lod-lister-homestead", "title": "The Lister Homestead" }
 					],
 					"directories": []
 				},
