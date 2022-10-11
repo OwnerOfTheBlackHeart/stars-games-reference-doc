@@ -245,6 +245,7 @@
 			"pages": [
 				{ "url": "lodburg-main.html", "name": "lodburg-main", "title": "Lodburg" },
 				{ "url": "timeline.html", "name": "lod-timeline", "title": "Lodburg Timeline" },
+				{ "url": "hex-key.html", "name": "lod-hex-key", "title": "Lodburg Hex Key" },
 				{ "url": "roll-tables.html", "name": "lod-roll-tables", "title": "Roll Tables" }
 			],
 			"directories": [
@@ -271,6 +272,7 @@
 						{ "url": "direwater.html", "name": "lod-direwater", "title": "The Town of Direwater" },
 						{ "url": "fangdor-castle.html", "name": "lod-fangdor-castle", "title": "Fangdor Castle" },
 						{ "url": "howlester-hold.html", "name": "lod-howlester-hold", "title": "Howlester Hold" },
+						{ "url": "thornhost.html", "name": "lod-thornhost", "title": "The City of Thornhost" },
 						{ "url": "lister-homestead.html", "name": "lod-lister-homestead", "title": "The Lister Homestead" }
 					],
 					"directories": []
@@ -280,7 +282,8 @@
 					"mainPage": "lod-organizations",
 					"pages": [
 						{ "url": "organizations.html", "name": "lod-organizations", "title": "Organizations" },
-						{ "url": "axon.html", "name": "lod-axon", "title": "The Axon" }
+						{ "url": "axon.html", "name": "lod-axon", "title": "The Axon" },
+						{ "url": "omiel.html", "name": "lod-omiel", "title": "The Om'iel" }
 					],
 					"directories": [
 						{
