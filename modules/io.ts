@@ -119,7 +119,7 @@ async function LoadIntoContent(pageName: string) {
 	return element;
 }
 
-function UpdateContentScroll() {
+export function UpdateContentScroll() {
 	const contents = document.querySelector<HTMLElement>(contentQuery);
 
 	if (location.hash) {

@@ -5,16 +5,18 @@ import { DateInitializer, Time } from "./types/time";
 
 export const globalsReady = new CallbackManager<void>(true, true);
 
-const [directory, users, dates] = await Promise.all([
+const [directory, users, dates, templateLocations] = await Promise.all([
 	fetch("data/pages.json", { cache: "no-store" }).then((response) => response.json() as Promise<PageDirectory>),
 	fetch("data/auth.json", { cache: "no-store" }).then((response) => response.json() as Promise<AuthUser[]>),
 	fetch("data/dates.json", { cache: "no-store" }).then((response) => response.json() as Promise<Record<string, DateInitializer>>),
+	fetch("data/templates.json", { cache: "no-store" }).then((response) => response.json() as Promise<Record<string, string>>),
 ]);
 
 export const globals = {
 	pageDirectory: directory,
 	users: users,
 	dates: activateDates(dates),
+	templateLocations,
 };
 
 globalsReady.RunCallbacks();

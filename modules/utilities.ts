@@ -4,6 +4,10 @@ declare global {
 		firstElement(): T;
 		lastElement(): T;
 	}
+
+	interface String {
+		replaceAll(searchValue: string | RegExp, replaceValue: string): string;
+	}
 }
 
 Array.prototype.firstElement = function () {
@@ -11,6 +15,10 @@ Array.prototype.firstElement = function () {
 };
 Array.prototype.lastElement = function () {
 	return this[this.length - 1];
+};
+
+String.prototype.replaceAll = function (searchValue: string | RegExp, replaceValue: string) {
+	return this.replace(new RegExp(searchValue, "g"), replaceValue);
 };
 
 // Global functions

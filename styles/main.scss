@@ -78,7 +78,12 @@ li {
 
 	#page-area {
 		width: 100%;
-		padding-right: 1rem;
+		padding: {
+			right: 1rem;
+			top: 0.5rem;
+			bottom: 0.5rem;
+			left: 1rem;
+		}
 		flex-grow: 1;
 		flex-shrink: 1;
 		flex-basis: 0;

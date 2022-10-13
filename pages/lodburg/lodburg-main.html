@@ -1,31 +1,10 @@
 <h1>Lodburg Campaign</h1>
 <div class="column-container">
 	<div class="column">
-		<h3>Locations</h3>
-		<ul class="link-list">
-			<li><a is="ap-nav-link" href="lod-minor-locations">Minor Locations</a></li>
-			<li><a is="ap-nav-link" href="lod-thornhost">The City of Thornhost</a></li>
-			<li><a is="ap-nav-link" href="lod-dewfrost">The Town of Dewfrost</a></li>
-			<li><a is="ap-nav-link" href="lod-direwater">The Town of Direwater</a></li>
-			<li><a is="ap-nav-link" href="lod-fangdor-castle">Fangdor Castle</a></li>
-			<li><a is="ap-nav-link" href="lod-lister-homestead">The Lister Homestead</a></li>
-			<li><a is="ap-nav-link" href="lod-nothing">The City of Nothing</a></li>
-		</ul>
+		<ap-template-outlet folder="lod-pages" path="locations" header-level="3"></ap-template-outlet>
 	</div>
 	<div class="column">
-		<h3>Organizations</h3>
-		<ul class="link-list">
-			<li><a is="ap-nav-link" href="lod-axon">The Axon</a></li>
-			<li>
-				<h4>Rauber Tribes</h4>
-				<ul class="link-list">
-					<li><a is="ap-nav-link" href="lod-rauber-tribes">Rauber Tribes</a></li>
-					<ap-auth-container permissions="lodburg-full rauber-tribes">
-						<li><a is="ap-nav-link" href="lod-hemma-tribe">The Hemma Tribe</a></li>
-					</ap-auth-container>
-				</ul>
-			</li>
-		</ul>
+		<ap-template-outlet folder="lod-pages" path="organizations" header-level="3"></ap-template-outlet>
 	</div>
 	<div class="column">
 		<h3>Misc</h3>

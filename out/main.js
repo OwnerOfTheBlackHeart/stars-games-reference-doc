@@ -373,7 +373,7 @@ System.register("types/time", [], function (exports_4, context_4) {
 });
 System.register("loader", ["callback-event", "types/time"], function (exports_5, context_5) {
     "use strict";
-    var callback_event_1, time_1, globalsReady, _a, directory, users, dates, globals;
+    var callback_event_1, time_1, globalsReady, _a, directory, users, dates, templateLocations, globals;
     var __moduleName = context_5 && context_5.id;
     function activateDates(dates) {
         const activatedDates = {};
@@ -397,11 +397,13 @@ System.register("loader", ["callback-event", "types/time"], function (exports_5,
                 fetch("data/pages.json", { cache: "no-store" }).then((response) => response.json()),
                 fetch("data/auth.json", { cache: "no-store" }).then((response) => response.json()),
                 fetch("data/dates.json", { cache: "no-store" }).then((response) => response.json()),
-            ]), directory = _a[0], users = _a[1], dates = _a[2];
+                fetch("data/templates.json", { cache: "no-store" }).then((response) => response.json()),
+            ]), directory = _a[0], users = _a[1], dates = _a[2], templateLocations = _a[3];
             exports_5("globals", globals = {
                 pageDirectory: directory,
                 users: users,
                 dates: activateDates(dates),
+                templateLocations,
             });
             globalsReady.RunCallbacks();
         }
@@ -586,6 +588,9 @@ System.register("utilities", [], function (exports_7, context_7) {
             Array.prototype.lastElement = function () {
                 return this[this.length - 1];
             };
+            String.prototype.replaceAll = function (searchValue, replaceValue) {
+                return this.replace(new RegExp(searchValue, "g"), replaceValue);
+            };
         }
     };
 });
@@ -677,6 +682,7 @@ System.register("io", ["auth-manager", "callback-event", "loader", "types/page",
             contents.scrollTop = 0;
         }
     }
+    exports_8("UpdateContentScroll", UpdateContentScroll);
     return {
         setters: [
             function (auth_manager_1_1) {
@@ -1637,9 +1643,90 @@ System.register("custom-elements/ap-vehicle-stat-block", ["utilities", "custom-e
         }
     };
 });
-System.register("custom-elements/custom-elements", ["custom-elements/ap-theme-container", "custom-elements/ap-nav-link", "custom-elements/ap-dir-display", "custom-elements/ap-auth-container", "custom-elements/ap-auth-display", "custom-elements/ap-stat-block", "custom-elements/ap-timeline", "custom-elements/ap-display-global", "custom-elements/ap-birthday-generator", "custom-elements/ap-vehicle-stat-block"], function (exports_20, context_20) {
+System.register("custom-elements/ap-template-outlet", ["io", "loader"], function (exports_20, context_20) {
     "use strict";
+    var io_4, loader_5, templateOutletName, TemplateOutlet;
     var __moduleName = context_20 && context_20.id;
+    return {
+        setters: [
+            function (io_4_1) {
+                io_4 = io_4_1;
+            },
+            function (loader_5_1) {
+                loader_5 = loader_5_1;
+            }
+        ],
+        execute: function () {
+            exports_20("templateOutletName", templateOutletName = "ap-template-outlet");
+            TemplateOutlet = class TemplateOutlet extends HTMLElement {
+                get folder() {
+                    return this.getAttribute("folder");
+                }
+                set folder(val) {
+                    this.setAttribute("folder", val);
+                }
+                get path() {
+                    return this.getAttribute("path");
+                }
+                set path(val) {
+                    this.setAttribute("path", val);
+                }
+                get headerLevel() {
+                    return Number(this.getAttribute("header-level"));
+                }
+                set headerLevel(val) {
+                    this.setAttribute("header-level", val.toString());
+                }
+                constructor() {
+                    super();
+                }
+                connectedCallback() {
+                    this.innerHTML = "";
+                    if (this.path && this.folder) {
+                        const folderPath = loader_5.globals.templateLocations[this.folder];
+                        const filepath = this.path.includes(".html") ? this.path : this.path + ".html";
+                        if (folderPath) {
+                            fetch(`${folderPath}/${filepath}`)
+                                .then((response) => response.text())
+                                .then((html) => {
+                                this.innerHTML = this.adjustForHeaderLevel(html);
+                                if (this.headerLevel) {
+                                    const subTemplates = this.querySelectorAll(templateOutletName);
+                                    if (subTemplates.length > 0) {
+                                        subTemplates.forEach((subOutlet) => (subOutlet.headerLevel = subOutlet.headerLevel ? subOutlet.headerLevel + this.headerLevel - 1 : this.headerLevel));
+                                    }
+                                }
+                                if (location.hash) {
+                                    const element = this.querySelector(location.hash);
+                                    if (element) {
+                                        io_4.UpdateContentScroll();
+                                    }
+                                }
+                            });
+                        }
+                    }
+                }
+                adjustForHeaderLevel(html) {
+                    let headerLevelModifier = this.headerLevel;
+                    if (headerLevelModifier) {
+                        headerLevelModifier -= 1;
+                        for (let i = 10; i >= 1; i--) {
+                            html = html.replaceAll(`<h${i}>`, `<h${i + headerLevelModifier}>`).replaceAll(`</h${i}>`, `</h${i + headerLevelModifier}>`);
+                        }
+                        return html;
+                    }
+                    else {
+                        return html;
+                    }
+                }
+            };
+            loader_5.globalsReady.AddSingleRunCallback(() => customElements.define(templateOutletName, TemplateOutlet));
+        }
+    };
+});
+System.register("custom-elements/custom-elements", ["custom-elements/ap-theme-container", "custom-elements/ap-nav-link", "custom-elements/ap-dir-display", "custom-elements/ap-auth-container", "custom-elements/ap-auth-display", "custom-elements/ap-stat-block", "custom-elements/ap-timeline", "custom-elements/ap-display-global", "custom-elements/ap-birthday-generator", "custom-elements/ap-vehicle-stat-block", "custom-elements/ap-template-outlet"], function (exports_21, context_21) {
+    "use strict";
+    var __moduleName = context_21 && context_21.id;
     return {
         setters: [
             function (_5) {
@@ -1661,25 +1748,27 @@ System.register("custom-elements/custom-elements", ["custom-elements/ap-theme-co
             function (_13) {
             },
             function (_14) {
+            },
+            function (_15) {
             }
         ],
         execute: function () {
         }
     };
 });
-System.register("main", ["custom-elements/custom-elements", "io", "loader", "types/page"], function (exports_21, context_21) {
+System.register("main", ["custom-elements/custom-elements", "io", "loader", "types/page"], function (exports_22, context_22) {
     "use strict";
-    var io_4, loader_5, page_3;
-    var __moduleName = context_21 && context_21.id;
+    var io_5, loader_6, page_3;
+    var __moduleName = context_22 && context_22.id;
     return {
         setters: [
-            function (_15) {
+            function (_16) {
             },
-            function (io_4_1) {
-                io_4 = io_4_1;
+            function (io_5_1) {
+                io_5 = io_5_1;
             },
-            function (loader_5_1) {
-                loader_5 = loader_5_1;
+            function (loader_6_1) {
+                loader_6 = loader_6_1;
             },
             function (page_3_1) {
                 page_3 = page_3_1;
@@ -1687,10 +1776,10 @@ System.register("main", ["custom-elements/custom-elements", "io", "loader", "typ
         ],
         execute: function () {
             window.test = (name) => {
-                console.log(page_3.FindPage(loader_5.globals.pageDirectory, name));
+                console.log(page_3.FindPage(loader_6.globals.pageDirectory, name));
             };
-            io_4.InitialLoad().then(() => {
-                onpopstate = io_4.OnPopState;
+            io_5.InitialLoad().then(() => {
+                onpopstate = io_5.OnPopState;
             });
         }
     };
