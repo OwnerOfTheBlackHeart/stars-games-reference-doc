@@ -283,7 +283,8 @@
 					"pages": [
 						{ "url": "organizations.html", "name": "lod-organizations", "title": "Organizations" },
 						{ "url": "axon.html", "name": "lod-axon", "title": "The Axon" },
-						{ "url": "omiel.html", "name": "lod-omiel", "title": "The Om'iel" }
+						{ "url": "omiel.html", "name": "lod-omiel", "title": "The Om'iel" },
+						{ "url": "wabril.html", "name": "lod-wabril", "title": "The Wabril" }
 					],
 					"directories": [
 						{
