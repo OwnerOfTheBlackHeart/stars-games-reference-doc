@@ -199,3 +199,20 @@ ap-stat-block * {
 	clear: both;
 	display: table;
 }
+
+.two-columns-container {
+	@include colors.Theme() using ($theme) {
+		column-rule: 1px solid map-get($theme, content-color);
+	}
+
+	margin-top: 0.5rem;
+	columns: 300px 2;
+	column-gap: 2em;
+	width: 75%;
+	max-width: 1000px;
+	min-width: 200px;
+
+	.item-name {
+		font-weight: bold;
+	}
+}

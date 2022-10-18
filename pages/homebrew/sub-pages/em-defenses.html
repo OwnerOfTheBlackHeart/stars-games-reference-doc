@@ -1,0 +1,118 @@
+<h1 id="defenses">Defenses</h1>
+<ap-smart-table headers="Mech Defense, Cost*, Power, Mass, TL, Class, Effect">
+	<classes cost="centered" power="centered" mass="centered" tl="centered" class="powered" effect="italicized"></classes>
+	<row>
+		<mech-defense>
+			<a href="#augmented-ecm-projector">Augmented ECM Projector</a>
+		</mech-defense>
+		<cost>75k</cost>
+		<power>2#</power>
+		<mass>1#</mass>
+		<tl>4</tl>
+		<class>Light</class>
+		<effect>+2 AC bonus, -1 Speed penalty</effect>
+	</row>
+	<row>
+		<mech-defense>
+			<a href="#hardened-polyceramic-overlay">Hardened Polyceramic Overlay</a>
+		</mech-defense>
+		<cost>50k</cost>
+		<power>1#</power>
+		<mass>1#</mass>
+		<tl>4</tl>
+		<class>Light</class>
+		<effect>AP quality of attacking weapons reduced by 5</effect>
+	</row>
+	<row>
+		<mech-defense>
+			<a href="#mes-shunt-channels">MES Shunt Channels</a>
+		</mech-defense>
+		<cost>25k</cost>
+		<power>1#</power>
+		<mass>2#</mass>
+		<tl>5</tl>
+		<class>Suit</class>
+		<effect>Grants Armor 10 versus Psi weaponry</effect>
+	</row>
+	<row>
+		<mech-defense>
+			<a href="#morphic-silhouette-damper">Morphic Silhouette Damper</a>
+		</mech-defense>
+		<cost>25k</cost>
+		<power>1#</power>
+		<mass>2#</mass>
+		<tl>4</tl>
+		<class>Suit</class>
+		<effect>Halves an attacking weapon’s Range</effect>
+	</row>
+	<row>
+		<mech-defense>
+			<a href="#redundant-systems-buffer">Redundant Systems Buffer</a>
+		</mech-defense>
+		<cost>75k</cost>
+		<power>10</power>
+		<mass>5</mass>
+		<tl>4</tl>
+		<class>Heavy</class>
+		<effect>Adds +20 hit points</effect>
+	</row>
+	<row>
+		<mech-defense>
+			<a href="#vanguard-plating">Vanguard Plating</a>
+		</mech-defense>
+		<cost>100k</cost>
+		<power>15</power>
+		<mass>5</mass>
+		<tl>5</tl>
+		<class>Heavy</class>
+		<effect>Reduces AP of attacking weapons by 15</effect>
+	</row>
+	<footer>
+		<div># Multiply this requirement by 2 for light mechs and 4 for heavy mechs</div>
+		<div>* Multiply all base costs by 3 for light mechs and 6 for heavy mechs</div>
+	</footer>
+</ap-smart-table>
+
+<div class="two-columns-container">
+	<div id="augmented-ecm-projector" class="item-container">
+		<p>
+			<i class="item-name">Augmented ECM Projector:</i> The quantum taps on this mech have been tuned to interfere with the targeting of
+			enemy weapon systems, at the cost of additional power drawn from the motive servos. The mech has an effective +2 armor class bonus
+			against attacks from other vehicles or mechs, though its Speed rating is reduced by 1.
+		</p>
+	</div>
+	<div id="hardened-polyceramic-overlay" class="item-container">
+		<p>
+			<i class="item-name">Hardened Polyceramic Overlay:</i> A relative of the same hardened plating used on military warships, this plating
+			reduces the armor piercing quality of attacking weapons by 5. Thus, a heavy laser that normally ignores 25 points of its target’s
+			armor now only ignores 20.
+		</p>
+	</div>
+	<div id="mes-shunt-channels" class="item-container">
+		<p>
+			<i class="item-name">MES Shunt Channels:</i> Complex psitech-derived shielding circuitry provides limited protection against psi-based
+			weapons, adding 10 points of Armor that only count against weaponry with the Psi quality. This armor stacks with any gained from a
+			Neural Static Generator.
+		</p>
+	</div>
+	<div id="morphic-silhouette-damper" class="item-container">
+		<p>
+			<i class="item-name">Morphic Silhouette Damper:</i> Holoprojectors and pulsed ECM conspire to make it much more difficult to fix the
+			mech in a weapon’s sights. The effective range of any weapon targeted at the mech is reduced by half. This benefit is lost if the
+			attacker is within 50 meters of the mech.
+		</p>
+	</div>
+	<div id="redundant-systems-buffer" class="item-container">
+		<p>
+			<i class="item-name">Redundant Systems Buffer:</i> Substantial power and mass is devoted to a complex array of redundant systems,
+			increasing the amount of punishment the heavy mech can take before it is finally destroyed.
+		</p>
+	</div>
+	<div id="vanguard-plating" class="item-container">
+		<p>
+			<i class="item-name">Vanguard Plating:</i> Blast vent channels, localized force fields, and advanced damage control monitors are used
+			to defang armor-piercing weaponry used against the heavy mech. The armor-piercing quality of an attacking weapon is reduced by 15.
+			This defense does not stack with a Hardened Polyceramic Overlay.
+		</p>
+	</div>
+</div>

@@ -195,6 +195,10 @@ a:visited:hover {
   text-align: left;
 }
 
+.italicized {
+  font-style: italic;
+}
+
 .column-container .column {
   display: inline-block;
   vertical-align: top;
@@ -211,6 +215,10 @@ a:visited:hover {
 .table-container .table-column {
   display: inline-block;
   vertical-align: top;
+}
+
+.smart-table-footer {
+  text-align: center;
 }
 
 * {

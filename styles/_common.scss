@@ -24,6 +24,10 @@ a:visited {
 	text-align: left;
 }
 
+.italicized {
+	font-style: italic;
+}
+
 .column-container {
 	.column {
 		display: inline-block;
@@ -57,4 +61,8 @@ a:visited {
 		display: inline-block;
 		vertical-align: top;
 	}
+}
+
+.smart-table-footer {
+	text-align: center;
 }

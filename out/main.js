@@ -1724,9 +1724,94 @@ System.register("custom-elements/ap-template-outlet", ["io", "loader"], function
         }
     };
 });
-System.register("custom-elements/custom-elements", ["custom-elements/ap-theme-container", "custom-elements/ap-nav-link", "custom-elements/ap-dir-display", "custom-elements/ap-auth-container", "custom-elements/ap-auth-display", "custom-elements/ap-stat-block", "custom-elements/ap-timeline", "custom-elements/ap-display-global", "custom-elements/ap-birthday-generator", "custom-elements/ap-vehicle-stat-block", "custom-elements/ap-template-outlet"], function (exports_21, context_21) {
+System.register("custom-elements/ap-smart-table", ["utilities"], function (exports_21, context_21) {
     "use strict";
+    var utilities_5, SmartTable;
     var __moduleName = context_21 && context_21.id;
+    return {
+        setters: [
+            function (utilities_5_1) {
+                utilities_5 = utilities_5_1;
+            }
+        ],
+        execute: function () {
+            SmartTable = class SmartTable extends HTMLElement {
+                constructor() {
+                    super();
+                    this.columns = [];
+                    this.entryNames = [];
+                    this.rows = [];
+                    this.entryClasses = {};
+                }
+                get headers() {
+                    return this.getAttribute("headers");
+                }
+                set headers(val) {
+                    this.setAttribute("headers", val);
+                }
+                connectedCallback() {
+                    if (this.columns.length === 0) {
+                        this.initialize();
+                        console.log({
+                            columns: this.columns,
+                            entryNames: this.entryNames,
+                            rows: this.rows,
+                            footer: this.footer,
+                        });
+                    }
+                    this.innerHTML = "";
+                    const table = document.createElement("table");
+                    table.classList.add("alternating-colors");
+                    this.appendChild(table);
+                    const headerRow = document.createElement("tr");
+                    table.appendChild(headerRow);
+                    this.columns.forEach((column) => headerRow.appendChild(utilities_5.CreateTableHeader(column)));
+                    this.rows.forEach((row) => {
+                        const dataRow = document.createElement("tr");
+                        table.appendChild(dataRow);
+                        this.entryNames.forEach((entryName) => dataRow.appendChild(utilities_5.CreateTableData(row[entryName], this.entryClasses[entryName])));
+                    });
+                    const footerRow = document.createElement("tr");
+                    table.appendChild(footerRow);
+                    const footerData = utilities_5.CreateTableData(this.footer, "smart-table-footer");
+                    footerData.colSpan = this.columns.length;
+                    footerRow.appendChild(footerData);
+                }
+                initialize() {
+                    if (this.headers) {
+                        this.columns = this.headers.split(",");
+                        this.columns = this.columns.map((column) => column.trim());
+                        this.entryNames = this.columns.map((column) => column
+                            .toLowerCase()
+                            .replaceAll(" ", "-")
+                            .replaceAll(/['`"\\\/!@#$%%^&\*\(\)\[\]\{\};:.]/g, ""));
+                    }
+                    const elements = this.querySelectorAll(SmartTable.rowTagName);
+                    elements.forEach((row) => {
+                        const values = {};
+                        this.entryNames.forEach((entryName) => (values[entryName] = row.querySelector(entryName)?.innerHTML ?? ""));
+                        this.rows.push(values);
+                    });
+                    this.footer = this.querySelector(SmartTable.footerTagName)?.innerHTML;
+                    const classesElement = this.querySelector(SmartTable.classesTagName);
+                    this.entryClasses = this.entryNames.reduce((previous, entryName) => {
+                        previous[entryName] = classesElement?.getAttribute(entryName) ?? "";
+                        return previous;
+                    }, {});
+                }
+            };
+            exports_21("SmartTable", SmartTable);
+            SmartTable.tagName = "ap-smart-table";
+            SmartTable.rowTagName = "row";
+            SmartTable.footerTagName = "footer";
+            SmartTable.classesTagName = "classes";
+            customElements.define(SmartTable.tagName, SmartTable);
+        }
+    };
+});
+System.register("custom-elements/custom-elements", ["custom-elements/ap-theme-container", "custom-elements/ap-nav-link", "custom-elements/ap-dir-display", "custom-elements/ap-auth-container", "custom-elements/ap-auth-display", "custom-elements/ap-stat-block", "custom-elements/ap-timeline", "custom-elements/ap-display-global", "custom-elements/ap-birthday-generator", "custom-elements/ap-vehicle-stat-block", "custom-elements/ap-template-outlet", "custom-elements/ap-smart-table"], function (exports_22, context_22) {
+    "use strict";
+    var __moduleName = context_22 && context_22.id;
     return {
         setters: [
             function (_5) {
@@ -1750,19 +1835,21 @@ System.register("custom-elements/custom-elements", ["custom-elements/ap-theme-co
             function (_14) {
             },
             function (_15) {
+            },
+            function (_16) {
             }
         ],
         execute: function () {
         }
     };
 });
-System.register("main", ["custom-elements/custom-elements", "io", "loader", "types/page"], function (exports_22, context_22) {
+System.register("main", ["custom-elements/custom-elements", "io", "loader", "types/page"], function (exports_23, context_23) {
     "use strict";
     var io_5, loader_6, page_3;
-    var __moduleName = context_22 && context_22.id;
+    var __moduleName = context_23 && context_23.id;
     return {
         setters: [
-            function (_16) {
+            function (_17) {
             },
             function (io_5_1) {
                 io_5 = io_5_1;

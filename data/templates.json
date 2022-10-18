@@ -1,3 +1,4 @@
 {
-	"lod-pages": "pages/lodburg/sub-pages"
+	"lod-pages": "pages/lodburg/sub-pages",
+	"homebrew-pages": "pages/homebrew/sub-pages"
 }

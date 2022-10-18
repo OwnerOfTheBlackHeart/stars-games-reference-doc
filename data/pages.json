@@ -8,6 +8,18 @@
 	],
 	"directories": [
 		{
+			"baseUrl": "homebrew/expanded-mechs",
+			"mainPage": "expanded-mechs",
+			"pages": [
+				{ "url": "expanded-mechs.html", "name": "expanded-mechs", "title": "Expanded Mechs" },
+				{ "url": "expanded-mechs-hulls.html", "name": "expanded-mechs-hulls", "title": "Hulls - Expanded Mechs" },
+				{ "url": "expanded-mechs-fittings.html", "name": "expanded-mechs-fittings", "title": "Fittings - Expanded Mechs" },
+				{ "url": "expanded-mechs-defenses.html", "name": "expanded-mechs-defenses", "title": "Defenses - Expanded Mechs" },
+				{ "url": "expanded-mechs-weaponry.html", "name": "expanded-mechs-weaponry", "title": "Weaponry - Expanded Mechs" }
+			],
+			"directories": []
+		},
+		{
 			"baseUrl": "old-stars-micro",
 			"mainPage": "old-stars-main",
 			"pages": [
