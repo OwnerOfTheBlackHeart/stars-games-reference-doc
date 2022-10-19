@@ -304,7 +304,12 @@
 							"mainPage": "lod-rauber-tribes",
 							"pages": [
 								{ "url": "rauber-tribes.html", "name": "lod-rauber-tribes", "title": "Rauber Tribes" },
-								{ "url": "hemma-tribe.html", "name": "lod-hemma-tribe", "title": "The Hemma Tribe" }
+								{ "url": "hemma-tribe.html", "name": "lod-hemma-tribe", "title": "The Hemma Tribe" },
+								{ "url": "dieter-tribe.html", "name": "lod-dieter-tribe", "title": "The Dieter Tribe" },
+								{ "url": "bern-tribe.html", "name": "lod-bern-tribe", "title": "The Bern Tribe" },
+								{ "url": "gunda-tribe.html", "name": "lod-gunda-tribe", "title": "The Gunda Tribe" },
+								{ "url": "eike-tribe.html", "name": "lod-eike-tribe", "title": "The Eike Tribe" },
+								{ "url": "herta-tribe.html", "name": "lod-herta-tribe", "title": "The Herta Tribe" }
 							],
 							"directories": []
 						}
