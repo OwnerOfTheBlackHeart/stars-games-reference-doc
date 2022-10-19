@@ -1,4 +1,63 @@
 <h1 id="weaponry">Weaponry</h1>
+<h2 id="special-weapon-qualities">Special Weapon Qualities</h2>
+<div class="two-columns-container">
+	<div id="ammo" class="item-container">
+		<p>
+			<i class="item-name">Ammo:</i> This weapon uses physical ammunition. After the end of every fight in which it was fired, the pilot
+			needs to make a Shoot skill check modified by Wisdom against a difficulty of 6. On a failure, ammo for the gun has run out until the
+			next maintenance cycle is complete. The check difficulty increases by 1 after every fight until maintenance.
+		</p>
+	</div>
+	<div id="anti-personnel" class="item-container">
+		<p>
+			<i class="item-name">Anti-personnel:</i> Armored vehicles, fortifications, and light and heavy mechs are immune to these light
+			weapons.
+		</p>
+	</div>
+	<div id="ap" class="item-container">
+		<p>
+			<i class="item-name">AP:</i> The weapon ignores this many points of a target’s armor. The Hardened Polyceramic Overlay or Vanguard
+			Plating defense upgrades may lessen the effectiveness of this quality. The most a weapon’s AP rating can do is reduce a target’s
+			effective armor to zero. It cannot add additional damage to a hit.
+		</p>
+	</div>
+	<div id="cone" class="item-container">
+		<p>
+			<i class="item-name">Cone:</i> The weapon fires in a conical pattern that many meters long and wide at its end. All targets within the
+			cone must make an Evasion saving throw or be hit, with no hit roll required. Targets behind hard cover save automatically.
+		</p>
+	</div>
+	<div id="melee" class="item-container">
+		<p>
+			<i class="item-name">Melee:</i> Melee weapons can only be used in hand-tohand combat, and no non-melee weapon can be used that same
+			round. Pilots use either Punch or Stab for hit rolls. Mech melee weapons do not inflict Shock damage.
+		</p>
+	</div>
+	<div id="psi" class="item-container">
+		<p>
+			<i class="item-name">Psi:</i> Psi weapons use metadimensional energy channels to completely ignore a target’s Armor rating, except for
+			any armor granted by the MES Shunt Channel defense fitting. Defenses such as Hardened Polyceramic Overlay have no effect on psi
+			weaponry. Pilots may optionally choose to use an appropriate psychic skill with psi weapons, even melee varieties. Psi weapons rely on
+			Wisdom or Constitution to modify attack and damage rolls, rather than Dexterity or Intelligence.
+		</p>
+	</div>
+	<div id="radius" class="item-container">
+		<p>
+			<i class="item-name">Radius:</i> Radius weapons fire explosive projectiles that damage an area, rather than a single target. Radius
+			weapons always roll to attack AC 10. On a miss, the projectile lands a random distance, up to twice the radius of the projectile, away
+			from the target. Hit or miss, the projectile deals its damage to all targets within its radius. Victims are allowed an Evasion save
+			for half damage.
+		</p>
+	</div>
+	<div id="slow" class="item-container">
+		<p>
+			<i class="item-name">Slow:</i> After firing, the attacker must roll an Int/Shoot skill check against difficulty 8. For psi weapons,
+			use Int and an applicable psychic skill. On a failure, the gun must cool down for one round before it can be fired again.
+		</p>
+	</div>
+</div>
+
+<h2 id="mech-weapons-list">Mech Weapons List</h2>
 <ap-smart-table headers="Mech Weapon, Cost, Damage, Power, Mass, Hardpoints, Range, TL, Hull, Special">
 	<classes
 		cost="centered"
@@ -12,297 +71,339 @@
 	></classes>
 	<row>
 		<mech-weapon>
-			<a href="#"></a>
+			<a href="#banshee-vox">Banshee Vox</a>
 		</mech-weapon>
-		<cost></cost>
-		<damage></damage>
-		<power></power>
-		<mass></mass>
-		<hardpoints></hardpoints>
-		<range></range>
-		<tl></tl>
-		<hull></hull>
-		<special></special>
+		<cost>35k</cost>
+		<damage>2d12</damage>
+		<power>5</power>
+		<mass>3</mass>
+		<hardpoints>1</hardpoints>
+		<range>30</range>
+		<tl>4</tl>
+		<hull>Light</hull>
+		<special>Cone 30m, Anti-personnel</special>
 	</row>
 	<row>
 		<mech-weapon>
-			<a href="#"></a>
+			<a href="#beam-lance">Beam Lance</a>
 		</mech-weapon>
-		<cost></cost>
-		<damage></damage>
-		<power></power>
-		<mass></mass>
-		<hardpoints></hardpoints>
-		<range></range>
-		<tl></tl>
-		<hull></hull>
-		<special></special>
+		<cost>100k</cost>
+		<damage>5d8</damage>
+		<power>15</power>
+		<mass>5</mass>
+		<hardpoints>3</hardpoints>
+		<range>1k/2k</range>
+		<tl>4</tl>
+		<hull>Heavy</hull>
+		<special>AP 30</special>
 	</row>
 	<row>
 		<mech-weapon>
-			<a href="#"></a>
+			<a href="#cannon">Cannon</a>
 		</mech-weapon>
-		<cost></cost>
-		<damage></damage>
-		<power></power>
-		<mass></mass>
-		<hardpoints></hardpoints>
-		<range></range>
-		<tl></tl>
-		<hull></hull>
-		<special></special>
+		<cost>50k</cost>
+		<damage>4d12</damage>
+		<power>10</power>
+		<mass>7</mass>
+		<hardpoints>3</hardpoints>
+		<range>2k/4k</range>
+		<tl>3</tl>
+		<hull>Heavy</hull>
+		<special>AP 20, Ammo, Slow</special>
 	</row>
 	<row>
 		<mech-weapon>
-			<a href="#"></a>
+			<a href="#cannon-light">Cannon, light</a>
 		</mech-weapon>
-		<cost></cost>
-		<damage></damage>
-		<power></power>
-		<mass></mass>
-		<hardpoints></hardpoints>
-		<range></range>
-		<tl></tl>
-		<hull></hull>
-		<special></special>
+		<cost>30k</cost>
+		<damage>3d12</damage>
+		<power>7</power>
+		<mass>5</mass>
+		<hardpoints>2</hardpoints>
+		<range>1k/2k</range>
+		<tl>3</tl>
+		<hull>Light</hull>
+		<special>AP 10, Ammo, Slow</special>
 	</row>
 	<row>
 		<mech-weapon>
-			<a href="#"></a>
+			<a href="#cutter-plates">Cutter Plates</a>
 		</mech-weapon>
-		<cost></cost>
-		<damage></damage>
-		<power></power>
-		<mass></mass>
-		<hardpoints></hardpoints>
-		<range></range>
-		<tl></tl>
-		<hull></hull>
-		<special></special>
+		<cost>20k</cost>
+		<damage>1d12/class</damage>
+		<power>5</power>
+		<mass>3</mass>
+		<hardpoints>1</hardpoints>
+		<range>Melee</range>
+		<tl>3</tl>
+		<hull>Suit</hull>
+		<special>AP 10, Melee</special>
 	</row>
 	<row>
 		<mech-weapon>
-			<a href="#"></a>
+			<a href="#finger-of-god">Finger of God</a>
 		</mech-weapon>
-		<cost></cost>
-		<damage></damage>
-		<power></power>
-		<mass></mass>
-		<hardpoints></hardpoints>
-		<range></range>
-		<tl></tl>
-		<hull></hull>
-		<special></special>
+		<cost>300k</cost>
+		<damage>4d12</damage>
+		<power>6</power>
+		<mass>3</mass>
+		<hardpoints>2</hardpoints>
+		<range>500/1k</range>
+		<tl>5</tl>
+		<hull>Heavy</hull>
+		<special>Psi, Slow</special>
 	</row>
 	<row>
 		<mech-weapon>
-			<a href="#"></a>
+			<a href="#grenade-cannon">Grenade Cannon</a>
 		</mech-weapon>
-		<cost></cost>
-		<damage></damage>
-		<power></power>
-		<mass></mass>
-		<hardpoints></hardpoints>
-		<range></range>
-		<tl></tl>
-		<hull></hull>
-		<special></special>
+		<cost>15k</cost>
+		<damage>2d8</damage>
+		<power>3</power>
+		<mass>2</mass>
+		<hardpoints>1</hardpoints>
+		<range>300/600</range>
+		<tl>5</tl>
+		<hull>Suit</hull>
+		<special>Anti-personnel, Ammo, Radius 10m</special>
 	</row>
 	<row>
 		<mech-weapon>
-			<a href="#"></a>
+			<a href="#hmg">Heavy Machine Gun</a>
 		</mech-weapon>
-		<cost></cost>
-		<damage></damage>
-		<power></power>
-		<mass></mass>
-		<hardpoints></hardpoints>
-		<range></range>
-		<tl></tl>
-		<hull></hull>
-		<special></special>
+		<cost>10k/20k</cost>
+		<damage>3d6 #</damage>
+		<power>3</power>
+		<mass>2</mass>
+		<hardpoints>1</hardpoints>
+		<range>500/2k</range>
+		<tl>3/4</tl>
+		<hull>Suit</hull>
+		<special>AP 5, Ammo</special>
 	</row>
 	<row>
 		<mech-weapon>
-			<a href="#"></a>
+			<a href="#hydra-array">Hydra Array</a>
 		</mech-weapon>
-		<cost></cost>
-		<damage></damage>
-		<power></power>
-		<mass></mass>
-		<hardpoints></hardpoints>
-		<range></range>
-		<tl></tl>
-		<hull></hull>
-		<special></special>
+		<cost>40k</cost>
+		<damage>3d6 #</damage>
+		<power>6</power>
+		<mass>3</mass>
+		<hardpoints>1</hardpoints>
+		<range>2k/4k</range>
+		<tl>4</tl>
+		<hull>Light</hull>
+		<special>AP 5, Ammo</special>
 	</row>
 	<row>
 		<mech-weapon>
-			<a href="#"></a>
+			<a href="#improvised-weapon">Improvised Weapon</a>
 		</mech-weapon>
-		<cost></cost>
-		<damage></damage>
-		<power></power>
-		<mass></mass>
-		<hardpoints></hardpoints>
-		<range></range>
-		<tl></tl>
-		<hull></hull>
-		<special></special>
+		<cost>-</cost>
+		<damage>1d8/class</damage>
+		<power>-</power>
+		<mass>-</mass>
+		<hardpoints>-</hardpoints>
+		<range>-</range>
+		<tl>-</tl>
+		<hull>-</hull>
+		<special>Melee</special>
 	</row>
 	<row>
 		<mech-weapon>
-			<a href="#"></a>
+			<a href="#inferno-projector">Inferno Projector</a>
 		</mech-weapon>
-		<cost></cost>
-		<damage></damage>
-		<power></power>
-		<mass></mass>
-		<hardpoints></hardpoints>
-		<range></range>
-		<tl></tl>
-		<hull></hull>
-		<special></special>
+		<cost>35k</cost>
+		<damage>4d6</damage>
+		<power>6</power>
+		<mass>3</mass>
+		<hardpoints>2</hardpoints>
+		<range>20</range>
+		<tl>4</tl>
+		<hull>Light</hull>
+		<special>AP 10, Cone 20m, Slow</special>
 	</row>
 	<row>
 		<mech-weapon>
-			<a href="#"></a>
+			<a href="#laser-anti-air">Laser, Anti-Air</a>
 		</mech-weapon>
-		<cost></cost>
-		<damage></damage>
-		<power></power>
-		<mass></mass>
-		<hardpoints></hardpoints>
-		<range></range>
-		<tl></tl>
-		<hull></hull>
-		<special></special>
+		<cost>40k</cost>
+		<damage>3d8</damage>
+		<power>5</power>
+		<mass>2</mass>
+		<hardpoints>2</hardpoints>
+		<range>6k/12k</range>
+		<tl>4</tl>
+		<hull>Suit</hull>
+		<special>AP 10, Special, Slow</special>
 	</row>
 	<row>
 		<mech-weapon>
-			<a href="#"></a>
+			<a href="#laser-anti-vehicle">Laser, Anti-Vehicle</a>
 		</mech-weapon>
-		<cost></cost>
-		<damage></damage>
-		<power></power>
-		<mass></mass>
-		<hardpoints></hardpoints>
-		<range></range>
-		<tl></tl>
-		<hull></hull>
-		<special></special>
+		<cost>20k</cost>
+		<damage>3d10</damage>
+		<power>7</power>
+		<mass>3</mass>
+		<hardpoints>2</hardpoints>
+		<range>500/1k</range>
+		<tl>4</tl>
+		<hull>Suit</hull>
+		<special>AP 15</special>
 	</row>
 	<row>
 		<mech-weapon>
-			<a href="#"></a>
+			<a href="#laser-heavy">Laser, Heavy</a>
 		</mech-weapon>
-		<cost></cost>
-		<damage></damage>
-		<power></power>
-		<mass></mass>
-		<hardpoints></hardpoints>
-		<range></range>
-		<tl></tl>
-		<hull></hull>
-		<special></special>
+		<cost>75k</cost>
+		<damage>3d12</damage>
+		<power>10</power>
+		<mass>4</mass>
+		<hardpoints>3</hardpoints>
+		<range>1k/2k</range>
+		<tl>4</tl>
+		<hull>Heavy</hull>
+		<special>AP 20</special>
 	</row>
 	<row>
 		<mech-weapon>
-			<a href="#"></a>
+			<a href="#laser-light">Laser, Light</a>
 		</mech-weapon>
-		<cost></cost>
-		<damage></damage>
-		<power></power>
-		<mass></mass>
-		<hardpoints></hardpoints>
-		<range></range>
-		<tl></tl>
-		<hull></hull>
-		<special></special>
+		<cost>35k</cost>
+		<damage>3d8</damage>
+		<power>5</power>
+		<mass>2</mass>
+		<hardpoints>1</hardpoints>
+		<range>500/1k</range>
+		<tl>4</tl>
+		<hull>Light</hull>
+		<special>AP 10</special>
 	</row>
 	<row>
 		<mech-weapon>
-			<a href="#"></a>
+			<a href="#mes-knife">MES Knife</a>
 		</mech-weapon>
-		<cost></cost>
-		<damage></damage>
-		<power></power>
-		<mass></mass>
-		<hardpoints></hardpoints>
-		<range></range>
-		<tl></tl>
-		<hull></hull>
-		<special></special>
+		<cost>100k</cost>
+		<damage>1d12/class</damage>
+		<power>1</power>
+		<mass>1</mass>
+		<hardpoints>1</hardpoints>
+		<range>Melee</range>
+		<tl>5</tl>
+		<hull>Suit</hull>
+		<special>Psi, Melee</special>
 	</row>
 	<row>
 		<mech-weapon>
-			<a href="#"></a>
+			<a href="#mindburner">Mindburner</a>
 		</mech-weapon>
-		<cost></cost>
-		<damage></damage>
-		<power></power>
-		<mass></mass>
-		<hardpoints></hardpoints>
-		<range></range>
-		<tl></tl>
-		<hull></hull>
-		<special></special>
+		<cost>200k</cost>
+		<damage>4d10</damage>
+		<power>2</power>
+		<mass>2</mass>
+		<hardpoints>1</hardpoints>
+		<range>20</range>
+		<tl>5</tl>
+		<hull>Light</hull>
+		<special>Cone 20m, Psi</special>
 	</row>
 	<row>
 		<mech-weapon>
-			<a href="#"></a>
+			<a href="#plasma-thrower">Plasma Thrower</a>
 		</mech-weapon>
-		<cost></cost>
-		<damage></damage>
-		<power></power>
-		<mass></mass>
-		<hardpoints></hardpoints>
-		<range></range>
-		<tl></tl>
-		<hull></hull>
-		<special></special>
+		<cost>50k</cost>
+		<damage>4d10</damage>
+		<power>10</power>
+		<mass>2</mass>
+		<hardpoints>1</hardpoints>
+		<range>250/500</range>
+		<tl>4</tl>
+		<hull>Light</hull>
+		<special>AP 10</special>
 	</row>
 	<row>
 		<mech-weapon>
-			<a href="#"></a>
+			<a href="#rail-cannon">Rail Cannon</a>
 		</mech-weapon>
-		<cost></cost>
-		<damage></damage>
-		<power></power>
-		<mass></mass>
-		<hardpoints></hardpoints>
-		<range></range>
-		<tl></tl>
-		<hull></hull>
-		<special></special>
+		<cost>150k</cost>
+		<damage>4d12</damage>
+		<power>20</power>
+		<mass>5</mass>
+		<hardpoints>4</hardpoints>
+		<range>2k/4k</range>
+		<tl>4</tl>
+		<hull>Heavy</hull>
+		<special>AP 45, Slow, Ammo</special>
 	</row>
 	<row>
 		<mech-weapon>
-			<a href="#"></a>
+			<a href="#railgun">Railgun</a>
 		</mech-weapon>
-		<cost></cost>
-		<damage></damage>
-		<power></power>
-		<mass></mass>
-		<hardpoints></hardpoints>
-		<range></range>
-		<tl></tl>
-		<hull></hull>
-		<special></special>
+		<cost>16k</cost>
+		<damage>3d8 #</damage>
+		<power>7</power>
+		<mass>4</mass>
+		<hardpoints>2</hardpoints>
+		<range>1k/2k</range>
+		<tl>4</tl>
+		<hull>Light</hull>
+		<special>AP 15, Ammo</special>
 	</row>
 	<row>
 		<mech-weapon>
-			<a href="#"></a>
+			<a href="#razor-cloud">Razor Cloud</a>
 		</mech-weapon>
-		<cost></cost>
-		<damage></damage>
-		<power></power>
-		<mass></mass>
-		<hardpoints></hardpoints>
-		<range></range>
-		<tl></tl>
-		<hull></hull>
-		<special></special>
+		<cost>30k</cost>
+		<damage>3d10</damage>
+		<power>4</power>
+		<mass>3</mass>
+		<hardpoints>2</hardpoints>
+		<range>30/60</range>
+		<tl>4</tl>
+		<hull>Light</hull>
+		<special>Anti-personnel, Ammo</special>
+	</row>
+	<row>
+		<mech-weapon>
+			<a href="#rocket-launcher">Rocket Launcher</a>
+		</mech-weapon>
+		<cost>8k/16k</cost>
+		<damage>3d10</damage>
+		<power>3</power>
+		<mass>2</mass>
+		<hardpoints>1</hardpoints>
+		<range>2k/4k</range>
+		<tl>3/4</tl>
+		<hull>Suit</hull>
+		<special>AP 5, Ammo</special>
+	</row>
+	<row>
+		<mech-weapon>
+			<a href="#vortex-cannon">Vortex Cannon</a>
+		</mech-weapon>
+		<cost>150k</cost>
+		<damage>5d12</damage>
+		<power>15</power>
+		<mass>5</mass>
+		<hardpoints>3</hardpoints>
+		<range>1k/2k</range>
+		<tl>5</tl>
+		<hull>Heavy</hull>
+		<special>AP 10</special>
+	</row>
+	<row>
+		<mech-weapon>
+			<a href="#wheatcutter-belt">Wheatcutter Belt</a>
+		</mech-weapon>
+		<cost>20k</cost>
+		<damage>2d12</damage>
+		<power>2</power>
+		<mass>3</mass>
+		<hardpoints>1</hardpoints>
+		<range>10/20</range>
+		<tl>3</tl>
+		<hull>Light</hull>
+		<special>Anti-personnel Ammo</special>
 	</row>
 	<footer>
 		<div># weapon can fire to suppress</div>
@@ -310,109 +411,156 @@
 </ap-smart-table>
 
 <div class="two-columns-container">
-	<div id="" class="item-container">
+	<div id="banshee-vox" class="item-container">
 		<p>
-			<i class="item-name"></i>
+			<i class="item-name">Banshee Vox:</i> A focalized sonic blast stuns and disorients all organic life in the path of this weapon. Damage
+			done by a banshee vox is nonlethal, and targets brought to 0 hit points by it will wake up 1d4 hours later with 1 hit point. Targets
+			inside a vehicle or behind hard cover are immune.
 		</p>
 	</div>
-	<div id="" class="item-container">
+	<div id="beam-lance" class="item-container">
 		<p>
-			<i class="item-name"></i>
+			<i class="item-name">Beam Lance:</i> More power-hungry and harder to mount than a heavy laser, the beam lance is meant to cut through
+			heavy armor on enemy shock mechs.
 		</p>
 	</div>
-	<div id="" class="item-container">
+	<div id="cannon" class="item-container">
 		<p>
-			<i class="item-name"></i>
+			<i class="item-name">Cannon:</i> Typically modified to be mounted as "rifles" by heavy mechs, cannons are high powered, chemically
+			propelled weapons that, despite being inferior to <a href="#rail-cannon">rail connons</a>, sees occasional use thanks to its relative
+			simplicity and low tech ammunition. While capable of utilizing many variants of ammunition, the vast majority of mech cannons utilize
+			armor piercing, discarding sabot kinetic penetrators made of as dense of a material as practically possible in order to maintain
+			effectiveness against mech armor.
 		</p>
 	</div>
-	<div id="" class="item-container">
+	<div id="cannon-light" class="item-container">
 		<p>
-			<i class="item-name"></i>
+			<i class="item-name">Cannon, Light:</i> Packing the firepower of a <a href="#laser-heavy">heavy laser</a> in a package usable by a
+			light mech, at the cost of weight and armor penetration, this smaller caliber cannon's slow fire rate and small ammunition stores make
+			it rare to see fielded by mechs.
 		</p>
 	</div>
-	<div id="" class="item-container">
+	<div id="cutter-plates" class="item-container">
 		<p>
-			<i class="item-name"></i>
+			<i class="item-name">Cutter Plates:</i> Rotating blades, force-field shearing planes, or just a really big axe; cutter plates are
+			meant for melee combat and carving large holes through obstacles. Suit cutter plates do 1d12 damage, light mech ones do 2d12, and
+			heavy mech plates do 3d12.
 		</p>
 	</div>
-	<div id="" class="item-container">
+	<div id="finger-of-god" class="item-container">
 		<p>
-			<i class="item-name"></i>
+			<i class="item-name">Finger of God:</i> A psitech weapon that can be mounted only on psimechs and used by a psionically-active pilot,
+			the Finger of God is a brutal weapon that operates soundlessly and without visible emissions. The psychic piloting the mech selects
+			the target and channels a massive surge of metadimensional energy through it. The blast ignores all conventional armor and can be
+			expected to suddenly reduce anything smaller than a heavy mech into a smoking heap of scrap.
 		</p>
 	</div>
-	<div id="" class="item-container">
+	<div id="grenade-cannon" class="item-container">
 		<p>
-			<i class="item-name"></i>
+			<i class="item-name">Grenade Cannon:</i> A scaled up grenade launcher for mech use, the fragmentation grenades used render it
+			ineffective against other mechs, but the wide kill radius and reasonable rate of fire make it an excellent anti-infantry weapon.
 		</p>
 	</div>
-	<div id="" class="item-container">
+	<div id="hmg" class="item-container">
 		<p>
-			<i class="item-name"></i>
+			<i class="item-name">Heavy Machine Gun:</i> A standard choice for anti-personnel weaponry, though its TL3 tech makes it useless
+			against mech Armor. Upgraded TL4 equivalents cost twice as much.
 		</p>
 	</div>
-	<div id="" class="item-container">
+	<div id="hydra-array" class="item-container">
+		<p><i class="item-name">Hydra Array:</i> A standard gunnery weapon mounted on a mech, fired in volleys as normal for the weapon.</p>
+	</div>
+	<div id="improvised-weapon" class="item-container">
 		<p>
-			<i class="item-name"></i>
+			<i class="item-name">Improvised Weapon:</i> This object is something large and heavy that the mech has snatched up to use as a weapon.
+			Suits do 1d8, light mech do 2d8, and heavy do 3d8.
 		</p>
 	</div>
-	<div id="" class="item-container">
+	<div id="inferno-projector" class="item-container">
 		<p>
-			<i class="item-name"></i>
+			<i class="item-name">Inferno Projector:</i> spray of superheated plasma turns everything within thirty meters of the projector’s
+			aperture into charcoal and casualty reports.
 		</p>
 	</div>
-	<div id="" class="item-container">
+	<div id="laser-anit-air" class="item-container">
 		<p>
-			<i class="item-name"></i>
+			<i class="item-name">Laser, Anti-Air:</i> This standard light laser has been retuned to optimize it for firing at airborne targets,
+			and the range has been greatly increased. It can pick off spy units such as Skywatch Drones automatically once they have been spotted.
+			The laser is optimized for firing at “clean” airborne targets, however, and suffers a -4 penalty to hit when aiming for ground-bound
+			targets.
 		</p>
 	</div>
-	<div id="" class="item-container">
+	<div id="laser-anti-vehicle" class="item-container">
 		<p>
-			<i class="item-name"></i>
+			<i class="item-name">Laser, Anti-Vehicle:</i> A standard gunnery weapon recalibrated for mech use. When it hits a target with Armor,
+			it can reroll any “1”s on the damage dice.
 		</p>
 	</div>
-	<div id="" class="item-container">
+	<div id="laser-heavy" class="item-container">
+		<p><i class="item-name">Laser, Heavy:</i> A mainstay of heavy shock mechs.</p>
+	</div>
+	<div id="laser-light" class="item-container">
 		<p>
-			<i class="item-name"></i>
+			<i class="item-name">Laser, Light:</i> The light laser trades the enormous penetrating power of its heavier cousin for a lighter power
+			drain and easier fitting requirements.
 		</p>
 	</div>
-	<div id="" class="item-container">
+	<div id="mes-knife" class="item-container">
 		<p>
-			<i class="item-name"></i>
+			<i class="item-name">MES Knife:</i> This psitech weapon focuses a beam of aligned metadimensional energy into a melee weapon that
+			ignores Armor ratings. Suits do 1d12 damage with the knife, light mechs do 2d12, and heavies do 3d12.
 		</p>
 	</div>
-	<div id="" class="item-container">
+	<div id="mindburner" class="item-container">
 		<p>
-			<i class="item-name"></i>
+			<i class="item-name">Mindburner:</i> Named for the horrific hallucinations provoked in the few targets to survive a glancing brush
+			from the weapon, the mindburner ruthlessly boosts the electrical activity in its targets, burning out human minds and electronic
+			devices with equal efficiency. Conventional Armor is ignored by the weapon.
 		</p>
 	</div>
-	<div id="" class="item-container">
+	<div id="plasma-thrower" class="item-container">
 		<p>
-			<i class="item-name"></i>
+			<i class="item-name">Plasma Thrower:</i> While the range of this energy weapon is shorter than that of a light laser, it brings
+			slightly more damage to the battlefield.
 		</p>
 	</div>
-	<div id="" class="item-container">
+	<div id="rail-cannon" class="item-container">
 		<p>
-			<i class="item-name"></i>
+			<i class="item-name">Rail Cannon:</i> The queen of the battlefield, the rail cannon is a weapon so heavy it can only be mounted on a
+			heavy shock mech. A single rod from a rail cannon can punch through the best vanguard defensive plating as if it were tissue. The
+			weapon is prone to overheating, however, and makes cruel demands on a mech’s power grid.
 		</p>
 	</div>
-	<div id="" class="item-container">
+	<div id="railgun" class="item-container">
 		<p>
-			<i class="item-name"></i>
+			<i class="item-name">Railgun:</i> A standard gunnery weapon fitted for mech use. Some pilots prefer it over the heavy laser for the
+			sake of the suppressive fire it can lay down and its good armor-piercing profile, albeit at the cost of having to deal with ammo
+			depletion at times.
 		</p>
 	</div>
-	<div id="" class="item-container">
+	<div id="razor-cloud" class="item-container">
 		<p>
-			<i class="item-name"></i>
+			<i class="item-name">Razor Cloud:</i> Designed to counter infantry swarms, the razor cloud pulses fractal shrapnel in a cloud of steel
+			around the mech. Any target within 30 meters is automatically hit, and may make an Evasion save for half damage. Any target within 60
+			meters is automatically hit for half damage, and may make an Evasion save to take none. Hard cover protects a subject from the cloud.
 		</p>
 	</div>
-	<div id="" class="item-container">
+	<div id="rocket-launcher" class="item-container">
 		<p>
-			<i class="item-name"></i>
+			<i class="item-name">Rocket Launcher:</i> A standard Heavy weapon, popular with suit pilots who need more range than a heavy machine
+			gun can provide. Rocket launchers also have difficulty in locking on targets of human size or smaller, applying a -4 to any hit rolls
+			against them. Conventional rocket warheads are shaped for maximum armor penetration rather than explosive radius, and mech pilots can
+			use them even against very close targets without blast danger. Upgraded TL4 equivalents cost twice as much.
 		</p>
 	</div>
-	<div id="" class="item-container">
+	<div id="vortex-cannon" class="item-container">
+		<p><i class="item-name">Vortex Cannon:</i> While commonly mounted on grav tanks, a vortex can also be fitted to a mech.</p>
+	</div>
+	<div id="wheatcutter-belt" class="item-container">
 		<p>
-			<i class="item-name"></i>
+			<i class="item-name">Wheatcutter Belts:</i> A standard anti-personnel weapon refitted for mech use. When triggered, a belt of
+			explosives fires off a scything blast of shrapnel on any side of the mech. All creatures within 10 meters must make an Evasion save
+			for half damage. Those within 20 meters take half damage, and can make an Evasion save to take none at all.
 		</p>
 	</div>
 </div>

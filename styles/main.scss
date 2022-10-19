@@ -213,6 +213,10 @@ ap-stat-block * {
 	min-width: 200px;
 
 	.item-name {
+		@include colors.Theme() using ($theme) {
+			color: map-get($theme, header-color);
+		}
+
 		font-weight: bold;
 	}
 }

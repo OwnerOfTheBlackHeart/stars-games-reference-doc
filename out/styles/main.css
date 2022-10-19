@@ -477,5 +477,16 @@ ap-stat-block * {
 .two-columns-container .item-name {
   font-weight: bold;
 }
+.theme-stars .two-columns-container .item-name {
+  color: #bebea7;
+}
+
+.theme-worlds .two-columns-container .item-name {
+  color: #bebea7;
+}
+
+.theme-test .two-columns-container .item-name {
+  color: #bebea7;
+}
 
 /*# sourceMappingURL=main.css.map */
