@@ -258,7 +258,8 @@
 				{ "url": "lodburg-main.html", "name": "lodburg-main", "title": "Lodburg" },
 				{ "url": "timeline.html", "name": "lod-timeline", "title": "Lodburg Timeline" },
 				{ "url": "hex-key.html", "name": "lod-hex-key", "title": "Lodburg Hex Key" },
-				{ "url": "roll-tables.html", "name": "lod-roll-tables", "title": "Roll Tables" }
+				{ "url": "roll-tables.html", "name": "lod-roll-tables", "title": "Roll Tables" },
+				{ "url": "magic-items.html", "name": "lod-magic-items", "title": "Magic Items" }
 			],
 			"directories": [
 				{
