@@ -265,7 +265,10 @@
 				{
 					"baseUrl": "adventures",
 					"mainPage": "lod-adventures",
-					"pages": [{ "url": "adventures.html", "name": "lod-adventures", "title": "Adventures" }],
+					"pages": [
+						{ "url": "adventures.html", "name": "lod-adventures", "title": "Adventures" },
+						{ "url": "demon-hunt/manabes-hunt.html", "name": "lod-manabes-hunt", "title": "Manabe's Hunt" }
+					],
 					"directories": []
 				},
 				{

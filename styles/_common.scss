@@ -66,3 +66,30 @@ a:visited {
 .smart-table-footer {
 	text-align: center;
 }
+
+.power {
+	font-weight: bold;
+	font-style: italic;
+}
+
+.clearfix {
+	&::after {
+		content: "";
+		clear: both;
+		display: table;
+	}
+
+	> ul,
+	> ol {
+		overflow: hidden;
+	}
+}
+
+ul,
+ol {
+	&.power-list {
+		li:not(:last-child) {
+			padding-bottom: 0.5rem;
+		}
+	}
+}

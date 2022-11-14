@@ -221,6 +221,26 @@ a:visited:hover {
   text-align: center;
 }
 
+.power {
+  font-weight: bold;
+  font-style: italic;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.clearfix > ul,
+.clearfix > ol {
+  overflow: hidden;
+}
+
+ul.power-list li:not(:last-child),
+ol.power-list li:not(:last-child) {
+  padding-bottom: 0.5rem;
+}
+
 body {
   height: 100vh;
   width: 100vw;
@@ -446,12 +466,6 @@ ap-stat-block * {
 .character-image-right {
   float: right;
   margin-left: 0.5rem;
-}
-
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
 }
 
 .two-columns-container {

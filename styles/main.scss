@@ -194,12 +194,6 @@ ap-stat-block * {
 	margin-left: 0.5rem;
 }
 
-.clearfix::after {
-	content: "";
-	clear: both;
-	display: table;
-}
-
 .two-columns-container {
 	@include colors.Theme() using ($theme) {
 		column-rule: 1px solid map-get($theme, content-color);
