@@ -198,6 +198,7 @@
 					"external": true
 				},
 				{ "url": "systems/sumaya-ruchi/mele.html", "name": "art-mele", "title": "Mele" },
+				{ "url": "systems/clytea/jimente.html", "name": "art-jimente", "title": "Jimente" },
 				{
 					"url": "organizations/peoples-republic-of-cono.html",
 					"name": "art-peoples-republic-of-cono",
@@ -226,7 +227,8 @@
 					"mainPage": "art-adventures",
 					"pages": [
 						{ "url": "adventures.html", "name": "art-adventures", "title": "Adventures" },
-						{ "url": "mele/silence-the-reformers.html", "name": "art-silence-the-reformers", "title": "Silence the Reformers" }
+						{ "url": "mele/silence-the-reformers.html", "name": "art-silence-the-reformers", "title": "Silence the Reformers" },
+						{ "url": "mele/unwanted-guests.html", "name": "art-unwanted-guests", "title": "Unwanted Guests" }
 					],
 					"directories": []
 				},
