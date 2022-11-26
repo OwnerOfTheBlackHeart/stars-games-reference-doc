@@ -234,7 +234,8 @@
 					"pages": [
 						{ "url": "adventures.html", "name": "art-adventures", "title": "Adventures" },
 						{ "url": "mele/silence-the-reformers.html", "name": "art-silence-the-reformers", "title": "Silence the Reformers" },
-						{ "url": "mele/unwanted-guests.html", "name": "art-unwanted-guests", "title": "Unwanted Guests" }
+						{ "url": "mele/unwanted-guests.html", "name": "art-unwanted-guests", "title": "Unwanted Guests" },
+						{ "url": "mele/11-25-notes.html", "name": "art-11-25-notes", "title": "11/25/2022 Notes" }
 					],
 					"directories": []
 				},
