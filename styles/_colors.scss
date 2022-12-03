@@ -1,7 +1,7 @@
 @use "themes";
 
 @mixin Theme($themes: themes.$themes) {
-	// Key, Value
+	// [Key], [Value] in [Container]
 	@each $theme-name, $theme in $themes {
 		@at-root .#{$theme-name} #{&} {
 			@content ($theme);
@@ -10,7 +10,7 @@
 }
 
 @mixin AtLevelTheme($themes: themes.$themes) {
-	// Key, Value
+	// [Key], [Value] in [Container]
 	@each $theme-name, $theme in $themes {
 		@at-root #{&}.#{$theme-name} {
 			@content ($theme);
@@ -19,7 +19,7 @@
 }
 
 @mixin MakeThemes($themes) {
-	// Key, Value
+	// [Key], [Value] in [Container]
 	@each $theme-name, $theme in $themes {
 		.#{$theme-name} {
 			p,

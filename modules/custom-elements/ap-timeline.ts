@@ -1,10 +1,10 @@
 import { AuthManager } from "../auth-manager";
 import { globals, globalsReady } from "../loader";
-import { AuthUser, universalAuthorization } from "../types/auth-user";
+import { AuthUser } from "../types/auth-user";
 import { Time } from "../types/time";
-import { buildCssStylesheetElement, CreateTableData, CreateTableHeader } from "../utilities";
+import { CreateTableData, CreateTableHeader, InitializeThemedShadowRoot } from "../utilities";
 import "./ap-theme-container";
-import { ThemeContainer } from "./ap-theme-container";
+import { ThemedElement } from "./themed-element";
 
 interface TimeRow {
 	time: Time;
@@ -12,7 +12,7 @@ interface TimeRow {
 	permissions?: string[];
 }
 
-export class TimeTable extends HTMLElement {
+export class TimeTable extends ThemedElement {
 	get headerTitle() {
 		return this.getAttribute("header");
 	}
@@ -43,7 +43,6 @@ export class TimeTable extends HTMLElement {
 
 	rows: TimeRow[] = [];
 	hasProcessedEntries = false;
-	outputDiv: ThemeContainer;
 	callbackId: number;
 	rendered = false;
 	currentUser: AuthUser;
@@ -51,19 +50,10 @@ export class TimeTable extends HTMLElement {
 	constructor() {
 		// Always call super first in constructor
 		super();
-
-		// this.outputDiv = document.createElement("div");
 	}
 
 	connectedCallback() {
-		if (!this.shadowRoot) {
-			this.attachShadow({ mode: "open" });
-			this.shadowRoot.appendChild(buildCssStylesheetElement("elements", true, true));
-
-			this.outputDiv = document.createElement("ap-theme-container") as ThemeContainer;
-			this.outputDiv.classList.add("time-table-container");
-			this.shadowRoot.appendChild(this.outputDiv);
-
+		if (InitializeThemedShadowRoot(this, "time-table-container")) {
 			this.callbackId = AuthManager.userChanged.AddCallback((user) => {
 				this.currentUser = user;
 				if (this.rendered) {
@@ -78,7 +68,7 @@ export class TimeTable extends HTMLElement {
 	render() {
 		this.rendered = true;
 
-		this.outputDiv.innerHTML = "";
+		this.container.innerHTML = "";
 		this.getEntries();
 
 		const table = document.createElement("table");
@@ -92,7 +82,7 @@ export class TimeTable extends HTMLElement {
 			table.appendChild(this.BuildNormalRow(row));
 		}
 
-		this.outputDiv.appendChild(table);
+		this.container.appendChild(table);
 	}
 
 	BuildHeaderRow(title: string) {

@@ -468,13 +468,127 @@ System.register("auth-manager", ["callback-event", "loader", "types/auth-user"],
         }
     };
 });
-System.register("utilities", [], function (exports_7, context_7) {
+System.register("themes", ["callback-event", "io"], function (exports_7, context_7) {
     "use strict";
+    var callback_event_3, io_1, Theme, defaultTheme, CurrentTheme;
     var __moduleName = context_7 && context_7.id;
+    return {
+        setters: [
+            function (callback_event_3_1) {
+                callback_event_3 = callback_event_3_1;
+            },
+            function (io_1_1) {
+                io_1 = io_1_1;
+            }
+        ],
+        execute: function () {
+            (function (Theme) {
+                Theme["stars"] = "theme-stars";
+                Theme["worlds"] = "theme-worlds";
+                Theme["test"] = "theme-test";
+            })(Theme || (Theme = {}));
+            exports_7("Theme", Theme);
+            exports_7("defaultTheme", defaultTheme = Theme.stars);
+            exports_7("CurrentTheme", CurrentTheme = new callback_event_3.CallbackManager(false, false, defaultTheme));
+            CurrentTheme.AddCallback((theme, previous) => {
+                const classList = document?.body?.classList;
+                if (classList) {
+                    if (classList.contains(previous)) {
+                        classList.replace(previous, theme);
+                    }
+                    else {
+                        classList.add(theme);
+                    }
+                }
+            });
+            io_1.pageChangeManager.AddCallback((foundPage) => {
+                if (foundPage?.theme) {
+                    CurrentTheme.RunCallbacks(foundPage.theme);
+                }
+                else {
+                    CurrentTheme.RunCallbacks(defaultTheme);
+                }
+            }, true);
+        }
+    };
+});
+System.register("custom-elements/ap-theme-container", ["themes"], function (exports_8, context_8) {
+    "use strict";
+    var themes_1, ThemeContainer;
+    var __moduleName = context_8 && context_8.id;
+    return {
+        setters: [
+            function (themes_1_1) {
+                themes_1 = themes_1_1;
+            }
+        ],
+        execute: function () {
+            ThemeContainer = class ThemeContainer extends HTMLElement {
+                constructor() {
+                    super();
+                }
+                get full() {
+                    return this.hasAttribute(ThemeContainer.fullKey);
+                }
+                set full(val) {
+                    if (val) {
+                        this.setAttribute(ThemeContainer.fullKey, "");
+                    }
+                    else {
+                        this.removeAttribute(ThemeContainer.fullKey);
+                    }
+                }
+                connectedCallback() {
+                    if (this.full) {
+                        this.style.width = "100%";
+                        this.style.height = "100%";
+                    }
+                    else {
+                        this.style.width = undefined;
+                        this.style.height = undefined;
+                    }
+                    this.callbackId = themes_1.CurrentTheme.AddCallback((theme, previous) => {
+                        if (this.classList.contains(previous)) {
+                            this.classList.replace(previous, theme);
+                        }
+                        else {
+                            this.classList.add(theme);
+                        }
+                    }, true);
+                }
+                disconnectedCallback() {
+                    themes_1.CurrentTheme.RemoveCallback(this.callbackId);
+                }
+            };
+            exports_8("ThemeContainer", ThemeContainer);
+            ThemeContainer.fullKey = "full";
+            customElements.define("ap-theme-container", ThemeContainer);
+        }
+    };
+});
+System.register("custom-elements/themed-element", [], function (exports_9, context_9) {
+    "use strict";
+    var ThemedElement;
+    var __moduleName = context_9 && context_9.id;
+    return {
+        setters: [],
+        execute: function () {
+            ThemedElement = class ThemedElement extends HTMLElement {
+                constructor() {
+                    super();
+                }
+            };
+            exports_9("ThemedElement", ThemedElement);
+        }
+    };
+});
+System.register("utilities", [], function (exports_10, context_10) {
+    "use strict";
+    var __moduleName = context_10 && context_10.id;
     function IsGoodString(str) {
         return str !== undefined && str !== "";
     }
-    exports_7("IsGoodString", IsGoodString);
+    exports_10("IsGoodString", IsGoodString);
     function CreateTableHeader(data, className) {
         let header = document.createElement("th");
         header.innerHTML = data;
@@ -483,7 +597,7 @@ System.register("utilities", [], function (exports_7, context_7) {
         }
         return header;
     }
-    exports_7("CreateTableHeader", CreateTableHeader);
+    exports_10("CreateTableHeader", CreateTableHeader);
     function CreateTableData(data, className) {
         let dataElement = document.createElement("td");
         dataElement.innerHTML = data;
@@ -492,20 +606,20 @@ System.register("utilities", [], function (exports_7, context_7) {
         }
         return dataElement;
     }
-    exports_7("CreateTableData", CreateTableData);
+    exports_10("CreateTableData", CreateTableData);
     function showElement(element, scrolledTo) {
         if (element && scrolledTo) {
             element.scrollTop = scrolledTo.offsetTop - element.offsetTop;
             element.scrollLeft = scrolledTo.offsetLeft - element.offsetLeft;
         }
     }
-    exports_7("showElement", showElement);
+    exports_10("showElement", showElement);
     function showId(parentId, childId) {
         const parent = document.getElementById(parentId);
         const child = document.getElementById(childId);
         showElement(parent, child);
     }
-    exports_7("showId", showId);
+    exports_10("showId", showId);
     function buildCssStylesheetElement(path, addDotCss = true, addOutPath = false) {
         const href = `${addOutPath ? "out/styles/" : ""}${path}${addDotCss ? ".css" : ""}`;
         const link = document.createElement("link");
@@ -514,7 +628,7 @@ System.register("utilities", [], function (exports_7, context_7) {
         link.setAttribute("href", href);
         return link;
     }
-    exports_7("buildCssStylesheetElement", buildCssStylesheetElement);
+    exports_10("buildCssStylesheetElement", buildCssStylesheetElement);
     function numberWithCommas(x, places) {
         if (places === undefined) {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -523,7 +637,7 @@ System.register("utilities", [], function (exports_7, context_7) {
             return x.toFixed(places).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
     }
-    exports_7("numberWithCommas", numberWithCommas);
+    exports_10("numberWithCommas", numberWithCommas);
     function getDescendantProperty(parent, childPath, defaultValue = undefined) {
         if (parent === undefined || parent === null || childPath === undefined || childPath === null) {
             return defaultValue;
@@ -552,7 +666,7 @@ System.register("utilities", [], function (exports_7, context_7) {
             }
         }
     }
-    exports_7("getDescendantProperty", getDescendantProperty);
+    exports_10("getDescendantProperty", getDescendantProperty);
     function setDescendantProperty(parent, childPath, newValue) {
         if (!childPath) {
             return parent;
@@ -578,7 +692,21 @@ System.register("utilities", [], function (exports_7, context_7) {
         }, parent);
         return parent;
     }
-    exports_7("setDescendantProperty", setDescendantProperty);
+    exports_10("setDescendantProperty", setDescendantProperty);
+    function InitializeThemedShadowRoot(element, containerClass) {
+        if (!element.shadowRoot) {
+            element.attachShadow({ mode: "open" });
+            element.shadowRoot.appendChild(buildCssStylesheetElement("elements", true, true));
+            element.container = document.createElement("ap-theme-container");
+            element.container.classList.add(containerClass);
+            element.shadowRoot.appendChild(element.container);
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    exports_10("InitializeThemedShadowRoot", InitializeThemedShadowRoot);
     return {
         setters: [],
         execute: function () {
@@ -594,10 +722,10 @@ System.register("utilities", [], function (exports_7, context_7) {
         }
     };
 });
-System.register("io", ["auth-manager", "callback-event", "loader", "types/page", "utilities"], function (exports_8, context_8) {
+System.register("io", ["auth-manager", "callback-event", "loader", "types/page", "utilities"], function (exports_11, context_11) {
     "use strict";
-    var auth_manager_1, callback_event_3, loader_2, page_1, utilities_1, headerQuery, footerQuery, contentQuery, headerPage, footerPage, defaultPage, titlePostface, loadedPage, Parameters, baseNavigateUrl, pageChangeManager;
-    var __moduleName = context_8 && context_8.id;
+    var auth_manager_1, callback_event_4, loader_2, page_1, utilities_1, headerQuery, footerQuery, contentQuery, headerPage, footerPage, defaultPage, titlePostface, loadedPage, Parameters, baseNavigateUrl, pageChangeManager, hashChangeManager;
+    var __moduleName = context_11 && context_11.id;
     async function InitialLoad() {
         let pageName = GetActivePageName();
         loadedPage = pageName;
@@ -608,14 +736,14 @@ System.register("io", ["auth-manager", "callback-event", "loader", "types/page",
         ]);
         return { header, footer, content };
     }
-    exports_8("InitialLoad", InitialLoad);
+    exports_11("InitialLoad", InitialLoad);
     function GetActivePageName() {
         const params = new URLSearchParams(location.search);
         let pageName = params.get(Parameters.pageName);
         pageName = pageName ? pageName : defaultPage;
         return pageName;
     }
-    exports_8("GetActivePageName", GetActivePageName);
+    exports_11("GetActivePageName", GetActivePageName);
     function OnPopState(ev) {
         const pageName = GetActivePageName();
         if (pageName !== loadedPage) {
@@ -623,7 +751,7 @@ System.register("io", ["auth-manager", "callback-event", "loader", "types/page",
             LoadIntoContent(pageName);
         }
     }
-    exports_8("OnPopState", OnPopState);
+    exports_11("OnPopState", OnPopState);
     function InternalNavigate(foundPage, hash) {
         let url = baseNavigateUrl + foundPage.page.name;
         if (hash) {
@@ -632,7 +760,7 @@ System.register("io", ["auth-manager", "callback-event", "loader", "types/page",
         history.pushState(undefined, foundPage.page.title + titlePostface, url);
         OnPopState({});
     }
-    exports_8("InternalNavigate", InternalNavigate);
+    exports_11("InternalNavigate", InternalNavigate);
     async function LoadIntoElement(pageName, queryString) {
         const foundPage = page_1.FindPage(loader_2.globals.pageDirectory, pageName);
         const element = document.querySelector(queryString);
@@ -682,14 +810,14 @@ System.register("io", ["auth-manager", "callback-event", "loader", "types/page",
             contents.scrollTop = 0;
         }
     }
-    exports_8("UpdateContentScroll", UpdateContentScroll);
+    exports_11("UpdateContentScroll", UpdateContentScroll);
     return {
         setters: [
             function (auth_manager_1_1) {
                 auth_manager_1 = auth_manager_1_1;
             },
-            function (callback_event_3_1) {
-                callback_event_3 = callback_event_3_1;
+            function (callback_event_4_1) {
+                callback_event_4 = callback_event_4_1;
             },
             function (loader_2_1) {
                 loader_2 = loader_2_1;
@@ -712,114 +840,21 @@ System.register("io", ["auth-manager", "callback-event", "loader", "types/page",
             (function (Parameters) {
                 Parameters["pageName"] = "pageName";
             })(Parameters || (Parameters = {}));
-            exports_8("Parameters", Parameters);
-            exports_8("baseNavigateUrl", baseNavigateUrl = `index.html?${Parameters.pageName}=`);
-            exports_8("pageChangeManager", pageChangeManager = new callback_event_3.CallbackManager());
-        }
-    };
-});
-System.register("themes", ["callback-event", "io"], function (exports_9, context_9) {
-    "use strict";
-    var callback_event_4, io_1, Theme, defaultTheme, CurrentTheme;
-    var __moduleName = context_9 && context_9.id;
-    return {
-        setters: [
-            function (callback_event_4_1) {
-                callback_event_4 = callback_event_4_1;
-            },
-            function (io_1_1) {
-                io_1 = io_1_1;
-            }
-        ],
-        execute: function () {
-            (function (Theme) {
-                Theme["stars"] = "theme-stars";
-                Theme["worlds"] = "theme-worlds";
-                Theme["test"] = "theme-test";
-            })(Theme || (Theme = {}));
-            exports_9("Theme", Theme);
-            exports_9("defaultTheme", defaultTheme = Theme.stars);
-            exports_9("CurrentTheme", CurrentTheme = new callback_event_4.CallbackManager(false, false, defaultTheme));
-            CurrentTheme.AddCallback((theme, previous) => {
-                const classList = document?.body?.classList;
-                if (classList) {
-                    if (classList.contains(previous)) {
-                        classList.replace(previous, theme);
-                    }
-                    else {
-                        classList.add(theme);
-                    }
-                }
+            exports_11("Parameters", Parameters);
+            exports_11("baseNavigateUrl", baseNavigateUrl = `index.html?${Parameters.pageName}=`);
+            exports_11("pageChangeManager", pageChangeManager = new callback_event_4.CallbackManager());
+            exports_11("hashChangeManager", hashChangeManager = new callback_event_4.CallbackManager());
+            hashChangeManager.RunCallbacks(location.hash);
+            addEventListener("hashchange", (event) => {
+                hashChangeManager.RunCallbacks(location.hash);
             });
-            io_1.pageChangeManager.AddCallback((foundPage) => {
-                if (foundPage?.theme) {
-                    CurrentTheme.RunCallbacks(foundPage.theme);
-                }
-                else {
-                    CurrentTheme.RunCallbacks(defaultTheme);
-                }
-            }, true);
         }
     };
 });
-System.register("custom-elements/ap-theme-container", ["themes"], function (exports_10, context_10) {
-    "use strict";
-    var themes_1, ThemeContainer;
-    var __moduleName = context_10 && context_10.id;
-    return {
-        setters: [
-            function (themes_1_1) {
-                themes_1 = themes_1_1;
-            }
-        ],
-        execute: function () {
-            ThemeContainer = class ThemeContainer extends HTMLElement {
-                constructor() {
-                    super();
-                }
-                get full() {
-                    return this.hasAttribute(ThemeContainer.fullKey);
-                }
-                set full(val) {
-                    if (val) {
-                        this.setAttribute(ThemeContainer.fullKey, "");
-                    }
-                    else {
-                        this.removeAttribute(ThemeContainer.fullKey);
-                    }
-                }
-                connectedCallback() {
-                    if (this.full) {
-                        this.style.width = "100%";
-                        this.style.height = "100%";
-                    }
-                    else {
-                        this.style.width = undefined;
-                        this.style.height = undefined;
-                    }
-                    this.callbackId = themes_1.CurrentTheme.AddCallback((theme, previous) => {
-                        if (this.classList.contains(previous)) {
-                            this.classList.replace(previous, theme);
-                        }
-                        else {
-                            this.classList.add(theme);
-                        }
-                    }, true);
-                }
-                disconnectedCallback() {
-                    themes_1.CurrentTheme.RemoveCallback(this.callbackId);
-                }
-            };
-            exports_10("ThemeContainer", ThemeContainer);
-            ThemeContainer.fullKey = "full";
-            customElements.define("ap-theme-container", ThemeContainer);
-        }
-    };
-});
-System.register("custom-elements/ap-nav-link", ["io", "loader", "types/page"], function (exports_11, context_11) {
+System.register("custom-elements/ap-nav-link", ["io", "loader", "types/page"], function (exports_12, context_12) {
     "use strict";
     var io_2, loader_3, page_2, navLinkName, NavLink;
-    var __moduleName = context_11 && context_11.id;
+    var __moduleName = context_12 && context_12.id;
     return {
         setters: [
             function (io_2_1) {
@@ -833,7 +868,7 @@ System.register("custom-elements/ap-nav-link", ["io", "loader", "types/page"], f
             }
         ],
         execute: function () {
-            exports_11("navLinkName", navLinkName = "ap-nav-link");
+            exports_12("navLinkName", navLinkName = "ap-nav-link");
             NavLink = class NavLink extends HTMLAnchorElement {
                 constructor() {
                     super();
@@ -889,10 +924,10 @@ System.register("custom-elements/ap-nav-link", ["io", "loader", "types/page"], f
         }
     };
 });
-System.register("custom-elements/ap-dir-display", ["io", "custom-elements/ap-nav-link"], function (exports_12, context_12) {
+System.register("custom-elements/ap-dir-display", ["io", "custom-elements/ap-nav-link"], function (exports_13, context_13) {
     "use strict";
     var io_3, ap_nav_link_1, dirDisplayName, DirectoryDisplay;
-    var __moduleName = context_12 && context_12.id;
+    var __moduleName = context_13 && context_13.id;
     return {
         setters: [
             function (io_3_1) {
@@ -903,7 +938,7 @@ System.register("custom-elements/ap-dir-display", ["io", "custom-elements/ap-nav
             }
         ],
         execute: function () {
-            exports_12("dirDisplayName", dirDisplayName = "ap-dir-display");
+            exports_13("dirDisplayName", dirDisplayName = "ap-dir-display");
             DirectoryDisplay = class DirectoryDisplay extends HTMLElement {
                 constructor() {
                     super();
@@ -949,10 +984,10 @@ System.register("custom-elements/ap-dir-display", ["io", "custom-elements/ap-nav
         }
     };
 });
-System.register("custom-elements/ap-auth-container", ["auth-manager"], function (exports_13, context_13) {
+System.register("custom-elements/ap-auth-container", ["auth-manager"], function (exports_14, context_14) {
     "use strict";
     var auth_manager_2, authContainerName, AuthDisplayType, AuthContainer;
-    var __moduleName = context_13 && context_13.id;
+    var __moduleName = context_14 && context_14.id;
     return {
         setters: [
             function (auth_manager_2_1) {
@@ -960,14 +995,14 @@ System.register("custom-elements/ap-auth-container", ["auth-manager"], function 
             }
         ],
         execute: function () {
-            exports_13("authContainerName", authContainerName = "ap-auth-container");
+            exports_14("authContainerName", authContainerName = "ap-auth-container");
             (function (AuthDisplayType) {
                 AuthDisplayType["block"] = "block";
                 AuthDisplayType["inline"] = "inline";
                 AuthDisplayType["inlineBlock"] = "inline-block";
                 AuthDisplayType["none"] = "none";
             })(AuthDisplayType || (AuthDisplayType = {}));
-            exports_13("AuthDisplayType", AuthDisplayType);
+            exports_14("AuthDisplayType", AuthDisplayType);
             AuthContainer = class AuthContainer extends HTMLElement {
                 constructor() {
                     super();
@@ -1053,10 +1088,10 @@ System.register("custom-elements/ap-auth-container", ["auth-manager"], function 
         }
     };
 });
-System.register("custom-elements/ap-auth-display", ["auth-manager"], function (exports_14, context_14) {
+System.register("custom-elements/ap-auth-display", ["auth-manager"], function (exports_15, context_15) {
     "use strict";
     var auth_manager_3, authDisplayName, AuthDisplay;
-    var __moduleName = context_14 && context_14.id;
+    var __moduleName = context_15 && context_15.id;
     return {
         setters: [
             function (auth_manager_3_1) {
@@ -1064,7 +1099,7 @@ System.register("custom-elements/ap-auth-display", ["auth-manager"], function (e
             }
         ],
         execute: function () {
-            exports_14("authDisplayName", authDisplayName = "ap-auth-display");
+            exports_15("authDisplayName", authDisplayName = "ap-auth-display");
             AuthDisplay = class AuthDisplay extends HTMLElement {
                 constructor() {
                     super();
@@ -1133,20 +1168,23 @@ System.register("custom-elements/ap-auth-display", ["auth-manager"], function (e
         }
     };
 });
-System.register("custom-elements/ap-stat-block", ["utilities", "custom-elements/ap-theme-container"], function (exports_15, context_15) {
+System.register("custom-elements/ap-stat-block", ["utilities", "custom-elements/ap-theme-container", "custom-elements/themed-element"], function (exports_16, context_16) {
     "use strict";
-    var utilities_2, statBlockName, SubElementNames, StatBlock;
-    var __moduleName = context_15 && context_15.id;
+    var utilities_2, themed_element_1, statBlockName, SubElementNames, StatBlock;
+    var __moduleName = context_16 && context_16.id;
     return {
         setters: [
             function (utilities_2_1) {
                 utilities_2 = utilities_2_1;
             },
             function (_1) {
+            },
+            function (themed_element_1_1) {
+                themed_element_1 = themed_element_1_1;
             }
         ],
         execute: function () {
-            exports_15("statBlockName", statBlockName = "ap-stat-block");
+            exports_16("statBlockName", statBlockName = "ap-stat-block");
             (function (SubElementNames) {
                 SubElementNames["hitDice"] = "hit-dice";
                 SubElementNames["armorClass"] = "armor-class";
@@ -1157,18 +1195,12 @@ System.register("custom-elements/ap-stat-block", ["utilities", "custom-elements/
                 SubElementNames["morale"] = "morale";
                 SubElementNames["numberAppearing"] = "number-appearing";
             })(SubElementNames || (SubElementNames = {}));
-            StatBlock = class StatBlock extends HTMLElement {
+            StatBlock = class StatBlock extends themed_element_1.ThemedElement {
                 constructor() {
                     super();
                 }
                 connectedCallback() {
-                    if (!this.shadowRoot) {
-                        this.attachShadow({ mode: "open" });
-                        this.shadowRoot.appendChild(utilities_2.buildCssStylesheetElement("elements", true, true));
-                        this.container = document.createElement("ap-theme-container");
-                        this.container.classList.add("stat-block-container");
-                        this.shadowRoot.appendChild(this.container);
-                    }
+                    utilities_2.InitializeThemedShadowRoot(this, "stat-block-container");
                     this.container.innerHTML = "";
                     const values = this.getValues();
                     const table = document.createElement("table");
@@ -1221,10 +1253,10 @@ System.register("custom-elements/ap-stat-block", ["utilities", "custom-elements/
         }
     };
 });
-System.register("custom-elements/ap-timeline", ["auth-manager", "loader", "types/time", "utilities", "custom-elements/ap-theme-container"], function (exports_16, context_16) {
+System.register("custom-elements/ap-timeline", ["auth-manager", "loader", "types/time", "utilities", "custom-elements/ap-theme-container", "custom-elements/themed-element"], function (exports_17, context_17) {
     "use strict";
-    var auth_manager_4, loader_4, time_2, utilities_3, TimeTable;
-    var __moduleName = context_16 && context_16.id;
+    var auth_manager_4, loader_4, time_2, utilities_3, themed_element_2, TimeTable;
+    var __moduleName = context_17 && context_17.id;
     return {
         setters: [
             function (auth_manager_4_1) {
@@ -1240,10 +1272,13 @@ System.register("custom-elements/ap-timeline", ["auth-manager", "loader", "types
                 utilities_3 = utilities_3_1;
             },
             function (_2) {
+            },
+            function (themed_element_2_1) {
+                themed_element_2 = themed_element_2_1;
             }
         ],
         execute: function () {
-            TimeTable = class TimeTable extends HTMLElement {
+            TimeTable = class TimeTable extends themed_element_2.ThemedElement {
                 constructor() {
                     super();
                     this.rows = [];
@@ -1274,12 +1309,7 @@ System.register("custom-elements/ap-timeline", ["auth-manager", "loader", "types
                     }
                 }
                 connectedCallback() {
-                    if (!this.shadowRoot) {
-                        this.attachShadow({ mode: "open" });
-                        this.shadowRoot.appendChild(utilities_3.buildCssStylesheetElement("elements", true, true));
-                        this.outputDiv = document.createElement("ap-theme-container");
-                        this.outputDiv.classList.add("time-table-container");
-                        this.shadowRoot.appendChild(this.outputDiv);
+                    if (utilities_3.InitializeThemedShadowRoot(this, "time-table-container")) {
                         this.callbackId = auth_manager_4.AuthManager.userChanged.AddCallback((user) => {
                             this.currentUser = user;
                             if (this.rendered) {
@@ -1291,7 +1321,7 @@ System.register("custom-elements/ap-timeline", ["auth-manager", "loader", "types
                 }
                 render() {
                     this.rendered = true;
-                    this.outputDiv.innerHTML = "";
+                    this.container.innerHTML = "";
                     this.getEntries();
                     const table = document.createElement("table");
                     table.classList.add("alternating-colors");
@@ -1301,7 +1331,7 @@ System.register("custom-elements/ap-timeline", ["auth-manager", "loader", "types
                     for (let row of this.rows) {
                         table.appendChild(this.BuildNormalRow(row));
                     }
-                    this.outputDiv.appendChild(table);
+                    this.container.appendChild(table);
                 }
                 BuildHeaderRow(title) {
                     let node = document.createElement("tr");
@@ -1362,17 +1392,17 @@ System.register("custom-elements/ap-timeline", ["auth-manager", "loader", "types
                     }
                 }
             };
-            exports_16("TimeTable", TimeTable);
+            exports_17("TimeTable", TimeTable);
             loader_4.globalsReady.AddSingleRunCallback(() => {
                 customElements.define("ap-time-table", TimeTable);
             }, true);
         }
     };
 });
-System.register("custom-elements/ap-display-global", ["loader", "utilities"], function (exports_17, context_17) {
+System.register("custom-elements/ap-display-global", ["loader", "utilities"], function (exports_18, context_18) {
     "use strict";
     var loader_js_1, utilities_js_1, DisplayGlobalElement;
-    var __moduleName = context_17 && context_17.id;
+    var __moduleName = context_18 && context_18.id;
     return {
         setters: [
             function (loader_js_1_1) {
@@ -1412,10 +1442,10 @@ System.register("custom-elements/ap-display-global", ["loader", "utilities"], fu
         }
     };
 });
-System.register("custom-elements/ap-birthday-generator", ["loader", "types/time", "utilities", "custom-elements/ap-theme-container"], function (exports_18, context_18) {
+System.register("custom-elements/ap-birthday-generator", ["loader", "types/time", "utilities", "custom-elements/ap-theme-container", "custom-elements/themed-element"], function (exports_19, context_19) {
     "use strict";
-    var loader_js_2, time_js_1, utilities_js_2, instructions, BirthdayGeneratorElement;
-    var __moduleName = context_18 && context_18.id;
+    var loader_js_2, time_js_1, utilities_js_2, themed_element_js_1, instructions, BirthdayGeneratorElement;
+    var __moduleName = context_19 && context_19.id;
     return {
         setters: [
             function (loader_js_2_1) {
@@ -1428,6 +1458,9 @@ System.register("custom-elements/ap-birthday-generator", ["loader", "types/time"
                 utilities_js_2 = utilities_js_2_1;
             },
             function (_3) {
+            },
+            function (themed_element_js_1_1) {
+                themed_element_js_1 = themed_element_js_1_1;
             }
         ],
         execute: function () {
@@ -1435,7 +1468,7 @@ System.register("custom-elements/ap-birthday-generator", ["loader", "types/time"
 To generate a birthday, enter the character's age in the input below and click the 'Generate Birthday' button.
 The birthday, along with how long ago it was, will be displayed directly below this sentence.
 `);
-            BirthdayGeneratorElement = class BirthdayGeneratorElement extends HTMLElement {
+            BirthdayGeneratorElement = class BirthdayGeneratorElement extends themed_element_js_1.ThemedElement {
                 constructor() {
                     super();
                 }
@@ -1450,13 +1483,7 @@ The birthday, along with how long ago it was, will be displayed directly below t
                 }
                 Render() {
                     loader_js_2.globalsReady.AddSingleRunCallback(() => {
-                        if (!this.shadowRoot) {
-                            this.attachShadow({ mode: "open" });
-                            this.shadowRoot.appendChild(utilities_js_2.buildCssStylesheetElement("elements", true, true));
-                            this.container = document.createElement("ap-theme-container");
-                            this.container.classList.add("birthday-generator-container");
-                            this.shadowRoot.appendChild(this.container);
-                        }
+                        utilities_js_2.InitializeThemedShadowRoot(this, "birthday-generator-container");
                         this.container.innerHTML = "";
                         this.currentDate = utilities_js_2.getDescendantProperty(loader_js_2.globals, this.currentDateValue);
                         const bdayHeader = document.createElement("h4");
@@ -1536,20 +1563,23 @@ The birthday, along with how long ago it was, will be displayed directly below t
         }
     };
 });
-System.register("custom-elements/ap-vehicle-stat-block", ["utilities", "custom-elements/ap-theme-container"], function (exports_19, context_19) {
+System.register("custom-elements/ap-vehicle-stat-block", ["utilities", "custom-elements/ap-theme-container", "custom-elements/themed-element"], function (exports_20, context_20) {
     "use strict";
-    var utilities_4, statBlockName, SubElementNames, VehicleStatBlock;
-    var __moduleName = context_19 && context_19.id;
+    var utilities_4, themed_element_3, statBlockName, SubElementNames, VehicleStatBlock;
+    var __moduleName = context_20 && context_20.id;
     return {
         setters: [
             function (utilities_4_1) {
                 utilities_4 = utilities_4_1;
             },
             function (_4) {
+            },
+            function (themed_element_3_1) {
+                themed_element_3 = themed_element_3_1;
             }
         ],
         execute: function () {
-            exports_19("statBlockName", statBlockName = "ap-vehicle-stat-block");
+            exports_20("statBlockName", statBlockName = "ap-vehicle-stat-block");
             (function (SubElementNames) {
                 SubElementNames["speed"] = "speed";
                 SubElementNames["travelSpeed"] = "travel-speed";
@@ -1562,18 +1592,12 @@ System.register("custom-elements/ap-vehicle-stat-block", ["utilities", "custom-e
                 SubElementNames["baseFrame"] = "base-frame";
                 SubElementNames["fittings"] = "fittings";
             })(SubElementNames || (SubElementNames = {}));
-            VehicleStatBlock = class VehicleStatBlock extends HTMLElement {
+            VehicleStatBlock = class VehicleStatBlock extends themed_element_3.ThemedElement {
                 constructor() {
                     super();
                 }
                 connectedCallback() {
-                    if (!this.shadowRoot) {
-                        this.attachShadow({ mode: "open" });
-                        this.shadowRoot.appendChild(utilities_4.buildCssStylesheetElement("elements", true, true));
-                        this.container = document.createElement("ap-theme-container");
-                        this.container.classList.add("stat-block-container");
-                        this.shadowRoot.appendChild(this.container);
-                    }
+                    utilities_4.InitializeThemedShadowRoot(this, "stat-block-container");
                     this.container.innerHTML = "";
                     const values = this.getValues();
                     const table = document.createElement("table");
@@ -1643,10 +1667,10 @@ System.register("custom-elements/ap-vehicle-stat-block", ["utilities", "custom-e
         }
     };
 });
-System.register("custom-elements/ap-template-outlet", ["io", "loader"], function (exports_20, context_20) {
+System.register("custom-elements/ap-template-outlet", ["io", "loader"], function (exports_21, context_21) {
     "use strict";
     var io_4, loader_5, templateOutletName, TemplateOutlet;
-    var __moduleName = context_20 && context_20.id;
+    var __moduleName = context_21 && context_21.id;
     return {
         setters: [
             function (io_4_1) {
@@ -1657,7 +1681,7 @@ System.register("custom-elements/ap-template-outlet", ["io", "loader"], function
             }
         ],
         execute: function () {
-            exports_20("templateOutletName", templateOutletName = "ap-template-outlet");
+            exports_21("templateOutletName", templateOutletName = "ap-template-outlet");
             TemplateOutlet = class TemplateOutlet extends HTMLElement {
                 get folder() {
                     return this.getAttribute("folder");
@@ -1724,10 +1748,10 @@ System.register("custom-elements/ap-template-outlet", ["io", "loader"], function
         }
     };
 });
-System.register("custom-elements/ap-smart-table", ["utilities"], function (exports_21, context_21) {
+System.register("custom-elements/ap-smart-table", ["utilities"], function (exports_22, context_22) {
     "use strict";
     var utilities_5, SmartTable;
-    var __moduleName = context_21 && context_21.id;
+    var __moduleName = context_22 && context_22.id;
     return {
         setters: [
             function (utilities_5_1) {
@@ -1800,7 +1824,7 @@ System.register("custom-elements/ap-smart-table", ["utilities"], function (expor
                     }, {});
                 }
             };
-            exports_21("SmartTable", SmartTable);
+            exports_22("SmartTable", SmartTable);
             SmartTable.tagName = "ap-smart-table";
             SmartTable.rowTagName = "row";
             SmartTable.footerTagName = "footer";
@@ -1809,9 +1833,132 @@ System.register("custom-elements/ap-smart-table", ["utilities"], function (expor
         }
     };
 });
-System.register("custom-elements/custom-elements", ["custom-elements/ap-theme-container", "custom-elements/ap-nav-link", "custom-elements/ap-dir-display", "custom-elements/ap-auth-container", "custom-elements/ap-auth-display", "custom-elements/ap-stat-block", "custom-elements/ap-timeline", "custom-elements/ap-display-global", "custom-elements/ap-birthday-generator", "custom-elements/ap-vehicle-stat-block", "custom-elements/ap-template-outlet", "custom-elements/ap-smart-table"], function (exports_22, context_22) {
+System.register("custom-elements/ap-tab-container", ["io"], function (exports_23, context_23) {
     "use strict";
-    var __moduleName = context_22 && context_22.id;
+    var io_5, tabContainerName, tabElementName, tabNameAttribute, tabDisplayNameAttribute, tabDisplayClass, tabDisplayContainerClass, tabActiveClass, tabInactiveClass, TabContainer;
+    var __moduleName = context_23 && context_23.id;
+    return {
+        setters: [
+            function (io_5_1) {
+                io_5 = io_5_1;
+            }
+        ],
+        execute: function () {
+            exports_23("tabContainerName", tabContainerName = "ap-tab-container");
+            exports_23("tabElementName", tabElementName = "tab");
+            exports_23("tabNameAttribute", tabNameAttribute = "name");
+            exports_23("tabDisplayNameAttribute", tabDisplayNameAttribute = "displayname");
+            exports_23("tabDisplayClass", tabDisplayClass = "tab-display");
+            exports_23("tabDisplayContainerClass", tabDisplayContainerClass = "tab-display-container");
+            exports_23("tabActiveClass", tabActiveClass = "active");
+            exports_23("tabInactiveClass", tabInactiveClass = "inactive");
+            TabContainer = class TabContainer extends HTMLElement {
+                constructor() {
+                    super();
+                    this.tabs = {};
+                    this.initialized = false;
+                }
+                connectedCallback() {
+                    if (this.initialized) {
+                        Object.keys(this.tabs).forEach((tabName) => {
+                            if (!this.currentTab || this.currentTab === tabName) {
+                                this.displayTab(tabName);
+                            }
+                            else {
+                                this.hideTab(tabName);
+                            }
+                        });
+                    }
+                    else {
+                        const tabsContainer = document.createElement("div");
+                        tabsContainer.classList.add(tabDisplayContainerClass);
+                        this.prepend(tabsContainer);
+                        const tabElements = this.querySelectorAll(tabElementName);
+                        tabElements.forEach((element) => {
+                            const elementName = element.getAttribute(tabNameAttribute);
+                            const displayName = element.getAttribute(tabDisplayNameAttribute) ?? elementName;
+                            const tabDisplay = document.createElement("div");
+                            tabDisplay.classList.add(tabDisplayClass);
+                            tabDisplay.innerText = displayName;
+                            tabDisplay.onclick = () => {
+                                this.onTabClicked(elementName);
+                            };
+                            tabsContainer.appendChild(tabDisplay);
+                            const tab = { tab: tabDisplay, contents: element };
+                            tab.tab.classList.add(tabInactiveClass);
+                            tab.contents.classList.add(tabInactiveClass);
+                            this.tabs[elementName] = tab;
+                            if (!this.currentTab || this.currentTab === elementName) {
+                                this.currentTab = elementName;
+                                this.displayTab(elementName);
+                            }
+                            else {
+                                this.hideTab(elementName);
+                            }
+                        });
+                        this.initialized = true;
+                        this.callbackId = io_5.hashChangeManager.AddCallback((hash) => this.navigateToHash(hash), true);
+                    }
+                }
+                disconnectedCallback() {
+                    this.currentTab = undefined;
+                    if (this.callbackId !== undefined) {
+                        io_5.hashChangeManager.RemoveCallback(this.callbackId);
+                        this.callbackId = undefined;
+                    }
+                }
+                onTabClicked(newTab) {
+                    if (newTab !== this.currentTab) {
+                        Object.keys(this.tabs).forEach((tabName) => {
+                            this.hideTab(tabName);
+                        });
+                        this.displayTab(newTab);
+                    }
+                }
+                hideTab(tabName) {
+                    const tab = this.tabs[tabName];
+                    if (tab) {
+                        tab.tab.classList.replace(tabActiveClass, tabInactiveClass);
+                        tab.contents.classList.replace(tabActiveClass, tabInactiveClass);
+                    }
+                    else {
+                        console.log(`Cannot hide tab. No tab ${tabName} exists`);
+                    }
+                }
+                displayTab(tabName) {
+                    const tab = this.tabs[tabName];
+                    if (tab) {
+                        this.currentTab = tabName;
+                        tab.tab.classList.replace(tabInactiveClass, tabActiveClass);
+                        tab.contents.classList.replace(tabInactiveClass, tabActiveClass);
+                    }
+                    else {
+                        console.log(`Cannot display tab. No tab ${tabName} exists`);
+                    }
+                }
+                navigateToHash(hash) {
+                    console.log(`Navigating to hash ${hash}`);
+                    if (hash) {
+                        Object.keys(this.tabs).find((tabName) => {
+                            if (this.tabs[tabName].contents.querySelector(hash)) {
+                                this.onTabClicked(tabName);
+                                io_5.UpdateContentScroll();
+                                return true;
+                            }
+                            else {
+                                return false;
+                            }
+                        });
+                    }
+                }
+            };
+            customElements.define(tabContainerName, TabContainer);
+        }
+    };
+});
+System.register("custom-elements/custom-elements", ["custom-elements/ap-theme-container", "custom-elements/ap-nav-link", "custom-elements/ap-dir-display", "custom-elements/ap-auth-container", "custom-elements/ap-auth-display", "custom-elements/ap-stat-block", "custom-elements/ap-timeline", "custom-elements/ap-display-global", "custom-elements/ap-birthday-generator", "custom-elements/ap-vehicle-stat-block", "custom-elements/ap-template-outlet", "custom-elements/ap-smart-table", "custom-elements/ap-tab-container"], function (exports_24, context_24) {
+    "use strict";
+    var __moduleName = context_24 && context_24.id;
     return {
         setters: [
             function (_5) {
@@ -1837,22 +1984,24 @@ System.register("custom-elements/custom-elements", ["custom-elements/ap-theme-co
             function (_15) {
             },
             function (_16) {
+            },
+            function (_17) {
             }
         ],
         execute: function () {
         }
     };
 });
-System.register("main", ["custom-elements/custom-elements", "io", "loader", "types/page"], function (exports_23, context_23) {
+System.register("main", ["custom-elements/custom-elements", "io", "loader", "types/page"], function (exports_25, context_25) {
     "use strict";
-    var io_5, loader_6, page_3;
-    var __moduleName = context_23 && context_23.id;
+    var io_6, loader_6, page_3;
+    var __moduleName = context_25 && context_25.id;
     return {
         setters: [
-            function (_17) {
+            function (_18) {
             },
-            function (io_5_1) {
-                io_5 = io_5_1;
+            function (io_6_1) {
+                io_6 = io_6_1;
             },
             function (loader_6_1) {
                 loader_6 = loader_6_1;
@@ -1865,8 +2014,8 @@ System.register("main", ["custom-elements/custom-elements", "io", "loader", "typ
             window.test = (name) => {
                 console.log(page_3.FindPage(loader_6.globals.pageDirectory, name));
             };
-            io_5.InitialLoad().then(() => {
-                onpopstate = io_5.OnPopState;
+            io_6.InitialLoad().then(() => {
+                onpopstate = io_6.OnPopState;
             });
         }
     };

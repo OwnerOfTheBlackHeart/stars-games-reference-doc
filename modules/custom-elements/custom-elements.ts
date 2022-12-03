@@ -10,3 +10,4 @@ import "./ap-birthday-generator";
 import "./ap-vehicle-stat-block";
 import "./ap-template-outlet";
 import "./ap-smart-table";
+import "./ap-tab-container";

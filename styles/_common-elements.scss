@@ -1,0 +1,49 @@
+@use "colors";
+
+ap-tab-container {
+	> tab {
+		&.inactive {
+			display: none;
+		}
+	}
+
+	> .tab-display-container {
+		@include colors.Theme() using ($theme) {
+			border-bottom: 1px solid map-get($theme, content-color);
+		}
+
+		margin-bottom: 0.5rem;
+
+		.tab-display {
+			border-top-left-radius: 0.5rem;
+			border-top-right-radius: 0.5rem;
+			cursor: pointer;
+			display: inline-block;
+			padding: 0.5rem;
+
+			&.active {
+				@include colors.Theme() using ($theme) {
+					color: map-get($theme, header-color);
+					background-color: map-get($theme, table-header-background-color);
+					border: {
+						top: 1px solid map-get($theme, header-color);
+						left: 1px solid map-get($theme, header-color);
+						right: 1px solid map-get($theme, header-color);
+					}
+				}
+			}
+
+			&.inactive {
+				@include colors.Theme() using ($theme) {
+					color: map-get($theme, content-color);
+					background-color: map-get($theme, table-even-row-background-color);
+					border: {
+						top: 1px solid map-get($theme, content-color);
+						left: 1px solid map-get($theme, content-color);
+						right: 1px solid map-get($theme, content-color);
+					}
+				}
+			}
+		}
+	}
+}

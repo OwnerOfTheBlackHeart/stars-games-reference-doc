@@ -1,6 +1,7 @@
-import { buildCssStylesheetElement } from "../utilities";
+import { InitializeThemedShadowRoot } from "../utilities";
 import "./ap-theme-container";
 import { ThemeContainer } from "./ap-theme-container";
+import { ThemedElement } from "./themed-element";
 
 export const statBlockName = "ap-stat-block";
 enum SubElementNames {
@@ -14,22 +15,13 @@ enum SubElementNames {
 	numberAppearing = "number-appearing",
 }
 
-class StatBlock extends HTMLElement {
-	container: ThemeContainer;
-
+class StatBlock extends ThemedElement {
 	constructor() {
 		super();
 	}
 
 	connectedCallback() {
-		if (!this.shadowRoot) {
-			this.attachShadow({ mode: "open" });
-			this.shadowRoot.appendChild(buildCssStylesheetElement("elements", true, true));
-
-			this.container = document.createElement("ap-theme-container") as ThemeContainer;
-			this.container.classList.add("stat-block-container");
-			this.shadowRoot.appendChild(this.container);
-		}
+		InitializeThemedShadowRoot(this, "stat-block-container");
 
 		this.container.innerHTML = "";
 

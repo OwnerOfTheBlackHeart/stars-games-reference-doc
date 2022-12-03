@@ -1,15 +1,16 @@
 import { globals, globalsReady } from "../loader.js";
 import { Time } from "../types/time.js";
-import { buildCssStylesheetElement, getDescendantProperty } from "../utilities.js";
+import { buildCssStylesheetElement, getDescendantProperty, InitializeThemedShadowRoot } from "../utilities.js";
 import "./ap-theme-container";
 import { ThemeContainer } from "./ap-theme-container";
+import { ThemedElement } from "./themed-element.js";
 
 const instructions = Object.freeze(`
 To generate a birthday, enter the character's age in the input below and click the 'Generate Birthday' button.
 The birthday, along with how long ago it was, will be displayed directly below this sentence.
 `);
 
-class BirthdayGeneratorElement extends HTMLElement {
+class BirthdayGeneratorElement extends ThemedElement {
 	get currentDateValue() {
 		return this.getAttribute("current-date-value");
 	}
@@ -23,7 +24,6 @@ class BirthdayGeneratorElement extends HTMLElement {
 	age: number;
 
 	ageInput: HTMLInputElement;
-	container: ThemeContainer;
 
 	constructor() {
 		// Always call super first in constructor
@@ -36,14 +36,7 @@ class BirthdayGeneratorElement extends HTMLElement {
 
 	Render() {
 		globalsReady.AddSingleRunCallback(() => {
-			if (!this.shadowRoot) {
-				this.attachShadow({ mode: "open" });
-				this.shadowRoot.appendChild(buildCssStylesheetElement("elements", true, true));
-
-				this.container = document.createElement("ap-theme-container") as ThemeContainer;
-				this.container.classList.add("birthday-generator-container");
-				this.shadowRoot.appendChild(this.container);
-			}
+			InitializeThemedShadowRoot(this, "birthday-generator-container");
 
 			this.container.innerHTML = "";
 			this.currentDate = getDescendantProperty(globals, this.currentDateValue);

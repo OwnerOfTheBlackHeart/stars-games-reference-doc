@@ -169,6 +169,79 @@
   background-color: #1e1e1e;
 }
 
+ap-tab-container > tab.inactive {
+  display: none;
+}
+ap-tab-container > .tab-display-container {
+  margin-bottom: 0.5rem;
+}
+.theme-stars ap-tab-container > .tab-display-container {
+  border-bottom: 1px solid #a8a88a;
+}
+
+.theme-worlds ap-tab-container > .tab-display-container {
+  border-bottom: 1px solid #a8a88a;
+}
+
+.theme-test ap-tab-container > .tab-display-container {
+  border-bottom: 1px solid #a8a88a;
+}
+
+ap-tab-container > .tab-display-container .tab-display {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0.5rem;
+}
+.theme-stars ap-tab-container > .tab-display-container .tab-display.active {
+  color: #bebea7;
+  background-color: #404040;
+  border-top: 1px solid #bebea7;
+  border-left: 1px solid #bebea7;
+  border-right: 1px solid #bebea7;
+}
+
+.theme-worlds ap-tab-container > .tab-display-container .tab-display.active {
+  color: #bebea7;
+  background-color: #404040;
+  border-top: 1px solid #bebea7;
+  border-left: 1px solid #bebea7;
+  border-right: 1px solid #bebea7;
+}
+
+.theme-test ap-tab-container > .tab-display-container .tab-display.active {
+  color: #bebea7;
+  background-color: #404040;
+  border-top: 1px solid #bebea7;
+  border-left: 1px solid #bebea7;
+  border-right: 1px solid #bebea7;
+}
+
+.theme-stars ap-tab-container > .tab-display-container .tab-display.inactive {
+  color: #a8a88a;
+  background-color: #131313;
+  border-top: 1px solid #a8a88a;
+  border-left: 1px solid #a8a88a;
+  border-right: 1px solid #a8a88a;
+}
+
+.theme-worlds ap-tab-container > .tab-display-container .tab-display.inactive {
+  color: #a8a88a;
+  background-color: #131313;
+  border-top: 1px solid #a8a88a;
+  border-left: 1px solid #a8a88a;
+  border-right: 1px solid #a8a88a;
+}
+
+.theme-test ap-tab-container > .tab-display-container .tab-display.inactive {
+  color: #a8a88a;
+  background-color: #131313;
+  border-top: 1px solid #a8a88a;
+  border-left: 1px solid #a8a88a;
+  border-right: 1px solid #a8a88a;
+}
+
 * {
   box-sizing: border-box;
 }

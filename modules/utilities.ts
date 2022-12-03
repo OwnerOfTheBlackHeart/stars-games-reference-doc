@@ -1,3 +1,6 @@
+import { ThemeContainer } from "./custom-elements/ap-theme-container";
+import { ThemedElement } from "./custom-elements/themed-element";
+
 // Adding a useful function to Array<T>
 declare global {
 	interface Array<T> {
@@ -135,4 +138,18 @@ export function setDescendantProperty<T>(parent: T, childPath: string, newValue:
 	}, parent);
 
 	return parent;
+}
+
+export function InitializeThemedShadowRoot(element: ThemedElement, containerClass: string): boolean {
+	if (!element.shadowRoot) {
+		element.attachShadow({ mode: "open" });
+		element.shadowRoot.appendChild(buildCssStylesheetElement("elements", true, true));
+
+		element.container = document.createElement("ap-theme-container") as ThemeContainer;
+		element.container.classList.add(containerClass);
+		element.shadowRoot.appendChild(element.container);
+		return true;
+	} else {
+		return false;
+	}
 }

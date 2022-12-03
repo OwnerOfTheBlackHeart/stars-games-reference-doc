@@ -20,6 +20,12 @@ export enum Parameters {
 }
 export const baseNavigateUrl = `index.html?${Parameters.pageName}=`;
 export const pageChangeManager = new CallbackManager<FoundPage>();
+export const hashChangeManager = new CallbackManager<string>();
+
+hashChangeManager.RunCallbacks(location.hash);
+addEventListener("hashchange", (event) => {
+	hashChangeManager.RunCallbacks(location.hash);
+});
 
 export async function InitialLoad() {
 	let pageName = GetActivePageName();
