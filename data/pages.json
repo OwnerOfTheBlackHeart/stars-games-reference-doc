@@ -225,7 +225,8 @@
 						{ "url": "mele/silence-the-reformers.html", "name": "art-silence-the-reformers", "title": "Silence the Reformers" },
 						{ "url": "mele/unwanted-guests.html", "name": "art-unwanted-guests", "title": "Unwanted Guests" },
 						{ "url": "mele/11-25-notes.html", "name": "art-11-25-notes", "title": "11/25/2022 Notes" },
-						{ "url": "mele/12-2-notes.html", "name": "art-12-2-notes", "title": "12/2/2022 Notes" }
+						{ "url": "mele/12-2-notes.html", "name": "art-12-2-notes", "title": "12/2/2022 Notes" },
+						{ "url": "mele/find-the-lab.html", "name": "art-find-the-lab", "title": "Find the Lab" }
 					],
 					"directories": []
 				},
@@ -266,6 +267,15 @@
 							"name": "art-captured-npcs",
 							"title": "Captured NPCs"
 						}
+					],
+					"directories": []
+				},
+				{
+					"baseUrl": "aliens",
+					"mainPage": "art-aliens",
+					"pages": [
+						{ "url": "artax-aliens.html", "name": "art-aliens", "title": "Aliens" },
+						{ "url": "empty-eyes.html", "name": "art-empty-eyes", "title": "The Empty Eyes" }
 					],
 					"directories": []
 				}

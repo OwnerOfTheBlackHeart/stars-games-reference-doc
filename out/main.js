@@ -1735,7 +1735,7 @@ System.register("custom-elements/ap-template-outlet", ["io", "loader"], function
                     if (headerLevelModifier) {
                         headerLevelModifier -= 1;
                         for (let i = 10; i >= 1; i--) {
-                            html = html.replaceAll(`<h${i}>`, `<h${i + headerLevelModifier}>`).replaceAll(`</h${i}>`, `</h${i + headerLevelModifier}>`);
+                            html = html.replaceAll(`<h${i}`, `<h${i + headerLevelModifier}`).replaceAll(`</h${i}>`, `</h${i + headerLevelModifier}>`);
                         }
                         return html;
                     }
