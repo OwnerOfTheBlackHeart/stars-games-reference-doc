@@ -14,5 +14,16 @@
 	"cSpell.checkLimit": 500,
 	"cSpell.maxNumberOfProblems": 1000,
 	"cSpell.maxDuplicateProblems": 3,
-	"cSpell.words": ["artax", "artaxs", "Breatheable", "Paiges", "rainforest", "rainforests", "rasputitsa", "spacefarer's", "uncared"]
+	"cSpell.words": [
+		"artax",
+		"artaxs",
+		"Breatheable",
+		"Paiges",
+		"rainforest",
+		"rainforests",
+		"rasputitsa",
+		"spacefarer's",
+		"teleporting",
+		"uncared"
+	]
 }
