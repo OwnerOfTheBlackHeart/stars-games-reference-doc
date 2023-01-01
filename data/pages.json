@@ -214,6 +214,11 @@
 					"url": "homebrew/scars.html",
 					"name": "scars",
 					"title": "Scars Homebrew System"
+				},
+				{
+					"url": "stat-blocks.html",
+					"name": "art-stat-blocks",
+					"title": "Reusable Stat Blocks"
 				}
 			],
 			"directories": [
