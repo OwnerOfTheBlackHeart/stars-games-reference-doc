@@ -206,6 +206,12 @@ ap-stat-block * {
 	max-width: 1000px;
 	min-width: 200px;
 
+	.item-container + .item-container {
+		@include colors.Theme() using ($theme) {
+			border-top: 1px solid map-get($theme, content-color);
+		}
+	}
+
 	.item-name {
 		@include colors.Theme() using ($theme) {
 			color: map-get($theme, header-color);

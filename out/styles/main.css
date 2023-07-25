@@ -590,6 +590,18 @@ ap-stat-block * {
   column-rule: 1px solid #a8a88a;
 }
 
+.theme-stars .two-columns-container .item-container + .item-container {
+  border-top: 1px solid #a8a88a;
+}
+
+.theme-worlds .two-columns-container .item-container + .item-container {
+  border-top: 1px solid #a8a88a;
+}
+
+.theme-test .two-columns-container .item-container + .item-container {
+  border-top: 1px solid #a8a88a;
+}
+
 .two-columns-container .item-name {
   font-weight: bold;
 }

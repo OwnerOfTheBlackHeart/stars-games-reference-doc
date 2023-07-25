@@ -5,3 +5,435 @@
 	capabilities. Protomechs represent the largest a powered armor system can get without the combination of micro-fusion generators and grav
 	plates, or other fenceposting protections.
 </p>
+<p>
+	Protomechs are notably weaker than mechs, with their armor scores being similar to that of vehicles, where the damage is taken off of
+	non-gunnery weapons while gunnery weapons completely ignore the armor. Also unlike mechs, protomechs can use a number of fittings, similar
+	to drones. The standard battery included in a protomech lasts for 12 hours per charge, providing full life support as a suit of powered
+	armor for that time, and takes 24 hours to charge when connected to a stable power source such as a city electric grid or starship power
+	system.
+</p>
+<p>
+	Protomech pilots are able to use any weapons or equipment that they carry with them into battle with them. Protomechs do not have a health
+	value of their own, requiring any pilot to take the damage themselves.
+</p>
+<p>
+	Light protomechs are barely more than powered armor and stand 10 to 20 centimeters taller than their user and can be compressed down to a
+	4 enc item, with every mounted item's encumbrance being added as well (gunnery weapons without a listed encumbrance count as 4). Medium
+	protomechs stand around 2.4 meters tall and take up 2 tons of starship cargo space. Heavy protomechs stand around 2.8 meters tall and take
+	up 5 tons of starship cargo space. Starship Vehicle Transport Fittings affect medium and heavy protomechs as if they were vehicles, with
+	heavy protomechs rounding down to 2 tons of starship cargo space.
+</p>
+
+<h2 id="building-protomechs">Modding and Building Protomechs</h2>
+<p>
+	Protomechs use the normal item creation and modification rules, except that they are able to be built in powered armor or mech workshops,
+	taking 1 month to assemble for a single engineer. Protomechs can accept armor mods and integrated weapons can take weapon mods.
+</p>
+
+<h2 id="hulls">Hulls</h2>
+<p>
+	Hulls are the physical protomechs themselves and come in two types, military and industrial, and three weight categories, light, medium
+	and heavy. Industrial hulls are only capable of mounting a single weapon regardless of size and provide a +2 bonus to any Strength/Exert
+	or Constitution/Exert skill checks, and double the effect of any fittings that improve carry load. Military hulls are designed for
+	mounting multiple weapons and have an easier time mounting armor (see the description for the Armor fitting).
+</p>
+<div class="two-columns-container">
+	<div class="item-container">
+		<p>
+			<i class="item-name">Hull</i> is the hull of the protomech. Industrial hulls are only capable of mounting a single weapon regardless
+			of size and provide a +2 bonus to any Strength/Exert or Constitution/Exert skill checks, and double the effect of any fittings that
+			improve carry load. Military hulls are designed for mounting multiple weapons and have an easier time mounting armor (see the
+			description for the Armor fitting).
+		</p>
+	</div>
+	<div class="item-container">
+		<p>
+			<i class="item-name">Cost</i> is the cost, in credits, of a protomech on a TL 4 world with a moderate market for such equipment. TL 3
+			worlds multiply all protomech costs by 5 while TL 4, or higher, worlds that heavily utilize protomechs may reduce the cost by half, or
+			even down to a quarter if protomechs are used obsessively.
+		</p>
+	</div>
+	<div class="item-container">
+		<p><i class="item-name">AC</i> is the base armor class provided by the protomech hull, before any fittings are built in.</p>
+	</div>
+	<div class="item-container">
+		<p>
+			<i class="item-name">Fittings</i> is the number of fitting that the hull can handle. Note that some protomech fittings take up more
+			than 1 fitting slot.
+		</p>
+	</div>
+	<div class="item-container">
+		<p>
+			<i class="item-name">Class</i> is the size of the protomech. Light protomechs are barely more than powered armor and stand 10 to 20
+			centimeters taller than their user and can be compressed down to a 4 enc item, with every mounted item's encumbrance being added as
+			well (gunnery weapons without a listed encumbrance count as 4). Medium protomechs stand around 2.4 meters tall and take up 2 tons of
+			starship cargo space. Heavy protomechs stand around 2.8 meters tall and take up 5 tons of starship cargo space.
+		</p>
+	</div>
+</div>
+<ap-smart-table headers="Hull, Cost, AC, Fittings, Class">
+	<classes cost="centered" ac="centered" fittings="centered"></classes>
+	<row>
+		<hull>Light Military</hull>
+		<cost>25,000</cost>
+		<ac>14</ac>
+		<fittings>5</fittings>
+		<class>Light</class>
+	</row>
+	<row>
+		<hull>Light Industrial</hull>
+		<cost>20,000</cost>
+		<ac>12</ac>
+		<fittings>7</fittings>
+		<class>Light</class>
+	</row>
+	<row>
+		<hull>Medium Military</hull>
+		<cost>50,000</cost>
+		<ac>13</ac>
+		<fittings>8</fittings>
+		<class>Medium</class>
+	</row>
+	<row>
+		<hull>Medium Industrial</hull>
+		<cost>40,000</cost>
+		<ac>11</ac>
+		<fittings>11</fittings>
+		<class>Medium</class>
+	</row>
+	<row>
+		<hull>Heavy Military</hull>
+		<cost>100,000</cost>
+		<ac>12</ac>
+		<fittings>12</fittings>
+		<class>Heavy</class>
+	</row>
+	<row>
+		<hull>Heavy Industrial</hull>
+		<cost>80,000</cost>
+		<ac>10</ac>
+		<fittings>16</fittings>
+		<class>Heavy</class>
+	</row>
+	<footer></footer>
+</ap-smart-table>
+
+<h2 id="fittings">Fittings</h2>
+<p>
+	Fittings, the means for protomechs to ascend beyond simple suits of armor. Some provide simple, numerical bonuses, while other provide
+	distinct abilities and tools for the pilot of the protomech to use. Most fittings can only be applied a limited number of times, as seen
+	in their full description. If a fitting doesn't explicitly state it can be installed more than once, it can only be installed once.
+</p>
+<ap-smart-table headers="Fitting, Cost, Fitting Slots, Effect">
+	<classes cost="centered" fitting-slots="centered"></classes>
+	<row>
+		<fitting><a href="#armor">Armor</a></fitting>
+		<cost>2,000</cost>
+		<fitting-slots>1</fitting-slots>
+		<effect>+2 armor, +3 armor for military hulls</effect>
+	</row>
+	<row>
+		<fitting><a href="#deflective-armor">Deflective Armor</a></fitting>
+		<cost>1,000</cost>
+		<fitting-slots>1</fitting-slots>
+		<effect>+1 AC, +2 AC for military hulls</effect>
+	</row>
+	<row>
+		<fitting><a href="#weapon-mount">Weapon Mount</a></fitting>
+		<cost>2,000</cost>
+		<fitting-slots>1</fitting-slots>
+		<effect>Allows a rifle sized weapon to be mounted into the mech</effect>
+	</row>
+	<row>
+		<fitting><a href="#weapon-computer">Weapon Computer</a></fitting>
+		<cost>5,000</cost>
+		<fitting-slots>1</fitting-slots>
+		<effect>Allows 2 weapon mounts to be fired in a single turn</effect>
+	</row>
+	<row>
+		<fitting><a href="#heavy-weapon-mount">Heavy Weapon Mount</a></fitting>
+		<cost>5,000</cost>
+		<fitting-slots>2</fitting-slots>
+		<effect>Allows the mounting of a heavy weapon</effect>
+	</row>
+	<row>
+		<fitting><a href="#mech-weapon-mount">Mech Weapon Mount</a></fitting>
+		<cost>15,000</cost>
+		<fitting-slots>3</fitting-slots>
+		<effect>Allows the mounting of a suit class mech weapon</effect>
+	</row>
+	<row>
+		<fitting><a href="#ammo-system">Ammo System</a></fitting>
+		<cost>1,000</cost>
+		<fitting-slots>1</fitting-slots>
+		<effect>Allows the internal storage of an extra magazine of ammunition for a weapon mount</effect>
+	</row>
+	<row>
+		<fitting><a href="#heavy-weapon-power-system">Heavy Weapon Power System</a></fitting>
+		<cost>10,000</cost>
+		<fitting-slots>1</fitting-slots>
+		<effect>Allows an energy-based heavy weapon to be powered from the internal power source of the protomech</effect>
+	</row>
+	<row>
+		<fitting><a href="#microfusion-generator">Microfusion Generator</a></fitting>
+		<cost>50,000</cost>
+		<fitting-slots>2</fitting-slots>
+		<effect>The protomech no longer requires recharging</effect>
+	</row>
+	<row>
+		<fitting><a href="#bio-fuel-generator">Bio-Fuel Generator</a></fitting>
+		<cost>0</cost>
+		<fitting-slots>1</fitting-slots>
+		<effect>The protomech can be fuelled by liquid biofuels</effect>
+	</row>
+	<row>
+		<fitting><a href="#solid-bio-fuel-generator">Solid Bio-Fuel Generator</a></fitting>
+		<cost>20,000</cost>
+		<fitting-slots>1</fitting-slots>
+		<effect>The protomech can be fuelled by flammable biomass</effect>
+	</row>
+	<row>
+		<fitting><a href="#oxidizer-system">Oxidizer System</a></fitting>
+		<cost>10,000</cost>
+		<fitting-slots>1</fitting-slots>
+		<effect>Allows bio-fuel generators to operate in space</effect>
+	</row>
+	<row>
+		<fitting><a href="#extended-power-system">Extended Power System</a></fitting>
+		<cost>1,000</cost>
+		<fitting-slots>1</fitting-slots>
+		<effect>Allows a protomech to operate for longer without needing to recharge or refuel</effect>
+	</row>
+	<row>
+		<fitting><a href="#gear-carriers">Gear Carriers</a></fitting>
+		<cost>500</cost>
+		<fitting-slots>1</fitting-slots>
+		<effect>Adds +1 readied encumbrance, or +2 readied encumbrance for industrial protomechs</effect>
+	</row>
+	<row>
+		<fitting><a href="#cargo-space">Cargo Space</a></fitting>
+		<cost>1,000</cost>
+		<fitting-slots>1</fitting-slots>
+		<effect>Allows the protomech to carry cargo without impacting its combat ability</effect>
+	</row>
+	<row>
+		<fitting><a href="#lift-systems">Lift Systems</a></fitting>
+		<cost>2,000</cost>
+		<fitting-slots>1</fitting-slots>
+		<effect>Allows the protomech to lift heavy loads</effect>
+	</row>
+	<row>
+		<fitting><a href="#stealth-systems">Stealth Systems</a></fitting>
+		<cost>10,000</cost>
+		<fitting-slots>1</fitting-slots>
+		<effect>Grants a +2 bonus to stealth skill checks, only +1 for heavy hulls</effect>
+	</row>
+	<row>
+		<fitting><a href="#sprinting-servos">Sprinting Servos</a></fitting>
+		<cost>5,000</cost>
+		<fitting-slots>1</fitting-slots>
+		<effect>Increases base speed by 5 meters per movement</effect>
+	</row>
+	<row>
+		<fitting><a href="#advanced-sensors">Advanced Sensors</a></fitting>
+		<cost>5,000</cost>
+		<fitting-slots>2</fitting-slots>
+		<effect>Adds integral low-light and thermal vision, as well as other sensors</effect>
+	</row>
+	<row>
+		<fitting><a href="#encrypted-transceiver">Encrypted Transceiver</a></fitting>
+		<cost>10,000</cost>
+		<fitting-slots>2</fitting-slots>
+		<effect>Allows secure communications with other encrypted devices</effect>
+	</row>
+	<row>
+		<fitting><a href="#climbing-system">Climbing System</a></fitting>
+		<cost>5,000</cost>
+		<fitting-slots>2</fitting-slots>
+		<effect>Allows a protomech to climb any surface capable of bearing its weight</effect>
+	</row>
+	<footer></footer>
+</ap-smart-table>
+<div class="two-columns-container">
+	<div id="armor" class="item-container">
+		<p>
+			<i class="item-name">Armor</i> fittings unsubtly layer more resilient armor plating onto the protomech, improving its ability to take
+			a direct hit. Each instance of this fitting adds +2 armor to industrial hulls or +3 armor to military hulls. Light hulls can take this
+			fitting once, medium hulls can take it twice and heavy hulls can take it 3 times.
+		</p>
+	</div>
+	<div id="deflective-armor" class="item-container">
+		<p>
+			<i class="item-name">Deflective armor</i> fittings improve the armor shape and add protective measures, such as ablatives filled with
+			reflective particulates, that have the chance of negating an incoming attack. Industrial hulls gain +1 AC from each instance of this
+			fitting while military hulls gain +2 AC. Deflective armor can only be applied to a protomech twice before it no longer provides a
+			meaningful effect.
+		</p>
+	</div>
+	<div id="weapon-mount" class="item-container">
+		<p>
+			<i class="item-name">Weapon mounts</i> allow the protomech to mount a single rifle sized weapon. A cell energy weapons are powered by
+			the protomech by default, while B cell energy weapons can be powered if a
+			<a href="#heavy-weapon-power-system">heavy weapon power system</a> is installed in the protomech. Ammunition fed weapons, and B cell
+			weapons, installed in weapon mounts can be reloaded normally, though installed <a href="#ammo-system">ammo systems</a> can reduce the
+			need for this. Only two instances of weapon mounts can be installed on a protomech, and only heavy protomechs can mount both weapon
+			mounts and a <a href="#heavy-weapon-mount">heavy weapon mount</a>. Weapon mounts cannot be installed on any protomech with a
+			<a href="#mech-weapon-mount">mech weapon mount</a>.
+		</p>
+	</div>
+	<div id="weapon-computer" class="item-container">
+		<p>
+			<i class="item-name">Weapon computers</i> allow a protomech to fire both <a href="#weapon-mount">weapon mounts</a> if two
+			<a href="#weapon-mount">weapon mounts</a> are installed. Due to the difficulty of managing heavy weapons on a humanoid form, weapon
+			computers cannot be used when a weapon mounted in a <a href="#heavy-weapon-mount">heavy weapon mount</a> is fired.
+		</p>
+	</div>
+	<div id="heavy-weapon-mount" class="item-container">
+		<p>
+			<i class="item-name">Heavy weapon mounts</i> allow the protomech to carry a single heavy/gunnery weapon. Heavy weapon mounts can only
+			be mounted on medium and heavy protomechs, with only protomechs able to install both heavy weapon mounts and
+			<a href="#weapon-mount">weapon mounts</a>. Weapons mounted in heavy weapon mounts are affected by
+			<a href="#ammo-system">ammo systems</a> normally. Energy weapons mounted in a heavy weapon mount are not normally powered by the
+			protomech, though a <a href="#heavy-weapon-power-system">heavy weapon power system</a> allows the weapon to be powered from the
+			protomech's internal power system. Only one heavy weapon mount can be mounted onto a protomech.
+		</p>
+	</div>
+	<div id="mech-weapon-mount" class="item-container">
+		<p>
+			<i class="item-name">Mech weapon mounts</i> allow the protomech to carry a single suit-class mech weapon. Mech weapon mounts can only
+			be mounted on a heavy protomech and do not allow any other type of weapon mount to be installed. Ammo mech weapons have 1 combat's
+			worth of ammunition, with an addition combat per <a href="#ammo-system">ammo systems</a> allocated to the mech weapon mount. Energy
+			mech weapons require a <a href="#heavy-weapon-power-system">heavy weapon power system</a> and a
+			<a href="#microfusion-generator">microfusion generator</a> to operate, but require no ammunition be provided.
+		</p>
+	</div>
+	<div id="ammo-system" class="item-container">
+		<p>
+			<i class="item-name">Ammo systems</i> provide an extra ammunition storage and feed to a mounted weapon. For ammunition consuming and B
+			cell weapons, each ammo system allocated to the weapon allows the carrying of another magazine of ammunition, without the need to
+			reload. Ammunition consuming weapons and B cell weapons can be reloaded normally once all allocated ammo systems run dry. Ammo mech
+			weapons instead gain an extra combat's worth of ammunition per allocated ammo system. There is no limit, save the number of fitting
+			slots available, to the number of ammo systems installed on a protomech.
+		</p>
+	</div>
+	<div id="heavy-weapon-power-system" class="item-container">
+		<p>
+			<i class="item-name">Heavy weapon power systems</i> allow the protomech to internally power mounted weapons that use B cells. A heavy
+			weapon power system and a <a href="#microfusion-generator">microfusion generator</a> is required to power mech grade energy weapons.
+		</p>
+	</div>
+	<div id="microfusion-generator" class="item-container">
+		<p>
+			<i class="item-name">Microfusion generators</i> allow a freshly refueled protomech to operate for up to 1 year before it needs
+			refueled. Refueling a light protomech's microfusion generator requires 1 encumbrance worth of water, a medium protomech 3 encumbrance
+			worth of water, and a heavy protomech 6 encumbrance worth of water. Only TL 4 planets can produce microfusion generators.
+		</p>
+	</div>
+	<div id="bio-fuel-generator" class="item-container">
+		<p>
+			<i class="item-name">Bio-fuel generators</i> allow a protomech to operate off of liquid combustibles, such as gasoline or bio-diesel.
+			The internal tank included with the generator holds up to 12 hours of operation. Without an
+			<a href="#oxidizer-system">Oxidizer System</a>, a bio-fuel generator cannot operate in space or in thin atmospheres. Refueling light
+			protomechs cost 5 credits per hour of operation, medium protomechs 20 credits per hour, and heavy protomechs 50 credits per hour.
+		</p>
+	</div>
+	<div id="solid-bio-fuel-generator" class="item-container">
+		<p>
+			<i class="item-name">Solid bio-fuel generators</i> allow a protomech to operate off of solid combustibles, such as wood pellets or
+			coal. When operating off of processed fuels, such as coal or compressed wood pellets, a solid bio-fuel generator can operate for 12
+			hours off of its internal fuel. When operating off of unprocessed fuels, such as dry sticks, a solid bio-fuel generator can operate
+			for 4 hours off of its internal fuel. Refueling a light protomech takes 2 encumbrance worth of fuel, a medium protomech requires 8
+			encumbrance worth of fuel, and a heavy protomech requires 20 encumbrance worth of fuel. Processed fuels typically cost 50 credits per
+			encumbrance, while unprocessed fuels can typically be found by scavenging on any world with a sufficient biosphere.
+		</p>
+	</div>
+	<div id="oxidizer-system" class="item-container">
+		<p>
+			<i class="item-name">Oxidizer systems</i> allow <a href="#bio-fuel-generator">bio-fuel generators</a> and
+			<a href="#solid-bio-fuel-generator">solid bio-fuel generators</a> to operate in space. A single oxidizer system contains enough
+			oxidizer to operate for 12 hours before needing refreshed.
+		</p>
+	</div>
+	<div id="extended-power-system" class="item-container">
+		<p>
+			<i class="item-name">Extended power systems</i> increase the size of any fuel reserves or batteries used by the protomech. Each
+			extended power system increases the maximum battery operation time by 12 hours. If an extended power system is installed in a
+			protomech with a <a href="#bio-fuel-generator">bio-fuel generator</a> or a
+			<a href="#solid-bio-fuel-generator">solid bio-fuel generator</a>, it can add either a 12 hour battery or an extra maximum load of fuel
+			for the generator, with the expected increase of cost or encumbrance to fully fuel the generator.
+		</p>
+	</div>
+	<div id="gear-carriers" class="item-container">
+		<p>
+			<i class="item-name">Gear carriers</i> are a series of hooks, nets, pockets, and magnetic and velcro attachment points that enable the
+			pilot of a protomech to carry more readied encumbrance. Each instance of this fitting adds +1 readied encumbrance, or +2 readied
+			encumbrance if an industrial hull. Light hulls can install this fitting once, medium hulls twice, and heavy hulls three times.
+		</p>
+	</div>
+	<div id="cargo-space" class="item-container">
+		<p>
+			<i class="item-name">Cargo spaces</i> provide a protomech with the ability to carry extra weight without inhibiting the operation of
+			the protomech, though accessing the cargo space takes time. Light protomechs carry 10 kilograms per cargo space, medium protomechs 50
+			kilograms per cargo space, and heavy protomechs 100 kilograms per cargo space, with industrial hulls carrying twice as much. The only
+			limitation to how many cargo spaces a protomech can install is the available fitting slots.
+		</p>
+	</div>
+	<div id="lift-systems" class="item-container">
+		<p>
+			<i class="item-name">Lift systems</i> allow a protomech to lift heavy loads over-head with ease, though any load above 1 ton requires
+			deploying the lift system's stabilization systems, which takes 1 minute to deploy or retract. The stabilization systems included in a
+			lift system can come in many forms, though the "ant" and pulley systems are the most popular, with the "ant" system deploying six
+			wheeled limbs that support the protomech's torso and the pulley system uses a series of pulleys that are attached to sturdy objects
+			within 30 meters to provide support to the protomech's torso. Light protomechs can lift 100 kilograms per lift system, medium
+			protomechs 200 kilograms per, and heavy protomechs 500 kilograms each, with industrial hulls carrying twice as much. The only
+			limitation to how many lift systems a protomech can install is the available fitting slots. When using the lift systems, a protomech
+			cannot fire any weapons, and moves at half speed when the stabilization systems are deployed.
+		</p>
+		<p>
+			Protomechs equipped with lift systems can generate exceptional forces, allowing them to tear a human sized hole in a standard postech
+			exterior wall with four rounds of effort. Lighter or more primitive construction gives way in half the time, while fortified
+			armorplast barriers may require 1d6 times as many rounds, or be completely impervious.
+		</p>
+	</div>
+	<div id="stealth-systems" class="item-container">
+		<p>
+			<i class="item-name">Stealth systems</i> include low-noise servos, extra padding on the feet, thermal image reducing technologies,
+			dull, matte paints, built-in lockpicks, and systems to break up the protomech's outline. For light and medium protomechs, stealth
+			systems grant a +2 to stealth checks. For heavy protomech's, the stealth systems can only do so much and grant +1 to stealth checks.
+		</p>
+	</div>
+	<div id="sprinting-servos" class="item-container">
+		<p>
+			<i class="item-name">Sprinting servos</i> replace the servos and shock absorbing systems to allow the pilot to move faster than they
+			would normally be able. Each installation of sprinting servos increases the protomech's base speed by 5 meters. Light protomechs can
+			mount 2 sprinting servos, medium protomechs 3 and heavy protomechs 4.
+		</p>
+	</div>
+	<div id="advanced-sensors" class="item-container">
+		<p>
+			<i class="item-name">Advanced Sensors</i> add integral low-light and thermal vision, basic radar sensors and high sensitivity
+			microphones, allowing the pilot incredible awareness of their surroundings. Protomechs equipped with advanced sensors gain a +2 to all
+			notice checks, can hear a normal conversation up to 100 meters away, can detect ground vehicles up to 1 kilometer away and aircraft up
+			to 10 kilometers away.
+		</p>
+	</div>
+	<div id="encrypted-transceiver" class="item-container">
+		<p>
+			<i class="item-name">Encrypted Transceivers</i> enable the protomech to communicate with military grade encryptions equivalent to the
+			tech level that created the fitting, as well as serving as a communications hub for nearby personnel. If no interference is present,
+			encrypted transceivers can communicate with orbital objects, such as starships or commsats. When quantum ECM is present, encrypted
+			transceivers can communicate with devices within 100 meters, or with other encrypted transceivers up to 1 kilometer away if a direct
+			line of sight can be made. Other wise, encrypted transceivers can acted as an encrypted comm server or a comm set from Starvation
+			Cheap.
+		</p>
+	</div>
+	<div id="climbing-system" class="item-container">
+		<p>
+			<i class="item-name">Climbing Systems</i> enable the protomech to climb any surface capable of bearing its weight at its normal
+			movement speed. While using a climbing system, only a one handed weapon or a weapon in a <a href="#weapon-mount">weapon mounts</a> can
+			be used. Two handed weapons and weapons located in a <a href="#heavy-weapon-mount">heavy weapon mount</a> or a
+			<a href="#mech-weapon-mount">mech weapon mount</a> require too much of the body to be moved to be used with any effect other than
+			boring a hole directly in front of the protomech when the climbing system is in use.
+		</p>
+	</div>
+</div>
