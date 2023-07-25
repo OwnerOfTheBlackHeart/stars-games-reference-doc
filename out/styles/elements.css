@@ -278,6 +278,20 @@ a:visited:hover {
   margin-right: 1rem;
 }
 
+.flex-column-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.flex-column-container .flex-column {
+  flex-shrink: 0;
+  flex-grow: 1;
+}
+.flex-column-container .flex-column p,
+.flex-column-container .flex-column li {
+  max-width: 30em;
+  min-width: 5em;
+}
+
 .link-list {
   list-style-type: none;
   padding-inline-start: 0.5em;

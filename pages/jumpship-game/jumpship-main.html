@@ -1,0 +1,133 @@
+<p>
+	For reasons unknown to even the Terran Mandate, the sector known as Cornu Curta is abnormally difficult for spike drive equipped ships to
+	navigate. While spike ships operate normally in the outer edge of a star system's gravity well (the 80 to 100 distance bands), operation
+	deeper within a star system's gravity well or too close to a planet, or object with a similar gravitic effect, is impossible for spike
+	drive ships, requiring tows or tugs in order to traverse the interior of a star system.
+</p>
+<p>
+	For this reason, spike drive equipped space craft, referred to locally as jumpships, normally mount a large quantity of shiptender mounts
+	with which to ferry system ships through space and stick to the edge of a star system, only going as deep as they need to reach refuel and
+	restocking stations.
+</p>
+<p><b>Potential Starts</b>:</p>
+<ul>
+	<li>
+		<a is="ap-nav-link" href="jump-mayrifa">Mayrifa</a> - A warm world with inedible, toxic local flora where the prior masters of the
+		sector revolt against the relative new comers who have taken their power away, necessitating a reluctant occupation by the
+		<a is="ap-nav-link" href="jump-dechtum-ardurix">Dechtum Ardurix</a>.
+	</li>
+	<li>
+		<a is="ap-nav-link" href="jump-antino">Antino</a> - A cold-to-temperate world with only the remnants of the once verdant ecosystem.
+		After the nearly exclusively male led government and businesses over-exploited the environment, the female population rose up and took
+		control. Now men find themselves second class citizens and the entire population must have either cybernetics or genetic modification to
+		be able to survive long term exposure to the industrial chemicals that still taint the soil and atmosphere. Exposure of less than 3
+		months with at least a week to purge afterward is normally enough, with doses under 1 year treatable by TL 4 medicine within 2 months.
+	</li>
+	<li>
+		<a is="ap-nav-link" href="jump-ingigud">Ingigud</a> - A temperate planet with a thick atmosphere (pressure mask required) and a
+		human-miscible biosphere. The local population is waging a vicious "holy war," though due to the low population of the planet and
+		non-breathable atmosphere (without a basic respirator, at least), the war is being fought almost exclusively with robots and has only
+		claimed 12 lives so far, after a misfire from attacking robots hit a residence's door seals and leaked enough atmosphere into the home
+		to kill the occupants. All buildings are now required to have a "respirator alarm."
+	</li>
+	<li>
+		<a is="ap-nav-link" href="jump-dynomed">Dynomed</a> - A temperate-to-warm planet with a human-miscible biosphere,
+		<a is="ap-nav-link" href="jump-dynomed">Dynomed</a> is teeming with refugees from the
+		<a is="ap-nav-link" href="jump-free-jaxdab-federation">Thyra</a> system, who the locals blame for the recent zombie outbreak that has
+		forced them back to TL3 technology.
+	</li>
+	<li>
+		<a is="ap-nav-link" href="jump-melis">Melis</a> - A temperate and breathable planet with a native biosphere nearing the end of the
+		microbial stage of evolution, the technology confiscated from refugees to the planet has allowed rapid advancement and a steady growth
+		of power an influence. <a is="ap-nav-link" href="jump-melis">Melis</a> is considered to be on track to become the ruling power in the
+		<a is="ap-nav-link" href="jump-queel-league">Queel League</a>, as the deep space stations that provide the
+		<a is="ap-nav-link" href="jump-queel-league">Queel League</a> with its limited advanced technology struggle to keep up with the
+		industrial output of a planet.
+	</li>
+	<li>
+		<a is="ap-nav-link" href="jump-helga">Helga</a> - A cold-to-temperate planet a thick atmosphere and no native biosphere, the local
+		military lords sacrifice citizens, primarily criminals, to maintain their extended lifespan as they struggle to hunt down rogue super
+		soldier programs and the cults that fund them.
+	</li>
+</ul>
+<ap-auth-container permissions="jump-full">
+	<p>
+		<b>TODO:</b>
+	</p>
+	<ul>
+		<li>Integrate Sons of Gold trade goods</li>
+		<li>Add basic planet information</li>
+		<li>Write up the various factions (the <a is="ap-nav-link" href="jump-dechtum-ardurix">Dechtum Ardurix</a> are ludzie)</li>
+		<li>Integrate more aliens, such as the lisaten</li>
+		<li>
+			Add the system for limiting team size
+			<ul>
+				<li>Size: 4 characters + 2 NPCs</li>
+				<li>NPCs included externally controlled drones</li>
+				<li>Drones carried and controlled by the team do not count against this total</li>
+				<li>Multiple teams can be assigned to perform different tasks</li>
+			</ul>
+		</li>
+	</ul>
+</ap-auth-container>
+<div class="column-container">
+	<div class="column"><h3>Player Stuff</h3></div>
+	<div class="column">
+		<h3>Empires</h3>
+		<ul class="link-list">
+			<li><a is="ap-nav-link" href="jump-dechtum-ardurix">Dechtum Ardurix</a></li>
+			<li><a is="ap-nav-link" href="jump-free-jaxdab-federation">Free Jaxdab Federation</a></li>
+			<li><a is="ap-nav-link" href="jump-noxpaj-alliance">Nox'paj Alliance</a></li>
+			<li><a is="ap-nav-link" href="jump-peoples-republic-of-salmy">People's Republic of Salmy</a></li>
+			<li><a is="ap-nav-link" href="jump-queel-league">Queel League</a></li>
+			<li><a is="ap-nav-link" href="jump-wernume-imperium">Wernume Imperium</a></li>
+		</ul>
+	</div>
+	<div class="column">
+		<h3 style="text-align: center">Sectors</h3>
+		<div class="flex-column-container">
+			<div class="flex-column">
+				<ul class="link-list">
+					<li>
+						<h4>Dechtum Ardurix</h4>
+						<ap-template-outlet page="jump-dechtum-planets" header-level="5"></ap-template-outlet>
+					</li>
+					<li>
+						<h4>Free Jaxdab Federation</h4>
+						<ap-template-outlet page="jump-jaxdab-planets" header-level="5"></ap-template-outlet>
+					</li>
+				</ul>
+			</div>
+			<div class="flex-column">
+				<ul class="link-list">
+					<li>
+						<h4>Nox'paj Alliance</h4>
+						<ap-template-outlet page="jump-noxpaj-planets" header-level="5"></ap-template-outlet>
+					</li>
+					<li>
+						<h4>People's Republic of Salmy</h4>
+						<ap-template-outlet page="jump-salmy-planets" header-level="5"></ap-template-outlet>
+					</li>
+				</ul>
+			</div>
+			<div class="flex-column">
+				<ul class="link-list">
+					<li>
+						<h4>Queel League</h4>
+						<ap-template-outlet page="jump-queel-planets" header-level="5"></ap-template-outlet>
+					</li>
+					<li>
+						<h4>Wernume Imperium</h4>
+						<ap-template-outlet page="jump-wernume-planets" header-level="5"></ap-template-outlet>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="column">
+		<h3>Miscellaneous</h3>
+		<ul class="link-list">
+			<li><a is="ap-nav-link" href="jumpship-map">Sector Map</a></li>
+		</ul>
+	</div>
+</div>

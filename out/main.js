@@ -761,13 +761,13 @@ System.register("io", ["auth-manager", "callback-event", "loader", "types/page",
         OnPopState({});
     }
     exports_11("InternalNavigate", InternalNavigate);
-    async function LoadIntoElement(pageName, queryString) {
+    async function LoadIntoElement(pageName, queryString, element) {
         const foundPage = page_1.FindPage(loader_2.globals.pageDirectory, pageName);
-        const element = document.querySelector(queryString);
+        const foundElement = queryString ? document.querySelector(queryString) : element;
         if (!foundPage) {
             throw new Error(`Could not find page "${pageName}"`);
         }
-        else if (!element) {
+        else if (!foundElement) {
             throw new Error(`Could not find element "${queryString}"`);
         }
         const pageContents = await fetch(foundPage.page.url)
@@ -775,9 +775,9 @@ System.register("io", ["auth-manager", "callback-event", "loader", "types/page",
             .catch(() => {
             throw new Error(`Could not find contents of "${pageName}"`);
         });
-        element.scrollTop = 0;
-        element.innerHTML = pageContents;
-        return element;
+        foundElement.scrollTop = 0;
+        foundElement.innerHTML = pageContents;
+        return foundElement;
     }
     async function LoadIntoContent(pageName) {
         const foundPage = page_1.FindPage(loader_2.globals.pageDirectory, pageName);
@@ -1667,9 +1667,9 @@ System.register("custom-elements/ap-vehicle-stat-block", ["utilities", "custom-e
         }
     };
 });
-System.register("custom-elements/ap-template-outlet", ["io", "loader"], function (exports_21, context_21) {
+System.register("custom-elements/ap-template-outlet", ["io", "loader", "types/page"], function (exports_21, context_21) {
     "use strict";
-    var io_4, loader_5, templateOutletName, TemplateOutlet;
+    var io_4, loader_5, page_3, templateOutletName, TemplateOutlet;
     var __moduleName = context_21 && context_21.id;
     return {
         setters: [
@@ -1678,6 +1678,9 @@ System.register("custom-elements/ap-template-outlet", ["io", "loader"], function
             },
             function (loader_5_1) {
                 loader_5 = loader_5_1;
+            },
+            function (page_3_1) {
+                page_3 = page_3_1;
             }
         ],
         execute: function () {
@@ -1695,6 +1698,12 @@ System.register("custom-elements/ap-template-outlet", ["io", "loader"], function
                 set path(val) {
                     this.setAttribute("path", val);
                 }
+                get page() {
+                    return this.getAttribute("page");
+                }
+                set page(val) {
+                    this.setAttribute("page", val);
+                }
                 get headerLevel() {
                     return Number(this.getAttribute("header-level"));
                 }
@@ -1710,25 +1719,34 @@ System.register("custom-elements/ap-template-outlet", ["io", "loader"], function
                         const folderPath = loader_5.globals.templateLocations[this.folder];
                         const filepath = this.path.includes(".html") ? this.path : this.path + ".html";
                         if (folderPath) {
-                            fetch(`${folderPath}/${filepath}`)
-                                .then((response) => response.text())
-                                .then((html) => {
-                                this.innerHTML = this.adjustForHeaderLevel(html);
-                                if (this.headerLevel) {
-                                    const subTemplates = this.querySelectorAll(templateOutletName);
-                                    if (subTemplates.length > 0) {
-                                        subTemplates.forEach((subOutlet) => (subOutlet.headerLevel = subOutlet.headerLevel ? subOutlet.headerLevel + this.headerLevel - 1 : this.headerLevel));
-                                    }
-                                }
-                                if (location.hash) {
-                                    const element = this.querySelector(location.hash);
-                                    if (element) {
-                                        io_4.UpdateContentScroll();
-                                    }
-                                }
-                            });
+                            this.loadFile(`${folderPath}/${filepath}`);
                         }
                     }
+                    else if (this.page) {
+                        const page = page_3.FindPage(loader_5.globals.pageDirectory, this.page);
+                        if (page) {
+                            this.loadFile(page.page.url);
+                        }
+                    }
+                }
+                loadFile(path) {
+                    fetch(path)
+                        .then((response) => response.text())
+                        .then((html) => {
+                        this.innerHTML = this.adjustForHeaderLevel(html);
+                        if (this.headerLevel) {
+                            const subTemplates = this.querySelectorAll(templateOutletName);
+                            if (subTemplates.length > 0) {
+                                subTemplates.forEach((subOutlet) => (subOutlet.headerLevel = subOutlet.headerLevel ? subOutlet.headerLevel + this.headerLevel - 1 : this.headerLevel));
+                            }
+                        }
+                        if (location.hash) {
+                            const element = this.querySelector(location.hash);
+                            if (element) {
+                                io_4.UpdateContentScroll();
+                            }
+                        }
+                    });
                 }
                 adjustForHeaderLevel(html) {
                     let headerLevelModifier = this.headerLevel;
@@ -1994,7 +2012,7 @@ System.register("custom-elements/custom-elements", ["custom-elements/ap-theme-co
 });
 System.register("main", ["custom-elements/custom-elements", "io", "loader", "types/page"], function (exports_25, context_25) {
     "use strict";
-    var io_6, loader_6, page_3;
+    var io_6, loader_6, page_4;
     var __moduleName = context_25 && context_25.id;
     return {
         setters: [
@@ -2006,13 +2024,13 @@ System.register("main", ["custom-elements/custom-elements", "io", "loader", "typ
             function (loader_6_1) {
                 loader_6 = loader_6_1;
             },
-            function (page_3_1) {
-                page_3 = page_3_1;
+            function (page_4_1) {
+                page_4 = page_4_1;
             }
         ],
         execute: function () {
             window.test = (name) => {
-                console.log(page_3.FindPage(loader_6.globals.pageDirectory, name));
+                console.log(page_4.FindPage(loader_6.globals.pageDirectory, name));
             };
             io_6.InitialLoad().then(() => {
                 onpopstate = io_6.OnPopState;

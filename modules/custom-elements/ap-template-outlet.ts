@@ -1,5 +1,6 @@
 import { UpdateContentScroll } from "../io";
 import { globals, globalsReady } from "../loader";
+import { FindPage } from "../types/page";
 
 export const templateOutletName = "ap-template-outlet";
 
@@ -18,6 +19,14 @@ class TemplateOutlet extends HTMLElement {
 
 	set path(val) {
 		this.setAttribute("path", val);
+	}
+
+	get page() {
+		return this.getAttribute("page");
+	}
+
+	set page(val) {
+		this.setAttribute("page", val);
 	}
 
 	get headerLevel() {
@@ -40,31 +49,40 @@ class TemplateOutlet extends HTMLElement {
 			const filepath = this.path.includes(".html") ? this.path : this.path + ".html";
 
 			if (folderPath) {
-				fetch(`${folderPath}/${filepath}`)
-					.then((response) => response.text())
-					.then((html) => {
-						this.innerHTML = this.adjustForHeaderLevel(html);
-
-						if (this.headerLevel) {
-							const subTemplates = this.querySelectorAll<TemplateOutlet>(templateOutletName);
-
-							if (subTemplates.length > 0) {
-								subTemplates.forEach(
-									(subOutlet) =>
-										(subOutlet.headerLevel = subOutlet.headerLevel ? subOutlet.headerLevel + this.headerLevel - 1 : this.headerLevel)
-								);
-							}
-						}
-
-						if (location.hash) {
-							const element = this.querySelector(location.hash);
-							if (element) {
-								UpdateContentScroll();
-							}
-						}
-					});
+				this.loadFile(`${folderPath}/${filepath}`);
+			}
+		} else if (this.page) {
+			const page = FindPage(globals.pageDirectory, this.page);
+			if (page) {
+				this.loadFile(page.page.url);
 			}
 		}
+	}
+
+	loadFile(path: string) {
+		fetch(path)
+			.then((response) => response.text())
+			.then((html) => {
+				this.innerHTML = this.adjustForHeaderLevel(html);
+
+				if (this.headerLevel) {
+					const subTemplates = this.querySelectorAll<TemplateOutlet>(templateOutletName);
+
+					if (subTemplates.length > 0) {
+						subTemplates.forEach(
+							(subOutlet) =>
+								(subOutlet.headerLevel = subOutlet.headerLevel ? subOutlet.headerLevel + this.headerLevel - 1 : this.headerLevel)
+						);
+					}
+				}
+
+				if (location.hash) {
+					const element = this.querySelector(location.hash);
+					if (element) {
+						UpdateContentScroll();
+					}
+				}
+			});
 	}
 
 	adjustForHeaderLevel(html: string): string {

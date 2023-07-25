@@ -20,6 +20,12 @@
 			"directories": []
 		},
 		{
+			"baseUrl": "homebrew/protomechs",
+			"mainPage": "protomechs",
+			"pages": [{ "url": "protomechs.html", "name": "protomechs", "title": "Protomechs" }],
+			"directories": []
+		},
+		{
 			"baseUrl": "old-stars-micro",
 			"mainPage": "old-stars-main",
 			"pages": [
@@ -350,6 +356,136 @@
 								{ "url": "gunda-tribe.html", "name": "lod-gunda-tribe", "title": "The Gunda Tribe" },
 								{ "url": "eike-tribe.html", "name": "lod-eike-tribe", "title": "The Eike Tribe" },
 								{ "url": "herta-tribe.html", "name": "lod-herta-tribe", "title": "The Herta Tribe" }
+							],
+							"directories": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"baseUrl": "jumpship-game",
+			"mainPage": "jumpship-main",
+			"pages": [
+				{ "url": "jumpship-main.html", "name": "jumpship-main", "title": "Jumpship Game" },
+				{ "url": "https://sectorswithoutnumber.com/sector/VdfKRdhTOuYA364tbT5j", "name": "jumpship-map", "title": "", "external": true }
+			],
+			"directories": [
+				{
+					"baseUrl": "empires/dechtum-ardurix",
+					"mainPage": "jump-dechtum-ardurix",
+					"pages": [{ "url": "dechtum-ardurix.html", "name": "jump-dechtum-ardurix", "title": "Dechtum Ardurix" }],
+					"directories": [
+						{
+							"baseUrl": "planets",
+							"mainPage": "jump-dechtum-planets",
+							"pages": [
+								{ "url": "dechtum-planets.html", "name": "jump-dechtum-planets", "title": "" },
+								{ "url": "castaxial.html", "name": "jump-castaxial", "title": "Castaxial" },
+								{ "url": "mayrifa.html", "name": "jump-mayrifa", "title": "Mayrifa" },
+								{ "url": "ortasto.html", "name": "jump-ortasto", "title": "Ortasto" },
+								{ "url": "enrarelaed.html", "name": "jump-enrarelaed", "title": "Enrarelaed" }
+							],
+							"directories": []
+						}
+					]
+				},
+				{
+					"baseUrl": "empires/free-jaxdab-federation",
+					"mainPage": "jump-free-jaxdab-federation",
+					"pages": [{ "url": "free-jaxdab-federation.html", "name": "jump-free-jaxdab-federation", "title": "Free Jaxdab Federation" }],
+					"directories": [
+						{
+							"baseUrl": "planets",
+							"mainPage": "jump-jaxdab-planets",
+							"pages": [
+								{ "url": "jaxdab-planets.html", "name": "jump-jaxdab-planets", "title": "" },
+								{ "url": "staklakou.html", "name": "jump-staklakou", "title": "Staklakou" },
+								{ "url": "thurid.html", "name": "jump-thurid", "title": "Thurid" },
+								{ "url": "astrid.html", "name": "jump-astrid", "title": "Astrid" },
+								{ "url": "berg.html", "name": "jump-berg", "title": "Berg" },
+								{ "url": "thos.html", "name": "jump-thos", "title": "Thos" },
+								{ "url": "ingigud.html", "name": "jump-ingigud", "title": "Ingigud" }
+							],
+							"directories": []
+						}
+					]
+				},
+				{
+					"baseUrl": "empires/noxpaj-alliance",
+					"mainPage": "jump-noxpaj-alliance",
+					"pages": [{ "url": "noxpaj-alliance.html", "name": "jump-noxpaj-alliance", "title": "Nox'paj Alliance" }],
+					"directories": [
+						{
+							"baseUrl": "planets",
+							"mainPage": "jump-noxpaj-planets",
+							"pages": [
+								{ "url": "noxpaj-planets.html", "name": "jump-noxpaj-planets", "title": "" },
+								{ "url": "bareaga.html", "name": "jump-bareaga", "title": "Bareaga" },
+								{ "url": "chris.html", "name": "jump-chris", "title": "Chris" },
+								{ "url": "soxere.html", "name": "jump-soxere", "title": "Soxere" },
+								{ "url": "dynomed.html", "name": "jump-dynomed", "title": "Dynomed" },
+								{ "url": "ted-sucks-at-poker.html", "name": "jump-ted-sucks-at-poker", "title": "Ted Sucks at Poker" },
+								{ "url": "lorne-maie.html", "name": "jump-lorne-maie", "title": "Lorne Maie" }
+							],
+							"directories": []
+						}
+					]
+				},
+				{
+					"baseUrl": "empires/peoples-republic-of-salmy",
+					"mainPage": "jump-peoples-republic-of-salmy",
+					"pages": [
+						{ "url": "peoples-republic-of-salmy.html", "name": "jump-peoples-republic-of-salmy", "title": "People's Republic of Salmy" }
+					],
+					"directories": [
+						{
+							"baseUrl": "planets",
+							"mainPage": "jump-salmy-planets",
+							"pages": [
+								{ "url": "salmy-planets.html", "name": "jump-salmy-planets", "title": "" },
+								{ "url": "antino.html", "name": "jump-antino", "title": "Antino" },
+								{ "url": "thorg.html", "name": "jump-thorg", "title": "Thorg" },
+								{ "url": "ambee.html", "name": "jump-ambee", "title": "Ambee" }
+							],
+							"directories": []
+						}
+					]
+				},
+				{
+					"baseUrl": "empires/queel-league",
+					"mainPage": "jump-queel-league",
+					"pages": [{ "url": "queel-league.html", "name": "jump-queel-league", "title": "Queel League" }],
+					"directories": [
+						{
+							"baseUrl": "planets",
+							"mainPage": "jump-queel-planets",
+							"pages": [
+								{ "url": "queel-planets.html", "name": "jump-queel-planets", "title": "" },
+								{ "url": "maz.html", "name": "jump-maz", "title": "Maz" },
+								{ "url": "fareema.html", "name": "jump-fareema", "title": "Fareema" },
+								{ "url": "athandisk.html", "name": "jump-athandisk", "title": "Anthandisk" },
+								{ "url": "melis.html", "name": "jump-melis", "title": "Melis" }
+							],
+							"directories": []
+						}
+					]
+				},
+				{
+					"baseUrl": "empires/wernume-imperium",
+					"mainPage": "jump-wernume-imperium",
+					"pages": [{ "url": "wernume-imperium.html", "name": "jump-wernume-imperium", "title": "Wernume Imperium" }],
+					"directories": [
+						{
+							"baseUrl": "planets",
+							"mainPage": "jump-wernume-planets",
+							"pages": [
+								{ "url": "wernume-planets.html", "name": "jump-wernume-planets", "title": "" },
+								{ "url": "helga.html", "name": "jump-helga", "title": "Helga" },
+								{ "url": "hrefna.html", "name": "jump-hrefna", "title": "Hrefna" },
+								{ "url": "joantopha.html", "name": "jump-joantopha", "title": "Joantopha" },
+								{ "url": "kalas.html", "name": "jump-kalas", "title": "Kalas" },
+								{ "url": "nache.html", "name": "jump-nache", "title": "Nache" }
 							],
 							"directories": []
 						}

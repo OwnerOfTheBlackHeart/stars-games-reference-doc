@@ -76,13 +76,21 @@ export function InternalNavigate(foundPage: FoundPage, hash?: string) {
 	OnPopState({} as PopStateEvent);
 }
 
-async function LoadIntoElement(pageName: string, queryString: string) {
+/**
+ * Loads the contents of a page into an element. Requires that either the queryString or element values be provided.
+ *
+ * @param pageName The name of the page to be loaded
+ * @param queryString The query string of the element to be loaded into
+ * @param element The element to be loaded into
+ * @returns A promise pointing to the found element
+ */
+async function LoadIntoElement(pageName: string, queryString?: string, element?: HTMLElement) {
 	const foundPage = FindPage(globals.pageDirectory, pageName);
-	const element = document.querySelector(queryString) as HTMLElement;
+	const foundElement = queryString ? (document.querySelector(queryString) as HTMLElement) : element;
 
 	if (!foundPage) {
 		throw new Error(`Could not find page "${pageName}"`);
-	} else if (!element) {
+	} else if (!foundElement) {
 		throw new Error(`Could not find element "${queryString}"`);
 	}
 
@@ -92,10 +100,10 @@ async function LoadIntoElement(pageName: string, queryString: string) {
 			throw new Error(`Could not find contents of "${pageName}"`);
 		});
 
-	element.scrollTop = 0;
-	element.innerHTML = pageContents;
+	foundElement.scrollTop = 0;
+	foundElement.innerHTML = pageContents;
 
-	return element;
+	return foundElement;
 }
 
 async function LoadIntoContent(pageName: string) {
