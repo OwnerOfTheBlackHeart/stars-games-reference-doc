@@ -368,6 +368,7 @@
 			"mainPage": "jumpship-main",
 			"pages": [
 				{ "url": "jumpship-main.html", "name": "jumpship-main", "title": "Jumpship Game" },
+				{ "url": "team-size.html", "name": "jump-team-size", "title": "Team Size Rule" },
 				{ "url": "https://sectorswithoutnumber.com/sector/VdfKRdhTOuYA364tbT5j", "name": "jumpship-map", "title": "", "external": true }
 			],
 			"directories": [

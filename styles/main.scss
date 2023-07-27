@@ -184,12 +184,14 @@ ap-stat-block * {
 	max-width: 500px;
 }
 
-.character-image-left {
+.character-image-left,
+.float-left {
 	float: left;
 	margin-right: 0.5rem;
 }
 
-.character-image-right {
+.character-image-right,
+.float-right {
 	float: right;
 	margin-left: 0.5rem;
 }
@@ -211,12 +213,12 @@ ap-stat-block * {
 			border-top: 1px solid map-get($theme, content-color);
 		}
 	}
+}
 
-	.item-name {
-		@include colors.Theme() using ($theme) {
-			color: map-get($theme, header-color);
-		}
-
-		font-weight: bold;
+.item-name {
+	@include colors.Theme() using ($theme) {
+		color: map-get($theme, header-color);
 	}
+
+	font-weight: bold;
 }

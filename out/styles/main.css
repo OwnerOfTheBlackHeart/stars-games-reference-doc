@@ -560,12 +560,14 @@ ap-stat-block * {
   max-width: 500px;
 }
 
-.character-image-left {
+.character-image-left,
+.float-left {
   float: left;
   margin-right: 0.5rem;
 }
 
-.character-image-right {
+.character-image-right,
+.float-right {
   float: right;
   margin-left: 0.5rem;
 }
@@ -602,18 +604,18 @@ ap-stat-block * {
   border-top: 1px solid #a8a88a;
 }
 
-.two-columns-container .item-name {
+.item-name {
   font-weight: bold;
 }
-.theme-stars .two-columns-container .item-name {
+.theme-stars .item-name {
   color: #bebea7;
 }
 
-.theme-worlds .two-columns-container .item-name {
+.theme-worlds .item-name {
   color: #bebea7;
 }
 
-.theme-test .two-columns-container .item-name {
+.theme-test .item-name {
   color: #bebea7;
 }
 
