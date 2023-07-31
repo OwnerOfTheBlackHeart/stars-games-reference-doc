@@ -1,6 +1,6 @@
 <h1>Protomechs</h1>
 <p>
-	Standing 2 to 2.5 meters (6' 6" to 8' 2") and powered by high capacity batteries, or some form of fuel burning engine, protomechs are the
+	Standing 2 to 2.8 meters (6' 6" to 9' 2") and powered by high capacity batteries, or some form of fuel burning engine, protomechs are the
 	tools of those who need better powered armor, but can't afford mechs, or who are looking to fill the tactical gap between the two
 	capabilities. Protomechs represent the largest a powered armor system can get without the combination of micro-fusion generators and grav
 	plates, or other fenceposting protections.
@@ -235,6 +235,24 @@
 		<effect>Increases base speed by 5 meters, or by 10 meters for light protomechs, per movement</effect>
 	</row>
 	<row>
+		<fitting><a href="#jump-plates">Jump Plates</a></fitting>
+		<cost>10,000</cost>
+		<fitting-slots>1</fitting-slots>
+		<effect>Allows a protomech to leap 10 meters per, 15 meters for light protomechs, and fall from twice the height</effect>
+	</row>
+	<row>
+		<fitting><a href="#void-thrusters">Void Thrusters</a></fitting>
+		<cost>10,000</cost>
+		<fitting-slots>1</fitting-slots>
+		<effect>Allows flight in zero or trace-gravity environments</effect>
+	</row>
+	<row>
+		<fitting><a href="#antigrav-nodes">Antigrav Nodes</a></fitting>
+		<cost>25,000</cost>
+		<fitting-slots>3</fitting-slots>
+		<effect>Allows flight in most gravitic environments</effect>
+	</row>
+	<row>
 		<fitting><a href="#advanced-sensors">Advanced Sensors</a></fitting>
 		<cost>5,000</cost>
 		<fitting-slots>2</fitting-slots>
@@ -251,6 +269,12 @@
 		<cost>5,000</cost>
 		<fitting-slots>2</fitting-slots>
 		<effect>Allows a protomech to climb any surface capable of bearing its weight</effect>
+	</row>
+	<row>
+		<fitting><a href="#vehicle-mount-system">Vehicle Mount System</a></fitting>
+		<cost>5,000</cost>
+		<fitting-slots>0 or 1</fitting-slots>
+		<effect>Allows a protomech to attach to the outside of a vehicle for the sake of transport</effect>
 	</row>
 	<footer></footer>
 </ap-smart-table>
@@ -417,6 +441,34 @@
 			mount 2 sprinting servos, while gaining 10 meters of base speed per installation, medium protomechs and heavy protomechs 3.
 		</p>
 	</div>
+	<div id="jump-plates" class="item-container">
+		<p>
+			<i class="item-name">Jump plates</i> add a series of micro-scale grav plates and short duration capacitors that allow the protomech
+			that allow the pilot to make sudden leaps as a move action, either horizontally or vertically. Each installation of jump plates allows
+			the pilot to jump 10 more meters, or 15 more meters for light protomechs, as well as negate twice their jump distance in fall damage.
+			A protomech can only mount 2 jump plates. When installed alongside <a href="#void-thrusters">void thrusters</a> or
+			<a href="#antigrav-nodes">antigrav nodes</a>, jump plates can be used to increase flight speed per move action by the jump distance of
+			the protomech, though doing this significantly stresses the capacitors and can only be done for up to a number of rounds equal to the
+			number of jump plates fittings installed, requiring 1d4 rounds per round of increased movement before the jump plates can be used
+			again.
+		</p>
+	</div>
+	<div id="void-thrusters" class="item-container">
+		<p>
+			<i class="item-name">Void thrusters</i> installs specialized micro-scale grav plates and a continual load power system that allow the
+			protomech to fly at its base speed in zero-gee and microgravity environments, as well to eliminate fall damage in standard gravity,
+			even for orbital insertions.
+		</p>
+	</div>
+	<div id="antigrav-nodes" class="item-container">
+		<p>
+			<i class="item-name">Antigrav nodes</i> installs specialized, high-efficiency grav plates and a continual load power system that allow
+			the protomech to fly at its base speed in normal gravity environments, as well to eliminate fall damage in 2g gravity, even for
+			orbital insertions. Antigrav nodes are energy intensive, and cause the protomech to expend twice as much energy or fuel while active.
+			Protomech <a href="#microfusion-generator">microfusion generators</a> provide enough power to operate antigrav nodes without
+			significant stress.
+		</p>
+	</div>
 	<div id="advanced-sensors" class="item-container">
 		<p>
 			<i class="item-name">Advanced Sensors</i> add integral low-light and thermal vision, basic radar sensors and high sensitivity
@@ -442,6 +494,18 @@
 			be used. Two handed weapons and weapons located in a <a href="#heavy-weapon-mount">heavy weapon mount</a> or a
 			<a href="#mech-weapon-mount">mech weapon mount</a> require too much of the body to be moved to be used with any effect other than
 			boring a hole directly in front of the protomech when the climbing system is in use.
+		</p>
+	</div>
+	<div id="vehicle-mount-system" class="item-container">
+		<p>
+			<i class="item-name">Vehicle mount systems</i> enable the protomech to externally attach to a vehicle. While vehicles designed to
+			carry large numbers of passengers or cargo, such as most aircraft, ATV explorers, IFVs and APCs, can fit a protomech without much
+			issue, smaller vehicles such as civilian cars lack the internal space for the protomech effectively operate. When attached to a
+			vehicle via vehicle mount systems, a protomech counts as 1 passenger, can only fire a single pistol sized weapon or a single weapon
+			mount, and does not gain any protection against direct attack. Mounting a vehicle takes an Action while dismounting safely from a
+			moving vehicle requires a Move Action. Dismounting from a stationary vehicle takes an On Turn Action. Vehicle mount systems can be
+			installed directly into the protomech for 1 fitting slot, carried by a protomech as a 4 encumbrance item, or installed directly onto a
+			vehicle.
 		</p>
 	</div>
 </div>

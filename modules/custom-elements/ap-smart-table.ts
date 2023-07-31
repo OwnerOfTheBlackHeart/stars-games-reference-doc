@@ -1,5 +1,6 @@
 import { CreateTableData, CreateTableHeader } from "../utilities";
 
+// TODO: Add "separator"
 export class SmartTable extends HTMLElement {
 	static readonly tagName = "ap-smart-table";
 	static readonly rowTagName = "row";
