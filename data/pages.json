@@ -26,6 +26,21 @@
 			"directories": []
 		},
 		{
+			"baseUrl": "homebrew/weapon-codex",
+			"mainPage": "weapon-codex",
+			"pages": [
+				{ "url": "weapon-codex.html", "name": "weapon-codex", "title": "Weapon Codex" },
+				{ "url": "weapon-codex-ammunition.html", "name": "weapon-codex-ammunition", "title": "Weapon Codex - Ammunition" },
+				{ "url": "weapon-codex-augmentations.html", "name": "weapon-codex-augmentations", "title": "Weapon Codex - Augmentations" },
+				{ "url": "weapon-codex-general.html", "name": "weapon-codex-general", "title": "Weapon Codex - General Equipment" },
+				{ "url": "weapon-codex-heavy.html", "name": "weapon-codex-heavy", "title": "Weapon Codex - Heavy Weapons" },
+				{ "url": "weapon-codex-mech.html", "name": "weapon-codex-mech", "title": "Weapon Codex - Mech Weapons" },
+				{ "url": "weapon-codex-modifications.html", "name": "weapon-codex-modifications", "title": "Weapon Codex - Modifications" },
+				{ "url": "weapon-codex-ranged.html", "name": "weapon-codex-ranged", "title": "Weapon Codex - Ranged Weapons" }
+			],
+			"directories": []
+		},
+		{
 			"baseUrl": "old-stars-micro",
 			"mainPage": "old-stars-main",
 			"pages": [

@@ -1768,7 +1768,7 @@ System.register("custom-elements/ap-template-outlet", ["io", "loader", "types/pa
 });
 System.register("custom-elements/ap-smart-table", ["utilities"], function (exports_22, context_22) {
     "use strict";
-    var utilities_5, SmartTable;
+    var utilities_5, SmartTable, SmartTableSeparator;
     var __moduleName = context_22 && context_22.id;
     return {
         setters: [
@@ -1784,6 +1784,7 @@ System.register("custom-elements/ap-smart-table", ["utilities"], function (expor
                     this.entryNames = [];
                     this.rows = [];
                     this.entryClasses = {};
+                    this.hasSeparator = false;
                 }
                 get headers() {
                     return this.getAttribute("headers");
@@ -1794,24 +1795,24 @@ System.register("custom-elements/ap-smart-table", ["utilities"], function (expor
                 connectedCallback() {
                     if (this.columns.length === 0) {
                         this.initialize();
-                        console.log({
-                            columns: this.columns,
-                            entryNames: this.entryNames,
-                            rows: this.rows,
-                            footer: this.footer,
-                        });
                     }
                     this.innerHTML = "";
                     const table = document.createElement("table");
                     table.classList.add("alternating-colors");
                     this.appendChild(table);
-                    const headerRow = document.createElement("tr");
-                    table.appendChild(headerRow);
-                    this.columns.forEach((column) => headerRow.appendChild(utilities_5.CreateTableHeader(column)));
+                    if (!this.hasSeparator) {
+                        this.createHeaderRow(table);
+                    }
                     this.rows.forEach((row) => {
                         const dataRow = document.createElement("tr");
                         table.appendChild(dataRow);
-                        this.entryNames.forEach((entryName) => dataRow.appendChild(utilities_5.CreateTableData(row[entryName], this.entryClasses[entryName])));
+                        if (row instanceof SmartTableSeparator) {
+                            dataRow.appendChild(this.createSeparatorRow(row));
+                            this.createHeaderRow(table);
+                        }
+                        else {
+                            this.entryNames.forEach((entryName) => dataRow.appendChild(utilities_5.CreateTableData(row[entryName], this.entryClasses[entryName])));
+                        }
                     });
                     const footerRow = document.createElement("tr");
                     table.appendChild(footerRow);
@@ -1828,11 +1829,17 @@ System.register("custom-elements/ap-smart-table", ["utilities"], function (expor
                             .replaceAll(" ", "-")
                             .replaceAll(/['`"\\\/!@#$%%^&\*\(\)\[\]\{\};:.]/g, ""));
                     }
-                    const elements = this.querySelectorAll(SmartTable.rowTagName);
+                    const elements = this.querySelectorAll(`${SmartTable.rowTagName}, ${SmartTable.separatorTagName}`);
                     elements.forEach((row) => {
-                        const values = {};
-                        this.entryNames.forEach((entryName) => (values[entryName] = row.querySelector(entryName)?.innerHTML ?? ""));
-                        this.rows.push(values);
+                        if (row.localName === SmartTable.separatorTagName) {
+                            this.hasSeparator = true;
+                            this.rows.push(new SmartTableSeparator(row.innerText ?? ""));
+                        }
+                        else {
+                            const values = {};
+                            this.entryNames.forEach((entryName) => (values[entryName] = row.querySelector(entryName)?.innerHTML ?? ""));
+                            this.rows.push(values);
+                        }
                     });
                     this.footer = this.querySelector(SmartTable.footerTagName)?.innerHTML;
                     const classesElement = this.querySelector(SmartTable.classesTagName);
@@ -1841,12 +1848,31 @@ System.register("custom-elements/ap-smart-table", ["utilities"], function (expor
                         return previous;
                     }, {});
                 }
+                createHeaderRow(table) {
+                    const headerRow = document.createElement("tr");
+                    table.appendChild(headerRow);
+                    this.columns.forEach((column) => headerRow.appendChild(utilities_5.CreateTableHeader(column)));
+                }
+                createSeparatorRow(separator) {
+                    const element = document.createElement("th");
+                    element.classList.add("smart-table-separator");
+                    element.setAttribute("colspan", this.columns.length.toString());
+                    element.innerText = separator.title;
+                    return element;
+                }
             };
             exports_22("SmartTable", SmartTable);
             SmartTable.tagName = "ap-smart-table";
             SmartTable.rowTagName = "row";
             SmartTable.footerTagName = "footer";
             SmartTable.classesTagName = "classes";
+            SmartTable.separatorTagName = "separator";
+            SmartTableSeparator = class SmartTableSeparator {
+                constructor(title) {
+                    this.title = title;
+                }
+            };
+            exports_22("SmartTableSeparator", SmartTableSeparator);
             customElements.define(SmartTable.tagName, SmartTable);
         }
     };

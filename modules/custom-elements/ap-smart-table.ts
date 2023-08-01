@@ -1,11 +1,11 @@
 import { CreateTableData, CreateTableHeader } from "../utilities";
 
-// TODO: Add "separator"
 export class SmartTable extends HTMLElement {
 	static readonly tagName = "ap-smart-table";
 	static readonly rowTagName = "row";
 	static readonly footerTagName = "footer";
 	static readonly classesTagName = "classes";
+	static readonly separatorTagName = "separator";
 
 	// Headers should be a comma separated list of columns
 	get headers() {
@@ -18,9 +18,10 @@ export class SmartTable extends HTMLElement {
 
 	columns = [] as string[];
 	entryNames = [] as string[];
-	rows = [] as Record<string, string>[];
+	rows = [] as (Record<string, string> | SmartTableSeparator)[];
 	entryClasses = {} as Record<string, string>;
 	footer: string;
+	hasSeparator = false;
 
 	constructor() {
 		super();
@@ -29,12 +30,6 @@ export class SmartTable extends HTMLElement {
 	connectedCallback() {
 		if (this.columns.length === 0) {
 			this.initialize();
-			console.log({
-				columns: this.columns,
-				entryNames: this.entryNames,
-				rows: this.rows,
-				footer: this.footer,
-			});
 		}
 
 		this.innerHTML = "";
@@ -42,16 +37,20 @@ export class SmartTable extends HTMLElement {
 		table.classList.add("alternating-colors");
 		this.appendChild(table);
 
-		const headerRow = document.createElement("tr");
-		table.appendChild(headerRow);
-
-		this.columns.forEach((column) => headerRow.appendChild(CreateTableHeader(column)));
+		if (!this.hasSeparator) {
+			this.createHeaderRow(table);
+		}
 
 		this.rows.forEach((row) => {
 			const dataRow = document.createElement("tr");
 			table.appendChild(dataRow);
 
-			this.entryNames.forEach((entryName) => dataRow.appendChild(CreateTableData(row[entryName], this.entryClasses[entryName])));
+			if (row instanceof SmartTableSeparator) {
+				dataRow.appendChild(this.createSeparatorRow(row));
+				this.createHeaderRow(table);
+			} else {
+				this.entryNames.forEach((entryName) => dataRow.appendChild(CreateTableData(row[entryName], this.entryClasses[entryName])));
+			}
 		});
 
 		const footerRow = document.createElement("tr");
@@ -74,13 +73,18 @@ export class SmartTable extends HTMLElement {
 			);
 		}
 
-		const elements = this.querySelectorAll(SmartTable.rowTagName);
+		const elements = this.querySelectorAll<HTMLElement>(`${SmartTable.rowTagName}, ${SmartTable.separatorTagName}`);
 		elements.forEach((row) => {
-			const values = {} as Record<string, string>;
+			if (row.localName === SmartTable.separatorTagName) {
+				this.hasSeparator = true;
+				this.rows.push(new SmartTableSeparator(row.innerText ?? ""));
+			} else {
+				const values = {} as Record<string, string>;
 
-			this.entryNames.forEach((entryName) => (values[entryName] = row.querySelector(entryName)?.innerHTML ?? ""));
+				this.entryNames.forEach((entryName) => (values[entryName] = row.querySelector(entryName)?.innerHTML ?? ""));
 
-			this.rows.push(values);
+				this.rows.push(values);
+			}
 		});
 
 		this.footer = this.querySelector(SmartTable.footerTagName)?.innerHTML;
@@ -90,6 +94,30 @@ export class SmartTable extends HTMLElement {
 			previous[entryName] = classesElement?.getAttribute(entryName) ?? "";
 			return previous;
 		}, {});
+	}
+
+	createHeaderRow(table: HTMLTableElement) {
+		const headerRow = document.createElement("tr");
+		table.appendChild(headerRow);
+
+		this.columns.forEach((column) => headerRow.appendChild(CreateTableHeader(column)));
+	}
+
+	createSeparatorRow(separator: SmartTableSeparator): HTMLTableCellElement {
+		const element = document.createElement("th");
+		element.classList.add("smart-table-separator");
+		element.setAttribute("colspan", this.columns.length.toString());
+		element.innerText = separator.title;
+
+		return element;
+	}
+}
+
+export class SmartTableSeparator {
+	title: string;
+
+	constructor(title: string) {
+		this.title = title;
 	}
 }
 

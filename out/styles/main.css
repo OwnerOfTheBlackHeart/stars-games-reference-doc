@@ -19,7 +19,8 @@
 .theme-stars table,
 .theme-stars th,
 .theme-stars td,
-.theme-stars tr {
+.theme-stars tr,
+.theme-stars .smart-table-separator {
   border-color: #a8a88a;
 }
 .theme-stars a,
@@ -42,7 +43,7 @@
 .theme-stars table.alternating-colors td:not(:last-child) {
   border-right: 1px solid #404040;
 }
-.theme-stars table.alternating-colors tr:first-child:nth-child(odd) {
+.theme-stars table.alternating-colors th {
   background-color: #404040;
 }
 .theme-stars table.alternating-colors tr:nth-child(odd) {
@@ -50,6 +51,11 @@
 }
 .theme-stars table.alternating-colors tr:nth-child(even) {
   background-color: #131313;
+}
+.theme-stars table.alternating-colors .smart-table-separator {
+  border: none;
+  background-color: #404040;
+  border-bottom: 1px solid #262626;
 }
 .theme-stars .homebrew-example {
   background-color: #262626;
@@ -76,7 +82,8 @@
 .theme-worlds table,
 .theme-worlds th,
 .theme-worlds td,
-.theme-worlds tr {
+.theme-worlds tr,
+.theme-worlds .smart-table-separator {
   border-color: #a8a88a;
 }
 .theme-worlds a,
@@ -99,7 +106,7 @@
 .theme-worlds table.alternating-colors td:not(:last-child) {
   border-right: 1px solid #404040;
 }
-.theme-worlds table.alternating-colors tr:first-child:nth-child(odd) {
+.theme-worlds table.alternating-colors th {
   background-color: #404040;
 }
 .theme-worlds table.alternating-colors tr:nth-child(odd) {
@@ -107,6 +114,11 @@
 }
 .theme-worlds table.alternating-colors tr:nth-child(even) {
   background-color: #131313;
+}
+.theme-worlds table.alternating-colors .smart-table-separator {
+  border: none;
+  background-color: #404040;
+  border-bottom: 1px solid #262626;
 }
 .theme-worlds .homebrew-example {
   background-color: #4d4d4d;
@@ -133,7 +145,8 @@
 .theme-test table,
 .theme-test th,
 .theme-test td,
-.theme-test tr {
+.theme-test tr,
+.theme-test .smart-table-separator {
   border-color: #a8a88a;
 }
 .theme-test a,
@@ -156,7 +169,7 @@
 .theme-test table.alternating-colors td:not(:last-child) {
   border-right: 1px solid #404040;
 }
-.theme-test table.alternating-colors tr:first-child:nth-child(odd) {
+.theme-test table.alternating-colors th {
   background-color: #404040;
 }
 .theme-test table.alternating-colors tr:nth-child(odd) {
@@ -164,6 +177,11 @@
 }
 .theme-test table.alternating-colors tr:nth-child(even) {
   background-color: #131313;
+}
+.theme-test table.alternating-colors .smart-table-separator {
+  border: none;
+  background-color: #404040;
+  border-bottom: 1px solid #262626;
 }
 .theme-test .homebrew-example {
   background-color: #1e1e1e;
