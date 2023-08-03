@@ -396,7 +396,7 @@
 							"baseUrl": "planets",
 							"mainPage": "jump-dechtum-planets",
 							"pages": [
-								{ "url": "dechtum-planets.html", "name": "jump-dechtum-planets", "title": "" },
+								{ "url": "dechtum-planets.html", "name": "jump-dechtum-planets", "title": "Dechtum Ardurix Planets" },
 								{ "url": "castaxial.html", "name": "jump-castaxial", "title": "Castaxial" },
 								{ "url": "mayrifa.html", "name": "jump-mayrifa", "title": "Mayrifa" },
 								{ "url": "ortasto.html", "name": "jump-ortasto", "title": "Ortasto" },
@@ -415,7 +415,7 @@
 							"baseUrl": "planets",
 							"mainPage": "jump-jaxdab-planets",
 							"pages": [
-								{ "url": "jaxdab-planets.html", "name": "jump-jaxdab-planets", "title": "" },
+								{ "url": "jaxdab-planets.html", "name": "jump-jaxdab-planets", "title": "Free Jaxdab Federation Planets" },
 								{ "url": "staklakou.html", "name": "jump-staklakou", "title": "Staklakou" },
 								{ "url": "thurid.html", "name": "jump-thurid", "title": "Thurid" },
 								{ "url": "astrid.html", "name": "jump-astrid", "title": "Astrid" },
@@ -436,7 +436,7 @@
 							"baseUrl": "planets",
 							"mainPage": "jump-noxpaj-planets",
 							"pages": [
-								{ "url": "noxpaj-planets.html", "name": "jump-noxpaj-planets", "title": "" },
+								{ "url": "noxpaj-planets.html", "name": "jump-noxpaj-planets", "title": "Nox'paj Alliance Planets" },
 								{ "url": "bareaga.html", "name": "jump-bareaga", "title": "Bareaga" },
 								{ "url": "chris.html", "name": "jump-chris", "title": "Chris" },
 								{ "url": "soxere.html", "name": "jump-soxere", "title": "Soxere" },
@@ -459,7 +459,7 @@
 							"baseUrl": "planets",
 							"mainPage": "jump-salmy-planets",
 							"pages": [
-								{ "url": "salmy-planets.html", "name": "jump-salmy-planets", "title": "" },
+								{ "url": "salmy-planets.html", "name": "jump-salmy-planets", "title": "People's Republic of Salmy Planets" },
 								{ "url": "antino.html", "name": "jump-antino", "title": "Antino" },
 								{ "url": "thorg.html", "name": "jump-thorg", "title": "Thorg" },
 								{ "url": "ambee.html", "name": "jump-ambee", "title": "Ambee" }
@@ -477,7 +477,7 @@
 							"baseUrl": "planets",
 							"mainPage": "jump-queel-planets",
 							"pages": [
-								{ "url": "queel-planets.html", "name": "jump-queel-planets", "title": "" },
+								{ "url": "queel-planets.html", "name": "jump-queel-planets", "title": "Queel League Planets" },
 								{ "url": "maz.html", "name": "jump-maz", "title": "Maz" },
 								{ "url": "fareema.html", "name": "jump-fareema", "title": "Fareema" },
 								{ "url": "athandisk.html", "name": "jump-athandisk", "title": "Anthandisk" },
@@ -496,7 +496,7 @@
 							"baseUrl": "planets",
 							"mainPage": "jump-wernume-planets",
 							"pages": [
-								{ "url": "wernume-planets.html", "name": "jump-wernume-planets", "title": "" },
+								{ "url": "wernume-planets.html", "name": "jump-wernume-planets", "title": "Wernume Imperium Planets" },
 								{ "url": "helga.html", "name": "jump-helga", "title": "Helga" },
 								{ "url": "hrefna.html", "name": "jump-hrefna", "title": "Hrefna" },
 								{ "url": "joantopha.html", "name": "jump-joantopha", "title": "Joantopha" },

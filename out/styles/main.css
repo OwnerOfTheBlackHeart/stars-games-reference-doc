@@ -420,7 +420,7 @@ td {
 p,
 li {
   max-width: 60em;
-  min-width: 25em;
+  min-width: 15em;
 }
 
 #content-spacer {
