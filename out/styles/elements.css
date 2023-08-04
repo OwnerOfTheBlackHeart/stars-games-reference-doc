@@ -57,7 +57,8 @@
   background-color: #404040;
   border-bottom: 1px solid #262626;
 }
-.theme-stars .homebrew-example {
+.theme-stars .homebrew-example,
+.theme-stars .trade-info {
   background-color: #262626;
 }
 
@@ -120,8 +121,9 @@
   background-color: #404040;
   border-bottom: 1px solid #262626;
 }
-.theme-worlds .homebrew-example {
-  background-color: #4d4d4d;
+.theme-worlds .homebrew-example,
+.theme-worlds .trade-info {
+  background-color: #666666;
 }
 
 .theme-test p,
@@ -183,7 +185,8 @@
   background-color: #404040;
   border-bottom: 1px solid #262626;
 }
-.theme-test .homebrew-example {
+.theme-test .homebrew-example,
+.theme-test .trade-info {
   background-color: #1e1e1e;
 }
 

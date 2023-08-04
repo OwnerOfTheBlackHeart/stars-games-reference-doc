@@ -97,7 +97,8 @@
 				}
 			}
 
-			.homebrew-example {
+			.homebrew-example,
+			.trade-info {
 				background-color: map-get($theme, example-background-color);
 			}
 		}

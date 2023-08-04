@@ -1,4 +1,112 @@
 <h1>Ingigud</h1>
+<div class="trade-info">
+	<h2 id="trade-info">Trade Info</h2>
+	<ul>
+		<li><b>Friction:</b> 2</li>
+		<li><b>Max Tonnage:</b> 110 tons per bought good</li>
+		<li><b>Local Factor:</b> N/A</li>
+		<ap-auth-container permissions="jump-full ingigud-trade-tags">
+			<li><b>Trade Tag:</b> Tribute</li>
+		</ap-auth-container>
+	</ul>
+
+	<h3 id="trade-goods">Trade Goods</h3>
+	<ap-smart-table headers="Roll, Trade Good, Cargo Type Classes, Cost Per Unit">
+		<classes roll="centered" cost-per-unit="centered"> </classes>
+		<row>
+			<roll>1</roll>
+			<trade-good>Fusion Plants</trade-good>
+			<cargo-type-classes>Postech, Tool, Bulky</cargo-type-classes>
+			<cost-per-unit>10,000/10 tons</cost-per-unit>
+		</row>
+		<row>
+			<roll>2</roll>
+			<trade-good>Native Artwork</trade-good>
+			<cargo-type-classes>Cultural, Luxury</cargo-type-classes>
+			<cost-per-unit>10,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>3</roll>
+			<trade-good>Parts, Basic Industry</trade-good>
+			<cargo-type-classes>Low Tech, Tool</cargo-type-classes>
+			<cost-per-unit>5000</cost-per-unit>
+		</row>
+		<row>
+			<roll>4</roll>
+			<trade-good>Postech Building Material</trade-good>
+			<cargo-type-classes>Tools, Postech, Bulky</cargo-type-classes>
+			<cost-per-unit>10,000/10 tons</cost-per-unit>
+		</row>
+		<row>
+			<roll>5</roll>
+			<trade-good>Small Arms, Energy</trade-good>
+			<cargo-type-classes>Military, Postech</cargo-type-classes>
+			<cost-per-unit>10,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>6</roll>
+			<trade-good>Small Arms, Projectile</trade-good>
+			<cargo-type-classes>Military, Low Tech</cargo-type-classes>
+			<cost-per-unit>5,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>7</roll>
+			<trade-good>Tools, Industrial</trade-good>
+			<cargo-type-classes>Tool, Postech</cargo-type-classes>
+			<cost-per-unit>10,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>8</roll>
+			<trade-good>Service VIs</trade-good>
+			<cargo-type-classes>Consumer, Sapient, Postech, Luxury</cargo-type-classes>
+			<cost-per-unit>200,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>9</roll>
+			<trade-good>Warbots</trade-good>
+			<cargo-type-classes>Military, Postech</cargo-type-classes>
+			<cost-per-unit>10,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>10</roll>
+			<trade-good>High End Warbots</trade-good>
+			<cargo-type-classes>Military, Postech, Luxury</cargo-type-classes>
+			<cost-per-unit>100,000</cost-per-unit>
+		</row>
+		<footer><b>Trade Mods:</b> -2 Military, -1 Consumer, -1 Tool, +1 Agricultural, +1 Luxury (-1 for robots), +2 Mineral</footer>
+	</ap-smart-table>
+	<p></p>
+	<ap-auth-container permissions="jump-full ingigud-troubles">
+		<ap-smart-table headers="Roll, Troubles">
+			<classes roll="centered"> </classes>
+			<row>
+				<roll>1</roll>
+				<troubles> An unfriendly oligopolist arranges for "accidents" that destroy 1d6 x 10% of the goods </troubles>
+			</row>
+			<row>
+				<roll>2</roll>
+				<troubles> Industrial accident destroys 1d4 x 10% of the goods in this deal </troubles>
+			</row>
+			<row>
+				<roll>3</roll>
+				<troubles> Labor unrest adds 1d4 Friction to the deal </troubles>
+			</row>
+			<row>
+				<roll>4</roll>
+				<troubles> Monopolists push back on this intrusion, adding 1d6 Friction to the deal </troubles>
+			</row>
+			<row>
+				<roll>5</roll>
+				<troubles> The factories are backlogged; the deal is stalled for 1d4 weeks </troubles>
+			</row>
+			<row>
+				<roll>6</roll>
+				<troubles> The supplier or buyer is retooling, delaying the deal by 1d6+1 weeks </troubles>
+			</row>
+			<footer><b>Trouble Chance:</b> 2 in 10</footer>
+		</ap-smart-table>
+	</ap-auth-container>
+</div>
 <h2 id="description">Description</h2>
 <ul>
 	<li><b>Atmosphere:</b> Thick atmosphere, breathable with a pressure mask</li>
@@ -69,7 +177,9 @@
 </ap-auth-container>
 <p>
 	The city government and Taugofie Robotics are called the Battlebots by the citizens, as that is the name used for their "team" in The
-	Footage. In both The Demonstrations and in war, the Battlebots prefer more expensive and more capable robots.
+	Footage. In both The Demonstrations and in war, the Battlebots prefer more expensive and more capable robots. The Battlebots are typically
+	built in a neopagan aesthetic with "antlered" heads and simple bodies, while the ancient models have a pair of straight horns coming from
+	the sides of a very slightly conical head with complex shoulder adornments.
 </p>
 
 <h4 id="tagata">Tagata</h4>
@@ -84,6 +194,8 @@
 	Eyebots by the citizens, as that is the name used for their "team" in The Footage. The Eyebots primarily use cheap and fast floating
 	robots with limited individual combat capability, the eyebot model being where their name comes from, for The Demonstrations and war.
 	Eyebots and their kin are designed to work in larger groups, sometimes with a single, expensive coordinator bot managing whole platoons.
+	Early model Eyebots are typically little more than floating spheres with a plasma pistol while ancient models take on bird-like forms,
+	though usually with limited articulation to save on production cost.
 </p>
 <ap-auth-container permissions="jump-full eyebots-secret-dealings cal">
 	<p>
@@ -92,6 +204,14 @@
 		the fact that the Eyebots are "capitalists in need of immediate guidance".
 	</p>
 </ap-auth-container>
+
+<h4 id="nuuit">Nuuit</h4>
+<p>
+	A small settlement roughly a 10 hour drive from <a href="#tagata">Tagata</a> which serves mainly to mine rare earths. The small collection
+	of houses in the woods relies heavily on worker robots to pull enough materials out of the mines to meet the quotas set by
+	<a href="#tagata">Tagata</a>. As the war between the Battlebots and the Eyebots has raged on, the quotas have become harder and harder to
+	fulfil, and Nuuit is now on the verge of being unable to afford maintaining itself.
+</p>
 
 <h3 id="galuga">Galuga</h3>
 <p>
