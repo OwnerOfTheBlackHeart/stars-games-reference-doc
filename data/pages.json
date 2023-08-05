@@ -411,7 +411,10 @@
 				{
 					"baseUrl": "empires/free-jaxdab-federation",
 					"mainPage": "jump-free-jaxdab-federation",
-					"pages": [{ "url": "free-jaxdab-federation.html", "name": "jump-free-jaxdab-federation", "title": "Free Jaxdab Federation" }],
+					"pages": [
+						{ "url": "free-jaxdab-federation.html", "name": "jump-free-jaxdab-federation", "title": "Free Jaxdab Federation" },
+						{ "url": "fjf-npcs.html", "name": "jump-fjf-npcs", "title": "Free Jaxdab Federation NPCs" }
+					],
 					"directories": [
 						{
 							"baseUrl": "planets",
