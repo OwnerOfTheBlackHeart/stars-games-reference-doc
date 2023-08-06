@@ -707,6 +707,13 @@ System.register("utilities", [], function (exports_10, context_10) {
         }
     }
     exports_10("InitializeThemedShadowRoot", InitializeThemedShadowRoot);
+    function StringToObject(jsonIn) {
+        jsonIn = jsonIn.replace(/<.+?>/g, function (x) {
+            return x.replace(/"/g, '\\"');
+        });
+        return JSON.parse(jsonIn);
+    }
+    exports_10("StringToObject", StringToObject);
     return {
         setters: [],
         execute: function () {
@@ -2036,28 +2043,56 @@ System.register("custom-elements/custom-elements", ["custom-elements/ap-theme-co
         }
     };
 });
-System.register("main", ["custom-elements/custom-elements", "io", "loader", "types/page"], function (exports_25, context_25) {
+System.register("window-extensions", ["utilities"], function (exports_25, context_25) {
     "use strict";
-    var io_6, loader_6, page_4;
+    var utilities_6;
     var __moduleName = context_25 && context_25.id;
+    function ProcessToRow(columnString, data) {
+        const element = document.createElement("div");
+        const columns = columnString.split(",").map((column) => column
+            .trim()
+            .toLowerCase()
+            .replaceAll(" ", "-")
+            .replaceAll(/['`"\\\/!@#$%%^&\*\(\)\[\]\{\};:.]/g, ""));
+        const rows = utilities_6.StringToObject(data);
+        rows.forEach((rowElements) => {
+            const row = document.createElement("row");
+            columns.forEach((column, index) => {
+                const col = document.createElement(column);
+                col.innerHTML = rowElements[index];
+                row.appendChild(col);
+            });
+            element.appendChild(row);
+        });
+        return element.innerHTML.replaceAll(">", ">\n");
+    }
+    exports_25("ProcessToRow", ProcessToRow);
+    return {
+        setters: [
+            function (utilities_6_1) {
+                utilities_6 = utilities_6_1;
+            }
+        ],
+        execute: function () {
+            window.ProcessToRow = ProcessToRow;
+        }
+    };
+});
+System.register("main", ["custom-elements/custom-elements", "window-extensions", "io"], function (exports_26, context_26) {
+    "use strict";
+    var io_6;
+    var __moduleName = context_26 && context_26.id;
     return {
         setters: [
             function (_18) {
             },
+            function (_19) {
+            },
             function (io_6_1) {
                 io_6 = io_6_1;
-            },
-            function (loader_6_1) {
-                loader_6 = loader_6_1;
-            },
-            function (page_4_1) {
-                page_4 = page_4_1;
             }
         ],
         execute: function () {
-            window.test = (name) => {
-                console.log(page_4.FindPage(loader_6.globals.pageDirectory, name));
-            };
             io_6.InitialLoad().then(() => {
                 onpopstate = io_6.OnPopState;
             });

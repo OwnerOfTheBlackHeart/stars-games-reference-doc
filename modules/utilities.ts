@@ -153,3 +153,10 @@ export function InitializeThemedShadowRoot(element: ThemedElement, containerClas
 		return false;
 	}
 }
+
+export function StringToObject<T>(jsonIn: string): T {
+	jsonIn = jsonIn.replace(/<.+?>/g, function (x) {
+		return x.replace(/"/g, '\\"');
+	});
+	return JSON.parse(jsonIn);
+}
