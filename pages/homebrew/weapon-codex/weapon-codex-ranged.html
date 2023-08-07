@@ -18,7 +18,7 @@
 		<range>40/80</range>
 		<cost>20</cost>
 		<magazine>1</magazine>
-		<ammunition-type>Bolt</ammunition-type>
+		<ammunition-type>Crossbow Bolt/Arrow</ammunition-type>
 		<enc>2</enc>
 		<tl>1</tl>
 		<skill>Combat/Projectile</skill>
@@ -261,7 +261,7 @@
 		<range>50/100</range>
 		<cost>50</cost>
 		<magazine>5</magazine>
-		<ammunition-type>Bolt</ammunition-type>
+		<ammunition-type>Crossbow Bolt/Arrow</ammunition-type>
 		<enc>2</enc>
 		<tl>3</tl>
 		<skill>Combat/Projectile</skill>
@@ -526,7 +526,7 @@
 		<range>20/40</range>
 		<cost>600</cost>
 		<magazine>15</magazine>
-		<ammunition-type>Mag-Shot Round</ammunition-type>
+		<ammunition-type>Mag-Shot</ammunition-type>
 		<enc>2</enc>
 		<tl>4</tl>
 		<skill>Combat/Projectile</skill>
@@ -568,7 +568,7 @@
 		<name>
 			<a class="no-line" href="#lasers">Laser Pistol</a>
 		</name>
-		<damage>1d6</damage>
+		<dmg>1d6</dmg>
 		<range>100/300</range>
 		<cost>200</cost>
 		<magazine>10</magazine>
@@ -581,7 +581,7 @@
 		<name>
 			<a class="no-line" href="#laser-smg">Laser SMG</a>
 		</name>
-		<damage>1d6*</damage>
+		<dmg>1d6*</dmg>
 		<range>100/300</range>
 		<cost>250</cost>
 		<magazine>30</magazine>
@@ -594,7 +594,7 @@
 		<name>
 			<a class="no-line" href="#lasers">Laser Rifle</a>
 		</name>
-		<damage>1d10*</damage>
+		<dmg>1d10*</dmg>
 		<range>300/500</range>
 		<cost>300</cost>
 		<magazine>20</magazine>
@@ -607,7 +607,7 @@
 		<name>
 			<a class="no-line" href="#laser-saw">Laser SAW</a>
 		</name>
-		<damage>1d10 #*</damage>
+		<dmg>1d10 #*</dmg>
 		<range>300/500</range>
 		<cost>500</cost>
 		<magazine>100</magazine>
@@ -620,7 +620,7 @@
 		<name>
 			<a class="no-line" href="#plasma-weapons">Thermal Pistol</a>
 		</name>
-		<damage>2d6</damage>
+		<dmg>2d6</dmg>
 		<range>25/50</range>
 		<cost>300</cost>
 		<magazine>5</magazine>
@@ -633,10 +633,10 @@
 		<name>
 			<a class="no-line" href="#plasma-weapons">Plasma Projector</a>
 		</name>
-		<damage>2d8</damage>
+		<dmg>2d8</dmg>
 		<range>50/100</range>
 		<cost>750</cost>
-		<magazine>30</magazine>
+		<magazine>6</magazine>
 		<ammunition-type>Plasma Can</ammunition-type>
 		<enc>2</enc>
 		<tl>4</tl>
@@ -646,7 +646,7 @@
 		<name>
 			<a class="no-line" href="#plasma-beam-rifle">Plasma Beam Rifle</a>
 		</name>
-		<damage>2d6 #*</damage>
+		<dmg>2d6 #*</dmg>
 		<range>100/200</range>
 		<cost>750</cost>
 		<magazine>30</magazine>
@@ -655,69 +655,84 @@
 		<tl>4</tl>
 		<skill>Combat/Energy</skill>
 	</row>
+	<separator>TL 5</separator>
 	<row>
 		<name>
-			<a class="no-line" href="#shear-rifle">Shear Rifle</a>
+			<a class="no-line" href="#shear-pistol">Shear Pistol</a>
 		</name>
-		<damage>2d8*</damage>
+		<dmg>2d6*</dmg>
 		<range>100/300</range>
-		<cost>600</cost>
-		<magazine>10</magazine>
-		<ammunition-type>A-Cell</ammunition-type>
-		<enc>2</enc>
-		<tl>4</tl>
-		<skill>Combat/Energy</skill>
-	</row>
-	<row>
-		<name>
-			<a class="no-line" href="#thunder-gun">Thunder Gun</a>
-		</name>
-		<damage>2d10</damage>
-		<range>100/300</range>
-		<cost>1,000</cost>
+		<cost>700</cost>
 		<magazine>6</magazine>
 		<ammunition-type>A-Cell</ammunition-type>
-		<enc>2</enc>
-		<tl>4</tl>
-		<skill>Combat/Energy</skill>
-	</row>
-	<row>
-		<name>
-			<a class="no-line" href="#distortion-cannon">Distortion Cannon</a>
-		</name>
-		<damage>2d12</damage>
-		<range>100/300</range>
-		<cost>1,250</cost>
-		<magazine>6</magazine>
-		<ammunition-type>A-Cell</ammunition-type>
-		<enc>2</enc>
-		<tl>4</tl>
-		<skill>Combat/Energy</skill>
-	</row>
-	<row>
-		<name>
-			<a class="no-line" href="#bolt-pistol-rifle">Bolt Pistol</a>
-		</name>
-		<damage>2d4+4**</damage>
-		<range>200/400</range>
-		<cost>?</cost>
-		<magazine>15</magazine>
-		<ammunition-type>Bolt Cell</ammunition-type>
 		<enc>1</enc>
 		<tl>5</tl>
 		<skill>Combat/Energy</skill>
 	</row>
 	<row>
 		<name>
+			<a class="no-line" href="#shear-rifle">Shear Rifle</a>
+		</name>
+		<dmg>2d8*</dmg>
+		<range>100/300</range>
+		<cost>600</cost>
+		<magazine>10</magazine>
+		<ammunition-type>A-Cell</ammunition-type>
+		<enc>2</enc>
+		<tl>5</tl>
+		<skill>Combat/Energy</skill>
+	</row>
+	<row>
+		<name>
+			<a class="no-line" href="#thunder-gun">Thunder Gun</a>
+		</name>
+		<dmg>2d10</dmg>
+		<range>100/300</range>
+		<cost>1,000</cost>
+		<magazine>6</magazine>
+		<ammunition-type>A-Cell</ammunition-type>
+		<enc>2</enc>
+		<tl>5</tl>
+		<skill>Combat/Energy</skill>
+	</row>
+	<row>
+		<name>
+			<a class="no-line" href="#distortion-cannon">Distortion Cannon</a>
+		</name>
+		<dmg>2d12</dmg>
+		<range>100/300</range>
+		<cost>1,250</cost>
+		<magazine>6</magazine>
+		<ammunition-type>A-Cell</ammunition-type>
+		<enc>2</enc>
+		<tl>5</tl>
+		<skill>Combat/Energy</skill>
+	</row>
+	<separator>Little Gray Men</separator>
+	<row>
+		<name>
+			<a class="no-line" href="#bolt-pistol-rifle">Bolt Pistol</a>
+		</name>
+		<dmg>2d4+4**</dmg>
+		<range>200/400</range>
+		<cost>?</cost>
+		<magazine>15</magazine>
+		<ammunition-type>Bolt Cell</ammunition-type>
+		<enc>1</enc>
+		<tl>LGM</tl>
+		<skill>Combat/Energy</skill>
+	</row>
+	<row>
+		<name>
 			<a class="no-line" href="#bolt-pistol-rifle">Bolt Rifle</a>
 		</name>
-		<damage>2d6+6*</damage>
+		<dmg>2d6+6*</dmg>
 		<range>400/800</range>
 		<cost>?</cost>
 		<magazine>30</magazine>
 		<ammunition-type>Bolt Cell</ammunition-type>
 		<enc>2</enc>
-		<tl>5</tl>
+		<tl>LGM</tl>
 		<skill>Combat/Energy</skill>
 	</row>
 	<footer>
@@ -740,7 +755,7 @@
 	<div id="crossbow" class="item-container">
 		<p>
 			<i class="item-name">Crossbows</i> are simple weapons that fire a wood and metal bolt using tension on a bow. After every shot a
-			crossbow must be reloaded.
+			crossbow must be reloaded. When used with arrows instead of bolts, a crossbow does 1d6 damage and has a range of 60/150.
 		</p>
 		<p>
 			While normal crossbow bolts lack the ability to be retrieved after being fired and the ability to penetrate powered armor, TL 4 bolts
@@ -883,7 +898,10 @@
 			from the magazine by moving the trigger back into firing position. Doing so is a normal part of operating the weapon and does not cost
 			any extra actions.
 		</p>
-		<p>Repeating crossbows use bolts just like normal crossbows and can use TL 4 bolts to the same effect.</p>
+		<p>
+			Repeating crossbows use bolts just like normal crossbows and can use TL 4 bolts to the same effect. When loaded with an arrow instead
+			of a bolt, the repeating crossbow deals 1d6+1 damage and has a range of 75/200.
+		</p>
 	</div>
 
 	<div id="semi-auto-pistol" class="item-container">
@@ -1085,6 +1103,15 @@
 			reach and more continuous firepower at the expense of raw damage and not being able to use normal plasma cans.
 		</p>
 	</div>
+	<h2 id="ranged-tl5" class="item-container">TL 5</h2>
+	<div id="shear-pistol" class="item-container">
+		<p>
+			<i class="item-name">Shear pistols</i> are the product of even fewer functioning pretech manufactories than
+			<a href="#shear-rifles">shear rifles</a> do to the complexity of producing grav plates that are both small enough and powerful enough
+			for such weapons. These weapons use miniaturized grav projectors to create dangerous repulsor fields inside a target, tearing the
+			object apart along perfectly smooth planes. Shear pistols are completely silent in operation.
+		</p>
+	</div>
 	<div id="shear-rifle" class="item-container">
 		<p>
 			<i class="item-name">Shear rifles</i> are the product of a relatively few functioning pretech manufactories. These weapons use
@@ -1108,6 +1135,7 @@
 			ignore up to one meter of solid cover between the gun and its target.
 		</p>
 	</div>
+	<h2 id="ranged-lgm" class="item-container">Little Gray Men</h2>
 	<div id="bolt-pistol-rifle" class="item-container">
 		<p>
 			<i class="item-name">Bolt pistols and rifles</i> are the standard infantry weapons of the little green men and the grays. They most

@@ -99,9 +99,23 @@
 	</row>
 	<row>
 		<mech-weapon>
+			<a href="#burst-cannon">Burst Cannon</a>
+		</mech-weapon>
+		<cost>30k/60k</cost>
+		<damage>3d8</damage>
+		<power>6</power>
+		<mass>4</mass>
+		<hardpoints>2</hardpoints>
+		<range>1k/2k</range>
+		<tl>3</tl>
+		<hull>Light</hull>
+		<special>AP 5, Ammo</special>
+	</row>
+	<row>
+		<mech-weapon>
 			<a href="#cannon">Cannon</a>
 		</mech-weapon>
-		<cost>50k</cost>
+		<cost>50k/100k</cost>
 		<damage>4d12</damage>
 		<power>10</power>
 		<mass>7</mass>
@@ -115,7 +129,7 @@
 		<mech-weapon>
 			<a href="#cannon-light">Cannon, light</a>
 		</mech-weapon>
-		<cost>30k</cost>
+		<cost>30k/60k</cost>
 		<damage>3d12</damage>
 		<power>7</power>
 		<mass>5</mass>
@@ -309,6 +323,20 @@
 	</row>
 	<row>
 		<mech-weapon>
+			<a href="#ap-plasm-cannon">Plasma Cannon, Anti-Personnel</a>
+		</mech-weapon>
+		<cost>22k</cost>
+		<damage>3d8#</damage>
+		<power>8</power>
+		<mass>2</mass>
+		<hardpoints>2</hardpoints>
+		<range>150/300</range>
+		<tl>4</tl>
+		<hull>Suit</hull>
+		<special>Anti-Personnel</special>
+	</row>
+	<row>
+		<mech-weapon>
 			<a href="#plasma-thrower">Plasma Thrower</a>
 		</mech-weapon>
 		<cost>50k</cost>
@@ -334,6 +362,20 @@
 		<tl>4</tl>
 		<hull>Heavy</hull>
 		<special>AP 45, Slow, Ammo</special>
+	</row>
+	<row>
+		<mech-weapon>
+			<a href="#light-rail-cannon">Rail Cannon, Light</a>
+		</mech-weapon>
+		<cost>75k</cost>
+		<damage>4d10</damage>
+		<power>10</power>
+		<mass>4</mass>
+		<hardpoints>3</hardpoints>
+		<range>2k/4k</range>
+		<tl>4</tl>
+		<hull>Light</hull>
+		<special>AP 15, Slow, Ammo</special>
 	</row>
 	<row>
 		<mech-weapon>
@@ -424,20 +466,29 @@
 			heavy armor on enemy shock mechs.
 		</p>
 	</div>
+	<div id="burst-cannon" class="item-container">
+		<p>
+			<i class="item-name">Burst Cannon:</i> An uncommon weapon on mechs due to its limited armor penetration, they cannot penetrate light
+			or heavy mech armor unless upgraded to the TL4 equivalent. Burst cannons can be upgraded to their TL4 equivalents by paying twice as
+			much as a TL3 version.
+		</p>
+	</div>
 	<div id="cannon" class="item-container">
 		<p>
 			<i class="item-name">Cannon:</i> Typically modified to be mounted as "rifles" by heavy mechs, cannons are high powered, chemically
 			propelled weapons that, despite being inferior to <a href="#rail-cannon">rail connons</a>, sees occasional use thanks to its relative
 			simplicity and low tech ammunition. While capable of utilizing many variants of ammunition, the vast majority of mech cannons utilize
 			armor piercing, discarding sabot kinetic penetrators made of as dense of a material as practically possible in order to maintain
-			effectiveness against mech armor.
+			effectiveness against mech armor. In order to damage light and heavy mechs, cannons must be upgraded to their TL4 equivalents, which
+			costs twice as much as a TL3 version.
 		</p>
 	</div>
 	<div id="cannon-light" class="item-container">
 		<p>
 			<i class="item-name">Cannon, Light:</i> Packing the firepower of a <a href="#laser-heavy">heavy laser</a> in a package usable by a
 			light mech, at the cost of weight and armor penetration, this smaller caliber cannon's slow fire rate and small ammunition stores make
-			it rare to see fielded by mechs.
+			it rare to see fielded by mechs. In order to damage light and heavy mechs, light cannons must be upgraded to their TL4 equivalents,
+			which costs twice as much as a TL3 version.
 		</p>
 	</div>
 	<div id="cutter-plates" class="item-container">
@@ -518,6 +569,13 @@
 			devices with equal efficiency. Conventional Armor is ignored by the weapon.
 		</p>
 	</div>
+	<div id="ap-plasm-cannon" class="item-container">
+		<p>
+			<i class="item-name">Plasma Cannon, Anti-Personnel:</i> Providing a lighter energy weapon option for dealing with infantry, the
+			anti-personnel plasma cannon suffers from a short range and a crippling lack of armor penetration, but offers greater damage than even
+			the <a href="#hmg">heavy machine gun</a>.
+		</p>
+	</div>
 	<div id="plasma-thrower" class="item-container">
 		<p>
 			<i class="item-name">Plasma Thrower:</i> While the range of this energy weapon is shorter than that of a light laser, it brings
@@ -529,6 +587,13 @@
 			<i class="item-name">Rail Cannon:</i> The queen of the battlefield, the rail cannon is a weapon so heavy it can only be mounted on a
 			heavy shock mech. A single rod from a rail cannon can punch through the best vanguard defensive plating as if it were tissue. The
 			weapon is prone to overheating, however, and makes cruel demands on a mech’s power grid.
+		</p>
+	</div>
+	<div id="light-rail-cannon" class="item-container">
+		<p>
+			<i class="item-name">Rail Cannon, Light:</i> The princess of the battlefield, the light rail cannon offers light mechs an incredible
+			punch at a remarkable range, though the size and power draw of the light rail cannon can make it difficult to mount, and the high heat
+			generation can make the light rail cannon unpredictable in heavy combat.
 		</p>
 	</div>
 	<div id="railgun" class="item-container">
