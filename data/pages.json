@@ -40,6 +40,12 @@
 			"directories": []
 		},
 		{
+			"baseUrl": "homebrew/technomancy",
+			"mainPage": "technomancy",
+			"pages": [{ "url": "technomancy.html", "name": "technomancy", "title": "Technomancy" }],
+			"directories": []
+		},
+		{
 			"baseUrl": "old-stars-micro",
 			"mainPage": "old-stars-main",
 			"pages": [
