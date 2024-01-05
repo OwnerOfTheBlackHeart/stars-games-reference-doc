@@ -1,0 +1,263 @@
+<h1 id="frames">Frames</h1>
+<p>
+	A frame consists of two parts: The frame itself and the power source. The frame determines the health points, dodge, base speed and
+	maximum mass of the mech, while the power source takes up mass to provide maximum power to the mech.
+</p>
+<p>
+	A frame comes in one of three sizes (Light, Medium, Heavy), one of four forms (Static, Performance, Balanced and Rugged) and one of three
+	qualities (Subpar, Average, and Exceptional), and can be quadrupedal. If a frame is not quadrupedal, then it is bipedal. A frame can also
+	be Static. Static frames are purpose built around their engine, parts and fittings, with only the weapons being reasonably simple to swap,
+	and any major change beyond basic repairs and maintenance (or a weapon swap) requires a week of dedicated reconfiguring by a trained
+	technician in a fully equipped mech modification bay. However, Static frames are cheaper to build and maintain, easier to mass produce,
+	able to fit into a smaller footprint, and generally built for second line work.
+</p>
+<p>
+	Light frames are typically 4 to 6 meters tall, medium frames 6 to 8 meters tall and heavy frames 8 to 10 meters tall. Static frames,
+	thanks to being purpose built around their components, are typically about 3 / 4 the height of a normal frame.
+</p>
+<p>
+	Power sources come in three forms: Battery, Engine and Fusion. Battery power sources are large battery packs, which make for the cheapest
+	power sources and see frequent use on Static frames, and last 24 hours on a single charge with 4 hours of operation recharged per hour of
+	charging. Engine power sources are some form of fuel engine, such as a hydrogen fuel cell or internal combustion engine, whose improved
+	Mass efficiency and acceptable cost make them a common choice for mechs. A single fueling lasts for 24 hours of operation and requires 30
+	minutes to fully refill the fuel tank, with light mechs costing 100 credits per fueling, medium mechs 250 credits per fueling and heavy
+	mechs 1,000 credits per fueling. Fusion power sources are micro-fusion generators placed within the mech, which can last upwards of a
+	decade on a single fuel charge, have outstanding Power to Mass ratios and a price tag that makes them a rare choice for mech power source.
+</p>
+<p>A mech that does not require extra power is assumed to have a Battery power source.</p>
+
+<h2 id="power-sources-table">Power Sources</h2>
+<ap-smart-table headers="Power Source Type, Cost Per Mass, Power Per Mass">
+	<classes cost-per-mass="centered" power-per-mass="centered"> </classes>
+	<row>
+		<power-source-type>Battery</power-source-type>
+		<cost-per-mass> Cr</cost-per-mass>
+		<power-per-mass>1</power-per-mass>
+	</row>
+	<row>
+		<power-source-type>Engine</power-source-type>
+		<cost-per-mass> Cr</cost-per-mass>
+		<power-per-mass>2</power-per-mass>
+	</row>
+	<row>
+		<power-source-type>Fusion</power-source-type>
+		<cost-per-mass> Cr</cost-per-mass>
+		<power-per-mass>3</power-per-mass>
+	</row>
+</ap-smart-table>
+
+<h2 id="frame-table">Frames</h2>
+<p>Values displayed as X/Y/Z are the values for Subpar, Average, and Exceptional, in that order.</p>
+<ap-smart-table headers="Frame Type, Cost, Maintenance, Speed Modifier, HP, Dodge, Mass, Tonnage, Class">
+	<classes
+		cost="centered"
+		maintenance="centered"
+		speed-modifier="centered"
+		hp="centered"
+		dodge="centered"
+		mass="centered"
+		tonnage="centered"
+		class="centered"
+	></classes>
+	<separator>Light</separator>
+	<row>
+		<frame-type>Light Static</frame-type>
+		<cost></cost>
+		<maintenance>500 Cr</maintenance>
+		<speed-modifier>-1 / 0 / 1</speed-modifier>
+		<hp>5 / 10 / 20</hp>
+		<dodge>14 / 15 / 16</dodge>
+		<mass>7 / 8 / 10</mass>
+		<tonnage>5</tonnage>
+		<class>Light</class>
+	</row>
+	<row>
+		<frame-type>Light Rugged</frame-type>
+		<cost></cost>
+		<maintenance>1,000 Cr</maintenance>
+		<speed-modifier>-1 / 0 / 0</speed-modifier>
+		<hp>20 / 30 / 35</hp>
+		<dodge>15 / 15 / 16</dodge>
+		<mass>9 / 12 / 15</mass>
+		<tonnage>10</tonnage>
+		<class>Light</class>
+	</row>
+	<row>
+		<frame-type>Light Balanced</frame-type>
+		<cost></cost>
+		<maintenance>1,000 Cr</maintenance>
+		<speed-modifier>0 / 1 / 2</speed-modifier>
+		<hp>15 / 20 / 25</hp>
+		<dodge>16 / 17 / 18</dodge>
+		<mass>8 / 10 / 12</mass>
+		<tonnage>10</tonnage>
+		<class>Light</class>
+	</row>
+	<row>
+		<frame-type>Light Performance</frame-type>
+		<cost></cost>
+		<maintenance>1,000 Cr</maintenance>
+		<speed-modifier>1 / 2 / 3</speed-modifier>
+		<hp>10 / 10 / 15</hp>
+		<dodge>18 / 19 / 20</dodge>
+		<mass>6 / 7 / 9</mass>
+		<tonnage>10</tonnage>
+		<class>Light</class>
+	</row>
+	<row>
+		<frame-type>Subpar</frame-type>
+		<cost>x0.5</cost>
+		<maintenance>-</maintenance>
+		<speed-modifier>-</speed-modifier>
+		<hp>-</hp>
+		<dodge>-</dodge>
+		<mass>-</mass>
+		<tonnage>-</tonnage>
+		<class>-</class>
+	</row>
+	<row>
+		<frame-type>Exceptional</frame-type>
+		<cost>x10</cost>
+		<maintenance>-</maintenance>
+		<speed-modifier>-</speed-modifier>
+		<hp>-</hp>
+		<dodge>-</dodge>
+		<mass>-</mass>
+		<tonnage>-</tonnage>
+		<class>-</class>
+	</row>
+	<separator>Medium</separator>
+	<row>
+		<frame-type>Medium Static</frame-type>
+		<cost></cost>
+		<maintenance>1,000</maintenance>
+		<speed-modifier>-1 / 0 / 1</speed-modifier>
+		<hp>20 / 25 / 35</hp>
+		<dodge>11 / 13 / 15</dodge>
+		<mass>12 / 17 / 22</mass>
+		<tonnage>10</tonnage>
+		<class>Medium</class>
+	</row>
+	<row>
+		<frame-type>Medium Rugged</frame-type>
+		<cost></cost>
+		<maintenance>2,000</maintenance>
+		<speed-modifier>-1 / 0 / 0</speed-modifier>
+		<hp>35 / 45 / 60</hp>
+		<dodge>12 / 14 / 15</dodge>
+		<mass>20 / 25 / 35</mass>
+		<tonnage>25</tonnage>
+		<class>Medium</class>
+	</row>
+	<row>
+		<frame-type>Medium Balanced</frame-type>
+		<cost></cost>
+		<maintenance>2,000</maintenance>
+		<speed-modifier>0 / 1 / 2</speed-modifier>
+		<hp>25 / 30 / 40</hp>
+		<dodge>14 / 15 / 16</dodge>
+		<mass>15 / 20 / 25</mass>
+		<tonnage>25</tonnage>
+		<class>Medium</class>
+	</row>
+	<row>
+		<frame-type>Medium Performance</frame-type>
+		<cost></cost>
+		<maintenance>2,000</maintenance>
+		<speed-modifier>1 / 2 / 3</speed-modifier>
+		<hp>15 / 20 / 25</hp>
+		<dodge>16 / 17 / 18</dodge>
+		<mass>10 / 15 / 20</mass>
+		<tonnage>25</tonnage>
+		<class>Medium</class>
+	</row>
+	<row>
+		<frame-type>Subpar</frame-type>
+		<cost>x0.5</cost>
+		<maintenance>-</maintenance>
+		<speed-modifier>-</speed-modifier>
+		<hp>-</hp>
+		<dodge>-</dodge>
+		<mass>-</mass>
+		<tonnage>-</tonnage>
+		<class>-</class>
+	</row>
+	<row>
+		<frame-type>Exceptional</frame-type>
+		<cost>x10</cost>
+		<maintenance>-</maintenance>
+		<speed-modifier>-</speed-modifier>
+		<hp>-</hp>
+		<dodge>-</dodge>
+		<mass>-</mass>
+		<tonnage>-</tonnage>
+		<class>-</class>
+	</row>
+	<separator>Heavy</separator>
+	<row>
+		<frame-type>Heavy Static</frame-type>
+		<cost></cost>
+		<maintenance>2,500</maintenance>
+		<speed-modifier>-1 / 0 / 1</speed-modifier>
+		<hp>40 / 55 / 70</hp>
+		<dodge>10 / 12 / 13</dodge>
+		<mass>25 / 30 / 40</mass>
+		<tonnage>25</tonnage>
+		<class>Heavy</class>
+	</row>
+	<row>
+		<frame-type>Heavy Rugged</frame-type>
+		<cost></cost>
+		<maintenance>5,000</maintenance>
+		<speed-modifier>-1 / 0 / 0</speed-modifier>
+		<hp>60 / 75 / 100</hp>
+		<dodge>10 / 12 / 12</dodge>
+		<mass>35 / 50 / 65</mass>
+		<tonnage>50</tonnage>
+		<class>Heavy</class>
+	</row>
+	<row>
+		<frame-type>Heavy Balanced</frame-type>
+		<cost></cost>
+		<maintenance>5,000</maintenance>
+		<speed-modifier>0 / 1 / 2</speed-modifier>
+		<hp>45 / 60 / 80</hp>
+		<dodge>12 / 13 / 14</dodge>
+		<mass>30 / 40 / 50</mass>
+		<tonnage>50</tonnage>
+		<class>Heavy</class>
+	</row>
+	<row>
+		<frame-type>Heavy Performance</frame-type>
+		<cost></cost>
+		<maintenance>5,000</maintenance>
+		<speed-modifier>1 / 2 / 3</speed-modifier>
+		<hp>30 / 45 / 55</hp>
+		<dodge>14 / 15 / 16</dodge>
+		<mass>20 / 30 / 35</mass>
+		<tonnage>50</tonnage>
+		<class>Heavy</class>
+	</row>
+	<row>
+		<frame-type>Subpar</frame-type>
+		<cost>x0.5</cost>
+		<maintenance>-</maintenance>
+		<speed-modifier>-</speed-modifier>
+		<hp>-</hp>
+		<dodge>-</dodge>
+		<mass>-</mass>
+		<tonnage>-</tonnage>
+		<class>-</class>
+	</row>
+	<row>
+		<frame-type>Exceptional</frame-type>
+		<cost>x10</cost>
+		<maintenance>-</maintenance>
+		<speed-modifier>-</speed-modifier>
+		<hp>-</hp>
+		<dodge>-</dodge>
+		<mass>-</mass>
+		<tonnage>-</tonnage>
+		<class>-</class>
+	</row>
+</ap-smart-table>

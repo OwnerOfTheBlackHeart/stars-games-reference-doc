@@ -53,12 +53,14 @@ export class SmartTable extends HTMLElement {
 			}
 		});
 
-		const footerRow = document.createElement("tr");
-		table.appendChild(footerRow);
+		if (this.footer) {
+			const footerRow = document.createElement("tr");
+			table.appendChild(footerRow);
 
-		const footerData = CreateTableData(this.footer, "smart-table-footer");
-		footerData.colSpan = this.columns.length;
-		footerRow.appendChild(footerData);
+			const footerData = CreateTableData(this.footer, "smart-table-footer");
+			footerData.colSpan = this.columns.length;
+			footerRow.appendChild(footerData);
+		}
 	}
 
 	initialize() {

@@ -1821,11 +1821,13 @@ System.register("custom-elements/ap-smart-table", ["utilities"], function (expor
                             this.entryNames.forEach((entryName) => dataRow.appendChild(utilities_5.CreateTableData(row[entryName], this.entryClasses[entryName])));
                         }
                     });
-                    const footerRow = document.createElement("tr");
-                    table.appendChild(footerRow);
-                    const footerData = utilities_5.CreateTableData(this.footer, "smart-table-footer");
-                    footerData.colSpan = this.columns.length;
-                    footerRow.appendChild(footerData);
+                    if (this.footer) {
+                        const footerRow = document.createElement("tr");
+                        table.appendChild(footerRow);
+                        const footerData = utilities_5.CreateTableData(this.footer, "smart-table-footer");
+                        footerData.colSpan = this.columns.length;
+                        footerRow.appendChild(footerData);
+                    }
                 }
                 initialize() {
                     if (this.headers) {

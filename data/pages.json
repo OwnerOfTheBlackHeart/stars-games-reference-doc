@@ -20,6 +20,20 @@
 			"directories": []
 		},
 		{
+			"baseUrl": "homebrew/advanced-mech-design",
+			"mainPage": "advanced-mech-design",
+			"pages": [
+				{ "url": "advanced-mech-design.html", "name": "advanced-mech-design", "title": "Advanced Mech Design" },
+				{ "url": "amd-arms.html", "name": "amd-arms", "title": "Arms - Advanced Mech Design" },
+				{ "url": "amd-fittings.html", "name": "amd-fittings", "title": "Fittings - Advanced Mech Design" },
+				{ "url": "amd-frames.html", "name": "amd-frames", "title": "Frames - Advanced Mech Design" },
+				{ "url": "amd-mobility.html", "name": "amd-mobility", "title": "Mobility - Advanced Mech Design" },
+				{ "url": "amd-plating.html", "name": "amd-plating", "title": "Plating - Advanced Mech Design" },
+				{ "url": "amd-weapons.html", "name": "amd-weapons", "title": "Weapons - Advanced Mech Design" }
+			],
+			"directories": []
+		},
+		{
 			"baseUrl": "homebrew/protomechs",
 			"mainPage": "protomechs",
 			"pages": [{ "url": "protomechs.html", "name": "protomechs", "title": "Protomechs" }],
