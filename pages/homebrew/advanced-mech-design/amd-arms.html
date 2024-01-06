@@ -1,1 +1,159 @@
 <h1 id="arms">Arms</h1>
+<p>
+	Every mech that intends to manipulate their environment or mount weapons require arms. Arms are distinguished by the weapon mounts, called
+	hardpoints, they support, with the weight of normal arms for the mech being included in the mech's frame. Each arm type has hand
+	hardpoints, that are either held by the mech or mounted onto/in place of the forearm, and shoulder hardpoints that are mounted on,
+	surprise surprise, the arm's shoulder. These hardpoints are denoted by a number followed by a letter with the number being the number of
+	hardpoints and the letter determining the maximum class of the hardpoint(s), L being light, M being medium and H being heavy. The letter N
+	is used in the name to denote no hardpoints.
+</p>
+<p>
+	The location of hardpoint(s) is important in combat. Each hand and shoulder can be targeted independently, but weapons mounted into the
+	same position, such as two light lasers mounted in a LL-M arm's hand hardpoints, are targeted as a group, though they do not all need to
+	be fired at once. Weapons in the same location and of the same type use one attack roll, but separate damage rolls, while weapons of
+	different types in the same location use separate attack and damage rolls.
+</p>
+
+<ap-smart-table headers="Arms Type, Cost, Mass, Hand Hardpoints, Shoulder Hardpoints">
+	<classes cost="centered" mass="centered" hand-hardpoints="centered" shoulder-hardpoints="centered"> </classes>
+	<row>
+		<arms-type>N-N</arms-type>
+		<cost>Cr</cost>
+		<mass>0</mass>
+		<hand-hardpoints>-</hand-hardpoints>
+		<shoulder-hardpoints>-</shoulder-hardpoints>
+	</row>
+	<row>
+		<arms-type>L-N</arms-type>
+		<cost>Cr</cost>
+		<mass>1</mass>
+		<hand-hardpoints>1L</hand-hardpoints>
+		<shoulder-hardpoints>-</shoulder-hardpoints>
+	</row>
+	<row>
+		<arms-type>N-L</arms-type>
+		<cost>Cr</cost>
+		<mass>1</mass>
+		<hand-hardpoints>-</hand-hardpoints>
+		<shoulder-hardpoints>1L</shoulder-hardpoints>
+	</row>
+	<row>
+		<arms-type>L-L</arms-type>
+		<cost>Cr</cost>
+		<mass>2</mass>
+		<hand-hardpoints>1L</hand-hardpoints>
+		<shoulder-hardpoints>1L</shoulder-hardpoints>
+	</row>
+	<row>
+		<arms-type>N-M</arms-type>
+		<cost>Cr</cost>
+		<mass>2</mass>
+		<hand-hardpoints>-</hand-hardpoints>
+		<shoulder-hardpoints>1M</shoulder-hardpoints>
+	</row>
+	<row>
+		<arms-type>L-M</arms-type>
+		<cost>Cr</cost>
+		<mass>3</mass>
+		<hand-hardpoints>1L</hand-hardpoints>
+		<shoulder-hardpoints>1M</shoulder-hardpoints>
+	</row>
+	<row>
+		<arms-type>L-LL</arms-type>
+		<cost>Cr</cost>
+		<mass>4</mass>
+		<hand-hardpoints>1L</hand-hardpoints>
+		<shoulder-hardpoints>2L</shoulder-hardpoints>
+	</row>
+	<row>
+		<arms-type>LL-LL</arms-type>
+		<cost>Cr</cost>
+		<mass>6</mass>
+		<hand-hardpoints>2L</hand-hardpoints>
+		<shoulder-hardpoints>2L</shoulder-hardpoints>
+	</row>
+	<row>
+		<arms-type>M-N</arms-type>
+		<cost>Cr</cost>
+		<mass>2</mass>
+		<hand-hardpoints>1M</hand-hardpoints>
+		<shoulder-hardpoints>-</shoulder-hardpoints>
+	</row>
+	<row>
+		<arms-type>M-M</arms-type>
+		<cost>Cr</cost>
+		<mass>4</mass>
+		<hand-hardpoints>1M</hand-hardpoints>
+		<shoulder-hardpoints>1M</shoulder-hardpoints>
+	</row>
+	<row>
+		<arms-type>LL-M</arms-type>
+		<cost>Cr</cost>
+		<mass>5</mass>
+		<hand-hardpoints>2L</hand-hardpoints>
+		<shoulder-hardpoints>1M</shoulder-hardpoints>
+	</row>
+	<row>
+		<arms-type>N-H</arms-type>
+		<cost>Cr</cost>
+		<mass>4</mass>
+		<hand-hardpoints>-</hand-hardpoints>
+		<shoulder-hardpoints>1H</shoulder-hardpoints>
+	</row>
+	<row>
+		<arms-type>M-H</arms-type>
+		<cost>Cr</cost>
+		<mass>6</mass>
+		<hand-hardpoints>1M</hand-hardpoints>
+		<shoulder-hardpoints>1H</shoulder-hardpoints>
+	</row>
+	<row>
+		<arms-type>L-H</arms-type>
+		<cost>Cr</cost>
+		<mass>5</mass>
+		<hand-hardpoints>1L</hand-hardpoints>
+		<shoulder-hardpoints>1H</shoulder-hardpoints>
+	</row>
+	<row>
+		<arms-type>LL-H</arms-type>
+		<cost>Cr</cost>
+		<mass>7</mass>
+		<hand-hardpoints>2L</hand-hardpoints>
+		<shoulder-hardpoints>1H</shoulder-hardpoints>
+	</row>
+	<row>
+		<arms-type>LM-H</arms-type>
+		<cost>Cr</cost>
+		<mass>8</mass>
+		<hand-hardpoints>1L, 1M</hand-hardpoints>
+		<shoulder-hardpoints>1H</shoulder-hardpoints>
+	</row>
+	<row>
+		<arms-type>LM-N</arms-type>
+		<cost>Cr</cost>
+		<mass>4</mass>
+		<hand-hardpoints>1L, 1M</hand-hardpoints>
+		<shoulder-hardpoints>-</shoulder-hardpoints>
+	</row>
+	<row>
+		<arms-type>LLL-N</arms-type>
+		<cost>Cr</cost>
+		<mass>5</mass>
+		<hand-hardpoints>3L</hand-hardpoints>
+		<shoulder-hardpoints>-</shoulder-hardpoints>
+	</row>
+	<row>
+		<arms-type>LLL-H</arms-type>
+		<cost>Cr</cost>
+		<mass>9</mass>
+		<hand-hardpoints>3L</hand-hardpoints>
+		<shoulder-hardpoints>1H</shoulder-hardpoints>
+	</row>
+	<row>
+		<arms-type>LLL-LLL</arms-type>
+		<cost>Cr</cost>
+		<mass>10</mass>
+		<hand-hardpoints>3L</hand-hardpoints>
+		<shoulder-hardpoints>3L</shoulder-hardpoints>
+	</row>
+</ap-smart-table>
