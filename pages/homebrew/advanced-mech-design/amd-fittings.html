@@ -1,1 +1,35 @@
 <h1 id="fittings">Fittings</h1>
+<ap-smart-table headers="Fitting, Cost, Power, Mass, Classes, Effect">
+	<classes cost="centered" power="centered" mass="centered" classes="centered" effect="italicized"></classes>
+	<row>
+		<fitting><a href="#ammo-bin">Ammo Bin</a></fitting>
+		<cost>5k cr</cost>
+		<power>0</power>
+		<mass>1</mass>
+		<classes>Light</classes>
+		<effect>Increase ammunition available to a single weapon</effect>
+	</row>
+	<row>
+		<fitting><a href="#ammo-bin-armor-piercing"></a>Ammo Bin, Armor Piercing</a></fitting>
+		<cost>10k cr</cost>
+		<power>0</power>
+		<mass>1</mass>
+		<classes>Light</classes>
+		<effect>Increase armor piercing ammunition available to a single weapon</effect>
+	</row>
+</ap-smart-table>
+
+<div class="two-columns-container">
+	<div id="ammo-bin" class="item-container">
+		<p>
+			<i class="item-name">Ammo Bins</i> provide mechs the ability to carry additional ammunition. For each Ammo Bin, select a weapon on the
+            mech that has an Ammo value. The Ammo bin increases the max Ammo carried by the weapon by the weapon's base max Ammo.
+		</p>
+	</div>
+	<div id="ammo-bin-armor-piercing" class="item-container">
+		<p>
+			<i class="item-name">Armor Piercing Ammo Bins</i> work the same as normal <a href="#ammo-bin">Ammo Bins</a>, except that they hold
+            half as much ammo, rounding up, and add 5 AP to the weapon when it is using ammo from the Armor Piercing Ammo Bin.
+		</p>
+	</div>
+</div>
