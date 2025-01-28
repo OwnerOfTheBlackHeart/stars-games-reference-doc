@@ -50,6 +50,7 @@
 <p>
 	Melee weapons can only be used in hand-to-hand combat, and no non-melee weapon can be used that same round. Pilots use either Punch or
 	Stab for hit rolls. Mech melee weapons do not inflict Shock damage against mechs with a Reinforcement score higher than the weapon's AP.
+	Melee weapons can only be mounted in hand mounts.
 </p>
 
 <h3 id="psi">Psi</h3>
@@ -66,10 +67,33 @@
 	skill. On a failure, the gun must cool down for one round before it can be fired again.
 </p>
 
+<h3 id="imprecise">Imprecise</h3>
+<p>
+	This weapon is designed to be used against large targets, such as mechs, vehicles or fortifications. Against targets of human size, or
+	smaller, the weapon applies a -4 to any hit rolls against them.
+</p>
+
 <h3 id="unstable">Unstable</h3>
 <p>
 	This weapon takes a penalty to rolls to hit targets equal to the speed score the mech is moving at. Mechs with the Stability Quadrupedal
 	Mobility System ignore this special weapon quality.
+</p>
+
+<h3 id="radius">Radius</h3>
+<p>
+	This weapon targets a location rather than a single creature, vehicle or mech. All attack rolls are against AC 10, with a miss indicating
+	the shot has gone wide. All creatures, vehicles or mechs in the area may attempt an Evasion Save, taking half damage on a success or full
+	damage on a failure. On a miss, roll a d8 for direction, with 1 being the direction the mech is facing, and each after being another 45
+	degrees clockwise (3 is to the right, 5 is towards the mech, 7 is to the left), and a 1d20 for the number of meters off target the attack
+	lands.
+</p>
+
+<h3 id="multitarget">Multitarget</h3>
+<p>
+	This weapon is made up of multiple sub-weapons that are capable of independent targeting. The gunner designates up to the Multitarget
+	score in targets and can then make the same number of rolls to hit divided among them. Each successful hit on a target allows the gunner
+	to roll damage once, but only the highest damage roll is applied to the target. Thus, if three volleys were aimed at a single target and
+	two of them hit, the gunner would roll damage twice and apply the best result.
 </p>
 
 <ap-smart-table headers="Weapon, Cost, Damage, Range, Ammo, Power, Mass, Class, Special">
@@ -85,13 +109,35 @@
 	></classes>
 	<separator>Light</separator>
 	<row>
+		<weapon>Heavy Machine Gun</weapon>
+		<cost>10k cr</cost>
+		<damage>3d6#</damage>
+		<range>500/2k</range>
+		<ammo>10</ammo>
+		<power>1</power>
+		<mass>1</mass>
+		<class>Light</class>
+		<special>AP 5, Ballistic</special>
+	</row>
+	<row>
+		<weapon>Heavy Cutter</weapon>
+		<cost>16k cr</cost>
+		<damage>3d6#</damage>
+		<range>400/1.5k</range>
+		<ammo>-</ammo>
+		<power>4</power>
+		<mass>1</mass>
+		<class>Light</class>
+		<special>AP 10, Accurate</special>
+	</row>
+	<row>
 		<weapon>Light Laser</weapon>
 		<cost>20k cr</cost>
 		<damage>3d8</damage>
 		<range>500/1k</range>
 		<ammo>-</ammo>
-		<power></power>
-		<mass></mass>
+		<power>3</power>
+		<mass>1</mass>
 		<class>Light</class>
 		<special>AP 10, Accurate</special>
 	</row>
@@ -101,10 +147,87 @@
 		<damage>3d4</damage>
 		<range>1k/2k</range>
 		<ammo>-</ammo>
-		<power></power>
-		<mass></mass>
+		<power>4</power>
+		<mass>1</mass>
 		<class>Light</class>
 		<special>AP 40, Anti-Vehicle, Accurate</special>
+	</row>
+	<row>
+		<weapon>Plasma Cannon, Anti-Personnel</weapon>
+		<cost>22k cr</cost>
+		<damage>3d8#</damage>
+		<range>150/300</range>
+		<ammo>-</ammo>
+		<power>3</power>
+		<mass>1</mass>
+		<class>Light</class>
+		<special>Anti-Personnel</special>
+	</row>
+	<row>
+		<weapon>Rocket Launcher</weapon>
+		<cost>12k cr</cost>
+		<damage>3d10</damage>
+		<range>2k/4k</range>
+		<ammo>5</ammo>
+		<power>1</power>
+		<mass>2</mass>
+		<class>Light</class>
+		<special>Anti-Personnel, Imprecise, Unstable</special>
+	</row>
+	<row>
+		<weapon>Grenade Cannon</weapon>
+		<cost>12k cr</cost>
+		<damage>2d6</damage>
+		<range>300/600</range>
+		<ammo>5</ammo>
+		<power>1</power>
+		<mass>1</mass>
+		<class>Light</class>
+		<special>Anti-personnel, Radius 10m</special>
+	</row>
+	<row>
+		<weapon>Mech Dagger</weapon>
+		<cost>5k cr</cost>
+		<damage>1d8, 1/AC 15</damage>
+		<range>Melee</range>
+		<ammo>-</ammo>
+		<power>0</power>
+		<mass>1</mass>
+		<class>Light</class>
+		<special>AP 20, Melee</special>
+	</row>
+	<row>
+		<weapon>Mech Shortsword</weapon>
+		<cost>7.5k cr</cost>
+		<damage>2d8, 1/AC 13</damage>
+		<range>Melee</range>
+		<ammo>-</ammo>
+		<power>0</power>
+		<mass>2</mass>
+		<class>Light</class>
+		<special>AP 10, Melee</special>
+	</row>
+	<row>
+		<weapon>Mech Chainsword Light</weapon>
+		<cost>12k cr</cost>
+		<damage>2d10, 2/AC 13</damage>
+		<range>Melee</range>
+		<ammo>-</ammo>
+		<power>1</power>
+		<mass>2</mass>
+		<class>Light</class>
+		<special>AP 15, Melee</special>
+	</row>
+	<row>
+		<weapon>Mech Mace</weapon>
+		<cost>10k cr</cost>
+		<damage>2d6, 1/AC 18</damage>
+		<range>Melee</range>
+		<ammo>-</ammo>
+		<power>0</power>
+		<mass>3</mass>
+		<class>Light</class>
+		<special>AP 15, Melee</special>
 	</row>
 	<separator>Medium</separator>
 	<row>
@@ -113,8 +236,8 @@
 		<damage>3d10</damage>
 		<range>500/1k</range>
 		<ammo>-</ammo>
-		<power></power>
-		<mass></mass>
+		<power>5</power>
+		<mass>2</mass>
 		<class>Medium</class>
 		<special>AP 15, Anti-Vehicle, Accurate</special>
 	</row>
@@ -124,10 +247,120 @@
 		<damage>3d8</damage>
 		<range>6k/12k</range>
 		<ammo>-</ammo>
-		<power></power>
-		<mass></mass>
+		<power>4</power>
+		<mass>2</mass>
 		<class>Medium</class>
 		<special>AP 10, Anti-Air, Slow, Accurate</special>
+	</row>
+	<row>
+		<weapon>Cannon, Auto</weapon>
+		<cost>45k cr</cost>
+		<damage>3d8</damage>
+		<range>1k/2k</range>
+		<ammo>10</ammo>
+		<power>1</power>
+		<mass>3</mass>
+		<class>Medium</class>
+		<special>AP 5, Ballistic</special>
+	</row>
+	<row>
+		<weapon>Cannon, Cutter</weapon>
+		<cost>50k cr</cost>
+		<damage>3d8</damage>
+		<range>500/2k</range>
+		<ammo>-</ammo>
+		<power>7</power>
+		<mass>2</mass>
+		<class>Medium</class>
+		<special>AP 25, Accurate, Slow</special>
+	</row>
+	<row>
+		<weapon>Cannon, Light</weapon>
+		<cost>45k cr</cost>
+		<damage>3d12</damage>
+		<range>1k/2k</range>
+		<ammo>8</ammo>
+		<power>2</power>
+		<mass>5</mass>
+		<class>Medium</class>
+		<special>AP 10, Ballistic, Slow, Unstable, Imprecise</special>
+	</row>
+	<row>
+		<weapon>Railgun, Automatic</weapon>
+		<cost>16k cr</cost>
+		<damage>3d8#</damage>
+		<range>1k/2k</range>
+		<ammo>20</ammo>
+		<power>4</power>
+		<mass>2</mass>
+		<class>Medium</class>
+		<special>AP 15, Ballistic</special>
+	</row>
+	<row>
+		<weapon>Railgun, Light Cannon</weapon>
+		<cost>75k cr</cost>
+		<damage>3d8#</damage>
+		<range>2k/4k</range>
+		<ammo>12</ammo>
+		<power>4</power>
+		<mass>4</mass>
+		<class>Medium</class>
+		<special>AP 15, Ballistic, Slow, Unstable</special>
+	</row>
+	<row>
+		<weapon>Plasma Thrower</weapon>
+		<cost>50k cr</cost>
+		<damage>4d10</damage>
+		<range>250/500</range>
+		<ammo>-</ammo>
+		<power>6</power>
+		<mass>3</mass>
+		<class>Medium</class>
+		<special>AP 10</special>
+	</row>
+	<row>
+		<weapon>Hydra Array</weapon>
+		<cost>40k cr</cost>
+		<damage>3d6#</damage>
+		<range>300/600</range>
+		<ammo>10</ammo>
+		<power>3</power>
+		<mass>4</mass>
+		<class>Medium</class>
+		<special>AP 5, Multitarget 3, Unstable</special>
+	</row>
+	<row>
+		<weapon>Mech Sword</weapon>
+		<cost>15k cr</cost>
+		<damage>2d12, 2/AC 15</damage>
+		<range>Melee</range>
+		<ammo>-</ammo>
+		<power>0</power>
+		<mass>4</mass>
+		<class>Medium</class>
+		<special>AP 10, Melee</special>
+	</row>
+	<row>
+		<weapon>Mech Chainsword</weapon>
+		<cost>40k cr</cost>
+		<damage>3d10, 2/AC 18</damage>
+		<range>Melee</range>
+		<ammo>-</ammo>
+		<power>2</power>
+		<mass>3</mass>
+		<class>Medium</class>
+		<special>AP 20, Melee</special>
+	</row>
+	<row>
+		<weapon>Mech Grav Blade</weapon>
+		<cost>40k cr</cost>
+		<damage>3d8, 1/-</damage>
+		<range>Melee</range>
+		<ammo>-</ammo>
+		<power>7</power>
+		<mass>1</mass>
+		<class>Medium</class>
+		<special>AP 30, Melee</special>
 	</row>
 	<separator>Heavy</separator>
 	<row>
@@ -136,8 +369,8 @@
 		<damage>3d12</damage>
 		<range>1k/2k</range>
 		<ammo>-</ammo>
-		<power></power>
-		<mass></mass>
+		<power>9</power>
+		<mass>3</mass>
 		<class>Heavy</class>
 		<special>AP 20, Accurate</special>
 	</row>
@@ -147,9 +380,32 @@
 		<damage>5d8</damage>
 		<range>1k/2k</range>
 		<ammo>-</ammo>
-		<power></power>
-		<mass></mass>
+		<power>10</power>
+		<mass>4</mass>
 		<class>Heavy</class>
 		<special>AP 30, Accurate</special>
 	</row>
+	<row>
+		<weapon>Cannon</weapon>
+		<cost>75k cr</cost>
+		<damage>4d12</damage>
+		<range>2k/4k</range>
+		<ammo>5</ammo>
+		<power>3</power>
+		<mass>7</mass>
+		<class>Heavy</class>
+		<special>AP 20, Ammo, Ballistic, Slow, Unstable, Imprecise</special>
+	</row>
+	<row>
+		<weapon>Railgun, Cannon</weapon>
+		<cost>150k cr</cost>
+		<damage>4d12</damage>
+		<range>2k/4k</range>
+		<ammo>10</ammo>
+		<power>6</power>
+		<mass>6</mass>
+		<class>Medium</class>
+		<special>AP 45, Ballistic, Slow, Unstable</special>
+	</row>
+	<footer># weapon can be fired to suppress, at the cost of 2 ammo</footer>
 </ap-smart-table>
