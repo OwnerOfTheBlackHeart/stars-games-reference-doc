@@ -1,1 +1,210 @@
 <h1 id="mobility">Mobility</h1>
+<p>
+	A mech's mobility system represents the mix of actuators, grav panels, motors, jets and artificial that make up the primary movement
+	system of the mech, which improves its ground speed as well as its Dodge score and Speed scores of the mech. The mobility system also
+	determines if the mech is bipedal or quadrupedal.
+</p>
+<p>
+	Bipedal mobility systems come in two distinct types: Standard and Reverse Knee. Standard mobility systems are cheap and reliable, putting
+	the least strain on the mech's power system, but offering no special abilities. Reverse Knee mobility systems add an extra knee joint to
+	allow the mech to store potential energy that can be released for a sudden burst of speed or to make a sudden leap without needing special
+	fittings.
+</p>
+<p>
+	Reverse Knee mobility systems can use the potential energy stored in their reverse knees to either make a pair of long jump style leaps
+	that allow them to move twice their normal movement in a straight line as a single movement or to leap up to half their normal movement
+	vertically and up to half their normal movement horizontally, potentially over or onto obstacles. Reverse Knee mobility systems require 2
+	rounds after a leap to cool off and rebuild their potential energy before they can leap again. All ballistic weapons on a Reverse Knee
+	equipped mech are treated as if they had the Unstable weapon quality.
+</p>
+<p>
+	Quadrupedal mobility systems come in two distinct types: Agility and Stability. Agility systems use the extra space that an extra pair of
+	legs offer to fit in excess grav plates that grant the mech the ability to hover, while Stability systems reinforce both pairs of legs to
+	grant a higher weight limit to the mech and make it a more stable platform.
+</p>
+<p>
+	Agility quadrupedal mobility systems allow the mech to hover up to five times its height off the ground for up to one minute. During this
+	minute, the mech can move at in any direction, including up or down, at its normal movement speed and does not need to end its turn
+	touching the ground. Agility quadrupedal mobility systems require a number of rounds equal to twice the time spent hovering to cool down
+	before hovering again.
+</p>
+<p>
+	Stability quadrupedal mobility systems aid in aiming, especially while stationary, ignoring the Unstable weapon quality and, thanks to
+	handling recoil better than bipedal legs, grant a +1 modifier to hit with ballistic weapons when remaining stationary in the turn that the
+	weapon is fired.
+</p>
+
+<h2 id="mobility-systems-table">Mobility Systems</h2>
+<p>Values displayed as X/Y/Z are the values for Subpar, Average, and Exceptional, in that order.</p>
+<ap-smart-table headers="Mobility System, Cost, Speed, Dodge Modifier, Power, Mass, Class">
+	<classes cost="centered" speed="centered" dodge-modifier="centered" power="centered" mass="centered" class="centered"></classes>
+	<separator>Light</separator>
+	<row>
+		<mobility-system>Light Standard</mobility-system>
+		<cost>5k cr</cost>
+		<speed>3 / 4 / 5</speed>
+		<dodge-modifier>-1 / 0 / 1</dodge-modifier>
+		<power>0 / 0 / 2</power>
+		<mass>-1 / 0 / 1</mass>
+		<class>Light</class>
+	</row>
+	<row>
+		<mobility-system>Light Reverse Knee</mobility-system>
+		<cost>7.5k cr</cost>
+		<speed>5 / 6 / 6</speed>
+		<dodge-modifier>1 / 2 / 3</dodge-modifier>
+		<power>2 / 2 / 1</power>
+		<mass>-1 / -1 / 0</mass>
+		<class>Light</class>
+	</row>
+	<row>
+		<mobility-system>Light Quad, Agility</mobility-system>
+		<cost>15k cr</cost>
+		<speed>4 / 5 / 6</speed>
+		<dodge-modifier>1 / 1 / 2</dodge-modifier>
+		<power>0 / 1 / 2</power>
+		<mass>-2 / -1 / 0</mass>
+		<class>Light</class>
+	</row>
+	<row>
+		<mobility-system>Light Quad, Stability</mobility-system>
+		<cost>10k cr</cost>
+		<speed>2 / 3 / 4</speed>
+		<dodge-modifier>-2 / -1 / 0</dodge-modifier>
+		<power>2 / 1 / 2</power>
+		<mass>1 / 1 / 2</mass>
+		<class>Light</class>
+	</row>
+	<row>
+		<mobility-system>Subpar</mobility-system>
+		<cost>x0.5</cost>
+		<speed>-</speed>
+		<dodge-modifier>-</dodge-modifier>
+		<power>-</power>
+		<mass>-</mass>
+		<class>-</class>
+	</row>
+	<row>
+		<mobility-system>Exceptional</mobility-system>
+		<cost>x10</cost>
+		<speed>-</speed>
+		<dodge-modifier>-</dodge-modifier>
+		<power>-</power>
+		<mass>-</mass>
+		<class>-</class>
+	</row>
+	<separator>Medium</separator>
+	<row>
+		<mobility-system>Medium Standard</mobility-system>
+		<cost>25k cr</cost>
+		<speed>2 / 3 / 4</speed>
+		<dodge-modifier>-1 / 0 / 1</dodge-modifier>
+		<power>0 / 0 / 4</power>
+		<mass>-2 / 0 / 2</mass>
+		<class>Medium</class>
+	</row>
+	<row>
+		<mobility-system>Medium Reverse Knee</mobility-system>
+		<cost>35k cr</cost>
+		<speed>4 / 5 / 5</speed>
+		<dodge-modifier>1 / 2 / 3</dodge-modifier>
+		<power>5 / 5 / 2</power>
+		<mass>-2 / -1 / 0</mass>
+		<class>Medium</class>
+	</row>
+	<row>
+		<mobility-system>Medium Quad, Agility</mobility-system>
+		<cost>75k cr</cost>
+		<speed>3 / 4 / 5</speed>
+		<dodge-modifier>1 / 1 / 2</dodge-modifier>
+		<power>0 / 2 / 5</power>
+		<mass>-2 / -2 / -1</mass>
+		<class>Medium</class>
+	</row>
+	<row>
+		<mobility-system>Medium Quad, Stability</mobility-system>
+		<cost>50k cr</cost>
+		<speed>1 / 2 / 3</speed>
+		<dodge-modifier>-2 / -1 / 0</dodge-modifier>
+		<power>5 / 3 / 5</power>
+		<mass>2 / 2 / 4</mass>
+		<class>Medium</class>
+	</row>
+	<row>
+		<mobility-system>Subpar</mobility-system>
+		<cost>x0.5</cost>
+		<speed>-</speed>
+		<dodge-modifier>-</dodge-modifier>
+		<power>-</power>
+		<mass>-</mass>
+		<class>-</class>
+	</row>
+	<row>
+		<mobility-system>Exceptional</mobility-system>
+		<cost>x10</cost>
+		<speed>-</speed>
+		<dodge-modifier>-</dodge-modifier>
+		<power>-</power>
+		<mass>-</mass>
+		<class>-</class>
+	</row>
+	<separator>Heavy</separator>
+	<row>
+		<mobility-system>Heavy Standard</mobility-system>
+		<cost>50k cr</cost>
+		<speed>1 / 2 / 3</speed>
+		<dodge-modifier>-1 / 0 / 1</dodge-modifier>
+		<power>0 / 0 / 6</power>
+		<mass>-3 / 0 / 3</mass>
+		<class>Heavy</class>
+	</row>
+	<row>
+		<mobility-system>Heavy Reverse Knee</mobility-system>
+		<cost>75k cr</cost>
+		<speed>3 / 4 / 4</speed>
+		<dodge-modifier>1 / 2 / 3</dodge-modifier>
+		<power>7 / 6 / 5</power>
+		<mass>-3 / -2 / -1</mass>
+		<class>Heavy</class>
+	</row>
+	<row>
+		<mobility-system>Heavy Quad, Agility</mobility-system>
+		<cost>150k cr</cost>
+		<speed>2 / 3 / 4</speed>
+		<dodge-modifier>1 / 1 / 2</dodge-modifier>
+		<power>0 / 4 / 8</power>
+		<mass>-3 / -3 / -2</mass>
+		<class>Heavy</class>
+	</row>
+	<row>
+		<mobility-system>Heavy Quad, Stability</mobility-system>
+		<cost>100k cr</cost>
+		<speed>1 / 1 / 2</speed>
+		<dodge-modifier>-3 / -1 / 0</dodge-modifier>
+		<power>8 / 5 / 8</power>
+		<mass>3 / 3 / 6</mass>
+		<class>Heavy</class>
+	</row>
+	<row>
+		<mobility-system>Subpar</mobility-system>
+		<cost>x0.5</cost>
+		<speed>-</speed>
+		<dodge-modifier>-</dodge-modifier>
+		<power>-</power>
+		<mass>-</mass>
+		<class>-</class>
+	</row>
+	<row>
+		<mobility-system>Exceptional</mobility-system>
+		<cost>x10</cost>
+		<speed>-</speed>
+		<dodge-modifier>-</dodge-modifier>
+		<power>-</power>
+		<mass>-</mass>
+		<class>-</class>
+	</row>
+	<footer>
+		# Multiply this requirement by 2 for light mechs and 4 for heavy mechs<br />
+		* Multiply all base costs by 3 for light mechs and 6 for heavy mechs
+	</footer>
+</ap-smart-table>

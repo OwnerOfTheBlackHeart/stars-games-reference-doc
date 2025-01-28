@@ -21,15 +21,22 @@
 <h2 id="building-a-mech">Building a Mech</h2>
 <p>
 	The process of building a mech, while similar to the original mech building system, is slightly different. Mech construction begins by
-	choosing a frame, which determines base stats for the mech like health points and dodge, after which a power source is chosen, then the
-	mech's mobility systems and its plating, followed by the arms, which will determine what weapon hardpoints are available to the mech, with
-	fittings and weapons being figured out last.
+	choosing a frame and mobility system, which determines base stats for the mech like health points and dodge, after which a power source is
+	chosen, then the mech's mobility systems and its plating, followed by the arms, which will determine what weapon hardpoints are available
+	to the mech, with fittings and weapons being figured out last.
 </p>
 
 <h3 id="dodge">Dodge</h3>
 <p>
 	The Dodge score of a mech might seem weird to a player or GM used to Stars Without Number, but it is a renaming of Armor Class to help to
-	avoid confusion with the separate Armor score.
+	avoid confusion with the separate Armor score. It represents the Difficulty Class of hitting the mech with an attack.
+</p>
+
+<h3 id="reinforcement">Reinforcement</h3>
+<p>
+	The Reinforcement score of a mech might seem weird to a player or GM used to Stars Without Number, but it is this system's equivalent to
+	the Hardened Polyceramic Overlay or Vanguard Plating. The Reinforcement score is the amount of Armor Penetration negated when a mech
+	weapon damages the mech.
 </p>
 
 <h2 id="modifying-a-mech">Modifying a Mech</h2>
@@ -39,7 +46,16 @@
 </p>
 
 <h2 id="repairs-and-maintenance">Repairs and Maintenance</h2>
-<p>PLACEHOLDER</p>
+<p>
+	Mechs are complicated pieces of machinery and require regular maintenance to prevent them from breaking down. Mechs require maintenance
+	once for every 24 hours that the mech has been active, the cost of which is determined by the frame's maintenance score. Every 24 hours
+	the mech spends active without maintenance, the mech takes -1 to all actions the mech takes, with the mech ceasing to be functional after
+	reaching a -5 maintenance penalty. A single maintenance cycle removes all maintenance penalties.
+</p>
+<p>
+	Maintenance for a light frame takes 1 hour, a medium frame takes 2 hours and a heavy frame 4 hours. Static frames take half as long for
+	maintenance.
+</p>
 
 <ap-template-outlet page="amd-frames" header-level="2"></ap-template-outlet>
 <ap-template-outlet page="amd-mobility" header-level="2"></ap-template-outlet>

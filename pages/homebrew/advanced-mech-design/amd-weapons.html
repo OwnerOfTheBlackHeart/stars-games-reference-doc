@@ -1,1 +1,155 @@
 <h1 id="weapons">Weapons</h1>
+<h2 id="special-weapon-qualities">Special Weapon Qualities</h2>
+<h3 id="accurate">Accurate</h3>
+<p>
+	This weapon is highly accurate and easy to hit targets with, such as a laser. This weapon gains +1 to rolls to hit a target. The pilot can
+	take a special Aim Move Action to focus on aiming to instead gain a +2 to rolls to hit a target. This is the same Aim action as used by
+	weapons with the Ballistic special weapon quality.
+</p>
+
+<h3 id="anti-air">Anti-Air</h3>
+<p>
+	This weapon is optimized for firing at “clean” airborne targets, however, and suffers a -4 penalty to hit when aiming for ground-bound
+	targets.
+</p>
+
+<h3 id="anti-personnel">Anti-Personnel</h3>
+<p>Armored vehicles, fortifications, and mechs are immune to these light weapons.</p>
+
+<h3 id="anti-vehicle">Anti-Vehicle</h3>
+<p>Against armored vehicles and fortifications, roll damage twice and take the higher damage number.</p>
+
+<h3 id="ammo">Ammo</h3>
+<p>
+	The weapon or defense requires ammunition to fire. A number of rounds equal to the weapon’s Ammo rating can be fit into one Ammo Bin
+	fitting. The weapon itself includes one Ammo Bin fitting worth of ammunition as part of the installation. A weapon's ammunition is
+	refilled as part of a normal maintenance cycle.
+</p>
+
+<h3 id="ap">AP</h3>
+<p>
+	The weapon ignores this many points of a target’s armor. Reinforcement reduces the effective AP, down to a minimum of 0. It cannot add
+	additional damage to a hit.
+</p>
+
+<h3 id="ballistic">Ballistic</h3>
+<p>
+	This weapon operates by accelerating a solid projectile of appreciable mass to speeds faster than the speed of sound. All ballistic
+	weapons are inherently Ammo weapons. Mechs with the Stability Quadrupedal Mobility System can take a special Aim Move Action to focus on
+	aiming to gain a +1 bonus on rolls to hit a target. This is the same Aim action as used by weapons with the Accurate special weapon
+	quality.
+</p>
+
+<h3 id="cone">Cone</h3>
+<p>
+	The weapon fires in a conical pattern that many meters long and wide at its end. All targets within the cone must make an Evasion saving
+	throw or be hit, with no hit roll required. Targets behind hard cover save automatically.
+</p>
+
+<h3 id="melee">Melee</h3>
+<p>
+	Melee weapons can only be used in hand-to-hand combat, and no non-melee weapon can be used that same round. Pilots use either Punch or
+	Stab for hit rolls. Mech melee weapons do not inflict Shock damage against mechs with a Reinforcement score higher than the weapon's AP.
+</p>
+
+<h3 id="psi">Psi</h3>
+<p>
+	Psi weapons use metadimensional energy channels to completely ignore a target’s Armor rating, except for any armor granted by the MES
+	Shunt Channel defense fitting. Defenses such as Hardened Polyceramic Overlay have no effect on psi weaponry. Pilots may optionally choose
+	to use an appropriate psychic skill with psi weapons, even melee varieties. Psi weapons rely on Wisdom or Constitution to modify attack
+	and damage rolls, rather than Dexterity or Intelligence.
+</p>
+
+<h3 id="slow">Slow</h3>
+<p>
+	After firing, the attacker must roll an Int/Shoot skill check against difficulty 8. For psi weapons, use Int and an applicable psychic
+	skill. On a failure, the gun must cool down for one round before it can be fired again.
+</p>
+
+<h3 id="unstable">Unstable</h3>
+<p>
+	This weapon takes a penalty to rolls to hit targets equal to the speed score the mech is moving at. Mechs with the Stability Quadrupedal
+	Mobility System ignore this special weapon quality.
+</p>
+
+<ap-smart-table headers="Weapon, Cost, Damage, Range, Ammo, Power, Mass, Class, Special">
+	<classes
+		cost="centered"
+		damage="centered"
+		range="centered"
+		ammo="centered"
+		power="centered"
+		mass="centered"
+		class="centered"
+		special="italicized"
+	></classes>
+	<separator>Light</separator>
+	<row>
+		<weapon>Light Laser</weapon>
+		<cost>20k cr</cost>
+		<damage>3d8</damage>
+		<range>500/1k</range>
+		<ammo>-</ammo>
+		<power></power>
+		<mass></mass>
+		<class>Light</class>
+		<special>AP 10, Accurate</special>
+	</row>
+	<row>
+		<weapon>Multifocal Laser</weapon>
+		<cost>75k cr</cost>
+		<damage>3d4</damage>
+		<range>1k/2k</range>
+		<ammo>-</ammo>
+		<power></power>
+		<mass></mass>
+		<class>Light</class>
+		<special>AP 40, Anti-Vehicle, Accurate</special>
+	</row>
+	<separator>Medium</separator>
+	<row>
+		<weapon>Anti-Vehicle Laser</weapon>
+		<cost>35k cr</cost>
+		<damage>3d10</damage>
+		<range>500/1k</range>
+		<ammo>-</ammo>
+		<power></power>
+		<mass></mass>
+		<class>Medium</class>
+		<special>AP 15, Anti-Vehicle, Accurate</special>
+	</row>
+	<row>
+		<weapon>Anti-Air Laser</weapon>
+		<cost>40k cr</cost>
+		<damage>3d8</damage>
+		<range>6k/12k</range>
+		<ammo>-</ammo>
+		<power></power>
+		<mass></mass>
+		<class>Medium</class>
+		<special>AP 10, Anti-Air, Slow, Accurate</special>
+	</row>
+	<separator>Heavy</separator>
+	<row>
+		<weapon>Heavy Laser</weapon>
+		<cost>75k cr</cost>
+		<damage>3d12</damage>
+		<range>1k/2k</range>
+		<ammo>-</ammo>
+		<power></power>
+		<mass></mass>
+		<class>Heavy</class>
+		<special>AP 20, Accurate</special>
+	</row>
+	<row>
+		<weapon>Beam Lance</weapon>
+		<cost>100k cr</cost>
+		<damage>5d8</damage>
+		<range>1k/2k</range>
+		<ammo>-</ammo>
+		<power></power>
+		<mass></mass>
+		<class>Heavy</class>
+		<special>AP 30, Accurate</special>
+	</row>
+</ap-smart-table>
