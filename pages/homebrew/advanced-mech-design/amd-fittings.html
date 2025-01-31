@@ -1,12 +1,13 @@
 <h1 id="fittings">Fittings</h1>
-<ap-smart-table headers="Fitting, Cost, Power, Mass, Classes, Effect">
+<ap-smart-table headers="Fitting, Cost, Power, Mass, TL, Classes, Effect">
 	<classes cost="centered" power="centered" mass="centered" classes="centered" effect="italicized"></classes>
 	<row>
 		<fitting><a href="#ammo-bin">Ammo Bin</a></fitting>
 		<cost>5k cr</cost>
 		<power>0</power>
 		<mass>1</mass>
-		<classes>Light</classes>
+		<tl>3</tl>
+		<classes>Light, Medium, Heavy</classes>
 		<effect>Increase ammunition available to a single weapon</effect>
 	</row>
 	<row>
@@ -14,9 +15,311 @@
 		<cost>10k cr</cost>
 		<power>0</power>
 		<mass>1</mass>
-		<classes>Light</classes>
+		<tl>3</tl>
+		<classes>Light, Medium, Heavy</classes>
 		<effect>Increase armor piercing ammunition available to a single weapon</effect>
 	</row>
+	<row>
+		<fitting>
+			<a href="#active-camo-surface">Active Camo Surface</a>
+		</fitting>
+		<cost>25k</cost>
+		<power>1</power>
+		<mass>2#</mass>
+		<tl>4</tl>
+		<classes>Light, Medium, Heavy</classes>
+		<effect>Shifts the hull’s coloration to blend with the locale</effect>
+	</row>
+	<row>
+		<fitting>
+			<a href="#antigrav-nodes">Antigrav Nodes</a>
+		</fitting>
+		<cost>50k/500k</cost>
+		<power>3#</power>
+		<mass>1#</mass>
+		<tl>4/5</tl>
+		<classes>Light, Medium/Heavy</classes>
+		<effect>Allows flight in most gravitic environments</effect>
+	</row>
+	<row>
+		<fitting>
+			<a href="#augmented-enviroseals">Augmented Enviroseals</a>
+		</fitting>
+		<cost>15k</cost>
+		<power>1</power>
+		<mass>1#</mass>
+		<tl>4</tl>
+		<classes>Light, Medium, Heavy</classes>
+		<effect>Allows extended operation in hostile environments</effect>
+	</row>
+	<row>
+		<fitting>
+			<a href="#breaching-tool">Breaching Tool</a>
+		</fitting>
+		<cost>20k</cost>
+		<power>0</power>
+		<mass>1#</mass>
+		<tl>3</tl>
+		<classes>Light, Medium, Heavy</classes>
+		<effect>Carves large holes in stationary obstacles</effect>
+	</row>
+	<row>
+		<fitting>
+			<a href="#bridging-laminates">Bridging Laminates</a>
+		</fitting>
+		<cost>10k</cost>
+		<power>1</power>
+		<mass>1#</mass>
+		<tl>3</tl>
+		<classes>Light, Medium, Heavy</classes>
+		<effect>Creates a road capable of supporting the mech</effect>
+	</row>
+	<row>
+		<fitting>
+			<a href="#cargo-space">Cargo Space</a>
+		</fitting>
+		<cost>1k</cost>
+		<power>0</power>
+		<mass>1</mass>
+		<tl>3</tl>
+		<classes>Light, Medium, Heavy</classes>
+		<effect>Grants room to carry an amount of protected cargo</effect>
+	</row>
+	<row>
+		<fitting>
+			<a href="#comm-interceptors">Comm Interceptors</a>
+		</fitting>
+		<cost>30k</cost>
+		<power>3</power>
+		<mass>3</mass>
+		<tl>4</tl>
+		<classes>Medium, Heavy</classes>
+		<effect>Allows attempts to descramble enemy communications</effect>
+	</row>
+	<row>
+		<fitting>
+			<a href="#construction-array">Construction Array</a>
+		</fitting>
+		<cost>50k</cost>
+		<power>1#</power>
+		<mass>3#</mass>
+		<tl>4</tl>
+		<classes>Medium, Heavy</classes>
+		<effect>Allows mech to serve as a construction facility</effect>
+	</row>
+	<row>
+		<fitting>
+			<a href="#drop-sheathing">Drop Sheathing</a>
+		</fitting>
+		<cost>10k</cost>
+		<power>0</power>
+		<mass>1#</mass>
+		<tl>4</tl>
+		<classes>Light, Medium, Heavy</classes>
+		<effect>Conceals an orbital insertion</effect>
+	</row>
+	<row>
+		<fitting>
+			<a href="#escape-pod">Escape Pod</a>
+		</fitting>
+		<cost>25k</cost>
+		<power>1</power>
+		<mass>1#</mass>
+		<tl>3</tl>
+		<classes>Medium, Heavy</classes>
+		<effect>Improves the odds of a pilot surviving mech loss</effect>
+	</row>
+	<row>
+		<fitting>
+			<a href="#field-medical-unit">Field Medical Unit</a>
+		</fitting>
+		<cost>25k</cost>
+		<power>2</power>
+		<mass>1#</mass>
+		<tl>4</tl>
+		<classes>Light, Medium, Heavy</classes>
+		<effect>Allows extensive battlefield medical support</effect>
+	</row>
+	<row>
+		<fitting>
+			<a href="#fire-control-unit">Fire Control Unit/Master</a>
+		</fitting>
+		<cost>100k</cost>
+		<power>2</power>
+		<mass>3#</mass>
+		<tl>4</tl>
+		<classes>Medium, Heavy</classes>
+		<effect>Grants friendly mechs a selective fire ability</effect>
+	</row>
+	<row>
+		<fitting>
+			<a href="#fire-control-unit">Fire Control Unit/Slave</a>
+		</fitting>
+		<cost>20k</cost>
+		<power>1</power>
+		<mass>1#</mass>
+		<tl>4</tl>
+		<classes>Medium, Heavy</classes>
+		<effect>Necessary for using an ally’s FCU/Master</effect>
+	</row>
+	<row>
+		<fitting>
+			<a href="#grav-chutes">Grav Chutes</a>
+		</fitting>
+		<cost>20k</cost>
+		<power>1</power>
+		<mass>1#</mass>
+		<tl>4</tl>
+		<classes>Light, Medium, Heavy</classes>
+		<effect>Allows orbital insertion of a mech</effect>
+	</row>
+	<row>
+		<fitting>
+			<a href="#inquisitor-probe">Inquisitor Probe</a>
+		</fitting>
+		<cost>60k</cost>
+		<power>1</power>
+		<mass>1#</mass>
+		<tl>5</tl>
+		<classes>Light, Medium, Heavy</classes>
+		<effect>Psi. Allows a telepath to read a target’s intentions</effect>
+	</row>
+	<row>
+		<fitting>
+			<a href="#integral-maintenance">Integral Maintenance</a>
+		</fitting>
+		<cost>30k</cost>
+		<power>2</power>
+		<mass>1#</mass>
+		<tl>4</tl>
+		<classes>Medium, Heavy</classes>
+		<effect>Auto-applies field maintenance</effect>
+	</row>
+	<row>
+		<fitting>
+			<a href="#jump-coil">Jump Coil</a>
+		</fitting>
+		<cost>60k</cost>
+		<power>1</power>
+		<mass>1#</mass>
+		<tl>5</tl>
+		<classes>Light, Medium, Heavy</classes>
+		<effect>Psi. Allows a teleporter to translocate other mechs</effect>
+	</row>
+	<row>
+		<fitting>
+			<a href="#kinesis-boost">Kinesis Boost</a>
+		</fitting>
+		<cost>60k</cost>
+		<power>1</power>
+		<mass>1#</mass>
+		<tl>5</tl>
+		<classes>Light, Medium, Heavy</classes>
+		<effect>Psi. Allows a telekinetic to increase mech Speed</effect>
+	</row>
+	<row>
+		<fitting>
+			<a href="#neural-activity-sensors">Neural Activity Sensors</a>
+		</fitting>
+		<cost>60k</cost>
+		<power>1</power>
+		<mass>1#</mass>
+		<tl>5</tl>
+		<classes>Light, Medium, Heavy</classes>
+		<effect>Psi. Allows any psychic to detect sentient minds</effect>
+	</row>
+	<row>
+		<fitting>
+			<a href="#neural-static-generator">Neural Static Generator</a>
+		</fitting>
+		<cost>60k</cost>
+		<power>1</power>
+		<mass>1#</mass>
+		<tl>5</tl>
+		<classes>Light, Medium, Heavy</classes>
+		<effect>Psi. Allows a metapsion to negate psimech powers</effect>
+	</row>
+	<row>
+		<fitting>
+			<a href="#omen-tap">Omen Tap</a>
+		</fitting>
+		<cost>60k</cost>
+		<power>1</power>
+		<mass>1#</mass>
+		<tl>5</tl>
+		<classes>Light, Medium, Heavy</classes>
+		<effect>Psi. Allows a precog to hinder hit or skill rolls</effect>
+	</row>
+	<row>
+		<fitting>
+			<a href="#panoptic-cloud">Panoptic Cloud</a>
+		</fitting>
+		<cost>25k</cost>
+		<power>2</power>
+		<mass>2#</mass>
+		<tl>4</tl>
+		<classes>Medium, Heavy</classes>
+		<effect>Emits a swarm of microscopic sensors</effect>
+	</row>
+	<row>
+		<fitting>
+			<a href="#polyspectral-sensors">Polyspectral Sensors</a>
+		</fitting>
+		<cost>40k</cost>
+		<power>1</power>
+		<mass>1#</mass>
+		<tl>4</tl>
+		<classes>Light, Medium, Heavy</classes>
+		<effect>Penetrating sensor scan within one hundred meters</effect>
+	</row>
+	<row>
+		<fitting>
+			<a href="#pulse-transceiver">Pulse Transceiver</a>
+		</fitting>
+		<cost>75k</cost>
+		<power>5</power>
+		<mass>2</mass>
+		<tl>4</tl>
+		<classes>Light, Medium, Heavy</classes>
+		<effect>Allows intra-system faster-than-light communication</effect>
+	</row>
+	<row>
+		<fitting>
+			<a href="#skywatch-drones">Skywatch Drones</a>
+		</fitting>
+		<cost>40k</cost>
+		<power>1</power>
+		<mass>3</mass>
+		<tl>4</tl>
+		<classes>Medium, Heavy</classes>
+		<effect>Launches drones to observe remote areas.</effect>
+	</row>
+	<row>
+		<fitting>
+			<a href="#vivification-field">Vivification Field</a>
+		</fitting>
+		<cost>60k</cost>
+		<power>1</power>
+		<mass>1#</mass>
+		<tl>5</tl>
+		<classes>Light, Medium, Heavy</classes>
+		<effect>Psi. Allows a biopsion to stabilize wounded</effect>
+	</row>
+	<row>
+		<fitting>
+			<a href="#void-thrusters">Void Thrusters</a>
+		</fitting>
+		<cost>25k</cost>
+		<power>1#</power>
+		<mass>2#</mass>
+		<tl>4</tl>
+		<classes>Light, Medium, Heavy</classes>
+		<effect>Allows flight in zero or trace-gravity environments</effect>
+	</row>
+	<footer>
+		# Multiply this requirement by 2 for medium mechs and 3 for heavy mechs<br />
+		* Multiply all base costs by 3 for medium mechs and 6 for heavy mechs
+	</footer>
 </ap-smart-table>
 
 <div class="two-columns-container">
@@ -30,6 +333,193 @@
 		<p>
 			<i class="item-name">Armor Piercing Ammo Bins</i> work the same as normal <a href="#ammo-bin">Ammo Bins</a>, except that they hold
 			half as much ammo, rounding up, and add 5 AP to the weapon when it is using ammo from the Armor Piercing Ammo Bin.
+		</p>
+	</div>
+	<div id="active-camo-surface" class="item-container">
+		<p>
+			<i class="item-name">Active Camo Surface:</i> This sophisticated mix of chromatic paneling and holoprojectors renders the mech
+			surprisingly difficult to spot at a distance. Suits gain a +2 bonus to Sneak skill checks made against observers more than ten meters
+			away. Light mechs gain the same bonus against observers more than fifty meters away, and heavy mechs apply it against spotters more
+			than a hundred meters away.
+		</p>
+	</div>
+	<div id="antigrav-nodes" class="item-container">
+		<p>
+			<i class="item-name">Antigrav Nodes:</i> These nodes enable a mech to fly at their standard rate of movement. Pretech-grade grav nodes
+			can lift a heavy mech, but the great majority of grav propulsors can only be fitted to light or medium mechs. If pretech nodes are
+			found on the open market at all, the price is sure to be at least 500,000 credits.
+		</p>
+	</div>
+	<div id="augmented-enviroseals" class="item-container">
+		<p>
+			<i class="item-name">Augmented Enviroseals:</i> Specialized equipment for mechs intended to operate on worlds with invasive or
+			corrosive atmospheres. These seals can hold out against contamination or erosion for at least four times as long as most vehicles on
+			the world. The interval between radiation saving throws is also multiplied by four.
+		</p>
+	</div>
+	<div id="breaching-tool" class="item-container">
+		<p>
+			<i class="item-name">Breaching Tool:</i> A combination of a pickaxe and a demolitions charge, a breaching tool can be used to blow a
+			mech-sized hole in any standard postech building material with one round of effort. Against hardened military structures designed
+			specifically to repel such efforts, the same hole takes 1d6+1 rounds to dig.
+		</p>
+	</div>
+	<div id="bridging-laminates" class="item-container">
+		<p>
+			<i class="item-name">Bridging Laminates:</i> A slurry of clastic composites mixes with soil or gravel drawn into the mech’s feed
+			chutes before being projected into a tough, durable bridge over chasms or trenches. A mech can produce 20 meters of bridge per round
+			to a maximum distance of 60 meters for any single span. The bridge can bear the weight of a mech of the same size class that built it,
+			and a total of 600 meters of bridges can be constructed between maintenance cycles. Breaking a hole in the bridge requires the
+			infliction of 20 points of damage, or 40 to completely smash a span.
+		</p>
+	</div>
+	<div id="cargo-space" class="item-container">
+		<p>
+			<i class="item-name">Cargo Space:</i> This space is protected and pressurized. If the mech is destroyed, the pilot rolls 1d6; the
+			cargo survives on a roll of 3 or more. Cargo space in a light can carry up to 250 kilos. A medium mech can stow up to 500 kilos, and a
+			heavy mech can manage 2,000 kilos. Some cargo spaces are refitted for passengers, at one passenger per 100 kilos.
+		</p>
+	</div>
+	<div id="comm-interceptors" class="item-container">
+		<p>
+			<i class="item-name">Comm Interceptors:</i> These polyspectral snoops pick up and automatically decrypt transmissions made or received
+			near the mech. Civilian comms are automatically broken, while successfully compromising a military enemy’s comms requires line of
+			sight with the source or a recipient and a successful opposed Program skill check.
+		</p>
+	</div>
+	<div id="construction-array" class="item-container">
+		<p>
+			<i class="item-name">Construction Array:</i> This mobile repair and construction array allows a mech to serve as a functioning postech
+			workshop and earthmover for field engineering purposes. A mech with a construction array can be used to perform repairs and
+			maintenance on itself and other mechs, if spare parts are available. Most arrays allow for carrying up to twice the mech’s own hit
+			points in repair parts.
+		</p>
+	</div>
+	<div id="drop-sheathing" class="item-container">
+		<p>
+			<i class="item-name">Drop Sheathing:</i> Most mech drops involve nothing more than grav chutes to slow the machine’s orbital
+			insertion. Sometimes it’s necessary to drop mechs in the teeth of an opposing force, in which case drop sheathing is often added to a
+			mech’s equipment loadout. This ablative shielding burns away in the atmosphere, but while it lasts, it forces defending sensors to
+			make a Program skill check at difficulty 10 to detect the mech’s insertion.
+		</p>
+	</div>
+	<div id="escape-pod" class="item-container">
+		<p>
+			<i class="item-name">Escape Pod:</i> This armored cockpit is programmed to eject from a fatally compromised mech, landing the pilot in
+			a random direction 1d20 x 100 meters from the downed mech. Pilots with an escape pod may reroll a failed Physical save to avoid mortal
+			injury when their mech is destroyed.
+		</p>
+	</div>
+	<div id="field-medical-unit" class="item-container">
+		<p>
+			<i class="item-name">Field Medical Unit:</i> Fire-and-forget medical drones and heavy diagnostic computing support allow the mech to
+			provide medical treatment for downed comrades. When the mech pilot spends a round guiding the med drones, he provides trauma care
+			equivalent to a lazarus patch for up to twenty downed allies within a two-hundred meter radius, using his own Int/Heal for the skill
+			check.
+		</p>
+	</div>
+	<div id="fire-control-unit" class="item-container">
+		<p>
+			<i class="item-name">Fire Control Unit:</i> These units come in master and slave versions, with up to five slave units linking to a
+			single master. So long as the master unit’s mech remains functional and within a one-kilometer range, it and the other units linked
+			with it can assign weapon attacks one at a time, rolling hit and damage for each before firing the next.
+		</p>
+	</div>
+	<div id="grav-chutes" class="item-container">
+		<p><i class="item-name">Grav Chutes:</i> Mechs with grav chutes take no damage from falls, even from orbital insertions.</p>
+	</div>
+	<div id="inquisitor-probe" class="item-container">
+		<p>
+			<i class="item-name">Inquisitor Probe:</i> By targeting a visible person or mech, the psimech pilot with at least Telepath-1 can force
+			the person or pilot to make a Mental saving throw. If failed, the user gains an impression of their current tactical plan and the
+			foremost thoughts in their mind. A successful save renders the target immune to this fitting for 24 hours.
+		</p>
+	</div>
+	<div id="integral-maintenance" class="item-container">
+		<p>
+			<i class="item-name">Integral Maintenance:</i> This system can automatically apply a maintenance cycle to itself with 30 minutes of
+			downtime. A mech can carry supplies for up to seven maintenance cycles in the unit.
+		</p>
+	</div>
+	<div id="jump-coil" class="item-container">
+		<p>
+			<i class="item-name">Jump Coil:</i> Any psychic teleporter can translocate their own psimech, but the jump coil allows the pilot to
+			teleport up to five additional allied mechs of equal or smaller size along with him, provided they are within 10 meters of him.
+		</p>
+	</div>
+	<div id="kinesis-boost" class="item-container">
+		<p>
+			<i class="item-name">Kinesis Boost:</i> Any psionic with at least Telekinesis-1 can use this psitech to boost their Mech’s Speed
+			rating by 2 and gain +2 to all initiative rolls.
+		</p>
+	</div>
+	<div id="neural-activity-sensors" class="item-container">
+		<p>
+			<i class="item-name">Neural Activity Sensors:</i> This psitech functions for any psionic, and allows them to automatically detect the
+			presence of sentient minds within two kilometers, with a margin of error of roughly 50 meters for any given mind. The species of
+			sentient can be recognized, but not individuals.
+		</p>
+	</div>
+	<div id="neural-static-generator" class="item-container">
+		<p>
+			<i class="item-name">Neural Static Generator:</i> A counterpsi tech, this fitting allows a psion with at least Metapsionics-1 to
+			automatically negate any psi-based mech fitting targeted at it or any visible ally within 400 meters. The mech also gains 5 additional
+			points of Armor against psi weapons.
+		</p>
+	</div>
+	<div id="omen-tap" class="item-container">
+		<p>
+			<i class="item-name">Omen Tap:</i> A psionic pilot can force a visible target to reroll a successful hit roll or skill check. This
+			ability can be used once per round, and a maximum number of times per hour equal to the pilot’s Precognition skill level times two.
+		</p>
+	</div>
+	<div id="panoptic-cloud" class="item-container">
+		<p>
+			<i class="item-name">Panoptic Cloud:</i> swarm of tiny aerostat sensors surrounds the mech out to 200 meters, giving them a constant
+			awareness of their surroundings within that range. The sensors provide both audio and visual data, and only atmosphere-tight seals can
+			keep them out. Their presence will trigger most advanced security alarms, however.
+		</p>
+	</div>
+	<div id="polyspectral-sensors" class="item-container">
+		<p>
+			<i class="item-name">Polyspectral Sensors:</i> These sensors use an array of emissions to form a crude model of the terrain 100 meters
+			in front of the mech, providing rough detail down to objects one-third of a meter in size. It cannot penetrate EM-hardened barriers,
+			but does not normally trigger security alerts.
+		</p>
+	</div>
+	<div id="pulse-transciever" class="item-container">
+		<p>
+			<i class="item-name">Pulse Transceiver:</i> The pulse transceiver effectively functions as a faster-than-light communications laser
+			with a range sufficient to reach the outer rim of a solar system. Provided the mech knows the location of a receiver, two-way
+			communication can be conducted. The data channel is limited to text and still images. Commercial commsats can also serve as receivers
+			if a military unit is not available.
+		</p>
+	</div>
+	<div id="skywatch-drones" class="item-container">
+		<p>
+			<i class="item-name">Skywatch Drones:</i> These small aerostat drones are one third of a meter in length, with a range of up to ten
+			kilometers. They can loiter above a site for up to eight hours before losing power, and can be recharged with an hour in the mech’s
+			rack.
+		</p>
+		<p>
+			The drones have standard and infrared telescopic video sensors and can hover at altitudes of up to one thousand meters. While
+			difficult to spot with the naked eye, skywatch drones are very easy for modern anti-air defenses to locate, and rarely last more than
+			ten or twenty seconds over a military target before being brought down. Any damage will bring down a drone, but hitting one at maximum
+			altitude with a hand weapon requires a hit on armor class 25.
+		</p>
+	</div>
+	<div id="vivification-field" class="item-container">
+		<p>
+			<i class="item-name">Vivification Field:</i> This psitech augmentation is designed to key onto recognized allies on the battlefield.
+			When a mech equipped with a field is piloted by a psychic with at least Biopsionics-1, it automatically stabilizes mortally wounded
+			allies within 100 meters, with no action required by the pilot.
+		</p>
+	</div>
+	<div id="void-thrusters" class="item-container">
+		<p>
+			<i class="item-name">Void Thrusters:</i> These microscale grav plates allow a mech to fly at its normal base Speed. This flight
+			functions only in zero-gee or microgravity environments, but can eliminate falling damage in standard gravity, even for orbital
+			insertions.
 		</p>
 	</div>
 </div>
