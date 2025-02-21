@@ -5,7 +5,7 @@
 		{ "url": "home.html", "name": "home", "title": "Home" },
 		{ "url": "header.html", "name": "header" },
 		{ "url": "footer.html", "name": "footer" },
-		{ "url": "homebrew/npc-experience.html", "name": "npc-leveling" }
+		{ "url": "homebrew/npc-experience.html", "name": "npc-leveling", "title": "NPC Leveling" }
 	],
 	"directories": [
 		{
