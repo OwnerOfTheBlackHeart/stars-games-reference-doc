@@ -1,0 +1,56 @@
+<h1>NPC Leveling</h1>
+<p>
+	In most games, having NPCs that do not improve, or that lack a rigid means of improving, is fine. However, in games where a majority of
+	the party is NPCs, this can become a hindrance. The NPC Leveling system is intended to provide a way for NPCs to improve with use, to
+	allow favored NPCs to become absolute powerhouses and to make it feel like the experiences the NPCs endure have an actual impact upon
+	them.
+</p>
+
+<h2 id="experience">Experience (XP)</h2>
+<p>
+	Much like player characters, NPCs using the NPC Leveling system keep track of experience. However, they do not gain, or use, XP in the
+	same way as players.
+</p>
+
+<h2 id="gaining-xp">Gaining XP</h2>
+<p>
+	NPCs gain XP by completing missions, at the end of which they gain 1 XP if they have attempted anything useful, such as shooting at an
+	enemy or making a skill check, regardless of success or failure. Killing a Player Classed enemy or killing an enemy at least 2 hit dice
+	above their current hit dice also grants 1 XP.
+</p>
+
+<h2 id="spending-xp">Spending XP</h2>
+<p>
+	NPCs can spend their XP to improve their Hit Dice, Attack, Damage, or Skill, or to acquire a Foci. In order to be able to spend their XP,
+	an NPC must be in a unthreatened and in a safe location (such as the controlling player's starship) for at least 24 hours. The list of
+	costs is shown in the table below.
+</p>
+
+<ap-smart-table headers="Attribute, Improvement Cost, Limitation">
+	<classes improvement-cost="centered" limitation></classes>
+	<row>
+		<attribute>Hit Dice</attribute>
+		<improvement-cost>New Hit Dice + 1</improvement-cost>
+		<limitation>Cannot exceed 10</limitation>
+	</row>
+	<row>
+		<attribute>Attack</attribute>
+		<improvement-cost>New Attack Value</improvement-cost>
+		<limitation>Cannot exceed twice Hit Dice</limitation>
+	</row>
+	<row>
+		<attribute>Damage</attribute>
+		<improvement-cost>New Damage Bonus &times; 3</improvement-cost>
+		<limitation>Cannot exceed Hit Dice</limitation>
+	</row>
+	<row>
+		<attribute>Skill</attribute>
+		<improvement-cost>New Skill Level &times; 2</improvement-cost>
+		<limitation>Cannot exceed 4</limitation>
+	</row>
+	<row>
+		<attribute>Purchase Foci</attribute>
+		<improvement-cost>New Foci Levels Count &times; 5</improvement-cost>
+		<limitation>Cannot exceed 4 levels of Foci</limitation>
+	</row>
+</ap-smart-table>
