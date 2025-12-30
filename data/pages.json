@@ -496,7 +496,10 @@
 				{
 					"baseUrl": "empires/queel-league",
 					"mainPage": "jump-queel-league",
-					"pages": [{ "url": "queel-league.html", "name": "jump-queel-league", "title": "Queel League" }],
+					"pages": [
+						{ "url": "queel-league.html", "name": "jump-queel-league", "title": "Queel League" },
+						{ "url": "ql-npcs.html", "name": "jump-ql-npcs", "title": "Queel League NPCs" }
+					],
 					"directories": [
 						{
 							"baseUrl": "planets",
@@ -515,7 +518,10 @@
 				{
 					"baseUrl": "empires/wernume-imperium",
 					"mainPage": "jump-wernume-imperium",
-					"pages": [{ "url": "wernume-imperium.html", "name": "jump-wernume-imperium", "title": "Wernume Imperium" }],
+					"pages": [
+						{ "url": "wernume-imperium.html", "name": "jump-wernume-imperium", "title": "Wernume Imperium" },
+						{ "url": "wi-npcs.html", "name": "jump-wi-npcs", "title": "Wernume Imperium NPCs" }
+					],
 					"directories": [
 						{
 							"baseUrl": "planets",
@@ -531,6 +537,40 @@
 							"directories": []
 						}
 					]
+				},
+				{
+					"baseUrl": "empires/maximoffian-enclave",
+					"mainPage": "jump-maximoffian-enclave",
+					"pages": [
+						{ "url": "maximoffian-enclave.html", "name": "jump-maximoffian-enclave", "title": "Maximoffian Enclave" },
+						{ "url": "me-npcs.html", "name": "jump-me-npcs", "title": "Maximoffian Enclave NPCs" },
+						{ "url": "fellowship-of-steel.html", "name": "jump-fellowship-of-steel", "title": "Fellowship of Steel" }
+					],
+					"directories": [
+						{
+							"baseUrl": "planets",
+							"mainPage": "jump-maximoffian-planets",
+							"pages": [
+								{ "url": "maximoffian-planets.html", "name": "jump-maximoffian-planets", "title": "Maximoffian Enclave Planets" },
+								{ "url": "alfreyd.html", "name": "jump-alfreyd", "title": "Alfreyd" }
+							],
+							"directories": []
+						}
+					]
+				},
+				{
+					"baseUrl": "species",
+					"mainPage": "jump-species",
+					"pages": [
+						{ "url": "species.html", "name": "jump-species", "title": "Jumpship Game Species" },
+						{ "url": "lisaten.html", "name": "jump-lisaten", "title": "Lisaten" },
+						{ "url": "ludzie.html", "name": "jump-ludzie", "title": "Ludzie" },
+						{ "url": "abantu.html", "name": "jump-abantu", "title": "Abantu" },
+						{ "url": "ihmiset.html", "name": "jump-ihmiset", "title": "Ihmiset" },
+						{ "url": "ijudi.html", "name": "jump-ijudi", "title": "Ijudi" },
+						{ "url": "kanaka.html", "name": "jump-kanaka", "title": "Kanaka" }
+					],
+					"directories": []
 				}
 			]
 		}

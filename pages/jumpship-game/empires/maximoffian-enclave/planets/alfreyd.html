@@ -1,0 +1,246 @@
+<h1>Alfreyd</h1>
+<ap-auth-container permissions="jump-full me-npcs">
+	<ul>
+		<li><a is="ap-nav-link" href="jump-me-npcs#alfreyd">NPCs</a></li>
+	</ul>
+</ap-auth-container>
+<div class="trade-info">
+	<h2 id="trade-info">Trade Info</h2>
+	<ul>
+		<li><b>Friction:</b> 4</li>
+		<li><b>Max Tonnage:</b> 1,600 tons per bought good</li>
+		<li><b>Local Factor:</b> N/A</li>
+		<ap-auth-container permissions="jump-full alfreyd-trade-tags">
+			<li><b>Trade Tag:</b> Restricted</li>
+		</ap-auth-container>
+	</ul>
+
+	<h3 id="trade-goods">Trade Goods</h3>
+	<ap-smart-table headers="Roll, Trade Good, Cargo Type Classes, Cost Per Unit">
+		<classes roll="centered" cost-per-unit="centered"> </classes>
+		<row>
+			<roll>1</roll>
+			<trade-good>Drugs, Raw Materials</trade-good>
+			<cargo-type-classes>Agriculture, Biotech, Bulky</cargo-type-classes>
+			<cost-per-unit>2,000/10 tons</cost-per-unit>
+		</row>
+		<row>
+			<roll>2</roll>
+			<trade-good>Housewares, Basic</trade-good>
+			<cargo-type-classes>Low Tech, Consumer</cargo-type-classes>
+			<cost-per-unit>2,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>3</roll>
+			<trade-good>Metal Ingots, Common</trade-good>
+			<cargo-type-classes>Common, Mineral, Bulky</cargo-type-classes>
+			<cost-per-unit>1,000/10 tons</cost-per-unit>
+		</row>
+		<row>
+			<roll>4</roll>
+			<trade-good>Metal Ingots, Rare Alloys</trade-good>
+			<cargo-type-classes>Mineral, Bulky, Rare</cargo-type-classes>
+			<cost-per-unit>5,000/10 tons</cost-per-unit>
+		</row>
+		<row>
+			<roll>5</roll>
+			<trade-good>Parts, Basic Industry</trade-good>
+			<cargo-type-classes>Low Tech, Tool</cargo-type-classes>
+			<cost-per-unit>5,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>6</roll>
+			<trade-good>Postech Building Material</trade-good>
+			<cargo-type-classes>Tools, Postech, Bulky</cargo-type-classes>
+			<cost-per-unit>10,000/10 tons</cost-per-unit>
+		</row>
+		<row>
+			<roll>7</roll>
+			<trade-good>Parts, Starship Maintenance</trade-good>
+			<cargo-type-classes>Postech, Astronautic, Rare</cargo-type-classes>
+			<cost-per-unit>25,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>8</roll>
+			<trade-good>Fine Liquor</trade-good>
+			<cargo-type-classes>Luxury, Low Tech, Compact</cargo-type-classes>
+			<cost-per-unit>10,000/0.1 tons</cost-per-unit>
+		</row>
+		<row>
+			<roll>9</roll>
+			<trade-good>Small Arms, Projectile</trade-good>
+			<cargo-type-classes>Military, Low Tech</cargo-type-classes>
+			<cost-per-unit>5,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>10</roll>
+			<trade-good>Tools, Industrial</trade-good>
+			<cargo-type-classes>Tool, Postech</cargo-type-classes>
+			<cost-per-unit>10,000</cost-per-unit>
+		</row>
+		<footer><b>Trade Mods:</b> -2 Mineral, -1 Astronautic, +1 Military, +2 Medical</footer>
+	</ap-smart-table>
+	<p></p>
+	<ap-auth-container permissions="jump-full alfreyd-troubles">
+		<ap-smart-table headers="Roll, Troubles">
+			<classes roll="centered"> </classes>
+			<row>
+				<roll>1</roll>
+				<troubles>A bureaucrat squeezes the PCs for 1d4+1 Friction on the deal </troubles>
+			</row>
+			<row>
+				<roll>2</roll>
+				<troubles> A security official confiscates 1d6 x 10% of the goods "for the State" </troubles>
+			</row>
+			<row>
+				<roll>3</roll>
+				<troubles> Local rebels and/or common thieves stole 1d4 x 10% of the goods </troubles>
+			</row>
+			<row>
+				<roll>4</roll>
+				<troubles> Secret police suspect the PCs of wrongdoing; add 1d6 Friction to the deal </troubles>
+			</row>
+			<row>
+				<roll>5</roll>
+				<troubles> The local ruler levies a fresh tariff for 1d6 more Friction on the deal </troubles>
+			</row>
+			<row>
+				<roll>6</roll>
+				<troubles> The PCs are suspected as spies or rebels; add 1d4+1 Friction </troubles>
+			</row>
+			<footer><b>Trouble Chance:</b> 4 in 10</footer>
+		</ap-smart-table>
+	</ap-auth-container>
+</div>
+<h2 id="description">Description</h2>
+<ul>
+	<li><b>Atmosphere:</b> Breathable mix</li>
+	<li><b>Temperature:</b> Variable cold-to-temperate</li>
+	<li><b>Biosphere:</b> Human-miscible</li>
+	<li><b>Population:</b> Several million inhabitants (~8,000,000)</li>
+	<li><b>Tech Level:</b> TL3</li>
+	<ap-auth-container permissions="jump-full alfreyd-world-tags">
+		<li><b>World Tags:</b> Beastmasters and Restrictive Laws</li>
+	</ap-auth-container>
+	<li>
+		<b>Naming Language:</b>
+		<a href="https://www.fantasynamegenerators.com/german-names.php" target="_blank">German</a>
+	</li>
+</ul>
+<p>
+	The planet of Alfreyd is a slightly cold word with a calm, temperate equator perfect for human life and large arctic ice sheets where most
+	of the planet-bound population actually live. This is because the equator is considered a conservation zone by the
+	<a is="ap-nav-link" href="jump-maximoffian-enclave">Maximoffian Enclave</a> and access outside of a limited number of approved resorts is
+	heavily restricted. While most of the native life lives in the conservation zone, there is still plentiful biodiversity in the sub-arctic
+	and arctic regions where people live. However, a large portion of the population actually live in space in the system in various space
+	stations that are able to exploit materials from asteroids that the government does not restrict, or on the moon Orite where mining
+	colonies and factories provide most of the goods used on Alfreyd.
+</p>
+<p>
+	The people of Alfreyd have a strong relationship with the local wildlife, easily taming and controlling it, choosing to live in harmony
+	rather than as masters... until they have a reason to call upon the beasts they love. Many locals choose to live near bonded wild animals
+	or keep trained beasts within their homes as pets, with residences more akin to zoos than homes being viewed as uncommon, but not rare.
+</p>
+<p>
+	The <a is="ap-nav-link" href="jump-fellowship-of-steel">Fellowship of Steel</a> has holdings on the moon Orite and hunts any potentially
+	advanced technology in equal parts to take it for themselves as to keep it out of the hands of the
+	<a is="ap-nav-link" href="jump-maximoffian-enclave">Maximoffian Enclave's</a>
+	leadership.
+</p>
+<p>Alfreyd is made up of large islands up to roughly Australia in size with ice sheets providing "usable" land in the arctic regions.</p>
+
+<!-- TODO: Figure out continents and the like -->
+<p>
+	Ingigud has two main continents, <a href="#aiga">Aiga</a> and <a href="#galuga">Galuga</a>, and many small islands scattered about a
+	reasonably large ocean.
+</p>
+<p>
+	The "planetary government" of Ingigud is a member of the
+	<a is="ap-nav-link" href="jump-free-jaxdab-federation">Free Jaxdab Federation</a>, if only because they felt joining the
+	<a is="ap-nav-link" href="jump-free-jaxdab-federation">Federation</a> to be a safer bet than attempting to resist their numbers.
+</p>
+<p>
+	The two major settlements of Ingigud, <a href="#tagata">Tagata</a> and <a href="#komunisi">Komunisi</a>, are currently at war, with
+	<a href="#komunisi">Komunisi</a> claiming that the Eyebot government needs to be forcefully overthrown so that the citizens of
+	<a href="#tagata">Tagata</a> can experience glorious socialism provided by labor robots.
+</p>
+
+<h2 id="locations">Locations</h2>
+<h3 id="aiga">Aiga</h3>
+<p>
+	Aiga is the larger of the two continents, spreading out in all directions from the equator and nearly reaching the southern polar ice cap,
+	though only to about the sub-tropical region to the north of the equator. The "cities" of <a href="#tagata">Tagata</a> and
+	<a href="#komunisi">Komunisi</a> are the only population centers holding more than 10,000 people, with each having nearly 200,000
+	citizens. <a href="#tagata">Tagata</a> is located near the equator, namely for the optimal spacecraft launching position, while
+	<a href="#komunisi">Komunisi</a> is located in the southern temperate band, positioned for the best for extracting natural resources.
+	<a href="#tagata">Tagata</a> and <a href="#komunisi">Komunisi</a> are around 2,500 miles, or 4,150 kilometers, apart, taking about 4.5
+	hours by plane or 36 hours by freeway to travel between.
+</p>
+
+<h4 id="komunisi">Komunisi</h4>
+<p>
+	A nearly true socialist settlement thanks to the heavy use of robots providing plenty of resources to its citizens, the only real
+	complaints that most citizens have is that The Footage no longer releases new episodes and that housing within the city is cramped. The
+	vast majority of the population works as bot wranglers and mechanics, while the "educated" citizens work in government, the sciences, and
+	robot design, while those who don't perform any of the previous jobs are normally artists of some variety.
+</p>
+<p>
+	Komunisi has been waging a brutal war with <a href="#tagata">Tagata</a>, as they believe that the Eyebots' unrepentant capitalism is
+	preventing the tagatan citizens from realizing the greatness of robotically provided communism.
+</p>
+<ap-auth-container permissions="jump-full eyebots-secret-dealings cal">
+	<p>
+		The Eyebots are secretly experimenting with maltech, ranging from slave clones to "mass marketable" planet killers. In order to prevent
+		the Eyebots from realizing that the Battlebots are aware of this, the Battlebots have chosen to instead fuel support for the war using
+		the fact that the Eyebots are "capitalists in need of immediate guidance".
+	</p>
+</ap-auth-container>
+<p>
+	The city government and Taugofie Robotics are called the Battlebots by the citizens, as that is the name used for their "team" in The
+	Footage. In both The Demonstrations and in war, the Battlebots prefer more expensive and more capable robots. The Battlebots are typically
+	built in a neopagan aesthetic with "antlered" heads and simple bodies, while the ancient models have a pair of straight horns coming from
+	the sides of a very slightly conical head with complex shoulder adornments.
+</p>
+
+<h4 id="tagata">Tagata</h4>
+<p>
+	A "capitalist utopia" where the rich live lavish lives and any sufficiently driven, and/or skilled, poor can reach the class just below
+	the super rich, who buy out everyone else before their wealth is threatened. About 50% of the citizens live in a Kowloon Walled City like
+	building known as The Cube, while the rest live in homes ranging from suburbia to private mansions. Rampant consumerism is encouraged in
+	Tagata, by both the media and the elite, who are all the more happy to trick the common man into buying them a new yacht.
+</p>
+<p>
+	The city government and military industrial complex of Tagata, including Fana-Suni Heavy Industries, are commonly referred to as the
+	Eyebots by the citizens, as that is the name used for their "team" in The Footage. The Eyebots primarily use cheap and fast floating
+	robots with limited individual combat capability, the eyebot model being where their name comes from, for The Demonstrations and war.
+	Eyebots and their kin are designed to work in larger groups, sometimes with a single, expensive coordinator bot managing whole platoons.
+	Early model Eyebots are typically little more than floating spheres with a plasma pistol while ancient models take on bird-like forms,
+	though usually with limited articulation to save on production cost.
+</p>
+<ap-auth-container permissions="jump-full eyebots-secret-dealings cal">
+	<p>
+		The Eyebots are secretly experimenting with maltech, ranging from slave clones to "mass marketable" planet killers. In order to prevent
+		the Eyebots from realizing that the Battlebots are aware of this, the Battlebots have chosen to instead fuel support for the war using
+		the fact that the Eyebots are "capitalists in need of immediate guidance".
+	</p>
+</ap-auth-container>
+
+<h4 id="nuuit">Nuuit</h4>
+<p>
+	A small settlement roughly a 10 hour drive from <a href="#tagata">Tagata</a> which serves mainly to mine rare earths. The small collection
+	of houses in the woods relies heavily on worker robots to pull enough materials out of the mines to meet the quotas set by
+	<a href="#tagata">Tagata</a>. As the war between the Battlebots and the Eyebots has raged on, the quotas have become harder and harder to
+	fulfil, and Nuuit is now on the verge of being unable to afford maintaining itself.
+</p>
+
+<h3 id="galuga">Galuga</h3>
+<p>
+	Galuga is the northern continent and is made up primarily of large islands that are very sparsely inhabited, with the few residents being
+	hermits. The islands themselves see use as automated outposts, dedicated battlefields, or nature preserves. The island of Taua is notable
+	for having been the location of choice for the historic triennial battles between Taugofie Robotics and Fana-Suni Heavy Industries, known
+	as The Demonstrations, where the two companies deployed large numbers of progressively iterated robots to display to their innovation,
+	skill, adaptability and quality to their settlement's militaries, as well as their civilian customers. A television show called The
+	Footage compiled all the battle footage and produced 78 episodes (3 years of an episode every other week) of sports-like footage from each
+	Demonstrations, with people rooting for their favorite platoon. The Demonstrations have been on hiatus for nearly 2 decades, though reruns
+	of The Footage run regularly.
+</p>
