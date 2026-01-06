@@ -1,26 +1,61 @@
 <h1>Jumpship Campaign Timeline</h1>
 <div class="table-container">
-	<div class="table-column">
-		<table class="global-display-table">
-			<tr>
-				<th>Current Date</th>
-			</tr>
-			<tr>
-				<td><ap-display-global property-path="dates.jumpship"></ap-display-global></td>
-			</tr>
-		</table>
+	<div class="table-column-45">
+		<h2 id="jump-robot">Robot Timeline</h2>
+		<div class="table-container">
+			<div class="table-column">
+				<table class="global-display-table">
+					<tr>
+						<th>Current Date</th>
+					</tr>
+					<tr>
+						<td><ap-display-global property-path="dates.jumpship"></ap-display-global></td>
+					</tr>
+				</table>
+				<br />
+				<ap-time-table header="Birthdays" current-date-value="jumpship">
+					<ap-time-entry day="10" month="3" year="3181">PLACEHOLDER</ap-time-entry>
+				</ap-time-table>
+			</div>
+			<div class="table-column"><ap-birthday-generator current-date-value="dates.jumpship"></ap-birthday-generator></div>
+		</div>
 		<br />
-		<ap-time-table header="Birthdays" current-date-value="jumpship">
-			<ap-time-entry day="10" month="3" year="3181">PLACEHOLDER</ap-time-entry>
+
+		<ap-time-table header="Timeline" current-date-value="jumpship">
+			<ap-time-entry day="0" month="0" year="3300">
+				Game starts on <a is="ap-nav-link" href="jump-ingigud">Ingigud, Sokotis (0605)</a>, in the backwater settlement of
+				<a is="ap-nav-link" href="jump-ingigud#nuuit">Nuuit</a>
+			</ap-time-entry>
 		</ap-time-table>
 	</div>
-	<div class="table-column"><ap-birthday-generator current-date-value="dates.jumpship"></ap-birthday-generator></div>
-</div>
-<br />
+	<div class="table-column-45">
+		<h2 id="jump-fellowship">Fellowship Timeline</h2>
+		<div class="table-container">
+			<div class="table-column">
+				<table class="global-display-table">
+					<tr>
+						<th>Current Date</th>
+					</tr>
+					<tr>
+						<td><ap-display-global property-path="dates.jumpship-fellowship"></ap-display-global></td>
+					</tr>
+				</table>
+				<br />
+				<ap-time-table header="Birthdays" current-date-value="jumpship">
+					<ap-time-entry day="14" month="2" year="3274">Jörn Schwortz</ap-time-entry>
+					<ap-time-entry day="18" month="8" year="3277">Krutova Anna (Anya) Rostislavovna</ap-time-entry>
+					<ap-time-entry day="5" month="8" year="3276">Rena Korsch</ap-time-entry>
+				</ap-time-table>
+			</div>
+			<div class="table-column"><ap-birthday-generator current-date-value="dates.jumpship-fellowship"></ap-birthday-generator></div>
+		</div>
+		<br />
 
-<ap-time-table header="Timeline" current-date-value="jumpship">
-	<ap-time-entry day="0" month="0" year="3300">
-		Game starts on <a is="ap-nav-link" href="jump-ingigud">Ingigud, Sokotis (0605)</a>, in the backwater settlement of
-		<a is="ap-nav-link" href="jump-ingigud#nuuit">Nuuit</a>
-	</ap-time-entry>
-</ap-time-table>
+		<ap-time-table header="Timeline" current-date-value="jumpship-fellowship">
+			<ap-time-entry day="0" month="0" year="3300">
+				Game starts on <a is="ap-nav-link" href="jump-alfreyd">Alfreyd, Calite (0109)</a>, on the moon of
+				<a is="ap-nav-link" href="jump-alfreyd#orite">Orite</a>.
+			</ap-time-entry>
+		</ap-time-table>
+	</div>
+</div>

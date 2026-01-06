@@ -79,6 +79,18 @@ a:visited {
 		display: inline-block;
 		vertical-align: top;
 	}
+
+	.table-column-50 {
+		display: inline-block;
+		vertical-align: top;
+		width: 50%;
+	}
+
+	.table-column-45 {
+		display: inline-block;
+		vertical-align: top;
+		width: 45%;
+	}
 }
 
 .smart-table-footer {

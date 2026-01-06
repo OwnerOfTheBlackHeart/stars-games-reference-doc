@@ -324,6 +324,16 @@ a:visited:hover {
   display: inline-block;
   vertical-align: top;
 }
+.table-container .table-column-50 {
+  display: inline-block;
+  vertical-align: top;
+  width: 50%;
+}
+.table-container .table-column-45 {
+  display: inline-block;
+  vertical-align: top;
+  width: 45%;
+}
 
 .smart-table-footer {
   text-align: center;
