@@ -1,0 +1,182 @@
+<h1 id="fareema">Fareema</h1>
+<ap-auth-container permissions="jump-full ql-npcs">
+	<ul>
+		<li><a is="ap-nav-link" href="jump-ql-npcs#athandisk">NPCs</a></li>
+	</ul>
+</ap-auth-container>
+<div class="trade-info">
+	<h2 id="trade-info">Trade Info</h2>
+	<ul>
+		<li><b>Friction:</b> 3</li>
+		<li><b>Max Tonnage:</b> 1,200 tons per bought good</li>
+		<li><b>Local Factor:</b> N/A</li>
+		<ap-auth-container permissions="jump-full athandisk-trade-tags">
+			<li><b>Trade Tag:</b> Megacorps</li>
+		</ap-auth-container>
+	</ul>
+
+	<h3 id="trade-goods">Trade Goods</h3>
+	<ap-smart-table headers="Roll, Trade Good, Cargo Type Classes, Cost Per Unit">
+		<classes roll="centered" cost-per-unit="centered"> </classes>
+		<row>
+			<roll>1</roll>
+			<trade-good>Clothing</trade-good>
+			<cargo-type-classes>Common, Low Tech, Cultural</cargo-type-classes>
+			<cost-per-unit>1,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>2</roll>
+			<trade-good>Drugs, Raw Materials</trade-good>
+			<cargo-type-classes>Agriculture, Biotech, Bulky</cargo-type-classes>
+			<cost-per-unit>2,000/10 tons</cost-per-unit>
+		</row>
+		<row>
+			<roll>3</roll>
+			<trade-good>Housewares, Basic</trade-good>
+			<cargo-type-classes>Low Tech, Consumer</cargo-type-classes>
+			<cost-per-unit>2,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>4</roll>
+			<trade-good>Livestock, Common</trade-good>
+			<cargo-type-classes>Common, Livestock</cargo-type-classes>
+			<cost-per-unit>2,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>5</roll>
+			<trade-good>Metal Ingots, Common</trade-good>
+			<cargo-type-classes>Common, Mineral, Bulky</cargo-type-classes>
+			<cost-per-unit>1,000/10 tons</cost-per-unit>
+		</row>
+		<row>
+			<roll>6</roll>
+			<trade-good>Metal Ingots, Rare Alloys</trade-good>
+			<cargo-type-classes>Mineral, Bulky, Rare</cargo-type-classes>
+			<cost-per-unit>5,000/10 tons</cost-per-unit>
+		</row>
+		<row>
+			<roll>7</roll>
+			<trade-good>Metawheat</trade-good>
+			<cargo-type-classes>Common, Agricultural, Bulky</cargo-type-classes>
+			<cost-per-unit>500/10 tons</cost-per-unit>
+		</row>
+		<row>
+			<roll>8</roll>
+			<trade-good>Native Artwork</trade-good>
+			<cargo-type-classes>Cultural, Luxury</cargo-type-classes>
+			<cost-per-unit>10,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>9</roll>
+			<trade-good>Aathire, Drug Ingredient</trade-good>
+			<cargo-type-classes>Alien, Agricultural, Luxury, Rare</cargo-type-classes>
+			<cost-per-unit>50,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>10</roll>
+			<trade-good>Tools, Basic Hand Tools</trade-good>
+			<cargo-type-classes>Low Tech, Tool</cargo-type-classes>
+			<cost-per-unit>5,000</cost-per-unit>
+		</row>
+		<footer><b>Trade Mods:</b> -2 Agricultural, -1 Livestock, -1 Mineral, +1 Tools, +2 Postech</footer>
+	</ap-smart-table>
+	<p></p>
+	<ap-auth-container permissions="jump-full athandisk-troubles">
+		<ap-smart-table headers="Roll, Troubles">
+			<classes roll="centered"> </classes>
+			<row>
+				<roll>1</roll>
+				<troubles> Local rulers argue over who gets to collect the tariffs for 1d6+1 weeks </troubles>
+			</row>
+			<row>
+				<roll>2</roll>
+				<troubles> Locals have been upset or frightened by the traders; add 1d4 Friction to the deal </troubles>
+			</row>
+			<row>
+				<roll>3</roll>
+				<troubles> Priests require 1d4 Friction worth of inducements to bless the deal </troubles>
+			</row>
+			<row>
+				<roll>4</roll>
+				<troubles> Sickness has struck down many workers, delaying the deal by 1d4 weeks </troubles>
+			</row>
+			<row>
+				<roll>5</roll>
+				<troubles> Vicious beasts or raiders have ruined/ stolen 1d4 x 10% of the goods </troubles>
+			</row>
+			<row>
+				<roll>6</roll>
+				<troubles> Weather bogs all transport; add 1d4 weeks to the deal </troubles>
+			</row>
+			<footer><b>Trouble Chance:</b> 3 in 10</footer>
+		</ap-smart-table>
+	</ap-auth-container>
+</div>
+<h2 id="description">Description</h2>
+<ul>
+	<li><b>Atmosphere:</b> Breathable mix</li>
+	<li><b>Temperature:</b> Variable temperate-to-warm</li>
+	<li><b>Biosphere:</b> No native biosphere</li>
+	<li><b>Population:</b> Several million inhabitants (~6,000,000)</li>
+	<li><b>Tech Level:</b> TL1</li>
+	<ap-auth-container permissions="jump-full athandisk-world-tags">
+		<li><b>World Tags:</b> Sole Supplier and Terraform Failure</li>
+	</ap-auth-container>
+	<li>
+		<b>Naming Language:</b>
+		<a href="https://www.fantasynamegenerators.com/finish-names.php" target="_blank">Finish</a>
+	</li>
+</ul>
+<p>
+	The planet of Athandisk is a warm world with an equatorial desert and habitable northern and southern latitudes with a breathable
+	atmosphere. Lacking any native life, pockets of livable land have been created thanks to prior terraformation efforts seeding different
+	locations with plants and animals native to <a is="ap-nav-link" href="jump-melis">Melis</a>. Unfortunately, the terraformer caused the
+	planet to become too hot after the machine failed, but its failure has left the planet with several strange minerals that, aside from not
+	forming naturally and being near impossible to synthesize, are little more than odd ores for well known materials. These minerals,
+	however, create a unique soil environment that allows the growing of Aathire, a fruiting bush unique to Athandisk, whose fruits are used
+	in the creation of several highly sought after drugs within the <a is="ap-nav-link" href="jump-queel-league">Queel League</a>.
+</p>
+<p>
+	The people of Athandisk are stuck living simple, low tech lives as the megacorporations that control the mining and Aathire growing
+	operations horde all the unprocurable technologies for themselves.
+</p>
+
+<h2 id="locations">Locations</h2>
+<h3 id="epaon">Epaon</h3>
+<p>
+	Located roughly halfway between the equator and the southern ice caps, Epaon is a continent of swamps, forests, jungles, and grasslands, a
+	miracle given how dry the rest of the planet is. Even more remarkable is that the water table in almost all of Epaon is fresh water,
+	making it one of the only places that the <a is="ap-nav-link" href="jump-ihmiset">ihmisets</a> can survive at the wretched tech level the
+	megacorporations keep the local population at.
+</p>
+<p>
+	Epaon holds all the farms for Aathire, where local <a is="ap-nav-link" href="jump-ihmiset">ihmisets</a> are worked to the bone for a slice
+	of bread, with many turning to small personal farms in order to sustain themselves. The corporations do not approve, but there is only so
+	far that the corporations can push before the mobs overwhelm them with sheer numbers.
+</p>
+
+<h4 id="ahneus">Ahneus</h4>
+<p>
+	Ahneus is the only city on Athandisk, built around the corporate buildings for the two major corporations: Musta Pharmaceuticals and the
+	Valkoinen Company. These buildings provide a small, opulent haven of TL 4 living for the megacorporations' leadership and their loyal wage
+	slaves, with a cement wall separating them from the rest of the city, which is made up of random, naturally constructed buildings
+	sprawling out to form the rest of the medieval level city. A large spaceport provides an area for spacecraft to land and trade, breaking
+	up the city around it, with the only major connection to the corporate section of Ahneus connected through the spaceport.
+</p>
+
+<h3 id="rauta">Rauta</h3>
+<p>
+	Surrounded by a salty sea, the continent of Rauta is dominated by multiple mountain ranges that provide ample ore available to even the
+	simplest mining techniques, and that is all that the Valkoinen Company provides its "employee citizens" who work at the mines. Valkoinen
+	maintains a hold over the many scattered settlements on Rauta due to them controlling the desalination plants and being the only ones with
+	the technology to transport large quantities of water quickly across the world, though they also control the transportation of food beyond
+	the few species of fish that can manage to survive in the horridly salty oceans.
+</p>
+
+<h4 id="auta-minua">Auta Minua</h4>
+<p>
+	The largest settlement on Rauta, Auta Minua is a port city connected to the briny sea surrounding <a href="#rauta">Rauta</a> that provides
+	some of the best jobs in Rauta: Loading and off-loading cargo ships. An immaculate corporate campus houses the local branch of Valkoinen
+	in charge of maintaining the flow of goods and profits, but the rest of the small town is at best a dusty mid-western collection of homes
+	and businesses built from woody shrubs.
+</p>

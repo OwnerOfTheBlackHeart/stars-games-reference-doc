@@ -552,7 +552,8 @@
 							"mainPage": "jump-maximoffian-planets",
 							"pages": [
 								{ "url": "maximoffian-planets.html", "name": "jump-maximoffian-planets", "title": "Maximoffian Enclave Planets" },
-								{ "url": "alfreyd.html", "name": "jump-alfreyd", "title": "Alfreyd" }
+								{ "url": "alfreyd.html", "name": "jump-alfreyd", "title": "Alfreyd" },
+								{ "url": "williams-6.html", "name": "jump-williams-6", "title": "Williams 6" }
 							],
 							"directories": []
 						}
