@@ -1,17 +1,17 @@
-<h1 id="athandisk">Athandisk</h1>
+<h1 id="maz">Maz</h1>
 <ap-auth-container permissions="jump-full ql-npcs">
 	<ul>
-		<li><a is="ap-nav-link" href="jump-ql-npcs#athandisk">NPCs</a></li>
+		<li><a is="ap-nav-link" href="jump-ql-npcs#maz">NPCs</a></li>
 	</ul>
 </ap-auth-container>
 <div class="trade-info">
 	<h2 id="trade-info">Trade Info</h2>
 	<ul>
-		<li><b>Friction:</b> 3</li>
-		<li><b>Max Tonnage:</b> 1,200 tons per bought good</li>
+		<li><b>Friction:</b> 5</li>
+		<li><b>Max Tonnage:</b> 22 tons per bought good</li>
 		<li><b>Local Factor:</b> N/A</li>
-		<ap-auth-container permissions="jump-full athandisk-trade-tags">
-			<li><b>Trade Tag:</b> Megacorps</li>
+		<ap-auth-container permissions="jump-full maz-trade-tags">
+			<li><b>Trade Tag:</b> Military</li>
 		</ap-auth-container>
 	</ul>
 
@@ -20,107 +20,107 @@
 		<classes roll="centered" cost-per-unit="centered"> </classes>
 		<row>
 			<roll>1</roll>
-			<trade-good>Clothing</trade-good>
-			<cargo-type-classes>Common, Low Tech, Cultural</cargo-type-classes>
-			<cost-per-unit>1,000</cost-per-unit>
-		</row>
-		<row>
-			<roll>2</roll>
 			<trade-good>Drugs, Raw Materials</trade-good>
 			<cargo-type-classes>Agriculture, Biotech, Bulky</cargo-type-classes>
 			<cost-per-unit>2,000/10 tons</cost-per-unit>
 		</row>
 		<row>
-			<roll>3</roll>
+			<roll>2</roll>
 			<trade-good>Housewares, Basic</trade-good>
 			<cargo-type-classes>Low Tech, Consumer</cargo-type-classes>
 			<cost-per-unit>2,000</cost-per-unit>
 		</row>
 		<row>
-			<roll>4</roll>
+			<roll>3</roll>
 			<trade-good>Livestock, Common</trade-good>
 			<cargo-type-classes>Common, Livestock</cargo-type-classes>
 			<cost-per-unit>2,000</cost-per-unit>
 		</row>
 		<row>
-			<roll>5</roll>
-			<trade-good>Metal Ingots, Common</trade-good>
-			<cargo-type-classes>Common, Mineral, Bulky</cargo-type-classes>
-			<cost-per-unit>1,000/10 tons</cost-per-unit>
-		</row>
-		<row>
-			<roll>6</roll>
-			<trade-good>Metal Ingots, Rare Alloys</trade-good>
-			<cargo-type-classes>Mineral, Bulky, Rare</cargo-type-classes>
-			<cost-per-unit>5,000/10 tons</cost-per-unit>
-		</row>
-		<row>
-			<roll>7</roll>
+			<roll>4</roll>
 			<trade-good>Metawheat</trade-good>
 			<cargo-type-classes>Common, Agricultural, Bulky</cargo-type-classes>
 			<cost-per-unit>500/10 tons</cost-per-unit>
 		</row>
 		<row>
-			<roll>8</roll>
+			<roll>5</roll>
 			<trade-good>Native Artwork</trade-good>
 			<cargo-type-classes>Cultural, Luxury</cargo-type-classes>
 			<cost-per-unit>10,000</cost-per-unit>
 		</row>
 		<row>
-			<roll>9</roll>
-			<trade-good>Aathire, Drug Ingredient</trade-good>
-			<cargo-type-classes>Alien, Agricultural, Luxury, Rare</cargo-type-classes>
-			<cost-per-unit>50,000</cost-per-unit>
+			<roll>6</roll>
+			<trade-good>Livestock, Gengineered</trade-good>
+			<cargo-type-classes>Livestock, Biotech</cargo-type-classes>
+			<cost-per-unit>10,000</cost-per-unit>
 		</row>
 		<row>
-			<roll>10</roll>
+			<roll>7</roll>
+			<trade-good>Slaves</trade-good>
+			<cargo-type-classes>Sapient</cargo-type-classes>
+			<cost-per-unit>25,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>8</roll>
+			<trade-good>Small Arms, Projectile</trade-good>
+			<cargo-type-classes>Military, Low Tech</cargo-type-classes>
+			<cost-per-unit>5,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>9</roll>
 			<trade-good>Tools, Basic Hand Tools</trade-good>
 			<cargo-type-classes>Low Tech, Tool</cargo-type-classes>
 			<cost-per-unit>5,000</cost-per-unit>
 		</row>
-		<footer><b>Trade Mods:</b> -2 Agricultural, -1 Livestock, -1 Mineral, +1 Tools, +2 Postech</footer>
+		<row>
+			<roll>10</roll>
+			<trade-good>Fine Liquor</trade-good>
+			<cargo-type-classes>Luxury, Low Tech, Compact</cargo-type-classes>
+			<cost-per-unit>10,000/0.1 tons</cost-per-unit>
+		</row>
+		<footer><b>Trade Mods:</b> -2 Agricultural, -1 Sapient, +1 Tools, +2 Military</footer>
 	</ap-smart-table>
 	<p></p>
-	<ap-auth-container permissions="jump-full athandisk-troubles">
+	<ap-auth-container permissions="jump-full maz-troubles">
 		<ap-smart-table headers="Roll, Troubles">
 			<classes roll="centered"> </classes>
 			<row>
 				<roll>1</roll>
-				<troubles> Local rulers argue over who gets to collect the tariffs for 1d6+1 weeks </troubles>
+				<troubles>An aspiring local warlord wants recognition and "taxes"; add 1d6 Friction to the deal</troubles>
 			</row>
 			<row>
 				<roll>2</roll>
-				<troubles> Locals have been upset or frightened by the traders; add 1d4 Friction to the deal </troubles>
+				<troubles>Arson or collateral combat damage ruins 1d6 x 10% of the good</troubles>
 			</row>
 			<row>
 				<roll>3</roll>
-				<troubles> Priests require 1d4 Friction worth of inducements to bless the deal </troubles>
+				<troubles>Bandit attacks prevent the goods from moving for 1d4 weeks</troubles>
 			</row>
 			<row>
 				<roll>4</roll>
-				<troubles> Sickness has struck down many workers, delaying the deal by 1d4 weeks </troubles>
+				<troubles>Desperate locals steal 1d4 x 10% of the goods for survival's sake</troubles>
 			</row>
 			<row>
 				<roll>5</roll>
-				<troubles> Vicious beasts or raiders have ruined/ stolen 1d4 x 10% of the goods </troubles>
+				<troubles>Local strongman wants a bigger taste, adding 2 points of Friction to the deal</troubles>
 			</row>
 			<row>
 				<roll>6</roll>
-				<troubles> Weather bogs all transport; add 1d4 weeks to the deal </troubles>
+				<troubles>Looters plunder 1d4 x 10% of the goods</troubles>
 			</row>
-			<footer><b>Trouble Chance:</b> 3 in 10</footer>
+			<footer><b>Trouble Chance:</b> 4 in 10</footer>
 		</ap-smart-table>
 	</ap-auth-container>
 </div>
 <h2 id="description">Description</h2>
 <ul>
-	<li><b>Atmosphere:</b> Breathable mix</li>
-	<li><b>Temperature:</b> Variable temperate-to-warm</li>
-	<li><b>Biosphere:</b> No native biosphere</li>
-	<li><b>Population:</b> Several million inhabitants (~6,000,000)</li>
-	<li><b>Tech Level:</b> TL1</li>
-	<ap-auth-container permissions="jump-full athandisk-world-tags">
-		<li><b>World Tags:</b> Sole Supplier and Terraform Failure</li>
+	<li><b>Atmosphere:</b> Corrosive</li>
+	<li><b>Temperature:</b> Variable cold-to-temperate</li>
+	<li><b>Biosphere:</b> Hybrid</li>
+	<li><b>Population:</b> Fewer than a million inhabitants (~110,000)</li>
+	<li><b>Tech Level:</b> TL2</li>
+	<ap-auth-container permissions="jump-full maz-world-tags">
+		<li><b>World Tags:</b> Mercenaries and Hostile Space</li>
 	</ap-auth-container>
 	<li>
 		<b>Naming Language:</b>
@@ -128,55 +128,39 @@
 	</li>
 </ul>
 <p>
-	The planet of Athandisk is a warm world with an equatorial desert and habitable northern and southern latitudes with a breathable
-	atmosphere. Lacking any native life, pockets of livable land have been created thanks to prior terraformation efforts seeding different
-	locations with plants and animals native to <a is="ap-nav-link" href="jump-melis">Melis</a>. Unfortunately, the terraformer caused the
-	planet to become too hot after the machine failed, but its failure has left the planet with several strange minerals that, aside from not
-	forming naturally and being near impossible to synthesize, are little more than odd ores for well known materials. These minerals,
-	however, create a unique soil environment that allows the growing of Aathire, a fruiting bush unique to Athandisk, whose fruits are used
-	in the creation of several highly sought after drugs within the <a is="ap-nav-link" href="jump-queel-league">Queel League</a>.
+	The planet of Maz is a cold world with highly fought over pockets of warmth and their associated oxygen vents, with its 70% chemical
+	weapon by volume atmosphere. TL4 habitats are the only survivable locations on the planet, which are fought over by the dwindling
+	population in brutal trench warfare even as the swarms of passing comets and meteors frequently dump potentially lethal objects down upon
+	the denizens of Maz. In order to acquire the advanced technology they require to survive, many warriors of Maz head out into the
+	<a is="ap-nav-link" href="jump-queel-league">Queel League</a> as mercenaries.
 </p>
 <p>
-	The people of Athandisk are stuck living simple, low tech lives as the megacorporations that control the mining and Aathire growing
-	operations horde all the unprocurable technologies for themselves.
+	The people of Maz live hard lives between the low population, the constant fighting over the few resources required just to breathe, the
+	failed industrial sector, the star system seeming to hate them, and the remains of the weapons that brought them to their current point.
 </p>
 
 <h2 id="locations">Locations</h2>
-<h3 id="epaon">Epaon</h3>
+<h3 id="kuolema">Koulema</h3>
 <p>
-	Located roughly halfway between the equator and the southern ice caps, Epaon is a continent of swamps, forests, jungles, and grasslands, a
-	miracle given how dry the rest of the planet is. Even more remarkable is that the water table in almost all of Epaon is fresh water,
-	making it one of the only places that the <a is="ap-nav-link" href="jump-ihmiset">ihmisets</a> can survive at the wretched tech level the
-	megacorporations keep the local population at.
-</p>
-<p>
-	Epaon holds all the farms for Aathire, where local <a is="ap-nav-link" href="jump-ihmiset">ihmisets</a> are worked to the bone for a slice
-	of bread, with many turning to small personal farms in order to sustain themselves. The corporations do not approve, but there is only so
-	far that the corporations can push before the mobs overwhelm them with sheer numbers.
+	Koulema is a small region of the planet of Maz clustered around a field of technically heated gas vents that force out warm atmospheric
+	gas similar in composition to the planet's original atmosphere with a high oxygen content. The heating of the land makes the area usable
+	for agriculture with significant work while the vents provide vital gasses for breathing, and as such the area is heavily contested by the
+	natives. Trenches and destroyed machines span as far as the eye can see.
 </p>
 
-<h4 id="ahneus">Ahneus</h4>
+<h4 id="yksi">Yksi</h4>
 <p>
-	Ahneus is the only city on Athandisk, built around the corporate buildings for the two major corporations: Musta Pharmaceuticals and the
-	Valkoinen Company. These buildings provide a small, opulent haven of TL 4 living for the megacorporations' leadership and their loyal wage
-	slaves, with a cement wall separating them from the rest of the city, which is made up of random, naturally constructed buildings
-	sprawling out to form the rest of the medieval level city. A large spaceport provides an area for spacecraft to land and trade, breaking
-	up the city around it, with the only major connection to the corporate section of Ahneus connected through the spaceport.
+	Built around one of the two functioning sealed spaceports, Yksi is the closest thing Maz has to a city, though it is closer to a small
+	town. The inside of the city is held together by spit and duct tape as the local people try to maintain their home with the rare imports
+	and TL2 technology while simultaneously waging a war of conquest of the oxygen fields, the output of which they use to force others to
+	trade food and neutralizing paste to keep their society alive.
 </p>
 
-<h3 id="rauta">Rauta</h3>
+<h4 id="kaksi">Kaksi</h4>
 <p>
-	Surrounded by a salty sea, the continent of Rauta is dominated by multiple mountain ranges that provide ample ore available to even the
-	simplest mining techniques, and that is all that the Valkoinen Company provides its "employee citizens" who work at the mines. Valkoinen
-	maintains a hold over the many scattered settlements on Rauta due to them controlling the desalination plants and being the only ones with
-	the technology to transport large quantities of water quickly across the world, though they also control the transportation of food beyond
-	the few species of fish that can manage to survive in the horridly salty oceans.
-</p>
-
-<h4 id="auta-minua">Auta Minua</h4>
-<p>
-	The largest settlement on Rauta, Auta Minua is a port city connected to the briny sea surrounding <a href="#rauta">Rauta</a> that provides
-	some of the best jobs in Rauta: Loading and off-loading cargo ships. An immaculate corporate campus houses the local branch of Valkoinen
-	in charge of maintaining the flow of goods and profits, but the rest of the small town is at best a dusty mid-western collection of homes
-	and businesses built from woody shrubs.
+	Built around the second of the two functioning sealed spaceports, Kaksi is a large village under the rule of whatever random warlord
+	manages to make the most appealing promise to the villages military. The <a is="ap-nav-link" href="jump-ihmiset">ihmisets</a> that call
+	Kaksi home are treated almost like cattle, those not drafted into the military forced to undertake the dangerous process of mass producing
+	neutralizing paste while only the habitat itself sees repairs from leadership, leaving the civilians to build their homes out of whatever
+	scrap material they can manage to scavenge.
 </p>
