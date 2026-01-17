@@ -1,17 +1,17 @@
-<h1 id="athandisk">Athandisk</h1>
+<h1 id="melis">Melis</h1>
 <ap-auth-container permissions="jump-full ql-npcs">
 	<ul>
-		<li><a is="ap-nav-link" href="jump-ql-npcs#athandisk">NPCs</a></li>
+		<li><a is="ap-nav-link" href="jump-ql-npcs#melis">NPCs</a></li>
 	</ul>
 </ap-auth-container>
 <div class="trade-info">
 	<h2 id="trade-info">Trade Info</h2>
 	<ul>
 		<li><b>Friction:</b> 3</li>
-		<li><b>Max Tonnage:</b> 1,200 tons per bought good</li>
+		<li><b>Max Tonnage:</b> 800,000 tons per bought good</li>
 		<li><b>Local Factor:</b> N/A</li>
-		<ap-auth-container permissions="jump-full athandisk-trade-tags">
-			<li><b>Trade Tag:</b> Megacorps</li>
+		<ap-auth-container permissions="jump-full melis-trade-tags">
+			<li><b>Trade Tag:</b> Thriving (decadent world)</li>
 		</ap-auth-container>
 	</ul>
 
@@ -32,95 +32,95 @@
 		</row>
 		<row>
 			<roll>3</roll>
-			<trade-good>Housewares, Basic</trade-good>
-			<cargo-type-classes>Low Tech, Consumer</cargo-type-classes>
-			<cost-per-unit>2,000</cost-per-unit>
+			<trade-good>Drugs, Recreational</trade-good>
+			<cargo-type-classes>Luxury, Biotech, Compact</cargo-type-classes>
+			<cost-per-unit>50,000/0.1 tons</cost-per-unit>
 		</row>
 		<row>
 			<roll>4</roll>
-			<trade-good>Livestock, Common</trade-good>
-			<cargo-type-classes>Common, Livestock</cargo-type-classes>
-			<cost-per-unit>2,000</cost-per-unit>
+			<trade-good>Exotic Jewels</trade-good>
+			<cargo-type-classes>Rare, Mineral, Luxury, Compact</cargo-type-classes>
+			<cost-per-unit>25,000/0.1 tons</cost-per-unit>
 		</row>
 		<row>
 			<roll>5</roll>
-			<trade-good>Metal Ingots, Common</trade-good>
-			<cargo-type-classes>Common, Mineral, Bulky</cargo-type-classes>
-			<cost-per-unit>1,000/10 tons</cost-per-unit>
+			<trade-good>Fine Liquor</trade-good>
+			<cargo-type-classes>Luxury, Low Tech, Compact</cargo-type-classes>
+			<cost-per-unit>10,000/0.1 tons</cost-per-unit>
 		</row>
 		<row>
 			<roll>6</roll>
-			<trade-good>Metal Ingots, Rare Alloys</trade-good>
-			<cargo-type-classes>Mineral, Bulky, Rare</cargo-type-classes>
-			<cost-per-unit>5,000/10 tons</cost-per-unit>
-		</row>
-		<row>
-			<roll>7</roll>
-			<trade-good>Metawheat</trade-good>
-			<cargo-type-classes>Common, Agricultural, Bulky</cargo-type-classes>
-			<cost-per-unit>500/10 tons</cost-per-unit>
-		</row>
-		<row>
-			<roll>8</roll>
-			<trade-good>Native Artwork</trade-good>
-			<cargo-type-classes>Cultural, Luxury</cargo-type-classes>
+			<trade-good>Livestock, Gengineered</trade-good>
+			<cargo-type-classes>Livestock, Biotech</cargo-type-classes>
 			<cost-per-unit>10,000</cost-per-unit>
 		</row>
 		<row>
+			<roll>7</roll>
+			<trade-good>Livestock, Luxury Pets</trade-good>
+			<cargo-type-classes>Livestock, Luxury</cargo-type-classes>
+			<cost-per-unit>25,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>8</roll>
+			<trade-good>Medical Supplies, Postech</trade-good>
+			<cargo-type-classes>Medical, Postech, Compact</cargo-type-classes>
+			<cost-per-unit>25,000</cost-per-unit>
+		</row>
+		<row>
 			<roll>9</roll>
-			<trade-good>Aathire, Drug Ingredient</trade-good>
-			<cargo-type-classes>Alien, Agricultural, Luxury, Rare</cargo-type-classes>
-			<cost-per-unit>50,000</cost-per-unit>
+			<trade-good>Slaves</trade-good>
+			<cargo-type-classes>Sapient</cargo-type-classes>
+			<cost-per-unit>25,000</cost-per-unit>
 		</row>
 		<row>
 			<roll>10</roll>
-			<trade-good>Tools, Basic Hand Tools</trade-good>
-			<cargo-type-classes>Low Tech, Tool</cargo-type-classes>
-			<cost-per-unit>5,000</cost-per-unit>
+			<trade-good>Tools, Medical Equipment</trade-good>
+			<cargo-type-classes>Tools, Postech, Medical</cargo-type-classes>
+			<cost-per-unit>50,000</cost-per-unit>
 		</row>
-		<footer><b>Trade Mods:</b> -2 Agricultural, -1 Livestock, -1 Mineral, +1 Tools, +2 Postech</footer>
+		<footer><b>Trade Mods:</b> -2 Sapient, -1 Biotech, +1 Maltech, +2 Luxury</footer>
 	</ap-smart-table>
 	<p></p>
-	<ap-auth-container permissions="jump-full athandisk-troubles">
+	<ap-auth-container permissions="jump-full melis-troubles">
 		<ap-smart-table headers="Roll, Troubles">
 			<classes roll="centered"> </classes>
 			<row>
 				<roll>1</roll>
-				<troubles> Local rulers argue over who gets to collect the tariffs for 1d6+1 weeks </troubles>
+				<troubles> An addict official skims for his habit; add 2 Friction </troubles>
 			</row>
 			<row>
 				<roll>2</roll>
-				<troubles> Locals have been upset or frightened by the traders; add 1d4 Friction to the deal </troubles>
+				<troubles> Local merchants can't be bothered to finish the deal; add 1d4+1 weeks </troubles>
 			</row>
 			<row>
 				<roll>3</roll>
-				<troubles> Priests require 1d4 Friction worth of inducements to bless the deal </troubles>
+				<troubles> Local potentate casually takes half the goods because he can </troubles>
 			</row>
 			<row>
 				<roll>4</roll>
-				<troubles> Sickness has struck down many workers, delaying the deal by 1d4 weeks </troubles>
+				<troubles> Local workers are drugged or indolent, add 1d6+1 weeks to finish deal </troubles>
 			</row>
 			<row>
 				<roll>5</roll>
-				<troubles> Vicious beasts or raiders have ruined/ stolen 1d4 x 10% of the goods </troubles>
+				<troubles> Strange local customs coincidentally add 1d4 Friction </troubles>
 			</row>
 			<row>
 				<roll>6</roll>
-				<troubles> Weather bogs all transport; add 1d4 weeks to the deal </troubles>
+				<troubles> Thrill-seeking thieves steal 1d4 x 10% of the goods </troubles>
 			</row>
-			<footer><b>Trouble Chance:</b> 3 in 10</footer>
+			<footer><b>Trouble Chance:</b> 4 in 10</footer>
 		</ap-smart-table>
 	</ap-auth-container>
 </div>
 <h2 id="description">Description</h2>
 <ul>
 	<li><b>Atmosphere:</b> Breathable mix</li>
-	<li><b>Temperature:</b> Variable temperate-to-warm</li>
-	<li><b>Biosphere:</b> No native biosphere</li>
-	<li><b>Population:</b> Several million inhabitants (~6,000,000)</li>
-	<li><b>Tech Level:</b> TL1</li>
-	<ap-auth-container permissions="jump-full athandisk-world-tags">
-		<li><b>World Tags:</b> Sole Supplier and Terraform Failure</li>
+	<li><b>Temperature:</b> Temperate</li>
+	<li><b>Biosphere:</b> Immiscible</li>
+	<li><b>Population:</b> Billions of inhabitants (~4,000,000,000)</li>
+	<li><b>Tech Level:</b> TL4</li>
+	<ap-auth-container permissions="jump-full melis-world-tags">
+		<li><b>World Tags:</b> Refugees and Rising Hegemon</li>
 	</ap-auth-container>
 	<li>
 		<b>Naming Language:</b>
@@ -128,55 +128,53 @@
 	</li>
 </ul>
 <p>
-	The planet of Athandisk is a warm world with an equatorial desert and habitable northern and southern latitudes with a breathable
-	atmosphere. Lacking any native life, pockets of livable land have been created thanks to prior terraformation efforts seeding different
-	locations with plants and animals native to <a is="ap-nav-link" href="jump-melis">Melis</a>. Unfortunately, the terraformer caused the
-	planet to become too hot after the machine failed, but its failure has left the planet with several strange minerals that, aside from not
-	forming naturally and being near impossible to synthesize, are little more than odd ores for well known materials. These minerals,
-	however, create a unique soil environment that allows the growing of Aathire, a fruiting bush unique to Athandisk, whose fruits are used
-	in the creation of several highly sought after drugs within the <a is="ap-nav-link" href="jump-queel-league">Queel League</a>.
+	The homeworld of the <a is="ap-nav-link" href="jump-ihmiset">ihmisets</a> and capital of the
+	<a is="ap-nav-link" href="jump-queel-league">Queel League</a>, Melis is a nearly Earth-like world with a biochemistry just different
+	enough to be toxic to human life. The <a is="ap-nav-link" href="jump-ihmiset">ihmisets</a> inhabiting the planet have spread to nearly
+	every corner of the available landmass and have grown used to the power and influence they are able to exert over their colonies, leading
+	to a somewhat decadent culture with a love of exploring new places and feelings with a "burned out" morality. The
+	<a is="ap-nav-link" href="jump-ihmiset">ihmisets</a> themselves live in tightly packed cities with a mix of farms, industrial sites, and
+	nature parks taking up the lands not actively used for residential space.
 </p>
 <p>
-	The people of Athandisk are stuck living simple, low tech lives as the megacorporations that control the mining and Aathire growing
-	operations horde all the unprocurable technologies for themselves.
+	The people of Melis live lives of comparative luxury with inter-tribe politics taking up the majority of their lives as they seek to
+	explore as much as they can while fulfilling all their personal responsibilities. Most don't consider the effects their life styles have
+	on the colonies, and only see the colonies as an expensive, hostile local to one day explore.
 </p>
 
 <h2 id="locations">Locations</h2>
-<h3 id="epaon">Epaon</h3>
+<h3 id="onkia">Onkia</h3>
 <p>
-	Located roughly halfway between the equator and the southern ice caps, Epaon is a continent of swamps, forests, jungles, and grasslands, a
-	miracle given how dry the rest of the planet is. Even more remarkable is that the water table in almost all of Epaon is fresh water,
-	making it one of the only places that the <a is="ap-nav-link" href="jump-ihmiset">ihmisets</a> can survive at the wretched tech level the
-	megacorporations keep the local population at.
-</p>
-<p>
-	Epaon holds all the farms for Aathire, where local <a is="ap-nav-link" href="jump-ihmiset">ihmisets</a> are worked to the bone for a slice
-	of bread, with many turning to small personal farms in order to sustain themselves. The corporations do not approve, but there is only so
-	far that the corporations can push before the mobs overwhelm them with sheer numbers.
+	A warm continent located near the equator, Onkia is a land of inland seas, countless lakes, and innumerable rivers with forests and
+	jungles nearly end to end. Considered the optimal climate by the <a is="ap-nav-link" href="jump-ihmiset">ihmisets</a>, Onkia is heavily
+	populated and serves as an industrial giant on the industrial giant that is the planet Melis. Swimming and sunbathing are common
+	recreational activities while fishing, both wild and farmed, makes up a significant portion of both the diet and economy of the locals.
 </p>
 
-<h4 id="ahneus">Ahneus</h4>
+<h4 id="kalastaja">Kalastaja</h4>
 <p>
-	Ahneus is the only city on Athandisk, built around the corporate buildings for the two major corporations: Musta Pharmaceuticals and the
-	Valkoinen Company. These buildings provide a small, opulent haven of TL 4 living for the megacorporations' leadership and their loyal wage
-	slaves, with a cement wall separating them from the rest of the city, which is made up of random, naturally constructed buildings
-	sprawling out to form the rest of the medieval level city. A large spaceport provides an area for spacecraft to land and trade, breaking
-	up the city around it, with the only major connection to the corporate section of Ahneus connected through the spaceport.
+	Home of the largest spaceport in <a href="#onkia">Onkia</a>, and the whole of Melis, Kalastaja also happens to be home to the Society of
+	Guardian Explorers, a coalition of private citizens, aerospace manufacturers, pilots, and explorers dedicated to discovering safe warp
+	lanes throughout the sector. Kalastaja is a tight, cramped city made up of concrete buildings housing thousands of
+	<a is="ap-nav-link" href="jump-ihmiset">ihmisets</a> each. Despite the generally unplanned nature of Kalastaja's expansion, the public
+	transportation network of the city is outstandingly well designed and highly resilient to even severe disruptions.
 </p>
 
-<h3 id="rauta">Rauta</h3>
+<h4 id="puu">Puu</h4>
 <p>
-	Surrounded by a salty sea, the continent of Rauta is dominated by multiple mountain ranges that provide ample ore available to even the
-	simplest mining techniques, and that is all that the Valkoinen Company provides its "employee citizens" who work at the mines. Valkoinen
-	maintains a hold over the many scattered settlements on Rauta due to them controlling the desalination plants and being the only ones with
-	the technology to transport large quantities of water quickly across the world, though they also control the transportation of food beyond
-	the few species of fish that can manage to survive in the horridly salty oceans.
+	Puu is the home of the Valkoinen Company Corporate Headquarters and is where most of the ion engines used in the starships of the
+	<a is="ap-nav-link" href="jump-queel-league">Queel League</a> are produced. The city has a mostly flat surface with large cargo spaceports
+	and an orbital lifters connection to a cargo station in geostationary orbit above the city, with the population living underground in the
+	supporting structures of the surface installations. Public transportation within Puu is unreliable at best, however the city connects to
+	all the large freeways of <a href="#onkia">Onkia</a>, providing easy access to the city and the space elevator.
 </p>
 
-<h4 id="auta-minua">Auta Minua</h4>
+<h4 id="laake">Laake</h4>
 <p>
-	The largest settlement on Rauta, Auta Minua is a port city connected to the briny sea surrounding <a href="#rauta">Rauta</a> that provides
-	some of the best jobs in Rauta: Loading and off-loading cargo ships. An immaculate corporate campus houses the local branch of Valkoinen
-	in charge of maintaining the flow of goods and profits, but the rest of the small town is at best a dusty mid-western collection of homes
-	and businesses built from woody shrubs.
+	Laake is the home of the Musta Pharmaceuticals Company, who own roughly 30% of the city, particularly the surrounds and the rainforest
+	farmlands where they grow the many crops needed to produce the base compounds for the many drugs and health care products they produce.
+	One of the less packed cities on <a href="onkia">Onkia</a> with plenty of greenery to break up the concrete jungle, Laake is one of the
+	most expensive places on Melis to live. Public transportation within Laake is... distinctly acceptable.
 </p>
+
+<!-- TODO: Add 5 more continents -->
