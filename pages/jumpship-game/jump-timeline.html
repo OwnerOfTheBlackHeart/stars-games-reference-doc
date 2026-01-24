@@ -1,76 +1,27 @@
 <h1>Jumpship Campaign Timeline</h1>
+<h2 id="jump-robot">Robot Timeline</h2>
 <div class="table-container">
-	<div class="table-column-45">
-		<h2 id="jump-robot">Robot Timeline</h2>
-		<div class="table-container">
-			<div class="table-column">
-				<table class="global-display-table">
-					<tr>
-						<th>Current Date</th>
-					</tr>
-					<tr>
-						<td><ap-display-global property-path="dates.jumpship"></ap-display-global></td>
-					</tr>
-				</table>
-				<br />
-				<ap-time-table header="Birthdays" current-date-value="jumpship">
-					<ap-time-entry day="10" month="3" year="3181">PLACEHOLDER</ap-time-entry>
-				</ap-time-table>
-			</div>
-			<div class="table-column"><ap-birthday-generator current-date-value="dates.jumpship"></ap-birthday-generator></div>
-		</div>
+	<div class="table-column">
+		<table class="global-display-table">
+			<tr>
+				<th>Current Date</th>
+			</tr>
+			<tr>
+				<td><ap-display-global property-path="dates.jumpship"></ap-display-global></td>
+			</tr>
+		</table>
 		<br />
-
-		<ap-time-table header="Timeline" current-date-value="jumpship">
-			<ap-time-entry day="0" month="0" year="3300">
-				Game starts on <a is="ap-nav-link" href="jump-ingigud">Ingigud, Sokotis (0605)</a>, in the backwater settlement of
-				<a is="ap-nav-link" href="jump-ingigud#nuuit">Nuuit</a>
-			</ap-time-entry>
+		<ap-time-table header="Birthdays" current-date-value="jumpship">
+			<ap-time-entry day="10" month="3" year="3181">PLACEHOLDER</ap-time-entry>
 		</ap-time-table>
 	</div>
-	<div class="table-column-45">
-		<h2 id="jump-fellowship">Fellowship Timeline</h2>
-		<div class="table-container">
-			<div class="table-column">
-				<table class="global-display-table">
-					<tr>
-						<th>Current Date</th>
-					</tr>
-					<tr>
-						<td><ap-display-global property-path="dates.jumpship-fellowship"></ap-display-global></td>
-					</tr>
-				</table>
-				<br />
-				<ap-time-table header="Birthdays" current-date-value="jumpship">
-					<ap-time-entry day="14" month="2" year="3274">Jörn Schwortz</ap-time-entry>
-					<ap-time-entry day="18" month="8" year="3277">Krutova Anna (Anya) Rostislavovna</ap-time-entry>
-					<ap-time-entry day="5" month="8" year="3276">Rena Korsch</ap-time-entry>
-				</ap-time-table>
-			</div>
-			<div class="table-column"><ap-birthday-generator current-date-value="dates.jumpship-fellowship"></ap-birthday-generator></div>
-		</div>
-		<br />
-
-		<ap-time-table header="Timeline" current-date-value="jumpship-fellowship">
-			<ap-time-entry day="0" month="0" year="3300">
-				Game starts on <a is="ap-nav-link" href="jump-alfreyd">Alfreyd, Calite (0109)</a>, on the moon of
-				<a is="ap-nav-link" href="jump-alfreyd#orite">Orite</a>. Party raids a
-				<a is="ap-nav-link" href="jump-maximoffian-enclave">Maximoffian Enclave</a>
-				black site known as Area 47 and discovers signs of aliens being able to wields spike travel.
-			</ap-time-entry>
-			<ap-time-entry day="5" month="0" year="3300">Raid on Gehiem Base.</ap-time-entry>
-			<ap-time-entry day="12" month="0" year="3300">Party set off on the quest to acquire alien technology.</ap-time-entry>
-			<ap-time-entry day="30" month="0" year="3300">
-				Party arrives on <a is="ap-nav-link" href="jump-williams-6">Williams 6</a>.
-			</ap-time-entry>
-			<ap-time-entry day="12" month="1" year="3300">
-				Kotiin upgraded with <a is="ap-nav-link" href="jump-lisaten">lisaten</a> Hydroponics Bays at
-				<a is="ap-nav-link" href="jump-williams-6">Williams 6</a>. Lera recruited.
-			</ap-time-entry>
-			<ap-time-entry day="37" month="1" year="3300"> Party arrived at the Matkustaa. </ap-time-entry>
-			<ap-time-entry day="46" month="1" year="3300">
-				Party arrived at the <a is="ap-nav-link" href="jump-queel-planets#rivilin">Rivilin</a>.
-			</ap-time-entry>
-		</ap-time-table>
-	</div>
+	<div class="table-column"><ap-birthday-generator current-date-value="dates.jumpship"></ap-birthday-generator></div>
 </div>
+<br />
+
+<ap-time-table header="Timeline" current-date-value="jumpship">
+	<ap-time-entry day="0" month="0" year="3300">
+		Game starts on <a is="ap-nav-link" href="jump-ingigud">Ingigud, Sokotis (0605)</a>, in the backwater settlement of
+		<a is="ap-nav-link" href="jump-ingigud#nuuit">Nuuit</a>
+	</ap-time-entry>
+</ap-time-table>
