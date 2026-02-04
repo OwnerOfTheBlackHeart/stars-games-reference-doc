@@ -1,0 +1,185 @@
+<h1 id="thurid">Thurid</h1>
+<ap-auth-container permissions="jump-full fjf-npcs">
+	<ul>
+		<li><a is="ap-nav-link" href="jump-fjf-npcs#thurid">NPCs</a></li>
+	</ul>
+</ap-auth-container>
+<div class="trade-info">
+	<h2 id="trade-info">Trade Info</h2>
+	<ul>
+		<li><b>Friction:</b> 3</li>
+		<li><b>Max Tonnage:</b> 180,400 tons per bought good</li>
+		<li><b>Local Factor:</b> N/A</li>
+		<ap-auth-container permissions="jump-full thurid-trade-tags">
+			<li><b>Trade Tag:</b> Laissez Faire</li>
+		</ap-auth-container>
+	</ul>
+
+	<h3 id="trade-goods">Trade Goods</h3>
+	<ap-smart-table headers="Roll, Trade Good, Cargo Type Classes, Cost Per Unit">
+		<classes roll="centered" cost-per-unit="centered"> </classes>
+		<row>
+			<roll>1</roll>
+			<trade-good>Clothing</trade-good>
+			<cargo-type-classes>Common, Low Tech, Cultural</cargo-type-classes>
+			<cost-per-unit>1,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>2</roll>
+			<trade-good>Fusion Plants</trade-good>
+			<cargo-type-classes>Postech, Tool, Bulky</cargo-type-classes>
+			<cost-per-unit>10,000/10 tons</cost-per-unit>
+		</row>
+		<row>
+			<roll>3</roll>
+			<trade-good>Drugs, Recreational</trade-good>
+			<cargo-type-classes>Luxury, Biotech, Compact</cargo-type-classes>
+			<cost-per-unit>50,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>4</roll>
+			<trade-good>Exotic Jewels</trade-good>
+			<cargo-type-classes>Rare, Mineral, Luxury, Compact</cargo-type-classes>
+			<cost-per-unit>25,000/0.1 tons</cost-per-unit>
+		</row>
+		<row>
+			<roll>5</roll>
+			<trade-good>Housewares, Postech</trade-good>
+			<cargo-type-classes>Consumer, Postech</cargo-type-classes>
+			<cost-per-unit>5,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>6</roll>
+			<trade-good>Medical Supplies, Postech</trade-good>
+			<cargo-type-classes>Medical, Postech, Compact</cargo-type-classes>
+			<cost-per-unit>25,000/0.1 tons</cost-per-unit>
+		</row>
+		<row>
+			<roll>7</roll>
+			<trade-good>Parts, Basic Industry</trade-good>
+			<cargo-type-classes>Low Tech, Tool</cargo-type-classes>
+			<cost-per-unit>5,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>8</roll>
+			<trade-good>Small Arms, Energy</trade-good>
+			<cargo-type-classes>Military, Postech</cargo-type-classes>
+			<cost-per-unit>10,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>9</roll>
+			<trade-good>Slaves</trade-good>
+			<cargo-type-classes>Sapient</cargo-type-classes>
+			<cost-per-unit>25,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>10</roll>
+			<trade-good>Fine Liquor</trade-good>
+			<cargo-type-classes>Luxury, Low Tech, Compact</cargo-type-classes>
+			<cost-per-unit>10,000</cost-per-unit>
+		</row>
+		<footer><b>Trade Mods:</b> -2 Cultural, -1 Religious, -1 Livestock, -1 Military, +1 Luxury, +1 Mineral, +2 Pretech, +2 Sapient</footer>
+	</ap-smart-table>
+	<p></p>
+	<ap-auth-container permissions="jump-full thurid-troubles">
+		<ap-smart-table headers="Roll, Troubles">
+			<classes roll="centered"> </classes>
+			<row>
+				<roll>1</roll>
+				<troubles> A functionary finds a number of unpaid tariffs; add 1d4 Friction to the deal </troubles>
+			</row>
+			<row>
+				<roll>2</roll>
+				<troubles> A local bureaucrat has been annoyed by the PCs; add 1 Friction to the deal </troubles>
+			</row>
+			<row>
+				<roll>3</roll>
+				<troubles> Administrative confusion locks the deal down for 1d4 weeks </troubles>
+			</row>
+			<row>
+				<roll>4</roll>
+				<troubles> Another merchant just flooded/emptied the market for the goods; add 2 Friction </troubles>
+			</row>
+			<row>
+				<roll>5</roll>
+				<troubles> Another merchant takes 1d4 x 10% of the goods through fraud </troubles>
+			</row>
+			<row>
+				<roll>6</roll>
+				<troubles> The goods or payment are only partially the genuine article; add 1d4 Friction </troubles>
+			</row>
+			<footer><b>Trouble Chance:</b> 1 in 10</footer>
+		</ap-smart-table>
+	</ap-auth-container>
+</div>
+<h2 id="description">Description</h2>
+<ul>
+	<li><b>Atmosphere:</b> Breathable mix</li>
+	<li><b>Temperature:</b> Temperate</li>
+	<li><b>Biosphere:</b> Immiscible</li>
+	<li><b>Population:</b> Hundreds of millions of inhabitants (~902,000,000)</li>
+	<li><b>Tech Level:</b> TL4</li>
+	<ap-auth-container permissions="jump-full thurid-world-tags">
+		<li><b>World Tags:</b> Exchange Consulate and Maneaters</li>
+	</ap-auth-container>
+	<li>
+		<b>Naming Language:</b>
+		Any
+	</li>
+</ul>
+<p>
+	The capital of the <a is="ap-nav-link" href="jump-free-jaxdab-federation">Free Jaxdab Federation</a>, Thurid is a heavily populated,
+	Earth-like world with plentiful resources of all types, save food. The comfortable living conditions of the world and the abundance of the
+	planet have caused the population to boom well beyond what the initial terraforming crops can handle feeding. As such, the people of
+	Thurid have turned to a product readily available both locally and from other worlds to supplement their diets: Corpse starch.
+</p>
+<p>
+	Thurid also maintains a branch of the Exchange of Light, a powerful force of diplomacy and banking that provides Thurid with a major
+	weapon to use to control the <a is="ap-nav-link" href="jump-free-jaxdab-federation">Free Jaxdab Federation</a> and its member systems.
+</p>
+<p>
+	The planet itself is mostly water with two super continents: Xanth and Iloria. Both Xanth and Iloria contain a large number of biomes and
+	terrains, Xanth has a slightly larger population while Iloria has more mountains and is more heavily exploited for rare Earth minerals.
+</p>
+
+<h2 id="locations">Locations</h2>
+<h3 id="xanth">Xanth</h3>
+<p>
+	The flatter and more populated of Thurid's two super continents, Xanth also has a greater volume of islands spread about its equatorial
+	coast. Farming and manufacturing make up the majority of the continent's economic activity while the islands see frequent use as training
+	grounds for the powerful military that Thurid maintains.
+</p>
+
+<h4 id="talhant">Talhant</h4>
+<p>
+	Talhant is a coastal city located on the tropical equator of <a href="#xanth">Xanth</a>, built along the Talkhont Canal, a canal that
+	travels down the middle of <a href="#xanth">Xanth</a> and allows cargo ships to sail quickly from one side of
+	<a href="#xanth">Xanth</a> to the other. The city has a lively, vibrant culture and hosts the
+	<a is="ap-nav-link" href="jump-free-jaxdab-federation">Free Jaxdab Federation's</a>
+	headquarters for MEGAcorp.
+</p>
+<p>
+	Talhant has <a href="#xanth">Xanth's</a> primary spaceport, which serves to reinforce the local economy's reliance on tourism and being a
+	trading hub.
+</p>
+
+<h3 id="iloria">Iloria</h3>
+<p>
+	The more mountainous and poorer of Thurid's two super continents, Iloria has about 20% more mountains and 10% more deserts than
+	<a href="#xanth">Xanth</a>, which causes the continent to see more resource extraction and processing, leading to a lower average income.
+	While not poor, the quality of life and income of the typical Ilorian resident is notably behind that of the average Xanthian. The lower
+	farmable land and greater concentration of locals whose primary industry is resource extraction lead to Iloria consistently in conflict
+	with local paramilitary groups that the planetary government happily uses to test and bloody its military.
+</p>
+
+<h4 id="ikeero">Ikeero</h4>
+<p>
+	Located at the center of <a href="#iloria">Iloria's</a> cargo train network, Ikeero also hosts <a href="#iloria">Iloria's</a> primary
+	spaceport. The city is constantly dirty and hosts a strong presence of military forces, police and mercenaries, all fully invested in
+	ensuring stability in the local surrounds. Due to the heavy investment in logistics and security, Ikeero is home to a tight clustering of
+	refineries and ore storage facilities, all kept well out of the hands of local militias, gangs and terrorists.
+</p>
+<p>
+	MILcorp has its headquarters in Ikeero, which is a mix of military base and corporate campus. MILcorp also maintains its primary factor
+	for their light tank fleet in Ikeero.
+</p>
