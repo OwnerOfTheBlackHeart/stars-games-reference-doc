@@ -1,0 +1,219 @@
+<h1 id="bareaga">Bareaga</h1>
+<ap-auth-container permissions="jump-full na-npcs">
+	<ul>
+		<li><a is="ap-nav-link" href="jump-na-npcs#bareaga">NPCs</a></li>
+	</ul>
+</ap-auth-container>
+<div class="trade-info">
+	<h2 id="trade-info">Trade Info</h2>
+	<ul>
+		<li><b>Friction:</b> 3</li>
+		<li><b>Max Tonnage:</b> 2,000,000 tons per bought good</li>
+		<li><b>Local Factor:</b> N/A</li>
+		<ap-auth-container permissions="jump-full bareaga-trade-tags">
+			<li><b>Trade Tag:</b> Opened (industrial world)</li>
+		</ap-auth-container>
+	</ul>
+
+	<h3 id="trade-goods">Trade Goods</h3>
+	<ap-smart-table headers="Roll, Trade Good, Cargo Type Classes, Cost Per Unit">
+		<classes roll="centered" cost-per-unit="centered"> </classes>
+		<row>
+			<roll>1</roll>
+			<trade-good>Colonial Survival Supplies</trade-good>
+			<cargo-type-classes>Survival, Postech</cargo-type-classes>
+			<cost-per-unit>5,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>2</roll>
+			<trade-good>Tools, Astronautic</trade-good>
+			<cargo-type-classes>Tool, Postech, Astronautic</cargo-type-classes>
+			<cost-per-unit>25,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>3</roll>
+			<trade-good>Housewares, Postech</trade-good>
+			<cargo-type-classes>Consumer, Postech</cargo-type-classes>
+			<cost-per-unit>5,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>4</roll>
+			<trade-good>Native Artwork</trade-good>
+			<cargo-type-classes>Cultural, Luxury</cargo-type-classes>
+			<cost-per-unit>10,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>5</roll>
+			<trade-good>Parts, Basic Industry</trade-good>
+			<cargo-type-classes>Low Tech, Tool</cargo-type-classes>
+			<cost-per-unit>5,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>6</roll>
+			<trade-good>Postech Building Material</trade-good>
+			<cargo-type-classes>Tools, Postech, Bulky</cargo-type-classes>
+			<cost-per-unit>10,000/10 tons</cost-per-unit>
+		</row>
+		<row>
+			<roll>7</roll>
+			<trade-good>Tools, Medical Equipment</trade-good>
+			<cargo-type-classes>Tools, Postech, Medical</cargo-type-classes>
+			<cost-per-unit>50,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>8</roll>
+			<trade-good>Small Arms, Projectile</trade-good>
+			<cargo-type-classes>Military, Low Tech</cargo-type-classes>
+			<cost-per-unit>5,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>9</roll>
+			<trade-good>Tools, Basic Hand Tools</trade-good>
+			<cargo-type-classes>Low Tech, Tool</cargo-type-classes>
+			<cost-per-unit>5,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>10</roll>
+			<trade-good>Tools, Industrial</trade-good>
+			<cargo-type-classes>Tool, Postech</cargo-type-classes>
+			<cost-per-unit>10,000</cost-per-unit>
+		</row>
+		<footer><b>Trade Mods:</b> -2 Consumer, -1 Tool, +1 Agricultural, +2 Mineral</footer>
+	</ap-smart-table>
+	<p></p>
+	<ap-auth-container permissions="jump-full bareaga-troubles">
+		<ap-smart-table headers="Roll, Troubles">
+			<classes roll="centered"> </classes>
+			<row>
+				<roll>1</roll>
+				<troubles> An unfriendly oligopolist arranges for "accidents" that destroy 1d6 x 10% of the goods </troubles>
+			</row>
+			<row>
+				<roll>2</roll>
+				<troubles> Industrial accident destroys 1d4 x 10% of the goods in this deal. </troubles>
+			</row>
+			<row>
+				<roll>3</roll>
+				<troubles> Labor unrest adds 1d4 Friction to the deal </troubles>
+			</row>
+			<row>
+				<roll>4</roll>
+				<troubles> Monopolists push back on this intrusion, adding 1d6 Friction to the deal </troubles>
+			</row>
+			<row>
+				<roll>5</roll>
+				<troubles> The factories are backlogged; the deal is stalled for 1d4 weeks </troubles>
+			</row>
+			<row>
+				<roll>6</roll>
+				<troubles> The supplier or buyer is retooling, delaying the deal by 1d6+1 weeks </troubles>
+			</row>
+			<footer><b>Trouble Chance:</b> 3 in 10</footer>
+		</ap-smart-table>
+	</ap-auth-container>
+</div>
+<h2 id="description">Description</h2>
+<ul>
+	<li><b>Atmosphere:</b> Breathable mix</li>
+	<li><b>Temperature:</b> Temperate</li>
+	<li><b>Biosphere:</b> Immiscible</li>
+	<li><b>Population:</b> Billions of inhabitants (~10,000,000,000)</li>
+	<li><b>Tech Level:</b> TL3</li>
+	<ap-auth-container permissions="jump-full bareaga-world-tags">
+		<li><b>World Tags:</b> Cheap Life and Outpost World</li>
+	</ap-auth-container>
+	<li>
+		<b>Naming Language:</b>
+		<a href="https://www.fantasynamegenerators.com/serbian-names.php" target="_blank">Serbian</a>
+	</li>
+</ul>
+<p>
+	Bareaga is the homeworld of the <a is="ap-nav-link" href="jump-ijudi">ijudis</a>, despite being somewhat primitive by comparison to the
+	colonies of the <a is="ap-nav-link" href="jump-ijudi">ijudis</a>. Thanks to the manipulations of a few individuals, Bareaga's initial
+	space travel technology was scurried off with once more advanced species made contact with the
+	<a is="ap-nav-link" href="jump-ijudi">ijudis</a>, leaving the homeworld deprived of the advanced technology. And thanks to the reputation
+	the <a is="ap-nav-link" href="jump-ijudi">ijudis</a>, Bareaga has been denied a second chance and made to try and catch up with its own
+	colonies, often unsuccessfully.
+</p>
+<p>
+	The planet itself is a comfortable world for life, with excessive amounts of water and swampy terrain spread among the four continents:
+	<a href="#mokri">Mokri</a>, <a href="#drvo">Drvo</a>, Neuspeh, and Nada. <a href="#mokri">Mokri</a>, located on the equator, is the
+	hottest and wettest continent on Bareaga and the natural territory of the <a is="ap-nav-link" href="jump-ijudi">ijudis'</a> ancestors, and
+	also the most populated continent. <a href="#drvo">Drvo</a> is located from the equator to the south pole of the planet and was once both
+	the most populated continent and most heavily industrialize, however local wars have dropped the population heavily and devastated the
+	infrastructure. <a href="#neuspeh">Neuspeh</a> is the furthest north and the coldest of the continents, which also has the highest
+	percentage of saltwater swamps, has gone from hostile waste to vitally important to Bareaga as the region is rich with rare earth metals,
+	valuable commodities when trying to advance space travel. <a href="#nada">Nada</a> is opposite of <a href="#mokri">Mokri</a> on the
+	equator and is the driest of the continents, which makes the <a is="ap-nav-link" href="jump-ijudi">ijudis</a> uninterested in developing
+	the inland regions of <a href="#nada">Nada</a>. MEGAcorp, however, has realized that inland Nada is quite comfortable for human life and
+	have setup an outpost for supporting their trading expeditions into <a is="ap-nav-link" href="jump-queel-league">Queel League</a> space,
+	which is little more than a few spaceports and warehouses hidden where the <a is="ap-nav-link" href="jump-ijudi">ijudis</a> won't do
+	anything to stop them.
+</p>
+
+<h2 id="locations">Locations</h2>
+<h3 id="mokri">Mokri</h3>
+<p>
+	Mokri, located on the equator, is the hottest and wettest continent on Bareaga and the natural territory of the
+	<a is="ap-nav-link" href="jump-ijudi">ijudis'</a> ancestors, and also the most populated continent. The local tribes place low value on
+	the individual and are ready to sacrifice lives to get whatever they want; However, the chieftains themselves are much more cautious,
+	seeing what has happened to <a href="drvo">Drvo</a> and wishing to protect their tribes' hard to replace holdings from intertribal strife.
+</p>
+
+<h4 id="zona">Zona</h4>
+<p>
+	The "capital" of <a href="#mokri">Mokri</a>, Zona is placed almost dead on the equator, leading to it being extremely hot and humid for a
+	temperate world. Little industrial activity actually happens in Zona, with bullet trains carrying locals out of the packed apartments in
+	the center of the city out to the surrounding cities to work at various factories and office buildings in less residential areas. The
+	strong train connections make Zona the clear choice for where to place the primary spaceport of <a href="#mokri">Mokri</a>.
+</p>
+
+<h3 id="drvo">Drvo</h3>
+<p>
+	Drvo is located from the equator to the south pole of the planet and was once both the most populated continent and most heavily
+	industrialize, however local wars have dropped the population heavily and devastated the infrastructure. The tribes of Drvo have been
+	working to rebuild, but see frequent interference from unknown forces that they believe to be agents of
+	<a is="ap-nav-link" href="jump-ijudi">ijudis</a> who benefit from them not having access to jumpships.
+</p>
+
+<h4 id="mit">Mit</h4>
+<p>
+	The clear winner of the last major conflict on <a href="#drvo">Drvo</a>, Mit City was able to rebuild its spaceport... and made all the
+	losers pay for it. The city is a mix of seemingly ancient buildings and very recent constructions, though the actual factories are still
+	damaged in ways that are far harder to fix and the population is lower than the local tribe cares to admit.
+</p>
+
+<h3 id="neuspeh">Neuspeh</h3>
+<p>
+	Neuspeh is the furthest north and the coldest of the continents, which also has the highest percentage of saltwater swamps, has gone from
+	hostile waste to vitally important to Bareaga as the region is rich with rare earth metals, valuable commodities when trying to advance
+	space travel. The tribes that control this region are brutal in how they deal with others, happily descending into violence wielding shock
+	clubs and knives so as to avoid damaging anything they actually value. Industrial theft is a constant back and forth in Neuspeh.
+</p>
+
+<h4 id="mneto">Mneto</h4>
+<p>
+	Using an old strip mine and a few abandoned pit mines as the basis of the spaceport, Mneto is merely the biggest of the options of where
+	to land on <a href="neuspeh">Neuspeh</a> and is also technically the safest. Though safest does not mean safe, as the mining conglomerates
+	that command the local tribes are quick to violence when they sense any threat to them or their operations.
+</p>
+
+<h3 id="nada">Nada</h3>
+<p>
+	Nada is opposite of <a href="#mokri">Mokri</a> on the equator and is the driest of the continents, which makes the
+	<a is="ap-nav-link" href="jump-ijudi">ijudis</a> uninterested in developing the inland regions of Nada. While the costal swamps claim a
+	relatively high population density of <a is="ap-nav-link" href="jump-ijudi">ijudis</a>, the inland regions are avoided and considered too
+	inhospitable for permanent habitation. Instead, MEGAcorp has figured out that they can setup an outpost near the center of the continent
+	and use their fast transports to avoid defensive spacecraft in order to have a safe, tax-free haven to serve as a staging ground for
+	operations in the <a is="ap-nav-link" href="jump-queel-league">Queel League</a>.
+</p>
+
+<h4 id="heavens-pass">Heaven's Pass</h4>
+<p>
+	Heaven's Pass is a MEGAcorp outpost operated jointly by STARcorp, SPACEcorp, and TRAVELcorp that serves as a resupply and maintenance stop
+	for spacecraft making the journey to the <a is="ap-nav-link" href="jump-queel-league">Queel League</a> and as a vacation resort. Heaven's
+	Pass is made up of a spaceport, an apartment building where the permanent and semi-permanent residents live, a large hydroponics lab, a
+	fancy yet cheap hotel, a suite of amusement rides, and a large surrounding forest treated as a nature park.
+</p>
+
+<!-- TODO: Add 5 more continents -->

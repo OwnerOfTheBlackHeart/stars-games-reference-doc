@@ -456,7 +456,10 @@
 				{
 					"baseUrl": "empires/noxpaj-alliance",
 					"mainPage": "jump-noxpaj-alliance",
-					"pages": [{ "url": "noxpaj-alliance.html", "name": "jump-noxpaj-alliance", "title": "Nox'paj Alliance" }],
+					"pages": [
+						{ "url": "noxpaj-alliance.html", "name": "jump-noxpaj-alliance", "title": "Nox'paj Alliance" },
+						{ "url": "na-npcs.html", "name": "jump-na-npcs", "title": "Nox'paj Alliance NPCs" }
+					],
 					"directories": [
 						{
 							"baseUrl": "planets",
