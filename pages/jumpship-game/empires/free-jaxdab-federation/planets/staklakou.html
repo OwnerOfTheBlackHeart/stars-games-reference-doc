@@ -1,0 +1,131 @@
+<h1 id="staklakou">Staklakou</h1>
+<ap-auth-container permissions="jump-full fjf-npcs">
+	<ul>
+		<li><a is="ap-nav-link" href="jump-fjf-npcs#staklakou">NPCs</a></li>
+	</ul>
+</ap-auth-container>
+<div class="trade-info">
+	<h2 id="trade-info">Trade Info</h2>
+	<ul>
+		<li><b>Friction:</b> 5</li>
+		<li><b>Max Tonnage:</b> 49 tons per bought good</li>
+		<li><b>Local Factor:</b> N/A</li>
+		<ap-auth-container permissions="jump-full staklakou-trade-tags">
+			<li><b>Trade Tag:</b> Scarcity</li>
+		</ap-auth-container>
+	</ul>
+
+	<h3 id="trade-goods">Trade Goods</h3>
+	<ap-smart-table headers="Roll, Trade Good, Cargo Type Classes, Cost Per Unit">
+		<classes roll="centered" cost-per-unit="centered"> </classes>
+		<row>
+			<roll>1</roll>
+			<trade-good>Drugs, Raw Materials</trade-good>
+			<cargo-type-classes>Agriculture, Biotech, Bulky</cargo-type-classes>
+			<cost-per-unit>2,000/10 tons</cost-per-unit>
+		</row>
+		<row>
+			<roll>2</roll>
+			<trade-good>Housewares, Basic</trade-good>
+			<cargo-type-classes>Low Tech, Consumer</cargo-type-classes>
+			<cost-per-unit>2,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>3</roll>
+			<trade-good>Livestock, Common</trade-good>
+			<cargo-type-classes>Common, Livestock</cargo-type-classes>
+			<cost-per-unit>2,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>4</roll>
+			<trade-good>Metawheat</trade-good>
+			<cargo-type-classes>Common, Agricultural, Bulky</cargo-type-classes>
+			<cost-per-unit>500</cost-per-unit>
+		</row>
+		<row>
+			<roll>5</roll>
+			<trade-good>Native Artwork</trade-good>
+			<cargo-type-classes>Cultural, Luxury</cargo-type-classes>
+			<cost-per-unit>10,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>6</roll>
+			<trade-good>Metal Ingots, Rare Alloys</trade-good>
+			<cargo-type-classes>Mineral, Bulky, Rare</cargo-type-classes>
+			<cost-per-unit>5,000/10 tons</cost-per-unit>
+		</row>
+		<row>
+			<roll>7</roll>
+			<trade-good>Slaves</trade-good>
+			<cargo-type-classes>Sapient</cargo-type-classes>
+			<cost-per-unit>25,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>8</roll>
+			<trade-good>Small Arms, Projectile</trade-good>
+			<cargo-type-classes>Military, Low Tech</cargo-type-classes>
+			<cost-per-unit>5,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>9</roll>
+			<trade-good>Tools, Basic Hand Tools</trade-good>
+			<cargo-type-classes>Low Tech, Tool</cargo-type-classes>
+			<cost-per-unit>5,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>10</roll>
+			<trade-good>Fine Liquor</trade-good>
+			<cargo-type-classes>Luxury, Low Tech, Compact</cargo-type-classes>
+			<cost-per-unit>10,000</cost-per-unit>
+		</row>
+		<footer><b>Trade Mods:</b> -2 Agricultural, -1 Sapient, +1 tools, +2 military</footer>
+	</ap-smart-table>
+	<p></p>
+	<ap-auth-container permissions="jump-full staklakou-troubles">
+		<ap-smart-table headers="Roll, Troubles">
+			<classes roll="centered"> </classes>
+			<row>
+				<roll>1</roll>
+				<troubles> An aspiring local warlord wants recognition and "taxes"; add 1d6 Friction to the deal </troubles>
+			</row>
+			<row>
+				<roll>2</roll>
+				<troubles> Arson or collateral combat damage ruins 1d6 x 10% of the good </troubles>
+			</row>
+			<row>
+				<roll>3</roll>
+				<troubles> Bandit attacks prevent the goods from moving for 1d4 weeks </troubles>
+			</row>
+			<row>
+				<roll>4</roll>
+				<troubles> Desperate locals steal 1d4 x 10% of the goods for survival's sake </troubles>
+			</row>
+			<row>
+				<roll>5</roll>
+				<troubles> Local strongman wants a bigger taste, adding 2 points of Friction to the deal </troubles>
+			</row>
+			<row>
+				<roll>6</roll>
+				<troubles> Looters plunder 1d4 x 10% of the goods </troubles>
+			</row>
+			<footer><b>Trouble Chance:</b> 4 in 10</footer>
+		</ap-smart-table>
+	</ap-auth-container>
+</div>
+<h2 id="description">Description</h2>
+<ul>
+	<li><b>Atmosphere:</b> Breathable mix</li>
+	<li><b>Temperature:</b> Temperate</li>
+	<li><b>Biosphere:</b> Human-miscible</li>
+	<li><b>Population:</b> Fewer than a million inhabitants (~243,000)</li>
+	<li><b>Tech Level:</b> TL4</li>
+	<ap-auth-container permissions="jump-full staklakou-world-tags">
+		<li><b>World Tags:</b> Radioactive World and Maneaters</li>
+	</ap-auth-container>
+	<li>
+		<b>Naming Language:</b>
+		Any
+	</li>
+</ul>
+
+<h2 id="locations">Locations</h2>

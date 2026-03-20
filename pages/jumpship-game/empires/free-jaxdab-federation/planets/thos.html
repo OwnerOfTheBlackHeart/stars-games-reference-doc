@@ -1,0 +1,131 @@
+<h1 id="thos">Thos</h1>
+<ap-auth-container permissions="jump-full fjf-npcs">
+	<ul>
+		<li><a is="ap-nav-link" href="jump-fjf-npcs#thos">NPCs</a></li>
+	</ul>
+</ap-auth-container>
+<div class="trade-info">
+	<h2 id="trade-info">Trade Info</h2>
+	<ul>
+		<li><b>Friction:</b> 2</li>
+		<li><b>Max Tonnage:</b> 4,000 tons per bought good</li>
+		<li><b>Local Factor:</b> N/A</li>
+		<ap-auth-container permissions="jump-full thos-trade-tags">
+			<li><b>Trade Tag:</b> Megacorps</li>
+		</ap-auth-container>
+	</ul>
+
+	<h3 id="trade-goods">Trade Goods</h3>
+	<ap-smart-table headers="Roll, Trade Good, Cargo Type Classes, Cost Per Unit">
+		<classes roll="centered" cost-per-unit="centered"> </classes>
+		<row>
+			<roll>1</roll>
+			<trade-good>Clothing</trade-good>
+			<cargo-type-classes>Common, Low Tech, Cultural</cargo-type-classes>
+			<cost-per-unit>1,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>2</roll>
+			<trade-good>Drugs, Raw Materials</trade-good>
+			<cargo-type-classes>Agriculture, Biotech, Bulky</cargo-type-classes>
+			<cost-per-unit>2,000/10 tons</cost-per-unit>
+		</row>
+		<row>
+			<roll>3</roll>
+			<trade-good>Drugs, Recreational</trade-good>
+			<cargo-type-classes>Luxury, Biotech, Compact</cargo-type-classes>
+			<cost-per-unit>50,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>4</roll>
+			<trade-good>Exotic Jewels</trade-good>
+			<cargo-type-classes>Rare, Mineral, Luxury, Compact</cargo-type-classes>
+			<cost-per-unit>25,000/0.1 tons</cost-per-unit>
+		</row>
+		<row>
+			<roll>5</roll>
+			<trade-good>Fine Liquor</trade-good>
+			<cargo-type-classes>Luxury, Low Tech, Compact</cargo-type-classes>
+			<cost-per-unit>10,000/0.1 tons</cost-per-unit>
+		</row>
+		<row>
+			<roll>6</roll>
+			<trade-good>Livestock, Gengineered</trade-good>
+			<cargo-type-classes>Livestock, Biotech</cargo-type-classes>
+			<cost-per-unit>10,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>7</roll>
+			<trade-good>Livestock, Luxury Pets</trade-good>
+			<cargo-type-classes>Livestock, Luxury</cargo-type-classes>
+			<cost-per-unit>25,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>8</roll>
+			<trade-good>Medical Supplies, Postech</trade-good>
+			<cargo-type-classes>Medical, Postech, Compact</cargo-type-classes>
+			<cost-per-unit>25,000/0.1 tons</cost-per-unit>
+		</row>
+		<row>
+			<roll>9</roll>
+			<trade-good>Slaves</trade-good>
+			<cargo-type-classes>Sapient</cargo-type-classes>
+			<cost-per-unit>25,000</cost-per-unit>
+		</row>
+		<row>
+			<roll>10</roll>
+			<trade-good>Tools, Medical Equipment</trade-good>
+			<cargo-type-classes>Tools, Postech, Medical</cargo-type-classes>
+			<cost-per-unit>50,000</cost-per-unit>
+		</row>
+		<footer><b>Trade Mods:</b> -2 Sapient, -1 biotech, +1 maltech, +2 luxury</footer>
+	</ap-smart-table>
+	<p></p>
+	<ap-auth-container permissions="jump-full thos-troubles">
+		<ap-smart-table headers="Roll, Troubles">
+			<classes roll="centered"> </classes>
+			<row>
+				<roll>1</roll>
+				<troubles> An addict official skims for his habit; add 2 Friction </troubles>
+			</row>
+			<row>
+				<roll>2</roll>
+				<troubles> Local merchants can't be bothered to finish the deal; add 1d4+1 weeks </troubles>
+			</row>
+			<row>
+				<roll>3</roll>
+				<troubles> Local potentate casually takes half the goods because he can </troubles>
+			</row>
+			<row>
+				<roll>4</roll>
+				<troubles> Local workers are drugged or indolent, add 1d6+1 weeks to finish deal </troubles>
+			</row>
+			<row>
+				<roll>5</roll>
+				<troubles> Strange local customs coincidentally add 1d4 Friction </troubles>
+			</row>
+			<row>
+				<roll>6</roll>
+				<troubles> Thrill-seeking thieves steal 1d4 x 10% of the goods </troubles>
+			</row>
+			<footer><b>Trouble Chance:</b> 2 in 10</footer>
+		</ap-smart-table>
+	</ap-auth-container>
+</div>
+<h2 id="description">Description</h2>
+<ul>
+	<li><b>Atmosphere:</b> Breathable mix</li>
+	<li><b>Temperature:</b> Variable temperate-to-warm</li>
+	<li><b>Biosphere:</b> No native biosphere</li>
+	<li><b>Population:</b> Several million inhabitants (~20,000,000)</li>
+	<li><b>Tech Level:</b> TL4</li>
+	<ap-auth-container permissions="jump-full thos-world-tags">
+		<li><b>World Tags:</b> Cheap Life and Megacorps</li>
+	</ap-auth-container>
+	<li>
+		<b>Naming Language:</b>
+		Any
+	</li>
+</ul>
+
+<h2 id="locations">Locations</h2>
