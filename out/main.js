@@ -1388,7 +1388,7 @@ System.register("custom-elements/ap-timeline", ["auth-manager", "loader", "types
                                 day: Number(entry.getAttribute("day")),
                                 month: Number(entry.getAttribute("month")),
                                 year: Number(entry.getAttribute("year")),
-                            }),
+                            }).DistributeDays(),
                             permissions: entry.getAttribute("permissions")?.split(" "),
                         }));
                         if (this.rows.length > 0) {

@@ -149,9 +149,9 @@ export class TimeTable extends ThemedElement {
 						day: Number(entry.getAttribute("day")),
 						month: Number(entry.getAttribute("month")),
 						year: Number(entry.getAttribute("year")),
-					}),
+					}).DistributeDays(),
 					permissions: entry.getAttribute("permissions")?.split(" "),
-				})
+				}),
 			);
 
 			if (this.rows.length > 0) {
